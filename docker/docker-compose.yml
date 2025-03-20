@@ -1,0 +1,40 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: courtly_wp
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: courtly_user
+      WORDPRESS_DB_PASSWORD: courtly_pass
+      WORDPRESS_DB_NAME: courtly_db
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+      - ./plugins:/var/www/html/wp-content/plugins
+
+  db:
+    image: mysql:5.7
+    container_name: courtly_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: courtly_db
+      MYSQL_USER: courtly_user
+      MYSQL_PASSWORD: courtly_pass
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: courtly_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword
+
+volumes:
+  db_data:

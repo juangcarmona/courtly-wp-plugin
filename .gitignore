@@ -1,15 +1,7 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
-
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
+# Ignore WordPress Core Files
 /wp-admin/
 /wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
+/wp-content/languages/
 /wp-includes/
 /index.php
 /license.txt
@@ -17,43 +9,32 @@
 /wp-*.php
 /xmlrpc.php
 
-# Configuration
+# Ignore WordPress Configuration
 wp-config.php
+wp-content/debug.log
 
-# Example themes
+# Ignore Default Themes & Plugins
 /wp-content/themes/twenty*/
-
-# Example plugin
 /wp-content/plugins/hello.php
 
-# Uploads
+# Ignore Uploads
 /wp-content/uploads/
 
-# Log files
-*.log
+# Ignore Everything in Docker Except Necessary Config
+docker/*
+!docker/docker-compose.yml  # Keep docker-compose file
+!docker/wp-config-docker.php  # If you have a custom WP config
 
-# htaccess
-/.htaccess
+# Keep Only Your Plugin Inside `plugins/`
+!docker/wp-content/plugins/courtly
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
-
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
-
-# Node.js
-node_modules/
-
-# PHP
+# Ignore PHP & Node.js Dependencies
 vendor/
 composer.lock
+node_modules/
 
-# Docker
-docker/*.log
-docker/.env
+# Ignore IDE and System Files
+.vscode/
+*.code-workspace
+.DS_Store
+Thumbs.db
