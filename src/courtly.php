@@ -19,6 +19,16 @@ if (!defined('ABSPATH')) {
     exit; // Prevent direct access
 }
 
+require_once plugin_dir_path(__FILE__) . 'public/shortcode.php';
+
+require_once plugin_dir_path(__FILE__) . 'activation.php';
+register_activation_hook(__FILE__, 'courtly_create_tables');
+
+// Load admin area
+if (is_admin()) {
+    require_once plugin_dir_path(__FILE__) . 'admin/admin.php';
+}
+
 // Display a simple admin notice when the plugin is activated
 function courtly_hello_world_admin_notice() {
     echo '<div class="notice notice-success is-dismissible">
