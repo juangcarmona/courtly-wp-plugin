@@ -4,6 +4,7 @@ if (!defined('ABSPATH')) {
 }
 
 add_action('admin_menu', 'courtly_add_admin_menu');
+add_action('admin_enqueue_scripts', 'courtly_enqueue_admin_scripts');
 
 function courtly_add_admin_menu() {
     add_menu_page(
@@ -44,7 +45,42 @@ function courtly_add_admin_menu() {
     );
 }
 
+function courtly_enqueue_admin_scripts($hook) {
+    // Load scripts only on Courtly admin pages
+    if (strpos($hook, 'courtly') === false) {
+        return;
+    }
+
+    // Load Bootswatch Minty (Bootstrap 5)
+    wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
+
+    // Load FullCalendar (correct version)
+    wp_enqueue_script('fullcalendar-js', 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js', [], false, true);
+
+    // Load FullCalendar CSS (manually define styles if needed)
+    wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__FILE__) . 'css/admin-calendar.css');
+
+    // Load our custom calendar script
+    wp_enqueue_script(
+        'courtly-admin-calendar',
+        plugin_dir_url(__FILE__) . 'js/admin-calendar.js',
+        ['jquery', 'fullcalendar-js'],
+        false,
+        true
+    );
+
+    // Pass AJAX URL to the script
+    wp_localize_script('courtly-admin-calendar', 'courtlyAjax', [
+        'ajax_url' => admin_url('admin-ajax.php?action=courtly_get_availability'),
+    ]);
+}
+
 // Dispatch to actual pages
+
+function courtly_admin_page() {
+    include plugin_dir_path(__FILE__) . 'pages/dashboard.php';
+}
+
 function courtly_admin_courts_page() {
     include plugin_dir_path(__FILE__) . 'pages/courts.php';
 }
@@ -55,13 +91,4 @@ function courtly_admin_user_types_page() {
 
 function courtly_admin_users_page() {
     include plugin_dir_path(__FILE__) . 'pages/users.php';
-}
-
-function courtly_admin_page() {
-    ?>
-    <div class="wrap">
-        <h1>Courtly Settings</h1>
-        <p>Welcome to Courtly! Configure your padel court booking settings here.</p>
-    </div>
-    <?php
 }

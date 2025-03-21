@@ -1,0 +1,10 @@
+.fc-toolbar-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fc-daygrid-event {
+    background-color: #0073aa !important;
+    border-color: #005177 !important;
+    color: white !important;
+}
