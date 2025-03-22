@@ -4,42 +4,54 @@ if (!defined('ABSPATH')) {
 }
 
 add_action('wp_ajax_courtly_get_blocked_slots', 'courtly_get_blocked_slots');
+
 function courtly_get_blocked_slots() {
     global $wpdb;
-
+    $prefix = $wpdb->prefix;
     $court_id = intval($_GET['court_id'] ?? 0);
-    if ($court_id <= 0) {
-        wp_send_json_error(['message' => 'Invalid court ID'], 400);
-    }
+    $start = new DateTime($_GET['start']);
+    $end = new DateTime($_GET['end']);
 
-    // Optional handling of dates if you want to use them:
-    $start_date = isset($_GET['start']) ? sanitize_text_field($_GET['start']) : null;
-    $end_date = isset($_GET['end']) ? sanitize_text_field($_GET['end']) : null;
+    error_log("[Courtly] AJAX get_blocked_slots - court_id={$court_id}, start={$start->format('c')}, end={$end->format('c')}");
 
-    error_log("[Courtly] AJAX get_blocked_slots - court_id={$court_id}, start={$start_date}, end={$end_date}");
-
-    // Query building example (ignoring dates):
-    $results = $wpdb->get_results($wpdb->prepare("
-        SELECT id, start_time, end_time, reason
-        FROM {$wpdb->prefix}courtly_availability
-        WHERE court_id = %d AND day_of_week != -1 AND is_blocked = 1
-    ", $court_id));
+    // Fetch recurring slots from DB
+    $results = $wpdb->get_results($wpdb->prepare(
+        "SELECT id, day_of_week, start_time, end_time, reason FROM {$prefix}courtly_availability 
+         WHERE court_id = %d AND is_blocked = 1",
+        $court_id
+    ));
 
     error_log("[Courtly] DB results: " . json_encode($results));
 
-    $events = array_map(function($row) {
-        return [
-            'id' => $row->id,
-            'title' => $row->reason ?: 'Blocked',
-            'start' => $row->start_time,
-            'end' => $row->end_time,
-            'backgroundColor' => '#dc3545',
-            'borderColor' => '#dc3545'
-        ];
-    }, $results);
+    $events = [];
+    $interval = new DateInterval('P1D');
+    $period = new DatePeriod($start, $interval, $end);
+
+    foreach ($period as $date) {
+        $weekday = (int)$date->format('w');  // Matches PHP date('w') output: 0 (Sun) to 6 (Sat)
+        foreach ($results as $row) {
+            if ((int)$row->day_of_week === $weekday) {
+                $startDateTime = new DateTime($date->format('Y-m-d') . ' ' . $row->start_time);
+                $endDateTime = new DateTime($date->format('Y-m-d') . ' ' . $row->end_time);
+
+                $events[] = [
+                    'id' => $row->id,
+                    'title' => $row->reason ?: 'Blocked',
+                    'start' => $startDateTime->format(DateTime::ATOM),
+                    'end' => $endDateTime->format(DateTime::ATOM),
+                    'backgroundColor' => '#dc3545',
+                    'borderColor' => '#dc3545',
+                    'editable' => false,
+                ];
+            }
+        }
+    }
+
+    error_log('[Courtly] AJAX events returned: ' . json_encode($events));
 
     wp_send_json($events);
 }
+
 
 add_action('wp_ajax_courtly_save_blocked_slot', 'courtly_save_blocked_slot');
 function courtly_save_blocked_slot() {
