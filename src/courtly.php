@@ -26,8 +26,11 @@ register_activation_hook(__FILE__, 'courtly_create_tables');
 
 // Load admin area
 if (is_admin()) {
-    require_once plugin_dir_path(__FILE__) . 'admin/ajax.php';
     require_once plugin_dir_path(__FILE__) . 'admin/admin.php';
+
+    // explicitly load our AJAX handlers
+    require_once plugin_dir_path(__FILE__) . 'admin/ajax/availability.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/ajax/dashboard.php';
 }
 
 // Show admin notice only once after activation

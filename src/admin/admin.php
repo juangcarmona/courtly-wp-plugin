@@ -60,33 +60,49 @@ function courtly_enqueue_admin_scripts($hook) {
     }
 
     wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
-    wp_enqueue_script('fullcalendar-js', 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js', [], false, true);
+    wp_enqueue_script('fullcalendar-js', 'https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js', [], false, true);
     wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__FILE__) . 'css/admin-calendar.css');
 
-    wp_enqueue_script(
-        'courtly-admin-calendar',
-        plugin_dir_url(__FILE__) . 'js/admin-calendar.js',
-        ['jquery', 'fullcalendar-js'],
-        false,
-        true
-    );
-
     add_filter('script_loader_tag', 'courtly_mark_script_as_module', 10, 3);
+
+    if ($hook === 'toplevel_page_courtly_settings') {
+        wp_enqueue_script(
+            'courtly-dashboard-calendar',
+            plugin_dir_url(__FILE__) . 'js/dashboard-calendar.js',
+            ['jquery', 'fullcalendar-js'],
+            false,
+            true
+        );
+
+        wp_localize_script('courtly-dashboard-calendar', 'courtlyAjax', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+        ]);
+    }
+
+    if ($hook === 'courtly_page_courtly_availability') {
+        wp_enqueue_script(
+            'courtly-availability-calendar',
+            plugin_dir_url(__FILE__) . 'js/availability-calendar.js',
+            ['jquery', 'fullcalendar-js'],
+            false,
+            true
+        );
+
+        $court_id = isset($_GET['court_id']) ? intval($_GET['court_id']) : 1;
+
+        wp_localize_script('courtly-availability-calendar', 'courtlyAjax', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'court_id' => $court_id
+        ]);
+    }
+}
+
 function courtly_mark_script_as_module($tag, $handle, $src) {
-    if ($handle === 'courtly-admin-calendar') {
+    if (in_array($handle, ['courtly-dashboard-calendar', 'courtly-availability-calendar'])) {
         return '<script type="module" src="' . esc_url($src) . '"></script>';
     }
     return $tag;
 }
-
-    $court_id = isset($_GET['court_id']) ? intval($_GET['court_id']) : 0;
-
-    wp_localize_script('courtly-admin-calendar', 'courtlyAjax', [
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'court_id' => $court_id
-    ]);
-}
-
 
 // Dispatch to actual pages
 
@@ -105,7 +121,7 @@ function courtly_admin_user_types_page() {
 function courtly_admin_users_page() {
     include plugin_dir_path(__FILE__) . 'pages/users.php';
 }
-    
+
 function courtly_admin_availability_page() {
     include plugin_dir_path(__FILE__) . 'pages/availability.php';
 }

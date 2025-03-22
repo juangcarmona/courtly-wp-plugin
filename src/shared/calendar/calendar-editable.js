@@ -3,12 +3,18 @@ import { logCalendarEvent } from './calendar-utils.js';
 
 export function renderEditableCalendar(containerEl, options) {
     const calendar = new FullCalendar.Calendar(containerEl, {
+        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
         initialView: 'timeGridWeek',
         slotDuration: '00:30:00',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          },
         editable: true,
         selectable: true,
         eventOverlap: false,
-        height: options.height || 600,
+        height: options.height || 600, 
         events: options.fetchUrl,
 
         select(info) {
