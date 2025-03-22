@@ -59,15 +59,21 @@ function courtly_save_blocked_slot() {
     $prefix = $wpdb->prefix;
 
     $court_id = intval($_POST['court_id']);
-    $start_time = sanitize_text_field($_POST['start_time']);
-    $end_time = sanitize_text_field($_POST['end_time']);
+    $start_time_iso = sanitize_text_field($_POST['start_time']); // ISO datetime from frontend
+    $end_time_iso = sanitize_text_field($_POST['end_time']);     // ISO datetime from frontend
     $reason = sanitize_text_field($_POST['reason']);
+
+    $start_timestamp = strtotime($start_time_iso);
+    $end_timestamp = strtotime($end_time_iso);
+    $day_of_week = date('w', $start_timestamp);
+
+    error_log("[Courtly] Saving blocked slot - start: {$start_time_iso}, end: {$end_time_iso}, day_of_week: {$day_of_week}");
 
     $success = $wpdb->insert("{$prefix}courtly_availability", [
         'court_id' => $court_id,
-        'day_of_week' => date('w', strtotime($start_time)),
-        'start_time' => $start_time,
-        'end_time' => $end_time,
+        'day_of_week' => $day_of_week,
+        'start_time' => date('H:i:s', $start_timestamp), 
+        'end_time' => date('H:i:s', $end_timestamp),     
         'is_blocked' => 1,
         'reason' => $reason
     ]);
@@ -75,8 +81,10 @@ function courtly_save_blocked_slot() {
     if ($success !== false) {
         wp_send_json(['status' => 'success', 'message' => 'Blocked slot saved successfully']);
     } else {
+        error_log("[Courtly] Failed to save blocked slot: " . $wpdb->last_error);
         wp_send_json(['status' => 'error', 'message' => 'Failed to save blocked slot'], 500);
     }
+    wp_die();
 }
 
 add_action('wp_ajax_courtly_remove_blocked_slot', 'courtly_remove_blocked_slot');
