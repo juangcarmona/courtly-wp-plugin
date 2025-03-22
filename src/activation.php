@@ -34,6 +34,18 @@ function courtly_create_tables() {
         UNIQUE KEY unique_user_reservation (user_id, reservation_date)
     ) $charset_collate;";
 
+    $tables[] = "CREATE TABLE {$prefix}courtly_availability (
+        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        court_id BIGINT UNSIGNED NOT NULL,
+        day_of_week TINYINT NOT NULL, -- 0 (Sunday) to 6 (Saturday)
+        start_time TIME NOT NULL,
+        end_time TIME NOT NULL,
+        is_blocked BOOLEAN DEFAULT FALSE, -- TRUE if this slot is blocked for internal use
+        reason VARCHAR(255) DEFAULT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (court_id) REFERENCES {$prefix}courtly_courts(id) ON DELETE CASCADE
+    ) $charset_collate;";
+
     foreach ($tables as $sql) {
         dbDelta($sql);
     }

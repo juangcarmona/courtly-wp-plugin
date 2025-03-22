@@ -43,24 +43,26 @@ function courtly_add_admin_menu() {
         'courtly_users',
         'courtly_admin_users_page'
     );
+
+    add_submenu_page(
+        'courtly_settings',
+        'Court Availability',
+        'Availability',
+        'manage_options',
+        'courtly_availability',
+        'courtly_admin_availability_page'
+    );
 }
 
 function courtly_enqueue_admin_scripts($hook) {
-    // Load scripts only on Courtly admin pages
     if (strpos($hook, 'courtly') === false) {
         return;
     }
 
-    // Load Bootswatch Minty (Bootstrap 5)
     wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
-
-    // Load FullCalendar (correct version)
     wp_enqueue_script('fullcalendar-js', 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js', [], false, true);
-
-    // Load FullCalendar CSS (manually define styles if needed)
     wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__FILE__) . 'css/admin-calendar.css');
 
-    // Load our custom calendar script
     wp_enqueue_script(
         'courtly-admin-calendar',
         plugin_dir_url(__FILE__) . 'js/admin-calendar.js',
@@ -69,11 +71,22 @@ function courtly_enqueue_admin_scripts($hook) {
         true
     );
 
-    // Pass AJAX URL to the script
+    add_filter('script_loader_tag', 'courtly_mark_script_as_module', 10, 3);
+function courtly_mark_script_as_module($tag, $handle, $src) {
+    if ($handle === 'courtly-admin-calendar') {
+        return '<script type="module" src="' . esc_url($src) . '"></script>';
+    }
+    return $tag;
+}
+
+    $court_id = isset($_GET['court_id']) ? intval($_GET['court_id']) : 0;
+
     wp_localize_script('courtly-admin-calendar', 'courtlyAjax', [
-        'ajax_url' => admin_url('admin-ajax.php?action=courtly_get_availability'),
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'court_id' => $court_id
     ]);
 }
+
 
 // Dispatch to actual pages
 
@@ -91,4 +104,8 @@ function courtly_admin_user_types_page() {
 
 function courtly_admin_users_page() {
     include plugin_dir_path(__FILE__) . 'pages/users.php';
+}
+    
+function courtly_admin_availability_page() {
+    include plugin_dir_path(__FILE__) . 'pages/availability.php';
 }

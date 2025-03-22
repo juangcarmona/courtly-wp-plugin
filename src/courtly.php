@@ -30,10 +30,19 @@ if (is_admin()) {
     require_once plugin_dir_path(__FILE__) . 'admin/admin.php';
 }
 
-// Display a simple admin notice when the plugin is activated
+// Show admin notice only once after activation
 function courtly_hello_world_admin_notice() {
-    echo '<div class="notice notice-success is-dismissible">
-            <p>Hello Courtly! Your plugin is now active.</p>
-          </div>';
+    if (get_transient('courtly_activation_notice')) {
+        echo '<div class="notice notice-success is-dismissible">
+                <p>Hello Courtly! Your plugin is now active.</p>
+              </div>';
+        delete_transient('courtly_activation_notice'); // Remove it after showing
+    }
 }
 add_action('admin_notices', 'courtly_hello_world_admin_notice');
+
+// Set transient when plugin is activated
+function courtly_activation_notice() {
+    set_transient('courtly_activation_notice', true, 5); // Show for 5 seconds
+}
+register_activation_hook(__FILE__, 'courtly_activation_notice');

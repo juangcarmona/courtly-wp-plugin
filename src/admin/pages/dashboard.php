@@ -2,6 +2,8 @@
 global $wpdb;
 $prefix = $wpdb->prefix;
 
+
+
 // Fetch statistics
 $total_courts = $wpdb->get_var("SELECT COUNT(*) FROM {$prefix}courtly_courts");
 $total_users = $wpdb->get_var("SELECT COUNT(*) FROM {$prefix}users");
