@@ -19,33 +19,34 @@ if (!defined('ABSPATH')) {
     exit; // Prevent direct access
 }
 
-require_once plugin_dir_path(__FILE__) . 'public/shortcode.php';
-
-require_once plugin_dir_path(__FILE__) . 'activation.php';
+// Activation hook
+require_once plugin_dir_path(__FILE__) . 'infrastructure/activation.php';
 register_activation_hook(__FILE__, 'courtly_create_tables');
+
+// Load public-facing shortcode
+require_once plugin_dir_path(__FILE__) . 'presentation/public/shortcode.php';
 
 // Load admin area
 if (is_admin()) {
-    require_once plugin_dir_path(__FILE__) . 'admin/admin.php';
+    require_once plugin_dir_path(__FILE__) . 'presentation/admin/admin.php';
 
-    // explicitly load our AJAX handlers
-    require_once plugin_dir_path(__FILE__) . 'admin/ajax/availability.php';
-    require_once plugin_dir_path(__FILE__) . 'admin/ajax/dashboard.php';
+    // explicitly load AJAX handlers
+    require_once plugin_dir_path(__FILE__) . 'presentation/admin/ajax/availability.php';
+    require_once plugin_dir_path(__FILE__) . 'presentation/admin/ajax/dashboard.php';
 }
 
-// Show admin notice only once after activation
+// Admin activation notice
 function courtly_hello_world_admin_notice() {
     if (get_transient('courtly_activation_notice')) {
         echo '<div class="notice notice-success is-dismissible">
                 <p>Hello Courtly! Your plugin is now active.</p>
               </div>';
-        delete_transient('courtly_activation_notice'); // Remove it after showing
+        delete_transient('courtly_activation_notice');
     }
 }
 add_action('admin_notices', 'courtly_hello_world_admin_notice');
 
-// Set transient when plugin is activated
 function courtly_activation_notice() {
-    set_transient('courtly_activation_notice', true, 5); // Show for 5 seconds
+    set_transient('courtly_activation_notice', true, 5);
 }
 register_activation_hook(__FILE__, 'courtly_activation_notice');
