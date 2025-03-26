@@ -6,6 +6,7 @@ export function renderEditableCalendar(containerEl, options) {
         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
         initialView: 'timeGridWeek',
         slotDuration: '00:30:00',
+        timeZone: 'UTC',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',

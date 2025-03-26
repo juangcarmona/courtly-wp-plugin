@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Courtly - Padel Court Booking
+ * Plugin Name:       Courtly – Padel Court Booking
  * Plugin URI:        https://github.com/juangcarmona/courtly-wp-plugin
- * Description:       A WordPress plugin for managing padel court reservations.
+ * Description:       A modular plugin for managing padel court reservations using DDD principles.
  * Version:           1.0.0
  * Author:            Juan G. Carmona
  * Author URI:        https://jgcarmona.com
@@ -19,34 +19,38 @@ if (!defined('ABSPATH')) {
     exit; // Prevent direct access
 }
 
-// Activation hook
+// Load infrastructure and dependency container (always available)
+require_once plugin_dir_path(__FILE__) . 'infrastructure/bootstrap.php';
+
+// Setup activation logic (create tables, defaults, etc.)
 require_once plugin_dir_path(__FILE__) . 'infrastructure/activation.php';
 register_activation_hook(__FILE__, 'courtly_create_tables');
 
-// Load public-facing shortcode
+// Register shortcode for public-facing booking interface
 require_once plugin_dir_path(__FILE__) . 'presentation/public/shortcode.php';
 
-// Load admin area
+// Load admin interface and AJAX handlers only when in admin context
 if (is_admin()) {
     require_once plugin_dir_path(__FILE__) . 'presentation/admin/admin.php';
 
-    // explicitly load AJAX handlers
+    // AJAX handlers
     require_once plugin_dir_path(__FILE__) . 'presentation/admin/ajax/availability.php';
     require_once plugin_dir_path(__FILE__) . 'presentation/admin/ajax/dashboard.php';
 }
 
-// Admin activation notice
-function courtly_hello_world_admin_notice() {
+// Display admin notice after activation
+function courtly_show_activation_notice() {
     if (get_transient('courtly_activation_notice')) {
         echo '<div class="notice notice-success is-dismissible">
-                <p>Hello Courtly! Your plugin is now active.</p>
+                <p>Courtly is now active and ready to use.</p>
               </div>';
         delete_transient('courtly_activation_notice');
     }
 }
-add_action('admin_notices', 'courtly_hello_world_admin_notice');
+add_action('admin_notices', 'courtly_show_activation_notice');
 
-function courtly_activation_notice() {
+// Store flag to show activation notice
+function courtly_activation_notice_flag() {
     set_transient('courtly_activation_notice', true, 5);
 }
-register_activation_hook(__FILE__, 'courtly_activation_notice');
+register_activation_hook(__FILE__, 'courtly_activation_notice_flag');

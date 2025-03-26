@@ -5,6 +5,7 @@ export function renderReadonlyCalendar(containerEl, options) {
     schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
     initialView: 'dayGridMonth',
     height: options.height || 500, 
+    timeZone: 'UTC',
     headerToolbar: {  // <-- Enables toolbar with buttons
         left: 'prev,next today',
         center: 'title',

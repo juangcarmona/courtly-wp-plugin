@@ -7,6 +7,7 @@ export function renderBookingCalendar(containerEl, options) {
     initialView: 'timeGridWeek',
     slotDuration: '00:30:00',
     selectable: true,
+    timeZone: 'UTC',
     height: options.height || 600, 
     headerToolbar: {  // <-- Enables toolbar with buttons
         left: 'prev,next today',
