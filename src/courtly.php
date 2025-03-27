@@ -33,9 +33,11 @@ require_once plugin_dir_path(__FILE__) . 'presentation/public/shortcode.php';
 if (is_admin()) {
     require_once plugin_dir_path(__FILE__) . 'presentation/admin/admin.php';
 
-    // AJAX handlers
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/ajax/availability.php';
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/ajax/dashboard.php';
+    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/AvailabilityAjaxController.php';
+    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/DashboardAjaxController.php';
+    
+    AvailabilityAjaxController::registerHooks();
+    DashboardAjaxController::registerHooks();
 }
 
 // Display admin notice after activation

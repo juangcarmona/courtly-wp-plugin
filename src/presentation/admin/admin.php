@@ -125,3 +125,6 @@ function courtly_admin_users_page() {
 function courtly_admin_availability_page() {
     include plugin_dir_path(__FILE__) . 'pages/availability.php';
 }
+
+require_once __DIR__ . '/AdminAssets.php';
+add_action('admin_enqueue_scripts', ['AdminAssets', 'enqueue']);
