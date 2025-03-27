@@ -12,4 +12,12 @@ class CourtlyContainer {
     public static function courtBlockService() {
         return new CourtBlockService(new CourtBlockRepository());
     }
+
+    public static function availabilityCalculator() {
+        return new AvailabilityCalculatorService(
+            new OpeningHoursRepository(),
+            new CourtBlockRepository(),
+            new CourtReservationRepository()
+        );
+    }
 }
