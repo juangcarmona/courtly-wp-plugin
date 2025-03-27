@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '/../../application/controllers/AdminAvailabilityController.php';
+require_once plugin_dir_path(__FILE__) . '../../../application/controllers/AdminAvailabilityController.php';
 
 $controller = new AdminAvailabilityController();
 $controller->handlePost();

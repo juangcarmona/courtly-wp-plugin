@@ -24,7 +24,11 @@ require_once plugin_dir_path(__FILE__) . 'infrastructure/bootstrap.php';
 
 // Setup activation logic (create tables, defaults, etc.)
 require_once plugin_dir_path(__FILE__) . 'infrastructure/activation.php';
-register_activation_hook(__FILE__, 'courtly_create_tables');
+register_activation_hook(__FILE__, function () {
+    courtly_create_tables();
+    courtly_seed_data();
+    courtly_activation_notice_flag();
+});
 
 // Register shortcode for public-facing booking interface
 require_once plugin_dir_path(__FILE__) . 'presentation/public/shortcode.php';
