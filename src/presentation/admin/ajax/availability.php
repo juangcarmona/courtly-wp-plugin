@@ -11,12 +11,12 @@ if (!defined('ABSPATH')) {
 // Make sure you load the container dependencies
 require_once plugin_dir_path(__FILE__) . '../../../infrastructure/bootstrap.php';
 
-$availabilityService = CourtlyContainer::availabilityService();
+$courtBlockService  = CourtlyContainer::courtBlockService ();
 
 // ----------------------------
 // Get locked blocks
 // ----------------------------
-add_action('wp_ajax_courtly_get_blocked_slots', function () use ($availabilityService) {
+add_action('wp_ajax_courtly_get_blocked_slots', function () use ($courtBlockService ) {
     $court_id = intval($_GET['court_id'] ?? 0);
     $start = new DateTime($_GET['start']);
     $end = new DateTime($_GET['end']);
@@ -24,7 +24,7 @@ add_action('wp_ajax_courtly_get_blocked_slots', function () use ($availabilitySe
     error_log("[Courtly] AJAX get_blocked_slots - court_id={$court_id}, start={$start->format('c')}, end={$end->format('c')}");
 
     try {
-        $events = $availabilityService->getBlockedSlotsForRange($court_id, $start, $end);
+        $events = $courtBlockService ->getBlockedSlotsForRange($court_id, $start, $end);
         wp_send_json($events);
     } catch (Exception $e) {
         error_log("[Courtly] Error fetching blocked slots: " . $e->getMessage());
@@ -35,7 +35,7 @@ add_action('wp_ajax_courtly_get_blocked_slots', function () use ($availabilitySe
 // ----------------------------
 // Save a new block
 // ----------------------------
-add_action('wp_ajax_courtly_save_blocked_slot', function () use ($availabilityService) {
+add_action('wp_ajax_courtly_save_blocked_slot', function () use ($courtBlockService ) {
     $court_id = intval($_POST['court_id']);
     $start = new DateTime(sanitize_text_field($_POST['start_time']));
     $end = new DateTime(sanitize_text_field($_POST['end_time']));
@@ -44,7 +44,7 @@ add_action('wp_ajax_courtly_save_blocked_slot', function () use ($availabilitySe
     error_log("[Courtly] Saving blocked slot - start: {$start->format('c')}, end: {$end->format('c')}");
 
     try {
-        $success = $availabilityService->saveBlockedSlot($court_id, $start, $end, $reason);
+        $success = $courtBlockService ->saveBlockedSlot($court_id, $start, $end, $reason);
         if ($success) {
             wp_send_json(['status' => 'success', 'message' => 'Blocked slot saved successfully']);
         } else {
@@ -59,11 +59,11 @@ add_action('wp_ajax_courtly_save_blocked_slot', function () use ($availabilitySe
 // ----------------------------
 // Delete a block
 // ----------------------------
-add_action('wp_ajax_courtly_remove_blocked_slot', function () use ($availabilityService) {
+add_action('wp_ajax_courtly_remove_blocked_slot', function () use ($courtBlockService ) {
     $event_id = intval($_POST['event_id']);
 
     try {
-        $deleted = $availabilityService->deleteBlockedSlot($event_id);
+        $deleted = $courtBlockService ->deleteBlockedSlot($event_id);
         if ($deleted) {
             wp_send_json(['status' => 'success', 'message' => 'Blocked slot removed']);
         } else {

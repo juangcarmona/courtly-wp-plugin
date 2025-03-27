@@ -9,7 +9,7 @@ class CourtBlockRepository
     {
         global $wpdb;
         $this->wpdb = $wpdb;
-        $this->table = $wpdb->prefix . 'courtly_availability';
+        $this->table = $wpdb->prefix . 'courtly_court_blocks';
     }
 
     public function getBlockedSlots($courtId)

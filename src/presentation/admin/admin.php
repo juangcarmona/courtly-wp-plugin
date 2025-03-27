@@ -49,7 +49,7 @@ function courtly_add_admin_menu() {
         'Court Availability',
         'Availability',
         'manage_options',
-        'courtly_availability',
+        'courtly_blocks',
         'courtly_admin_availability_page'
     );
 }
@@ -79,7 +79,7 @@ function courtly_enqueue_admin_scripts($hook) {
         ]);
     }
 
-    if ($hook === 'courtly_page_courtly_availability') {
+    if ($hook === 'courtly_page_courtly_blocks') {
         wp_enqueue_script(
             'courtly-availability-calendar',
             plugin_dir_url(__FILE__) . 'js/availability-calendar.js',

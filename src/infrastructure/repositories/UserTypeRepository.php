@@ -1,6 +1,6 @@
 <?php
 
-class CourtRepository
+class UserTypeRepository
 {
     private $wpdb;
     private $table;
@@ -9,7 +9,7 @@ class CourtRepository
     {
         global $wpdb;
         $this->wpdb = $wpdb;
-        $this->table = $wpdb->prefix . 'courtly_courts';
+        $this->table = $wpdb->prefix . 'courtly_user_types';
     }
 
     public function findAll()
@@ -17,20 +17,15 @@ class CourtRepository
         return $this->wpdb->get_results("SELECT * FROM {$this->table}");
     }
 
-    public function findById($id)
+    public function findByName($name)
     {
         return $this->wpdb->get_row(
-            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE id = %d", $id)
+            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE name = %s", $name)
         );
     }
 
     public function insert($data)
     {
         return $this->wpdb->insert($this->table, $data) !== false;
-    }
-
-    public function delete($id)
-    {
-        return $this->wpdb->delete($this->table, ['id' => $id]) !== false;
     }
 }

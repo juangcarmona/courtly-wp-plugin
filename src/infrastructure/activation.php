@@ -1,70 +1,31 @@
 <?php
-// src/activation.php
+
+require_once __DIR__ . '/../infrastructure/require_entities.php';
+
 function courtly_create_tables() {
     global $wpdb;
 
     $charset_collate = $wpdb->get_charset_collate();
 
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    $entities = [
+        'user_types' => 'UserType',
+        'courts' => 'Court',
+        'court_blocks' => 'CourtBlock',
+        'reservations' => 'CourtReservation',
+        'opening_hours' => 'OpeningHours',
+    ];
 
-    $prefix = $wpdb->prefix;
+    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-    $tables[] = "CREATE TABLE {$prefix}courtly_courts (
-        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        number INT NOT NULL,
-        name VARCHAR(100) NOT NULL,
-        description TEXT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    ) $charset_collate;";
+    foreach ($entities as $suffix => $class) {
+        $table = $wpdb->prefix . 'courtly_' . $suffix;
 
-    $tables[] = "CREATE TABLE {$prefix}courtly_user_types (
-        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(50) NOT NULL,
-        display_name VARCHAR(100) NOT NULL,
-        booking_days_in_advance INT NOT NULL
-    ) $charset_collate;";
-
-    $tables[] = "CREATE TABLE {$prefix}courtly_reservations (
-        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        user_id BIGINT UNSIGNED NOT NULL,
-        court_id BIGINT UNSIGNED NOT NULL,
-        reservation_date DATE NOT NULL,
-        time_slot VARCHAR(20) NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE KEY unique_user_reservation (user_id, reservation_date)
-    ) $charset_collate;";
-
-    $tables[] = "CREATE TABLE {$prefix}courtly_availability (
-        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        court_id BIGINT UNSIGNED NOT NULL,
-        day_of_week TINYINT NOT NULL, -- 0 (Sunday) to 6 (Saturday)
-        start_time TIME NOT NULL,
-        end_time TIME NOT NULL,
-        is_blocked BOOLEAN DEFAULT FALSE, -- TRUE if this slot is blocked for internal use
-        reason VARCHAR(255) DEFAULT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (court_id) REFERENCES {$prefix}courtly_courts(id) ON DELETE CASCADE
-    ) $charset_collate;";
-
-    foreach ($tables as $sql) {
-        dbDelta($sql);
-    }
-
-    // Insert default user types if not present
-    $user_types_table = "{$prefix}courtly_user_types";
-
-    $existing = $wpdb->get_var("SELECT COUNT(*) FROM $user_types_table");
-    if ($existing == 0) {
-        $wpdb->insert($user_types_table, [
-            'name' => 'guest',
-            'display_name' => 'Guest',
-            'booking_days_in_advance' => 4
-        ]);
-        $wpdb->insert($user_types_table, [
-            'name' => 'member',
-            'display_name' => 'Member',
-            'booking_days_in_advance' => 5
-        ]);
+        if (method_exists($class, 'schema')) {
+            $sql = $class::schema($table) . " $charset_collate;";
+            error_log("[Courtly] Creating table $table with $class");
+            dbDelta($sql);
+        } else {
+            error_log("[Courtly] ERROR: No schema method in class $class");
+        }
     }
 }
-
