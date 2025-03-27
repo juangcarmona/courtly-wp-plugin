@@ -81,15 +81,26 @@ Actual user booking.
 
 ```
 courtly/
-├── admin/               # Admin pages and menu
-├── application/         # Application logic (services, commands, queries)
-├── domain/              # Domain entities (Court, CourtBlock, etc.)
-├── infrastructure/      # Database repositories
-├── public/              # Shortcodes and UI for frontend users
-├── assets/              # JS, CSS, FullCalendar configs
-├── courtly.php          # Plugin bootstrap
-├── activation.php       # Table creation logic
-└── uninstall.php        # Plugin cleanup
+├── application/            # Application logic (services, commands, queries)
+│   └── controllers/
+├── domain/                 # Domain entities (Court, CourtBlock, etc.)
+├── infrastructure/         # Database repositories and setup
+├── presentation/           # UI logic, separated by context
+│   ├── admin/
+│   │   ├── controllers/     # Admin-specific controllers
+│   │   ├── css/             # Styles for admin UI
+│   │   ├── js/              # Scripts for admin calendar and dashboard
+│   │   ├── pages/           # Admin page entrypoints
+│   │   ├── views/           # Reusable admin view fragments
+│   │   └── AdminAssets.php  # Enqueues admin assets
+│   ├── public/
+│   │   ├── js/              # Frontend booking calendar scripts
+│   │   └── shortcode.php    # Shortcode logic
+│   └── shared/
+│       ├── calendar/        # Shared calendar logic for admin/public
+│       └── logger/          # JS logger
+├── courtly.php             # Plugin bootstrap
+└── tests/                  # Test files (future)
 ```
 
 ---
