@@ -1,23 +1,27 @@
-# 🏓 Courtly - Padel Court Booking Plugin
+# Courtly - Padel Court Booking Plugin
 
 Courtly is a modular WordPress plugin for managing **padel court reservations** with an interactive calendar, admin panel, and user-specific rules. It supports **cooperative members** and **external users**, handling bookings, billing, and availability with precision.
 
+<figure>
+  <img src="assets/courtly_banner_1.png" alt="Courtly Banner" width="100%">
+  <figcaption>Courty Banner</figcaption>
+</figure>
 ---
 
-## 🚀 Features
+## Features
 
-- 📅 **Slot-based Booking System**: Book padel courts based on actual availability.
-- 👥 **User Types**: Different rules for internal members vs. external guests.
-- 🔧 **Admin Panel**: Configure courts, define recurring blocks (e.g., lessons), set global hours.
-- 🔍 **Interactive Calendar**: Built with FullCalendar; users and admins get tailored views.
-- 🔄 **Dynamic Availability Calculation**: Based on rules, blocks, and reservations.
-- 🧩 **Modular Architecture**: Separation of domain, infrastructure, and UI concerns.
-- 📜 **WordPress Native**: Built as a native plugin with full integration.
-- 💰 **Billing Logic**: Internal users billed monthly; external users pay per booking (TBD).
+- **Slot-based Booking System**: Book padel courts based on actual availability.
+- **User Types**: Different rules for internal members vs. external guests.
+- **Admin Panel**: Configure courts, define recurring blocks (e.g., lessons), set global hours.
+- **Interactive Calendar**: Built with FullCalendar; users and admins get tailored views.
+- **Dynamic Availability Calculation**: Based on rules, blocks, and reservations.
+- **Modular Architecture**: Separation of domain, infrastructure, and UI concerns.
+- **WordPress Native**: Built as a native plugin with full integration.
+- **Billing Logic**: Internal users billed monthly; external users pay per booking (TBD).
 
 ---
 
-## ⚙️ Domain Model
+## Domain Model
 
 ### `UserType`
 Defines user categories and their privileges.
@@ -54,17 +58,17 @@ Actual user booking.
 
 ---
 
-## 📏 Business Logic
+## Business Logic
 
-- ⚖️ **Availability = OpeningHours – Recurring CourtBlocks – Reservations**
-- 🕒 **User booking window** limited by `max_days_in_advance`
-- 🧾 **Internal users** → tracked for monthly billing
-- 💳 **External users** → must pay via payment gateway (TBD)
-- 🛡 **Past dates** are disabled in calendars
+- **Availability = OpeningHours – Recurring CourtBlocks – Reservations**
+- **User booking window** limited by `max_days_in_advance`
+- **Internal users** → tracked for monthly billing
+- **External users** → must pay via payment gateway (TBD)
+- **Past dates** are disabled in calendars
 
 ---
 
-## 🖥 UI / UX Strategy
+## UI / UX Strategy
 
 ### Admin Area
 - Weekly calendar to manage **Opening Hours** and **Recurring Blocks**
@@ -77,7 +81,7 @@ Actual user booking.
 
 ---
 
-## 🧱 Structure Overview
+## Structure Overview
 
 ```
 courtly/
@@ -105,13 +109,13 @@ courtly/
 
 ---
 
-## 🛠 Setup
+## Setup
 
 Coming soon. A Docker-based WordPress environment is used for development.
 
 ---
 
-## 📌 TODO
+## TODO
 
 - Implement pricing and payment
 - Add user reservation history
