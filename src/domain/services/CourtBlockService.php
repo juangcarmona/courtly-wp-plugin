@@ -1,6 +1,6 @@
 <?php
 
-class AvailabilityService
+class CourtBlockService
 {
     private CourtBlockRepository $blockRepo;
 

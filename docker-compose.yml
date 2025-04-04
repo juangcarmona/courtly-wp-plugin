@@ -23,6 +23,7 @@ services:
     volumes:
       - ./docker/wp-content:/var/www/html/wp-content
       - ./src:/var/www/html/wp-content/plugins/courtly
+      - ./docker/wp-core:/var/www/html 
 
   db:
     image: mysql:5.7

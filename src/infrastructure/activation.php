@@ -3,6 +3,9 @@
 require_once __DIR__ . '/../domain/entities/UserType.php';
 require_once __DIR__ . '/../domain/entities/Court.php';
 require_once __DIR__ . '/../domain/entities/OpeningHours.php';
+require_once __DIR__ . '/../domain/entities/CourtBlock.php';
+require_once __DIR__ . '/../domain/entities/CourtReservation.php';
+
 
 function courtly_create_tables() {
     global $wpdb;
