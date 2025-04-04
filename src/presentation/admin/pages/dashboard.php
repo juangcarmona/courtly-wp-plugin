@@ -49,7 +49,7 @@ $user_types = $wpdb->get_results("
 
     <hr>
 
-    <h2>Reservation Availability</h2>
+    <h2>Reservation Availability (per court)</h2>
     <div id="courtly-calendar"></div>
 </div>
 

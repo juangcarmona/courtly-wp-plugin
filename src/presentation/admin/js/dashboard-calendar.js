@@ -1,29 +1,43 @@
-import { renderReadonlyCalendar } from '../../shared/calendar/calendar-readonly.js';
+import { renderEditableCalendar } from '../../shared/calendar/calendar-editable.js';
 import logger from '../../shared/logger/logger.js';
 
 logger.setLevel('debug');
 
-export function initDashboardCalendar(calendarEl, ajaxUrl) {
-    if (!calendarEl) {
-        logger.warn('Dashboard calendar element not found.');
-        return;
-    }
+export async function initDashboardCalendar(containerEl, ajaxUrl) {
+    if (!containerEl) return;
 
-    logger.info('Rendering readonly dashboard calendar...');
+    logger.info('Fetching courtly dashboard data...');
 
-    const calendar = renderReadonlyCalendar(calendarEl, {
-        fetchUrl: `${ajaxUrl}?action=courtly_get_availability`,
-        showTooltips: true,
+    const [courts, reservations, blocks] = await Promise.all([
+        fetch(`${ajaxUrl}?action=courtly_get_dashboard_courts`).then(r => r.json()),
+        fetch(`${ajaxUrl}?action=courtly_get_dashboard_reservations`).then(r => r.json()),
+        fetch(`${ajaxUrl}?action=courtly_get_dashboard_blocks`).then(r => r.json())
+    ]);
+
+    const calendar = new FullCalendar.Calendar(containerEl, {
+        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+        initialView: 'resourceTimeGridWeek',
+        slotDuration: '00:30:00',
+        timeZone: 'UTC',
+        height: 700,
+        resourceAreaHeaderContent: 'Courts',
+        resources: courts,
+        events: [...reservations, ...blocks],
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'resourceTimeGridDay,resourceTimeGridWeek'
+        },
     });
 
-    calendarEl.__calendar = calendar;
+    calendar.render();
+    logger.info('Dashboard calendar initialized');
     return calendar;
 }
 
-// Auto-initialize for dashboard.php
 document.addEventListener('DOMContentLoaded', () => {
-    const calendarEl = document.getElementById('courtly-calendar');
-    if (calendarEl && typeof courtlyAjax !== 'undefined') {
-        initDashboardCalendar(calendarEl, courtlyAjax.ajax_url);
+    const el = document.getElementById('courtly-calendar');
+    if (el && typeof courtlyAjax !== 'undefined') {
+        initDashboardCalendar(el, courtlyAjax.ajax_url);
     }
 });
