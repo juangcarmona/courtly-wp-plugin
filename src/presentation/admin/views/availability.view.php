@@ -2,7 +2,7 @@
     <h1>Manage Court Availability</h1>
 
     <form method="GET">
-        <input type="hidden" name="page" value="courtly_blocks">
+        <input type="hidden" name="page" value="courtly_availability">
         <label for="court_id">Select Court:</label>
         <select name="court_id" onchange="this.form.submit()">
             <?php foreach ($data['courts'] as $court): ?>
