@@ -89,15 +89,16 @@ class DashboardAjaxController {
     public static function getOpeningHours() {
         $repo = new OpeningHoursRepository();
         $all = $repo->getAll();
+    
         $result = [];
-
         foreach ($all as $row) {
-            $result[$row->day_of_week] = [
+            $result[(int)$row->day_of_week] = [
                 'start' => $row->open_time,
                 'end' => $row->close_time
             ];
         }
-
+    
         wp_send_json($result);
     }
+    
 }
