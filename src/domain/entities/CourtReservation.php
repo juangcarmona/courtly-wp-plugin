@@ -20,18 +20,6 @@ class CourtReservation implements BaseEntity
         $this->createdAt = $createdAt;
     }
 
-    public function overlapsWith(CourtReservation $other): bool
-    {
-        if ($this->courtId !== $other->courtId || $this->reservationDate != $other->reservationDate) {
-            return false;
-        }
-
-        [$startA, $endA] = explode('-', $this->timeSlot);
-        [$startB, $endB] = explode('-', $other->timeSlot);
-
-        return max($startA, $startB) < min($endA, $endB);
-    }
-
     public function getTimeSlot(): string
     {
         return $this->timeSlot;
