@@ -2,8 +2,13 @@ import logger from '../logger/logger.js';
 
 export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) {
   if (!containerEl) return;
+  
   const rangeInDays = options.rangeInDays || 7; // defaults to 7 if not passed
+  const selectable = options.selectable || false;
+  const onSlotSelected = options.onSlotSelected;
+
   logger.info(`Rendering calendar with range: ${rangeInDays} days`);
+  if (selectable) logger.info('Calendar is in SELECTABLE mode');
 
   const [courts, reservations, blocks, openings] = await Promise.all([
     fetch(`${ajaxUrl}?action=courtly_get_dashboard_courts`).then(r => r.json()),
@@ -13,7 +18,7 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
   ]);
 
   const closedSlots = [];
-  for (let dow = 0; dow < rangeInDays; dow++) {
+  for (let dow = 0; dow < 7; dow++) {
     const open = openings[dow];
     if (!open) continue;
 
@@ -44,7 +49,9 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
 
   const today = new Date();
   const validStart = new Date(today);
-  validStart.setDate(today.getDate() - rangeInDays);
+  if (!selectable) {
+    validStart.setDate(today.getDate() - rangeInDays);
+  }
   const validEnd = new Date(today);
   validEnd.setDate(today.getDate() + rangeInDays);
 
@@ -53,12 +60,13 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
     initialView: 'resourceTimeGridDay',
     slotDuration: '00:30:00',
     timeZone: 'UTC',
-    height: 700,
+    height: 600,
     scrollTime: "09:00:00",
     resourceAreaHeaderContent: 'Courts',
     locale: 'es',
     firstDay: 1,
     resources: courts,
+    selectOverlap: false,
     events: [...reservations, ...blocks, ...closedSlots],
     validRange: {
       start: validStart.toISOString().split('T')[0],
@@ -68,7 +76,17 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
       left: 'prev,next today',
       center: 'title',
       right: 'resourceTimeGridDay,resourceTimeGridWeek,dayGridMonth'
-    }
+    },
+    selectable,
+    select: selectable ? (info) => {
+      logger.debug('Slot selected:', info);
+      onSlotSelected?.({
+        start: info.startStr,
+        end: info.endStr,
+        resourceId: info.resource.id,
+        resourceTitle: info.resource.title
+      });
+    } : null
   });
 
   calendar.render();

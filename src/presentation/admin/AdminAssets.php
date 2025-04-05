@@ -33,10 +33,21 @@ class AdminAssets {
                 'court_id' => $court_id
             ]);
         }
+
+        // New Reservation page
+        if ($_GET['page'] === 'courtly_new_reservation') {
+            wp_enqueue_script('courtly-new-reservation-calendar',
+                plugin_dir_url(__FILE__) . 'js/new-reservation-calendar.js',
+                ['jquery', 'fullcalendar-js'], false, true);
+        
+            wp_localize_script('courtly-new-reservation-calendar', 'courtlyAjax', [
+                'ajax_url' => admin_url('admin-ajax.php'),
+            ]);
+        }
     }    
 
     public static function markAsModule($tag, $handle, $src) {
-        $handles = ['courtly-dashboard-calendar', 'courtly-availability-calendar'];
+        $handles = ['courtly-dashboard-calendar', 'courtly-availability-calendar', 'courtly-new-reservation-calendar'];
         if (in_array($handle, $handles)) {
             return '<script type="module" src="' . esc_url($src) . '"></script>';
         }

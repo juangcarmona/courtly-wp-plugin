@@ -49,7 +49,7 @@ function courtly_admin_reservations_page() {
     echo '<div class="wrap"><h1>All Reservations (coming soon)</h1></div>';
 }
 function courtly_admin_new_reservation_page() {
-    echo '<div class="wrap"><h1>New Reservation (coming soon)</h1></div>';
+    include plugin_dir_path(__FILE__) . 'pages/new-reservation.php';
 }
 function courtly_admin_blocks_page() {
     echo '<div class="wrap"><h1>Recurring Blocks (coming soon)</h1></div>';
