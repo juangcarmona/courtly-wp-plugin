@@ -16,34 +16,26 @@ document.addEventListener('DOMContentLoaded', () => {
     onSlotSelected: ({ start, end, resourceId, resourceTitle }) => {
       const startDate = new Date(start);
       const endDate = new Date(end);
-
+    
       const dateFormatter = new Intl.DateTimeFormat('default', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
+        day: 'numeric', month: 'long', year: 'numeric'
       });
-
       const timeFormatter = new Intl.DateTimeFormat('default', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false
+        hour: '2-digit', minute: '2-digit', hour12: false
       });
-
-      const formatted = `
-        👤 <strong>${currentUser.display_name || 'You'}</strong> (${currentUser.user_type || 'user'})<br>
-        📍 <strong>${resourceTitle}</strong><br>
-        📅 ${dateFormatter.format(startDate)}<br>
-        🕒 ${timeFormatter.format(startDate)} → ${timeFormatter.format(endDate)}
-      `;
-
-      const summary = document.getElementById('courtly-summary');
-      if (summary) summary.innerHTML = formatted;
-
-      logger.info('Public reservation slot selected:', {
-        user: currentUser,
-        resource: resourceTitle,
-        start, end
-      });
+    
+      document.getElementById('courtly-court-name').textContent = resourceTitle;
+      document.getElementById('courtly-date').textContent = dateFormatter.format(startDate);
+      document.getElementById('courtly-time').textContent = `${timeFormatter.format(startDate)} → ${timeFormatter.format(endDate)}`;
+    
+      document.getElementById('courtly-court-id').value = resourceId;
+      document.getElementById('courtly-start-time').value = start;
+      document.getElementById('courtly-end-time').value = end;
+    
+      const bookBtn = document.querySelector('.courtly-book-btn');
+      if (bookBtn) bookBtn.style.display = 'inline-block';
     }
+    
+    
   });
 });

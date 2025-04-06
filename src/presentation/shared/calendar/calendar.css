@@ -17,3 +17,28 @@
     border-color: #005177 !important;
     color: white !important;
   }
+
+  .courtly-user-booking.wide-layout {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 20px;
+    
+    font-size: 0.8em;
+  }
+  
+  .courtly-user-booking h2 {
+    margin-bottom: 10px;
+  }
+  
+  .courtly-selection-info {
+    margin-bottom: 15px;
+  }
+
+  #courtly-slot-details p {
+    margin: 0;
+  }
+  #courtly-slot-details span,
+  #courtly-slot-details strong {
+    display: inline-block;
+    min-width: 120px;
+  }
