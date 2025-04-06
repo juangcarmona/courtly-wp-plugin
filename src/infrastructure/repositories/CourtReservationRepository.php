@@ -24,6 +24,19 @@ class CourtReservationRepository
         );
     }
 
+    public function getReservationsForUserOnDate(int $userId, string $date): array {
+        global $wpdb;
+        $table = $wpdb->prefix . 'courtly_reservations';
+    
+        return $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT * FROM $table WHERE user_id = %d AND reservation_date = %s",
+                $userId,
+                $date
+            )
+        );
+    }    
+
     public function insertReservation($data)
     {
         return $this->wpdb->insert($this->table, $data) !== false;

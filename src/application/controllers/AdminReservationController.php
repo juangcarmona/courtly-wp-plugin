@@ -22,7 +22,14 @@ class AdminReservationController {
         $start_time = sanitize_text_field($_POST['start_time']);
         $end_time = sanitize_text_field($_POST['end_time']);
 
-        CourtlyContainer::courtReservationService()->createReservation($user_id, $court_id, $start_time, $end_time);
+        $result = CourtlyContainer::courtReservationService()->createReservation($user_id, $court_id, $start_time, $end_time);
+
+        if ($result === true) {
+            wp_redirect(admin_url('admin.php?page=courtly_dashboard&reservation=success'));
+            exit;
+        }
+
+        $this->errors[] = $result;
     }
 
     public function getViewData() {
@@ -35,7 +42,8 @@ class AdminReservationController {
 
         return [
             'users' => $this->users,
-            'user_types' => $this->userTypes
+            'user_types' => $this->userTypes,
+            'errors' => $this->errors ?? [] ?? [],
         ];
     }
 }

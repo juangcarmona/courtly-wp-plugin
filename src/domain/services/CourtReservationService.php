@@ -64,11 +64,28 @@ class CourtReservationService {
 
         error_log("[Courtly] Creating reservation for $username on $date ($slot) at Court $courtId");
 
+        // ⛔ Max 1 reservation per user per day
+        $userReservations = $this->reservationRepo->getReservationsForUserOnDate($userId, $date);
+        if (!empty($userReservations)) {
+            error_log("[Courtly] ❌ Reservation denied. $username already has a reservation on $date.");
+            return "$username already have a reservation that day.";
+        }
+
+        // ⛔ Max duration = 1 hour
+        $interval = $start->diff($end);
+        $minutes = ($interval->h * 60) + $interval->i;
+        if ($minutes > 60) {
+            error_log("[Courtly] ❌ Reservation denied. Duration exceeds 60 minutes ($minutes mins).");
+            return 'Reservations must be 60 minutes or less.';
+        }
+
+        // ⛔ Availability check
         if (!$this->isSlotAvailable($courtId, $date, $slot)) {
             error_log("[Courtly] ❌ Reservation denied for $username. Slot is not available.");
             return 'Time slot unavailable.';
         }
 
+        // ✅ All good → Save reservation
         $success = $this->reservationRepo->insertReservation([
             'user_id' => $userId,
             'court_id' => $courtId,

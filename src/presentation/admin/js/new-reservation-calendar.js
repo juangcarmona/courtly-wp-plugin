@@ -60,4 +60,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
   });
+  if (userSelect.value) {
+    userSelect.dispatchEvent(new Event("change"));
+  }
 });
+
+
