@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Load infrastructure and dependency container (always available)
-require_once plugin_dir_path(__FILE__) . 'infrastructure/bootstrap.php';
+require_once plugin_dir_path(__FILE__) . 'infrastructure/CourtlyContainer.php';
 
 // Setup activation logic (create tables, defaults, etc.)
 require_once plugin_dir_path(__FILE__) . 'infrastructure/activation.php';

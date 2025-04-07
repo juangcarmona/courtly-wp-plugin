@@ -47,12 +47,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         const startDate = new Date(start);
         const endDate = new Date(end);
 
+        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
         const dateFormatter = new Intl.DateTimeFormat("default", {
-          day: "numeric", month: "long", year: "numeric"
+          day: "numeric", month: "long", year: "numeric",
+          timeZone: "UTC" // ← this ensures correct date in UTC
         });
 
         const timeFormatter = new Intl.DateTimeFormat("default", {
-          hour: "2-digit", minute: "2-digit", hour12: false
+          hour: "2-digit", minute: "2-digit", hour12: false,
+          timeZone: "UTC" // ← ensures the time is shown in UTC
         });
 
         summary.textContent = `${resourceTitle} — ${dateFormatter.format(startDate)}, ${timeFormatter.format(startDate)} → ${timeFormatter.format(endDate)}`;

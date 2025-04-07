@@ -13,10 +13,10 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
   if (selectable) logger.info('Calendar is in SELECTABLE mode');
 
   const [courts, reservations, blocks, openings] = await Promise.all([
-    fetch(`${ajaxUrl}?action=courtly_get_dashboard_courts`).then(r => r.json()),
-    fetch(`${ajaxUrl}?action=courtly_get_dashboard_reservations`).then(r => r.json()),
-    fetch(`${ajaxUrl}?action=courtly_get_dashboard_blocks`).then(r => r.json()),
-    fetch(`${ajaxUrl}?action=courtly_get_dashboard_openings`).then(r => r.json())
+    fetch(`${ajaxUrl}?action=courtly_get_courts`).then(r => r.json()),
+    fetch(`${ajaxUrl}?action=courtly_get_reservations`).then(r => r.json()),
+    fetch(`${ajaxUrl}?action=courtly_get_blocks`).then(r => r.json()),
+    fetch(`${ajaxUrl}?action=courtly_get_opening_hours`).then(r => r.json())
   ]);
 
   const closedSlots = [];

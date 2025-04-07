@@ -48,9 +48,12 @@ $user_types = $wpdb->get_results("
     </div>
 
     <hr>
-
-    <h2>General Calendar</h2>
-    <div id="courtly-calendar"></div>
+    <div class="courtly-actions">
+        <h2>Quick Actions</h2>
+        <a class="button button-primary" href="?page=courtly_new_reservation">➕ New Reservation</a>
+        <a class="button" href="?page=courtly_calendar">📅 View Calendar</a>
+        <a class="button" href="?page=courtly_availability">🕒 Set Availability</a>
+    </div>
 </div>
 
 <style>

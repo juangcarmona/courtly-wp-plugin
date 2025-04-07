@@ -18,10 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const endDate = new Date(end);
     
       const dateFormatter = new Intl.DateTimeFormat('default', {
-        day: 'numeric', month: 'long', year: 'numeric'
+        day: 'numeric', month: 'long', year: 'numeric', 
+        timeZone: "UTC" // ← ensures the date is shown in UTC
       });
       const timeFormatter = new Intl.DateTimeFormat('default', {
-        hour: '2-digit', minute: '2-digit', hour12: false
+        hour: '2-digit', minute: '2-digit', hour12: false, 
+        timeZone: "UTC" // ← ensures the time is shown in UTC
       });
     
       document.getElementById('courtly-court-name').textContent = resourceTitle;

@@ -1,5 +1,5 @@
 
-import { logCalendarEvent } from './calendar-utils.js';
+import logger from '../logger/logger.js';
 
 export function renderEditableCalendar(containerEl, options) {
     const calendar = new FullCalendar.Calendar(containerEl, {
@@ -23,7 +23,7 @@ export function renderEditableCalendar(containerEl, options) {
             if (reason) {
                 options.onSlotBlocked?.({ start: info.startStr, end: info.endStr, reason });
             } else {
-                logCalendarEvent('select', 'Cancelled by user');
+                logger.debug('Slot selection canceled by user');
             }
         },
 
@@ -51,7 +51,7 @@ export function renderEditableCalendar(containerEl, options) {
     });
 
     calendar.render();
-    logCalendarEvent('init', 'Editable calendar rendered');
+    logger.info('🛠 Editable calendar rendered');
     return calendar;
 }
 

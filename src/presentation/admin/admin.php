@@ -43,7 +43,7 @@ function courtly_admin_dashboard_page() {
     include plugin_dir_path(__FILE__) . 'pages/dashboard.php';
 }
 function courtly_admin_calendar_page() {
-    include plugin_dir_path(__FILE__) . 'pages/dashboard.php'; // Reuse calendar view
+    include plugin_dir_path(__FILE__) . 'pages/calendar.php'; // Reuse calendar view
 }
 function courtly_admin_reservations_page() {
     echo '<div class="wrap"><h1>All Reservations (coming soon)</h1></div>';

@@ -35,7 +35,19 @@ class CourtReservationRepository
                 $date
             )
         );
-    }    
+    }
+
+    public function findBetweenDates(DateTimeInterface $start, DateTimeInterface $end): array {
+        global $wpdb;
+        $rows = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT * FROM {$wpdb->prefix}courtly_reservations
+                 WHERE reservation_date BETWEEN %s AND %s",
+                $start->format('Y-m-d'), $end->format('Y-m-d')
+            )
+        );
+        return $rows;
+    }
 
     public function insertReservation($data)
     {
