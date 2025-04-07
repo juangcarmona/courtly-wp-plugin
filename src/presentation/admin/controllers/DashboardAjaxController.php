@@ -45,7 +45,12 @@ class DashboardAjaxController {
                 'end' => "{$r->reservation_date}T{$endTime}",
                 'resourceId' => $r->court_id,
                 'backgroundColor' => '#0073aa',
-                'borderColor' => '#0073aa'
+                'borderColor' => '#0073aa',
+                'type' => 'reservation',
+                'extendedProps' => [
+                    'id' => $r->id,
+                    'type' => 'reservation'
+                ]
             ];
         }
 
@@ -77,7 +82,14 @@ class DashboardAjaxController {
                         'end' => $end->format(DateTime::ATOM),
                         'resourceId' => $court->id,
                         'backgroundColor' => '#dc3545',
-                        'borderColor' => '#dc3545'
+                        'borderColor' => '#dc3545',
+                        'extendedProps' => [
+                            'id' => $block->id,
+                            'type' => 'block',
+                            'court' => $court->name,
+                            'reason' => $block->reason
+                        ]
+
                     ];
                 }
             }

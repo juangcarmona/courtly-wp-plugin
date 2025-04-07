@@ -31,6 +31,11 @@ class CourtBlockService
                         'backgroundColor' => '#dc3545',
                         'borderColor' => '#dc3545',
                         'editable' => false,
+                        'extendedProps' => [
+                            'reason' => $block->reason,
+                            'type' => 'block'
+                        ],
+                        'type' => 'block'
                     ];
                 }
             }

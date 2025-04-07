@@ -45,7 +45,7 @@ class AvailabilityAjaxController {
     public static function getReservations() {
         global $wpdb;
         $prefix = $wpdb->prefix;
-        $rows = $wpdb->get_results("SELECT court_id, reservation_date, time_slot FROM {$prefix}courtly_reservations");
+        $rows = $wpdb->get_results("SELECT id, court_id, reservation_date, time_slot FROM {$prefix}courtly_reservations");
         $events = array_map(function ($r) {
             [$start, $end] = explode('-', $r->time_slot);
             return [
@@ -53,7 +53,12 @@ class AvailabilityAjaxController {
                 'resourceId' => $r->court_id,
                 'start' => "{$r->reservation_date}T{$start}",
                 'end' => "{$r->reservation_date}T{$end}",
-                'backgroundColor' => '#0073aa'
+                'backgroundColor' => '#0073aa',
+                'type' => 'reservation',
+                'extendedProps' => [                    
+                    'id' => $r->id,
+                    'type' => 'reservation'
+                ]
             ];
         }, $rows);
         wp_send_json($events);

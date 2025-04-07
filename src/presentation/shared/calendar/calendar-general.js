@@ -86,8 +86,49 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
         resourceId: info.resource.id,
         resourceTitle: info.resource.title
       });
-    } : null
+    } : null,
+    eventClick: (info) => {
+      const event = info.event;
+      const props = event.extendedProps;
+      const eventType = props.type;
+      const eventId = props.id;
+      logger.debug('Clicked event type:', eventType);
+      logger.debug('Clicked event id:', eventId);
+    
+      if (eventType === 'reservation') {
+        const isAdmin = window.courtlyIsAdmin;
+        const url = isAdmin
+          ? `/wp-admin/admin.php?page=courtly_reservation_detail&id=${eventId}`
+          : `/reservations/${eventId}`; // Could be a shortcode route or pretty permalink
+    
+        window.location.href = url;
+    
+      } else if (eventType === 'block') {
+        const start = new Date(event.start);
+        const end = new Date(event.end);
+    
+        const timeFormatter = new Intl.DateTimeFormat('default', {
+          hour: '2-digit', minute: '2-digit'
+        });
+    
+        const dateFormatter = new Intl.DateTimeFormat('default', {
+          weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+        });
+    
+        alert(
+          `⛔ ${props.court} — ${props.reason || 'No reason provided'},\n` +
+          `📅 Every ${start.toLocaleDateString(undefined, { weekday: 'long' })}\n` +
+          `🕒 ${timeFormatter.format(start)} → ${timeFormatter.format(end)}`
+        );
+        
+      } else {
+        logger.warn('Clicked event with unknown type:', eventType);
+      }
+    }
   });
+
+  
+  
 
   calendar.render();
   logger.info('General calendar rendered');
