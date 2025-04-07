@@ -33,6 +33,14 @@ $user_type = get_user_meta($current_user->ID, 'courtly_user_type', true);
       <button type="submit" class="courtly-book-btn btn btn-primary" style="display: none;">Confirm Reservation</button>
     </div>
 
-    <div id="courtly-calendar" style="margin-bottom: 50px;"></div>
-  </form>
+    <div id="courtly-calendar"></div>
+    </form>
+
+  <?php
+    if (!function_exists('courtly_render_footer')) {
+      require_once plugin_dir_path(__FILE__) . '/../../shared/footer.php';
+    }
+    courtly_render_footer();
+  ?>
 </div>
+

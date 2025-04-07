@@ -18,6 +18,9 @@ Courtly is a modular WordPress plugin for managing **padel court reservations** 
 - **Modular Architecture**: Separation of domain, infrastructure, and UI concerns.
 - **WordPress Native**: Built as a native plugin with full integration.
 - **Billing Logic**: Internal users billed monthly; external users pay per booking (TBD).
+- **Unified Calendar Module**: Reusable `calendar-general.js` powers both admin and public views.
+- **Real-Time Booking from Calendar**: Admins and users can select time slots directly to book.
+- **Reservation Rules Enforcement**: One reservation per user per day, max duration 60 minutes.
 
 ---
 
@@ -65,6 +68,20 @@ Actual user booking.
 - **Internal users** → tracked for monthly billing
 - **External users** → must pay via payment gateway (TBD)
 - **Past dates** are disabled in calendars
+
+---
+
+## Reservation Flow
+
+### Admin Booking
+- Admin selects a user and a time slot directly from the multi-court calendar (`resourceTimeGridDay`).
+- Duration and court are automatically inferred.
+- Business rules (max duration, 1/day) enforced on creation.
+
+### Public Booking
+- Authenticated users select an available slot on the calendar.
+- Confirmation UI appears after selection.
+- Rules are enforced automatically; payment integration planned.
 
 ---
 

@@ -1,4 +1,5 @@
 <?php
+require_once plugin_dir_path(__FILE__) . '/../Constants.php';
 
 class CourtReservationService {
     private CourtReservationRepository $reservationRepo;
@@ -63,20 +64,19 @@ class CourtReservationService {
         $username = $user ? $user->display_name : "User #$userId";
 
         error_log("[Courtly] Creating reservation for $username on $date ($slot) at Court $courtId");
-
-        // ⛔ Max 1 reservation per user per day
-        $userReservations = $this->reservationRepo->getReservationsForUserOnDate($userId, $date);
-        if (!empty($userReservations)) {
+        // ⛔ Max X reservation(s) per user per day
+        $userReservations = $this->reservationRepo->getReservationsForUserOnDate($userId, $date) ?? [];
+        if (count($userReservations) >= COURTLY_MAX_RESERVATIONS_PER_DAY) {
             error_log("[Courtly] ❌ Reservation denied. $username already has a reservation on $date.");
-            return "$username already have a reservation that day.";
+            return "$username already has a reservation that day.";
         }
 
-        // ⛔ Max duration = 1 hour
+        // ⛔ Max duration        
         $interval = $start->diff($end);
         $minutes = ($interval->h * 60) + $interval->i;
-        if ($minutes > 60) {
-            error_log("[Courtly] ❌ Reservation denied. Duration exceeds 60 minutes ($minutes mins).");
-            return 'Reservations must be 60 minutes or less.';
+        if ($minutes > COURTLY_MAX_RESERVATION_MINUTES) {
+            error_log("[Courtly] ❌ Reservation denied. Duration exceeds limit (" . COURTLY_MAX_RESERVATION_MINUTES . " mins).");
+            return "Reservations must be " . COURTLY_MAX_RESERVATION_MINUTES . " minutes or less.";
         }
 
         // ⛔ Availability check
