@@ -17,6 +17,12 @@ class AdminAssets {
     
             wp_localize_script('courtly-dashboard-calendar', 'courtlyAjax', [
                 'ajax_url' => admin_url('admin-ajax.php'),
+                'is_admin' => true,
+                'locale' => get_locale(),
+                'current_user_id' => get_current_user_id(),
+                'is_logged_in' => is_user_logged_in(),
+                'user_type' => get_user_meta(get_current_user_id(), 'courtly_user_type', true),
+                'display_name' => wp_get_current_user()->display_name,
             ]);
         }
     

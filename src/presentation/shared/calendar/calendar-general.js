@@ -7,6 +7,8 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
   const selectable = options.selectable || false;
   const onSlotSelected = options.onSlotSelected;
 
+  const isAdmin = courtlyAjax.is_admin;
+  logger.info(isAdmin ? '🛠 Admin mode' : '🌐 Public mode');
   logger.info(`Rendering calendar with range: ${rangeInDays} days`);
   if (selectable) logger.info('Calendar is in SELECTABLE mode');
 

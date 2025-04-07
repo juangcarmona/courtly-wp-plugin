@@ -17,6 +17,16 @@ add_shortcode('courtly_general_calendar', function () {
         plugin_dir_url(__DIR__) . '/../shared/calendar/calendar.css'
     );
 
+    wp_localize_script('courtly-general-calendar', 'courtlyAjax', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'is_admin' => false,
+        'locale' => get_locale(),
+        'current_user_id' => get_current_user_id(),
+        'is_logged_in' => is_user_logged_in(),
+        'user_type' => get_user_meta(get_current_user_id(), 'courtly_user_type', true),
+        'display_name' => wp_get_current_user()->display_name,
+    ]);
+
     add_filter('script_loader_tag', function ($tag, $handle, $src) {
         if ($handle === 'courtly-general-calendar') {
             return '<script type="module" src="' . esc_url($src) . '"></script>';
@@ -26,6 +36,7 @@ add_shortcode('courtly_general_calendar', function () {
 
     return '<div id="courtly-calendar" style="margin-bottom: 50px;"></div>';
 });
+
 
 add_shortcode('courtly_user_booking', function () {
     if (!is_user_logged_in()) {
