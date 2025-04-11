@@ -6,8 +6,8 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
   const rangeInDays = options.rangeInDays || 7; // defaults to 7 if not passed
   const selectable = options.selectable || false;
   const onSlotSelected = options.onSlotSelected;
-
-  const isAdmin = courtlyAjax.is_admin;
+  const isAdmin = options.isAdmin === true;
+  
   logger.info(isAdmin ? '🛠 Admin mode' : '🌐 Public mode');
   logger.info(`Rendering calendar with range: ${rangeInDays} days`);
   if (selectable) logger.info('Calendar is in SELECTABLE mode');
@@ -98,7 +98,6 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
       logger.debug('Clicked event id:', eventId);
     
       if (eventType === 'reservation') {
-        const isAdmin = window.courtlyIsAdmin;
         const url = isAdmin
           ? `/wp-admin/admin.php?page=courtly_reservation_detail&id=${eventId}`
           : `/reservations/${eventId}`; // Could be a shortcode route or pretty permalink

@@ -4,8 +4,7 @@
 ?>
 
 <div class="wrap">
-    <h1>Reservation Calendar</h1>
-    <p>This is the full calendar view of all courts and reservations.</p>
+    <h1 class="mb-4">General Calendar</h1>
 
     <?php if (!empty($data['errors'])): ?>
       <div class="courtly-alert courtly-error" style="margin-bottom: 15px; color: #842029; background-color: #f8d7da; border: 1px solid #f5c2c7; padding: 10px; border-radius: 4px;">

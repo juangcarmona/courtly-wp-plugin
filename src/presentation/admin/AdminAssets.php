@@ -20,12 +20,12 @@ class AdminAssets {
         ];
 
         switch ($_GET['page']) {
-            case 'courtly_calendar':
-                wp_enqueue_script('courtly-dashboard-calendar',
-                    plugin_dir_url(__FILE__) . 'js/dashboard-calendar.js',
+            case 'courtly_activity_calendar':
+                wp_enqueue_script('courtly-activity-calendar',
+                    plugin_dir_url(__FILE__) . 'js/activity-calendar.js',
                     ['jquery', 'fullcalendar-js'], false, true
                 );
-                wp_localize_script('courtly-dashboard-calendar', 'courtlyAjax', $localize);
+                wp_localize_script('courtly-activity-calendar', 'courtlyAjax', $localize);
                 break;
 
             case 'courtly_availability':
@@ -49,7 +49,7 @@ class AdminAssets {
 
     public static function markAsModule($tag, $handle, $src) {
         $handles = [
-            'courtly-dashboard-calendar',
+            'courtly-activity-calendar',
             'courtly-availability-calendar',
             'courtly-reservation-new-calendar'
         ];

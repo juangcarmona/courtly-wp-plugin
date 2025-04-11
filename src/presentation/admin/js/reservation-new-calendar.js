@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     calendarWrapper.style.display = "block";
 
     renderGeneralCalendar(el, courtlyAjax.ajax_url, {
+      isAdmin: true,
       rangeInDays: range,
       selectable: true,
       onSlotSelected: ({ start, end, resourceId, resourceTitle }) => {
