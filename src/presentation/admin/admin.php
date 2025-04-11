@@ -20,21 +20,22 @@ function courtly_add_admin_menu() {
     add_submenu_page('courtly_dashboard', 'Calendar', 'Calendar', 'manage_options', 'courtly_calendar', 'courtly_admin_calendar_page');
 
     // --- Reservations ---
-    add_submenu_page('courtly_dashboard', 'All Reservations', 'Reservations → All', 'manage_options', 'courtly_reservations', 'courtly_admin_reservations_page');
-    add_submenu_page('courtly_dashboard', 'New Reservation', 'Reservations → New', 'manage_options', 'courtly_new_reservation', 'courtly_admin_new_reservation_page');
-    add_submenu_page('courtly_dashboard', 'Recurring Blocks', 'Reservations → Blocks', 'manage_options', 'courtly_blocks', 'courtly_admin_blocks_page');
-    add_submenu_page('courtly_dashboard', 'Reservation History', 'Reservations → History', 'manage_options', 'courtly_history', 'courtly_admin_history_page');
+    add_submenu_page('courtly_dashboard', 'New Reservation', 'Reservations New', 'manage_options', 'courtly_new_reservation', 'courtly_admin_new_reservation_page');
+    add_submenu_page('courtly_dashboard', 'All Reservations', 'Reservations All', 'manage_options', 'courtly_reservations', 'courtly_admin_reservations_page');
+    add_submenu_page('courtly_dashboard', 'Reservation History', 'Reservation  History', 'manage_options', 'courtly_history', 'courtly_admin_history_page');
+
+
+    add_submenu_page(null, 'Reservation Detail', 'Reservation Detail', 'manage_options', 'courtly_reservation_detail', 'courtly_admin_reservation_detail_page');
 
     // --- Availability ---
-    add_submenu_page('courtly_dashboard', 'Opening Hours', 'Availability → Hours', 'manage_options', 'courtly_opening_hours', 'courtly_admin_opening_hours_page');
-    add_submenu_page('courtly_dashboard', 'Court Availability', 'Availability → Per Court', 'manage_options', 'courtly_availability', 'courtly_admin_availability_page');
+    add_submenu_page('courtly_dashboard', 'Court Availability', 'Availability', 'manage_options', 'courtly_availability', 'courtly_admin_availability_page');
 
     // --- Courts ---
     add_submenu_page('courtly_dashboard', 'Manage Courts', 'Courts', 'manage_options', 'courtly_courts', 'courtly_admin_courts_page');
 
     // --- Users ---
-    add_submenu_page('courtly_dashboard', 'Manage Users', 'Users → All', 'manage_options', 'courtly_users', 'courtly_admin_users_page');
-    add_submenu_page('courtly_dashboard', 'User Types', 'Users → Types', 'manage_options', 'courtly_user_types', 'courtly_admin_user_types_page');
+    add_submenu_page('courtly_dashboard', 'Manage Users', 'Users', 'manage_options', 'courtly_users', 'courtly_admin_users_page');
+    add_submenu_page('courtly_dashboard', 'User Types', 'User Types', 'manage_options', 'courtly_user_types', 'courtly_admin_user_types_page');
 }
 
 // Page routing
@@ -43,22 +44,20 @@ function courtly_admin_dashboard_page() {
     include plugin_dir_path(__FILE__) . 'pages/dashboard.php';
 }
 function courtly_admin_calendar_page() {
-    include plugin_dir_path(__FILE__) . 'pages/calendar.php'; // Reuse calendar view
+    include plugin_dir_path(__FILE__) . 'pages/calendar.php';
 }
 function courtly_admin_reservations_page() {
-    echo '<div class="wrap"><h1>All Reservations (coming soon)</h1></div>';
+    include plugin_dir_path(__FILE__) . 'pages/reservation-list.php';
 }
 function courtly_admin_new_reservation_page() {
     include plugin_dir_path(__FILE__) . 'pages/new-reservation.php';
 }
-function courtly_admin_blocks_page() {
-    echo '<div class="wrap"><h1>Recurring Blocks (coming soon)</h1></div>';
-}
+
 function courtly_admin_history_page() {
-    echo '<div class="wrap"><h1>Reservation History (coming soon)</h1></div>';
+    include plugin_dir_path(__FILE__) . 'pages/reservation-history.php';
 }
-function courtly_admin_opening_hours_page() {
-    echo '<div class="wrap"><h1>Opening Hours (coming soon)</h1></div>';
+function courtly_admin_reservation_detail_page() {
+    include plugin_dir_path(__FILE__) . 'pages/reservation-detail.php';
 }
 function courtly_admin_availability_page() {
     include plugin_dir_path(__FILE__) . 'pages/availability.php';

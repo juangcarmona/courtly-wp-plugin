@@ -37,6 +37,15 @@ class CourtReservationRepository
         );
     }
 
+    public function findById(int $id): ?CourtReservation {
+        global $wpdb;
+        $row = $wpdb->get_row(
+            $wpdb->prepare("SELECT * FROM {$this->table} WHERE id = %d", $id)
+        );
+        
+        return $row ? $this->mapRowToEntity($row) : null;
+    }
+
     public function findBetweenDates(DateTimeInterface $start, DateTimeInterface $end): array {
         global $wpdb;
         $rows = $wpdb->get_results(
@@ -49,6 +58,18 @@ class CourtReservationRepository
         return $rows;
     }
 
+    public function findFrom(DateTimeInterface $fromDay, int $rangeInDays = 30): array {
+        $end = (clone $fromDay)->modify("+$rangeInDays days");
+        $rows = $this->findBetweenDates($fromDay, $end);
+        return array_map([$this, 'mapRowToEntity'], $rows);
+    }
+    
+    public function findBefore(DateTimeInterface $fromDay, int $rangeInDays = 30): array {
+        $start = (clone $fromDay)->modify("-$rangeInDays days");
+        $rows = $this->findBetweenDates($start, $fromDay);
+        return array_map([$this, 'mapRowToEntity'], $rows);
+    }  
+
     public function insertReservation($data)
     {
         return $this->wpdb->insert($this->table, $data) !== false;
@@ -57,5 +78,16 @@ class CourtReservationRepository
     public function deleteReservation($id)
     {
         return $this->wpdb->delete($this->table, ['id' => $id]) !== false;
+    }
+    
+    private function mapRowToEntity($row): CourtReservation {
+        return new CourtReservation(
+            $row->id,
+            $row->user_id,
+            $row->court_id,
+            new DateTime($row->reservation_date),
+            $row->time_slot,
+            new DateTime($row->created_at)
+        );
     }
 }

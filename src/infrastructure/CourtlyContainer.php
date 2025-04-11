@@ -46,6 +46,6 @@ class CourtlyContainer {
     }
 
     public static function eventTransformer() {
-        return new EventTransformer();
+        return EventTransformer::class;
     }
 }

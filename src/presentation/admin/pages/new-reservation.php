@@ -1,7 +1,7 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../application/controllers/AdminReservationController.php';
+require_once plugin_dir_path(__FILE__) . '../../../application/controllers/AdminReservationCreateController.php';
 
-$controller = new AdminReservationController();
+$controller = new AdminReservationCreateController ();
 $controller->handlePost();
 $data = $controller->getViewData();
 

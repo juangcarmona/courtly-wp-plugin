@@ -27,6 +27,6 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <p><input type="submit" class="button button-primary" value="Save Changes"></p>
+        <p><input type="submit" class="btn btn-sm btn-primary" value="Save Changes"></p>
     </form>
 </div>

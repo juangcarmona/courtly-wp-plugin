@@ -8,7 +8,7 @@
             <tr><th><label for="name">Name</label></th><td><input type="text" name="name" required /></td></tr>
             <tr><th><label for="description">Description</label></th><td><textarea name="description" rows="3"></textarea></td></tr>
         </table>
-        <p><input type="submit" class="button button-primary" value="Add Court"></p>
+        <p><input type="submit" class="btn btn-sm btn-primary" value="Add Court"></p>
     </form>
 
     <hr>

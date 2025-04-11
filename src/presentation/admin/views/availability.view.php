@@ -22,7 +22,7 @@
         <input type="time" name="opening_time" value="<?= esc_attr($data['opening']->open_time ?? '09:00') ?>" required>
         <label for="closing_time">To:</label>
         <input type="time" name="closing_time" value="<?= esc_attr($data['opening']->close_time ?? '21:00') ?>" required>
-        <input type="submit" class="button button-primary" value="Save">
+        <input type="submit" class="btn btn-sm btn-primary" value="Save">
     </form>
 
     <hr>

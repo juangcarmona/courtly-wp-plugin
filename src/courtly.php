@@ -39,9 +39,11 @@ if (is_admin()) {
 
     require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/AvailabilityAjaxController.php';
     require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/DashboardAjaxController.php';
+    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/ReservationAjaxController.php';
     
     AvailabilityAjaxController::registerHooks();
     DashboardAjaxController::registerHooks();
+    ReservationAjaxController::registerHooks();
 }
 
 // Display admin notice after activation

@@ -23,7 +23,7 @@
 
             <div>
                 <strong>Selected:</strong> <span id="courtly-summary">None</span><br>
-                <button type="submit" class="button button-primary" disabled id="courtly-submit-btn">
+                <button type="submit" class="btn btn-sm btn-primary" disabled id="courtly-submit-btn">
                     Confirm Reservation
                 </button>
             </div>

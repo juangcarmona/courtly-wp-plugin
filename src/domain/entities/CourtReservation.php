@@ -20,20 +20,12 @@ class CourtReservation implements BaseEntity
         $this->createdAt = $createdAt;
     }
 
-    public function getTimeSlot(): string
-    {
-        return $this->timeSlot;
-    }
-
-    public function getReservationDate(): DateTime
-    {
-        return $this->reservationDate;
-    }
-
-    public function getCourtId(): int
-    {
-        return $this->courtId;
-    }
+    public function getId(): int { return $this->id; }
+    public function getUserId(): int { return $this->userId; }
+    public function getCourtId(): int { return $this->courtId; }
+    public function getTimeSlot(): string { return $this->timeSlot; }
+    public function getReservationDate(): DateTime { return $this->reservationDate; }
+    public function getCreatedAt(): DateTime { return $this->createdAt; }
     
     public static function schema(string $table): string
     {

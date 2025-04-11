@@ -8,7 +8,7 @@
             <tr><th><label for="display_name">Display Name</label></th><td><input type="text" name="display_name" required /></td></tr>
             <tr><th><label for="booking_days_in_advance">Booking Days in Advance</label></th><td><input type="number" name="booking_days_in_advance" min="1" required /></td></tr>
         </table>
-        <p><input type="submit" class="button button-primary" value="Add User Type"></p>
+        <p><input type="submit" class="btn btn-sm btn-primary" value="Add User Type"></p>
     </form>
 
     <hr>
