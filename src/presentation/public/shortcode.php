@@ -30,7 +30,9 @@ add_shortcode('courtly_general_calendar', function () {
         return $tag;
     }, 10, 3);
 
-    return '<div id="courtly-calendar" style="margin-bottom: 50px;"></div>';
+    ob_start();
+    include __DIR__ . '/views/general-calendar.view.php';
+    return ob_get_clean();
 });
 
 add_shortcode('courtly_user_booking', function () {
