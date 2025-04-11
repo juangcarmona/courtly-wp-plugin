@@ -7,7 +7,7 @@ class PublicReservationController {
         $this->reservationService = CourtlyContainer::courtReservationService();
     }
 
-    public function handlePost() {
+    public function handlePost(): void {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') return;
         if (
             !is_user_logged_in() ||

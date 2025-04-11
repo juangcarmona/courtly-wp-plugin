@@ -79,9 +79,4 @@ class AdminReservationDetailController {
             'cancel_blocked_message' => $cancel_blocked_message,
         ];
     }
-    
-
-    public function getReservation(): CourtReservation {
-        return $this->reservation;
-    }
 }

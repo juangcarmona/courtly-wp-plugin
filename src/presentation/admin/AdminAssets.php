@@ -37,12 +37,12 @@ class AdminAssets {
                 wp_localize_script('courtly-availability-calendar', 'courtlyAjax', $localize);
                 break;
 
-            case 'courtly_new_reservation':
-                wp_enqueue_script('courtly-new-reservation-calendar',
-                    plugin_dir_url(__FILE__) . 'js/new-reservation-calendar.js',
+            case 'courtly_reservation_new':
+                wp_enqueue_script('courtly-reservation-new-calendar',
+                    plugin_dir_url(__FILE__) . 'js/reservation-new-calendar.js',
                     ['jquery', 'fullcalendar-js'], false, true
                 );
-                wp_localize_script('courtly-new-reservation-calendar', 'courtlyAjax', $localize);
+                wp_localize_script('courtly-reservation-new-calendar', 'courtlyAjax', $localize);
                 break;
         }
     }
@@ -51,7 +51,7 @@ class AdminAssets {
         $handles = [
             'courtly-dashboard-calendar',
             'courtly-availability-calendar',
-            'courtly-new-reservation-calendar'
+            'courtly-reservation-new-calendar'
         ];
         if (in_array($handle, $handles)) {
             return '<script type="module" src="' . esc_url($src) . '"></script>';

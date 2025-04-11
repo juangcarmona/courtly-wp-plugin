@@ -72,7 +72,7 @@ $user_types = $wpdb->get_results("
   <h2>Quick Actions</h2>
   <div class="row mt-3 g-3">
     <div class="col-md-4">
-      <a href="?page=courtly_new_reservation" class="btn btn-primary w-100">➕ New Reservation</a>
+      <a href="?page=courtly_reservation_new" class="btn btn-primary w-100">➕ New Reservation</a>
     </div>
     <div class="col-md-4">
       <a href="?page=courtly_calendar" class="btn btn-primary w-100">📅 View Calendar</a>

@@ -20,7 +20,7 @@ function courtly_add_admin_menu() {
     add_submenu_page('courtly_dashboard', 'Calendar', 'Calendar', 'manage_options', 'courtly_calendar', 'courtly_admin_calendar_page');
 
     // --- Reservations ---
-    add_submenu_page('courtly_dashboard', 'New Reservation', 'Reservations New', 'manage_options', 'courtly_new_reservation', 'courtly_admin_new_reservation_page');
+    add_submenu_page('courtly_dashboard', 'New Reservation', 'Reservations New', 'manage_options', 'courtly_reservation_new', 'courtly_admin_reservation_new_page');
     add_submenu_page('courtly_dashboard', 'All Reservations', 'Reservations All', 'manage_options', 'courtly_reservations', 'courtly_admin_reservations_page');
     add_submenu_page('courtly_dashboard', 'Reservation History', 'Reservation  History', 'manage_options', 'courtly_history', 'courtly_admin_history_page');
 
@@ -49,10 +49,9 @@ function courtly_admin_calendar_page() {
 function courtly_admin_reservations_page() {
     include plugin_dir_path(__FILE__) . 'pages/reservation-list.php';
 }
-function courtly_admin_new_reservation_page() {
-    include plugin_dir_path(__FILE__) . 'pages/new-reservation.php';
+function courtly_admin_reservation_new_page() {
+    include plugin_dir_path(__FILE__) . 'pages/reservation-new.php';
 }
-
 function courtly_admin_history_page() {
     include plugin_dir_path(__FILE__) . 'pages/reservation-history.php';
 }

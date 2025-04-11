@@ -1,6 +1,6 @@
 <?php
 
-class AdminReservationCreateController  {
+class AdminReservationNewController  {
     private $users;
     private $userTypes;
 
@@ -9,7 +9,7 @@ class AdminReservationCreateController  {
         $this->userTypes = CourtlyContainer::userTypeRepository()->findAll();
     }
 
-    public function handlePost() {
+    public function handlePost(): void {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') return;
 
         if (
