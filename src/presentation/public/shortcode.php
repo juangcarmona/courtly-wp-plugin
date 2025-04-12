@@ -12,9 +12,11 @@ add_shortcode('courtly_general_calendar', function () {
         plugin_dir_url(__FILE__) . 'js/public-availability-calendar.js',
         ['fullcalendar-js'], false, true
     );
-
+    $reservation_page_id = get_option('courtly_reservation_detail_page_id');
+    $base_url = get_permalink($reservation_page_id);
     wp_localize_script('courtly-general-calendar', 'courtlyAjax', [
         'ajax_url' => admin_url('admin-ajax.php'),
+        'reservation_detail_base_url' => $base_url,
         'is_admin' => false,
         'locale' => get_locale(),
         'current_user_id' => get_current_user_id(),
@@ -45,6 +47,9 @@ add_shortcode('courtly_user_booking', function () {
     $controller->handlePost();
     $data = $controller->getViewData();
 
+    $reservation_page_id = get_option('courtly_reservation_detail_page_id');
+    $base_url = get_permalink($reservation_page_id);
+
     wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
     wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__DIR__) . '/../shared/calendar/calendar.css');
     wp_enqueue_script('fullcalendar-js', 'https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js', [], false, true);
@@ -55,6 +60,7 @@ add_shortcode('courtly_user_booking', function () {
 
     wp_localize_script('courtly-user-booking-calendar', 'courtlyAjax', [
         'ajax_url' => admin_url('admin-ajax.php'),
+        'reservation_detail_base_url' => $base_url,
         'is_admin' => false,
         'locale' => get_locale(),
         'current_user_id' => get_current_user_id(),
@@ -72,5 +78,22 @@ add_shortcode('courtly_user_booking', function () {
 
     ob_start();
     include __DIR__ . '/views/user-booking.view.php';
+    return ob_get_clean();
+});
+
+add_shortcode('courtly_reservation_detail', function () {
+    $id = get_query_var('courtly_reservation_id');
+    if (!$id) {
+        return '<p class="text-danger">Reservation ID not provided.</p>';
+    }
+
+    require_once plugin_dir_path(__FILE__) . '../../application/controllers/PublicReservationDetailController.php';
+    $controller = new PublicReservationDetailController((int) $id);
+    $data = $controller->getViewData();
+
+    wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
+
+    ob_start();
+    include __DIR__ . '/views/reservation-detail.view.php';
     return ob_get_clean();
 });

@@ -100,7 +100,7 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
       if (eventType === 'reservation') {
         const url = isAdmin
           ? `/wp-admin/admin.php?page=courtly_reservation_detail&id=${eventId}`
-          : `/reservations/${eventId}`; // Could be a shortcode route or pretty permalink
+          : buildReservationUrl(courtlyAjax.reservation_detail_base_url, eventId);
     
         window.location.href = url;
     
@@ -134,4 +134,11 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
   calendar.render();
   logger.info('General calendar rendered');
   return calendar;
+}
+
+
+function buildReservationUrl(baseUrl, reservationId) {
+  const hasQuery = baseUrl.includes('?');
+  const separator = hasQuery ? '&' : '?';
+  return `${baseUrl}${separator}courtly_reservation_id=${reservationId}`;
 }
