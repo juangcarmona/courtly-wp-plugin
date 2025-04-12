@@ -39,8 +39,10 @@ register_activation_hook(__FILE__, function () {
     courtly_create_tables();
     courtly_seed_data();
     courtly_activation_notice_flag();
+    courtly_create_booking_page(); 
     courtly_create_reservation_detail_page();
-    flush_rewrite_rules(); // debe ir al final
+    courtly_create_general_calendar_page();
+    flush_rewrite_rules();
 });
 
 // -----------------------------------------------------------------------------

@@ -77,7 +77,7 @@ add_shortcode('courtly_user_booking', function () {
     }, 10, 3);
 
     ob_start();
-    include __DIR__ . '/views/user-booking.view.php';
+    include __DIR__ . '/views/booking.view.php';
     return ob_get_clean();
 });
 
@@ -89,6 +89,7 @@ add_shortcode('courtly_reservation_detail', function () {
 
     require_once plugin_dir_path(__FILE__) . '../../application/controllers/PublicReservationDetailController.php';
     $controller = new PublicReservationDetailController((int) $id);
+    $controller->handlePost();
     $data = $controller->getViewData();
 
     wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
