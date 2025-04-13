@@ -25,7 +25,7 @@ class AdminReservationNewController  {
         $result = CourtlyContainer::courtReservationService()->createReservation($user_id, $court_id, $start_time, $end_time);
 
         if ($result === true) {
-            wp_redirect(admin_url('admin.php?page=courtly_calendar'));
+            wp_redirect(admin_url('admin.php?page=courtly_activity_calendar'));
             exit;
         }
 

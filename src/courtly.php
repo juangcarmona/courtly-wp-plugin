@@ -20,6 +20,25 @@ if (!defined('ABSPATH')) {
 }
 
 // -----------------------------------------------------------------------------
+// Load plugin textdomain for internationalization
+// -----------------------------------------------------------------------------
+function courtly_load_textdomain() {
+    $loaded = load_plugin_textdomain(
+        'courtly',
+        false,
+        'courtly/languages'
+    );
+    
+
+    if ($loaded) {
+        error_log('✅ [Courtly] Textdomain "courtly" loaded successfully.');
+    } else {
+        error_log('❌ [Courtly] Failed to load textdomain "courtly".');
+    }
+}
+add_action('init', 'courtly_load_textdomain');
+
+// -----------------------------------------------------------------------------
 // Load core infrastructure (dependency container, etc.)
 // -----------------------------------------------------------------------------
 require_once plugin_dir_path(__FILE__) . 'infrastructure/CourtlyContainer.php';

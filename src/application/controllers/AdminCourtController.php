@@ -22,7 +22,7 @@ class AdminCourtController {
                 ]);
 
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-success is-dismissible"><p>Court added successfully.</p></div>';
+                    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Court added successfully.', 'courtly') . '</p></div>';
                 });
             }
         }

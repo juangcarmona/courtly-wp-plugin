@@ -25,6 +25,10 @@ class AdminAssets {
                     plugin_dir_url(__FILE__) . 'js/activity-calendar.js',
                     ['jquery', 'fullcalendar-js'], false, true
                 );
+                $localize['translations'] = [
+                    'no_reason_provided' => __('No reason provided', 'courtly'),
+                    'every' => __('Every', 'courtly')
+                ];
                 wp_localize_script('courtly-activity-calendar', 'courtlyAjax', $localize);
                 break;
 
@@ -34,6 +38,10 @@ class AdminAssets {
                     ['jquery', 'fullcalendar-js'], false, true
                 );
                 $localize['court_id'] = isset($_GET['court_id']) ? intval($_GET['court_id']) : 1;
+                $localize['translations'] = [
+                    'block_reason_prompt'     => __('Reason for blocking this slot:', 'courtly'),
+                    'confirm_remove_block'    => __('Remove this blocked slot?', 'courtly'),
+                ];
                 wp_localize_script('courtly-availability-calendar', 'courtlyAjax', $localize);
                 break;
 

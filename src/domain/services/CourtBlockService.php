@@ -25,7 +25,7 @@ class CourtBlockService
 
                     $events[] = [
                         'id' => $block->id,
-                        'title' => $block->reason ?: 'Blocked',
+                        'title' => $block->reason ?: __('Blocked', 'courtly'),
                         'start' => $startDateTime->format(DateTime::ATOM),
                         'end' => $endDateTime->format(DateTime::ATOM),
                         'backgroundColor' => '#dc3545',

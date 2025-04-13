@@ -68,7 +68,7 @@ class CourtReservationService {
         $userReservations = $this->reservationRepo->getReservationsForUserOnDate($userId, $date) ?? [];
         if (count($userReservations) >= COURTLY_MAX_RESERVATIONS_PER_DAY) {
             error_log("[Courtly] ❌ Reservation denied. $username already has a reservation on $date.");
-            return "$username already has a reservation that day.";
+            return sprintf(__('%s already has a reservation that day.', 'courtly'), $username);
         }
 
         // ⛔ Max duration        
@@ -76,13 +76,13 @@ class CourtReservationService {
         $minutes = ($interval->h * 60) + $interval->i;
         if ($minutes > COURTLY_MAX_RESERVATION_MINUTES) {
             error_log("[Courtly] ❌ Reservation denied. Duration exceeds limit (" . COURTLY_MAX_RESERVATION_MINUTES . " mins).");
-            return "Reservations must be " . COURTLY_MAX_RESERVATION_MINUTES . " minutes or less.";
+            return sprintf(__('Reservations must be %d minutes or less.', 'courtly'), COURTLY_MAX_RESERVATION_MINUTES);
         }
 
         // ⛔ Availability check
         if (!$this->isSlotAvailable($courtId, $date, $slot)) {
             error_log("[Courtly] ❌ Reservation denied for $username. Slot is not available.");
-            return 'Time slot unavailable.';
+            return __('Time slot unavailable.', 'courtly');
         }
 
         // ✅ All good → Save reservation
@@ -99,7 +99,7 @@ class CourtReservationService {
             return true;
         } else {
             error_log("[Courtly] ❌ DB insertion failed for reservation of $username.");
-            return 'Failed to create reservation.';
+            return __('Failed to create reservation.', 'courtly');
         }
     }
 }

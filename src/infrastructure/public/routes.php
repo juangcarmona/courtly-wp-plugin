@@ -35,7 +35,7 @@ function courtly_add_query_vars($vars) {
  */
 function courtly_create_booking_page() {
     $slug = 'booking';
-    $title = 'Booking';
+    $title = __('Booking', 'courtly');
     $shortcode = '[courtly_user_booking]';
 
     $existing = get_page_by_path($slug);
@@ -68,7 +68,7 @@ function courtly_create_booking_page() {
  */
 function courtly_create_general_calendar_page() {
     $slug = 'calendar';
-    $title = 'Calendar';
+    $title = __('Calendar', 'courtly');
     $shortcode = '[courtly_general_calendar]';
 
     $existing = get_page_by_path($slug);
@@ -98,7 +98,7 @@ function courtly_create_general_calendar_page() {
  */
 function courtly_create_reservation_detail_page() {
     $slug = 'reservation';
-    $title = 'Reservation';
+    $title = __('Reservation', 'courtly');
     $shortcode = '[courtly_reservation_detail]';
 
     // Check if it already exists

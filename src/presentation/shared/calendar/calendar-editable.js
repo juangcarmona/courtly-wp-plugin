@@ -19,7 +19,7 @@ export function renderEditableCalendar(containerEl, options) {
         events: options.fetchUrl,
 
         select(info) {
-            const reason = prompt('Reason for blocking this slot:');
+            const reason = prompt(courtlyAjax.translations.block_reason_prompt);
             if (reason) {
                 options.onSlotBlocked?.({ start: info.startStr, end: info.endStr, reason });
             } else {
@@ -28,7 +28,7 @@ export function renderEditableCalendar(containerEl, options) {
         },
 
         eventClick(info) {
-            if (confirm('Remove this blocked slot?')) {
+            if (confirm(courtlyAjax.translations.confirm_remove_block)) {
                 options.onSlotRemoved?.(info.event.id);
             }
         },

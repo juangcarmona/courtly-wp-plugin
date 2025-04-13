@@ -16,15 +16,15 @@ $user_types = $wpdb->get_results("
 ?>
 
 <div class="wrap">
-  <h1 class="mb-4">Courtly Dashboard</h1>
+  <h1 class="mb-4"><?= esc_html__('Courtly Dashboard', 'courtly') ?></h1>
 
   <div class="row g-4 mb-4">
     <div class="col-md-3">
       <div class="card text-center">
         <div class="card-body">
-          <h5 class="card-title text-primary">Courts</h5>
+          <h5 class="card-title text-primary"><?= esc_html__('Courts', 'courtly') ?></h5>
           <h3 class="card-text"><?= esc_html($total_courts) ?></h3>
-          <a href="?page=courtly_courts" class="btn btn-sm btn-outline-primary mt-2">Manage Courts</a>
+          <a href="?page=courtly_courts" class="btn btn-sm btn-outline-primary mt-2"><?= esc_html__('Manage Courts', 'courtly') ?></a>
         </div>
       </div>
     </div>
@@ -32,9 +32,9 @@ $user_types = $wpdb->get_results("
     <div class="col-md-3">
       <div class="card text-center">
         <div class="card-body">
-          <h5 class="card-title text-primary">User Types</h5>
+          <h5 class="card-title text-primary"><?= esc_html__('User Types', 'courtly') ?></h5>
           <h3 class="card-text"><?= esc_html($total_user_types) ?></h3>
-          <a href="?page=courtly_user_types" class="btn btn-sm btn-outline-primary mt-2">Manage User Types</a>
+          <a href="?page=courtly_user_types" class="btn btn-sm btn-outline-primary mt-2"><?= esc_html__('Manage User Types', 'courtly') ?></a>
         </div>
       </div>
     </div>
@@ -42,9 +42,9 @@ $user_types = $wpdb->get_results("
     <div class="col-md-3">
       <div class="card text-center">
         <div class="card-body">
-          <h5 class="card-title text-primary">Users</h5>
+          <h5 class="card-title text-primary"><?= esc_html__('Users', 'courtly') ?></h5>
           <h3 class="card-text"><?= esc_html($total_users) ?></h3>
-          <a href="?page=courtly_users" class="btn btn-sm btn-outline-primary mt-2">Manage Users</a>
+          <a href="?page=courtly_users" class="btn btn-sm btn-outline-primary mt-2"><?= esc_html__('Manage Users', 'courtly') ?></a>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@ $user_types = $wpdb->get_results("
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title text-primary">Users by Type</h5>
+          <h5 class="card-title text-primary"><?= esc_html__('Users by Type', 'courtly') ?></h5>
           <ul class="list-group list-group-flush mt-2">
             <?php foreach ($user_types as $type): ?>
               <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -69,18 +69,17 @@ $user_types = $wpdb->get_results("
   <hr>
 
   <div class="mb-4">
-  <h2>Quick Actions</h2>
-  <div class="row mt-3 g-3">
-    <div class="col-md-4">
-      <a href="?page=courtly_reservation_new" class="btn btn-primary w-100">➕ New Reservation</a>
-    </div>
-    <div class="col-md-4">
-      <a href="?page=courtly_calendar" class="btn btn-primary w-100">📅 View Calendar</a>
-    </div>
-    <div class="col-md-4">
-      <a href="?page=courtly_availability" class="btn btn-primary w-100">🕒 Set Availability</a>
+    <h2><?= esc_html__('Quick Actions', 'courtly') ?></h2>
+    <div class="row mt-3 g-3">
+      <div class="col-md-4">
+        <a href="?page=courtly_reservation_new" class="btn btn-primary w-100">➕ <?= esc_html__('New Reservation', 'courtly') ?></a>
+      </div>
+      <div class="col-md-4">
+        <a href="?page=courtly_activity_calendar" class="btn btn-primary w-100">📅 <?= esc_html__('View Calendar', 'courtly') ?></a>
+      </div>
+      <div class="col-md-4">
+        <a href="?page=courtly_availability" class="btn btn-primary w-100">🕒 <?= esc_html__('Set Availability', 'courtly') ?></a>
+      </div>
     </div>
   </div>
-</div>
-
 </div>

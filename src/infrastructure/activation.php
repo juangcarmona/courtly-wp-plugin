@@ -45,12 +45,12 @@ function courtly_seed_data() {
     if ((int)$wpdb->get_var("SELECT COUNT(*) FROM $user_types_table") === 0) {
         $wpdb->insert($user_types_table, [
             'name' => 'guest',
-            'display_name' => 'Guest',
+            'display_name' => __('Guest', 'courtly'),
             'booking_days_in_advance' => 4
         ]);
         $wpdb->insert($user_types_table, [
             'name' => 'member',
-            'display_name' => 'Member',
+            'display_name' => __('Member', 'courtly'),
             'booking_days_in_advance' => 5
         ]);
     }
@@ -59,8 +59,8 @@ function courtly_seed_data() {
     if ((int)$wpdb->get_var("SELECT COUNT(*) FROM $courts_table") === 0) {
         $wpdb->insert($courts_table, [
             'number' => 1,
-            'name' => 'Court 1',
-            'description' => 'Main court',
+            'name' => __('Court 1', 'courtly'),
+            'description' => __('Main court', 'courtly'),
             'pictures' => serialize([]),
         ]);
     }

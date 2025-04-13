@@ -5,18 +5,18 @@ class AdminReservationDetailController {
 
     public function __construct() {
         if (!current_user_can('manage_options')) {
-            wp_die('Access denied');
+            wp_die(__('Access denied.', 'courtly'));
         }
 
         if (!isset($_GET['id'])) {
-            wp_die('Reservation ID missing.');
+            wp_die(__('Reservation ID missing.', 'courtly'));
         }
 
         $id = intval($_GET['id']);
         $this->reservation = CourtlyContainer::courtReservationRepository()->findById($id);
 
         if (!$this->reservation) {
-            wp_die('Reservation not found.');
+            wp_die(__('Reservation not found.', 'courtly'));
         }
     }
 
@@ -32,16 +32,16 @@ class AdminReservationDetailController {
         $id = intval($_POST['courtly_cancel_reservation_id']);
     
         if (!current_user_can('manage_options')) {
-            wp_die('Access denied.');
+            wp_die(__('Access denied.', 'courtly'));
         }
     
         if (!wp_verify_nonce($_POST['_wpnonce'], 'courtly_cancel_reservation_' . $id)) {
-            wp_die('Invalid nonce.');
+            wp_die(__('Invalid nonce.', 'courtly'));
         }
     
         CourtlyContainer::courtReservationRepository()->deleteReservation($id);
     
-        wp_redirect(admin_url('admin.php?page=courtly_calendar'));
+        wp_redirect(admin_url('admin.php?page=courtly_activity_calendar'));
         exit;
     }
     
@@ -64,9 +64,9 @@ class AdminReservationDetailController {
         $cancel_blocked_message = null;
     
         if ($reservationTime < $now) {
-            $cancel_blocked_message = 'This reservation has already passed.';
+            $cancel_blocked_message = __('This reservation has already passed.', 'courtly');
         } elseif (!$cancel_allowed) {
-            $cancel_blocked_message = 'Reservation cannot be cancelled (less than 24h remaining).';
+            $cancel_blocked_message = __('Reservation cannot be cancelled (less than 24h remaining).', 'courtly');
         }
     
         return [

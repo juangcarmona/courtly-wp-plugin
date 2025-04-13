@@ -22,7 +22,7 @@ class AdminUserTypeController {
                 ]);
 
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-success is-dismissible"><p>User type added successfully.</p></div>';
+                    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('User type added successfully.', 'courtly') . '</p></div>';
                 });
             }
         }

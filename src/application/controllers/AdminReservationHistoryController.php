@@ -40,8 +40,8 @@ class AdminReservationHistoryController {
                 'date' => $r->getReservationDate()->format('Y-m-d'),
                 'start_time' => explode('-', $r->getTimeSlot())[0],
                 'end_time' => explode('-', $r->getTimeSlot())[1],
-                'user_name' => $userMap[$r->getUserId()] ?? 'Unknown',
-                'court_name' => $courtMap[$r->getCourtId()] ?? 'Court #' . $r->getCourtId(),
+                'user_name' => $userMap[$r->getUserId()] ?? __('Unknown', 'courtly'),
+                'court_name' => $courtMap[$r->getCourtId()] ?? sprintf(__('Court #%d', 'courtly'), $r->getCourtId()),
             ];
         }, $reservations);
     }

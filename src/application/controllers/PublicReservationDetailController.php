@@ -6,18 +6,18 @@ class PublicReservationDetailController {
 
     public function __construct(int $reservationId) {
         if (!is_user_logged_in()) {
-            wp_die('You must be logged in to view reservation details.');
+            wp_die(__('You must be logged in to view reservation details.', 'courtly'));
         }
 
         $this->user = wp_get_current_user();
 
         $reservation = CourtlyContainer::courtReservationRepository()->findById($reservationId);
-        if (!$reservation) {
-            wp_die('Reservation not found.');
+        if (!$reservation) {wp_die(__('Reservation not found.', 'courtly'));
+            wp_die(__('Reservation not found.', 'courtly'));
         }
 
         if ($reservation->getUserId() !== $this->user->ID) {
-            wp_die('You are not allowed to view this reservation.');
+            wp_die(__('You are not allowed to view this reservation.', 'courtly'));
         }
 
         $this->reservation = $reservation;
@@ -117,9 +117,9 @@ class PublicReservationDetailController {
         $cancel_blocked_message = null;
 
         if ($reservationTime < $now) {
-            $cancel_blocked_message = 'This reservation has already passed.';
+            $cancel_blocked_message = __('This reservation has already passed.', 'courtly');
         } elseif (!$cancel_allowed) {
-            $cancel_blocked_message = 'Cannot cancel reservation: less than 24h remaining.';
+            $cancel_blocked_message = __('Reservation cannot be cancelled (less than 24h remaining).', 'courtly');
         }
 
         return [

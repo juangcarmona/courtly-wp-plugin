@@ -32,7 +32,7 @@ class AdminAvailabilityController {
             $this->openingRepo->upsert($weekday, $openTime, $closeTime);
 
             add_action('admin_notices', function () {
-                echo '<div class="notice notice-success is-dismissible"><p>Availability updated.</p></div>';
+                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Availability updated.', 'courtly') . '</p></div>';
             });
         }
     }

@@ -24,7 +24,7 @@ class EventTransformer {
         $end = new DateTimeImmutable("{$date->format('Y-m-d')} {$block->end_time}", new DateTimeZone('UTC'));
 
         return [
-            'title' => $block->reason ?: 'Blocked',
+            'title' => $block->reason ?: __('Blocked', 'courtly'),
             'start' => $start->format(DateTime::ATOM),
             'end' => $end->format(DateTime::ATOM),
             'resourceId' => $courtId,

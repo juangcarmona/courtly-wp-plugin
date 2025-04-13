@@ -117,8 +117,8 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
         });
     
         alert(
-          `⛔ ${props.court} — ${props.reason || 'No reason provided'},\n` +
-          `📅 Every ${start.toLocaleDateString(undefined, { weekday: 'long' })}\n` +
+          `⛔ ${props.court} — ${props.reason || courtlyAjax.translations.no_reason_provided}},\n` +
+          `📅 ${courtlyAjax.translations.every} ${start.toLocaleDateString(undefined, { weekday: 'long' })}\n` +
           `🕒 ${timeFormatter.format(start)} → ${timeFormatter.format(end)}`
         );
         

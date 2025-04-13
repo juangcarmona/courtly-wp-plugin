@@ -23,6 +23,10 @@ add_shortcode('courtly_general_calendar', function () {
         'is_logged_in' => is_user_logged_in(),
         'user_type' => get_user_meta(get_current_user_id(), 'courtly_user_type', true),
         'display_name' => wp_get_current_user()->display_name,
+        'translations' => [
+            'no_reason_provided' => __('No reason provided', 'courtly'),
+            'every' => __('Every', 'courtly'),
+        ]
     ]);
 
     add_filter('script_loader_tag', function ($tag, $handle, $src) {
@@ -39,7 +43,11 @@ add_shortcode('courtly_general_calendar', function () {
 
 add_shortcode('courtly_user_booking', function () {
     if (!is_user_logged_in()) {
-        return '<div class="courtly-booking-login"><p>Please <a href="' . wp_login_url() . '">log in</a> to book a court.</p></div>';
+        return '<div class="courtly-booking-login"><p>' . sprintf(
+            esc_html__('Please %1$slog in%2$s to book a court.', 'courtly'),
+            '<a href="' . esc_url(wp_login_url()) . '">',
+            '</a>'
+        ) . '</p></div>';
     }
 
     require_once plugin_dir_path(__FILE__) . '../../application/controllers/PublicReservationController.php';
@@ -67,6 +75,10 @@ add_shortcode('courtly_user_booking', function () {
         'is_logged_in' => is_user_logged_in(),
         'user_type' => get_user_meta(get_current_user_id(), 'courtly_user_type', true),
         'display_name' => wp_get_current_user()->display_name,
+        'translations' => [
+            'no_reason_provided' => __('No reason provided', 'courtly'),
+            'every' => __('Every', 'courtly'),
+        ]
     ]);
 
     add_filter('script_loader_tag', function ($tag, $handle, $src) {
@@ -84,7 +96,7 @@ add_shortcode('courtly_user_booking', function () {
 add_shortcode('courtly_reservation_detail', function () {
     $id = get_query_var('courtly_reservation_id');
     if (!$id) {
-        return '<p class="text-danger">Reservation ID not provided.</p>';
+        return '<p class="text-danger">' . esc_html__('Reservation ID not provided.', 'courtly') . '</p>';
     }
 
     require_once plugin_dir_path(__FILE__) . '../../application/controllers/PublicReservationDetailController.php';

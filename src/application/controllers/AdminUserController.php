@@ -16,7 +16,7 @@ class AdminUserController {
             }
 
             add_action('admin_notices', function () {
-                echo '<div class="notice notice-success is-dismissible"><p>User types updated.</p></div>';
+                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('User types updated.', 'courtly') . '</p></div>';
             });
         }
     }
