@@ -21,8 +21,6 @@ for lang in $LANGUAGES; do
   fi
 done
 
-for po in courtly-*.po; do
-  msgfmt "$po" -o "${po%.po}.mo"
-done
+wp i18n make-mo .
 
 echo "✅ Done. All translations updated and compiled."
