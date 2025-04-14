@@ -1,5 +1,7 @@
 # Courtly - Padel Court Booking Plugin
 
+[![CI Status](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/build.yml/badge.svg)
+
 Courtly is a modular WordPress plugin for managing **padel court reservations** with an interactive calendar, admin panel, and user-specific rules. It supports **cooperative members** and **external users**, handling bookings, billing, and availability with precision.
 
 <figure>
