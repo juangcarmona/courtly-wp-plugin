@@ -3,7 +3,7 @@
  * Plugin Name:       Courtly – Padel Court Booking
  * Plugin URI:        https://github.com/juangcarmona/courtly-wp-plugin
  * Description:       A modular plugin for managing padel court reservations using DDD principles.
- * Version:           1.0.0
+ * Version:           0.0.1
  * Author:            Juan G. Carmona
  * Author URI:        https://jgcarmona.com
  * License:           Apache License 2.0
