@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (for GitHub CLI)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Read version from courtly.php
+        id: read_version
+        run: |
+          version=$(grep -oP 'Version:\s*\K[0-9]+\.[0-9]+\.[0-9]+' src/courtly.php)
+          echo "version=$version" >> $GITHUB_ENV
+
+      - name: Create release tag
+        id: create_tag
+        run: |
+          git tag -a "v$version" -m "Release v$version"
+          git push origin "v$version"
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: "v${{ env.version }}"
+          release_name: "v${{ env.version }}"
+          body: "Release v${{ env.version }}"
+          draft: false
+          prerelease: false
+
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./path/to/generated/courtly.zip
+          asset_name: courtly.zip
+          asset_content_type: application/zip
