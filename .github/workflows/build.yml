@@ -51,7 +51,7 @@ jobs:
         zip -r courtly.zip src
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: courtly-build-${{ github.run_number }}
         path: courtly.zip
