@@ -62,10 +62,17 @@ jobs:
         if: env.skip_release == 'true'
         run: exit 0
 
-      - name: Create release tag
-        run: |
-          git tag -a "v$version" -m "Release v$version"
-          git push origin "v$version"
+      - name: Create GitHub Release
+        id: create_release_tag
+        uses: actions/create-release@v1
+        with:
+          tag_name: "v${{ env.version }}"
+          release_name: "Courtly v${{ env.version }}"
+          body: "${{ env.changelog_body }}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Stub PHPUnit tests
         run: |
