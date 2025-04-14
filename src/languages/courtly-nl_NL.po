@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
-"POT-Creation-Date: 2025-04-13T05:57:04+00:00\n"
+"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
 "PO-Revision-Date: 2025-04-13 08:12+0200\n"
 "Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -31,8 +31,8 @@ msgstr "https://github.com/juangcarmona/courtly-wp-plugin"
 msgid ""
 "A modular plugin for managing padel court reservations using DDD principles."
 msgstr ""
-"Een modulaire plugin voor het beheren van padelbaanreserveringen volgens "
-"DDD-principes."
+"Een modulaire plugin voor het beheren van padelbaanreserveringen volgens DDD-"
+"principes."
 
 #. Author of the plugin
 #: courtly.php
@@ -50,7 +50,7 @@ msgstr "Beschikbaarheid bijgewerkt."
 
 #: application/controllers/AdminCourtController.php:25
 msgid "Court added successfully."
-msgstr "Hof succesvol toegevoegd."
+msgstr "Baan succesvol toegevoegd."
 
 #: application/controllers/AdminReservationDetailController.php:8
 #: application/controllers/AdminReservationDetailController.php:35
@@ -91,7 +91,7 @@ msgstr "Onbekend"
 #: application/controllers/AdminReservationHistoryController.php:44
 #: application/controllers/AdminReservationListController.php:51
 msgid "Court #%d"
-msgstr "Rechtbank #%d"
+msgstr "Baan #%d"
 
 #: application/controllers/AdminUserController.php:19
 msgid "User types updated."
@@ -140,11 +140,11 @@ msgstr "Lid"
 
 #: infrastructure/activation.php:62
 msgid "Court 1"
-msgstr "Rechtbank 1"
+msgstr "Baan 1"
 
 #: infrastructure/activation.php:63
 msgid "Main court"
-msgstr "Hoofdhof"
+msgstr "Hoofdbaan"
 
 #: infrastructure/public/routes.php:38
 msgid "Booking"
@@ -171,7 +171,7 @@ msgstr "Dashboard"
 msgid "Activity Calendar"
 msgstr "Activiteitenkalender"
 
-#: presentation/admin/admin.php:41
+#: presentation/admin/admin.php:41 presentation/admin/pages/dashboard.php:75
 msgid "New Reservation"
 msgstr "Nieuwe reservering"
 
@@ -194,29 +194,32 @@ msgstr "Reserveringsgeschiedenis"
 
 #: presentation/admin/admin.php:69
 msgid "Court Availability"
-msgstr "Beschikbaarheid van de rechtbank"
+msgstr "Beschikbaarheid van de baan"
 
 #: presentation/admin/admin.php:70
 msgid "Availability"
 msgstr "Beschikbaarheid"
 
-#: presentation/admin/admin.php:79
+#: presentation/admin/admin.php:79 presentation/admin/pages/dashboard.php:27
 msgid "Manage Courts"
-msgstr "Beheer rechtbanken"
+msgstr "Beheer baanen"
 
-#: presentation/admin/admin.php:80 presentation/admin/views/courts.view.php:2
+#: presentation/admin/admin.php:80 presentation/admin/pages/dashboard.php:25
+#: presentation/admin/views/courts.view.php:2
 msgid "Courts"
-msgstr "Rechtbanken"
+msgstr "Baanen"
 
-#: presentation/admin/admin.php:89
+#: presentation/admin/admin.php:89 presentation/admin/pages/dashboard.php:47
 msgid "Manage Users"
 msgstr "Gebruikers beheren"
 
-#: presentation/admin/admin.php:90 presentation/admin/views/users.view.php:2
+#: presentation/admin/admin.php:90 presentation/admin/pages/dashboard.php:45
+#: presentation/admin/views/users.view.php:2
 msgid "Users"
 msgstr "Gebruikers"
 
 #: presentation/admin/admin.php:98 presentation/admin/admin.php:99
+#: presentation/admin/pages/dashboard.php:35
 #: presentation/admin/views/user-types.view.php:2
 msgid "User Types"
 msgstr "Gebruikerstypen"
@@ -239,13 +242,43 @@ msgstr "Reden voor het blokkeren van deze sleuf:"
 msgid "Remove this blocked slot?"
 msgstr "Deze geblokkeerde sleuf verwijderen?"
 
+#: presentation/admin/pages/dashboard.php:19
+#, fuzzy
+msgid "Courtly Dashboard"
+msgstr "Dashboard"
+
+#: presentation/admin/pages/dashboard.php:37
+#, fuzzy
+msgid "Manage User Types"
+msgstr "Gebruikers beheren"
+
+#: presentation/admin/pages/dashboard.php:55
+#, fuzzy
+msgid "Users by Type"
+msgstr "Gebruikerstype"
+
+#: presentation/admin/pages/dashboard.php:72
+#, fuzzy
+msgid "Quick Actions"
+msgstr "Actie"
+
+#: presentation/admin/pages/dashboard.php:78
+#, fuzzy
+msgid "View Calendar"
+msgstr "Kalender"
+
+#: presentation/admin/pages/dashboard.php:81
+#, fuzzy
+msgid "Set Availability"
+msgstr "Beschikbaarheid"
+
 #: presentation/admin/views/availability.view.php:2
 msgid "Manage Court Availability"
-msgstr "Beheer de beschikbaarheid van de rechtbank"
+msgstr "Beheer de beschikbaarheid van de baan"
 
 #: presentation/admin/views/availability.view.php:6
 msgid "Select Court:"
-msgstr "Selecteer rechtbank:"
+msgstr "Selecteer baan:"
 
 #: presentation/admin/views/availability.view.php:21
 msgid "From:"
@@ -261,11 +294,11 @@ msgstr "Redden"
 
 #: presentation/admin/views/courts.view.php:5
 msgid "Add New Court"
-msgstr "Nieuwe rechtbank toevoegen"
+msgstr "Nieuwe baan toevoegen"
 
 #: presentation/admin/views/courts.view.php:8
 msgid "Court Number"
-msgstr "Rechtbanknummer"
+msgstr "Baannummer"
 
 #: presentation/admin/views/courts.view.php:12
 #: presentation/admin/views/courts.view.php:33
@@ -279,11 +312,11 @@ msgstr "Beschrijving"
 
 #: presentation/admin/views/courts.view.php:21
 msgid "Add Court"
-msgstr "Hof toevoegen"
+msgstr "Baan toevoegen"
 
 #: presentation/admin/views/courts.view.php:27
 msgid "Existing Courts"
-msgstr "Bestaande rechtbanken"
+msgstr "Bestaande baanen"
 
 #: presentation/admin/views/courts.view.php:31
 #: presentation/admin/views/reservation-detail.view.php:5
@@ -317,7 +350,7 @@ msgstr "Gebruiker"
 #: presentation/admin/views/reservation-list.view.php:42
 #: presentation/public/views/reservation-detail.view.php:10
 msgid "Court"
-msgstr "Rechtbank"
+msgstr "Baan"
 
 #: presentation/admin/views/reservation-detail.view.php:8
 #: presentation/admin/views/reservation-history.view.php:10

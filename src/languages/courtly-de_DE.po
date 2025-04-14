@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
-"POT-Creation-Date: 2025-04-13T05:57:04+00:00\n"
+"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
 "PO-Revision-Date: 2025-04-13 08:12+0200\n"
 "Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -50,7 +50,7 @@ msgstr "Verfügbarkeit aktualisiert."
 
 #: application/controllers/AdminCourtController.php:25
 msgid "Court added successfully."
-msgstr "Gericht erfolgreich hinzugefügt."
+msgstr "Bahn erfolgreich hinzugefügt."
 
 #: application/controllers/AdminReservationDetailController.php:8
 #: application/controllers/AdminReservationDetailController.php:35
@@ -91,7 +91,7 @@ msgstr "Unbekannt"
 #: application/controllers/AdminReservationHistoryController.php:44
 #: application/controllers/AdminReservationListController.php:51
 msgid "Court #%d"
-msgstr "Gericht #%d"
+msgstr "Bahn #%d"
 
 #: application/controllers/AdminUserController.php:19
 msgid "User types updated."
@@ -140,11 +140,11 @@ msgstr "Mitglied"
 
 #: infrastructure/activation.php:62
 msgid "Court 1"
-msgstr "Gericht 1"
+msgstr "Bahn 1"
 
 #: infrastructure/activation.php:63
 msgid "Main court"
-msgstr "Hauptgericht"
+msgstr "Hauptplatz"
 
 #: infrastructure/public/routes.php:38
 msgid "Booking"
@@ -171,7 +171,7 @@ msgstr "Armaturenbrett"
 msgid "Activity Calendar"
 msgstr "Aktivitätskalender"
 
-#: presentation/admin/admin.php:41
+#: presentation/admin/admin.php:41 presentation/admin/pages/dashboard.php:75
 msgid "New Reservation"
 msgstr "Neue Reservierung"
 
@@ -200,23 +200,26 @@ msgstr "Platzverfügbarkeit"
 msgid "Availability"
 msgstr "Verfügbarkeit"
 
-#: presentation/admin/admin.php:79
+#: presentation/admin/admin.php:79 presentation/admin/pages/dashboard.php:27
 msgid "Manage Courts"
-msgstr "Gerichte verwalten"
+msgstr "Bahnen verwalten"
 
-#: presentation/admin/admin.php:80 presentation/admin/views/courts.view.php:2
+#: presentation/admin/admin.php:80 presentation/admin/pages/dashboard.php:25
+#: presentation/admin/views/courts.view.php:2
 msgid "Courts"
-msgstr "Gerichte"
+msgstr "Bahnen"
 
-#: presentation/admin/admin.php:89
+#: presentation/admin/admin.php:89 presentation/admin/pages/dashboard.php:47
 msgid "Manage Users"
 msgstr "Benutzer verwalten"
 
-#: presentation/admin/admin.php:90 presentation/admin/views/users.view.php:2
+#: presentation/admin/admin.php:90 presentation/admin/pages/dashboard.php:45
+#: presentation/admin/views/users.view.php:2
 msgid "Users"
 msgstr "Benutzer"
 
 #: presentation/admin/admin.php:98 presentation/admin/admin.php:99
+#: presentation/admin/pages/dashboard.php:35
 #: presentation/admin/views/user-types.view.php:2
 msgid "User Types"
 msgstr "Benutzertypen"
@@ -239,13 +242,43 @@ msgstr "Grund für die Sperrung dieses Slots:"
 msgid "Remove this blocked slot?"
 msgstr "Diesen blockierten Steckplatz entfernen?"
 
+#: presentation/admin/pages/dashboard.php:19
+#, fuzzy
+msgid "Courtly Dashboard"
+msgstr "Armaturenbrett"
+
+#: presentation/admin/pages/dashboard.php:37
+#, fuzzy
+msgid "Manage User Types"
+msgstr "Benutzer verwalten"
+
+#: presentation/admin/pages/dashboard.php:55
+#, fuzzy
+msgid "Users by Type"
+msgstr "Benutzertyp"
+
+#: presentation/admin/pages/dashboard.php:72
+#, fuzzy
+msgid "Quick Actions"
+msgstr "Aktion"
+
+#: presentation/admin/pages/dashboard.php:78
+#, fuzzy
+msgid "View Calendar"
+msgstr "Kalender"
+
+#: presentation/admin/pages/dashboard.php:81
+#, fuzzy
+msgid "Set Availability"
+msgstr "Verfügbarkeit"
+
 #: presentation/admin/views/availability.view.php:2
 msgid "Manage Court Availability"
-msgstr "Gerichtsverfügbarkeit verwalten"
+msgstr "Platzverfügbarkeit verwalten"
 
 #: presentation/admin/views/availability.view.php:6
 msgid "Select Court:"
-msgstr "Gericht auswählen:"
+msgstr "Bahn auswählen:"
 
 #: presentation/admin/views/availability.view.php:21
 msgid "From:"
@@ -261,11 +294,11 @@ msgstr "Speichern"
 
 #: presentation/admin/views/courts.view.php:5
 msgid "Add New Court"
-msgstr "Neues Gericht hinzufügen"
+msgstr "Neues Bahn hinzufügen"
 
 #: presentation/admin/views/courts.view.php:8
 msgid "Court Number"
-msgstr "Gerichtsnummer"
+msgstr "Platznummer"
 
 #: presentation/admin/views/courts.view.php:12
 #: presentation/admin/views/courts.view.php:33
@@ -279,11 +312,11 @@ msgstr "Beschreibung"
 
 #: presentation/admin/views/courts.view.php:21
 msgid "Add Court"
-msgstr "Gericht hinzufügen"
+msgstr "Bahn hinzufügen"
 
 #: presentation/admin/views/courts.view.php:27
 msgid "Existing Courts"
-msgstr "Bestehende Gerichte"
+msgstr "Bestehende Bahnen"
 
 #: presentation/admin/views/courts.view.php:31
 #: presentation/admin/views/reservation-detail.view.php:5
@@ -317,7 +350,7 @@ msgstr "Benutzer"
 #: presentation/admin/views/reservation-list.view.php:42
 #: presentation/public/views/reservation-detail.view.php:10
 msgid "Court"
-msgstr "Gericht"
+msgstr "Bahn"
 
 #: presentation/admin/views/reservation-detail.view.php:8
 #: presentation/admin/views/reservation-history.view.php:10

@@ -20,6 +20,9 @@ wp-content/debug.log
 # Ignore Uploads
 /wp-content/uploads/
 
+# Ignore Language (PO) backup files
+*.po~
+
 # Ignore Everything in Docker Except Necessary Config
 docker/*
 !docker/docker-compose.yml  # Keep docker-compose file

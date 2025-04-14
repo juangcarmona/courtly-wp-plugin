@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
-"POT-Creation-Date: 2025-04-13T05:57:04+00:00\n"
+"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
 "PO-Revision-Date: 2025-04-13 08:12+0200\n"
 "Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -31,8 +31,8 @@ msgstr "https://github.com/juangcarmona/courtly-wp-plugin"
 msgid ""
 "A modular plugin for managing padel court reservations using DDD principles."
 msgstr ""
-"Et modulært plugin til håndtering af padelbanereservationer ved hjælp af "
-"DDD-principper."
+"Et modulært plugin til håndtering af padelbanereservationer ved hjælp af DDD-"
+"principper."
 
 #. Author of the plugin
 #: courtly.php
@@ -50,7 +50,7 @@ msgstr "Tilgængelighed opdateret."
 
 #: application/controllers/AdminCourtController.php:25
 msgid "Court added successfully."
-msgstr "Retten tilføjet med succes."
+msgstr "Bane tilføjet med succes."
 
 #: application/controllers/AdminReservationDetailController.php:8
 #: application/controllers/AdminReservationDetailController.php:35
@@ -89,7 +89,7 @@ msgstr "Ukendt"
 #: application/controllers/AdminReservationHistoryController.php:44
 #: application/controllers/AdminReservationListController.php:51
 msgid "Court #%d"
-msgstr "Retten #%d"
+msgstr "Bane #%d"
 
 #: application/controllers/AdminUserController.php:19
 msgid "User types updated."
@@ -138,11 +138,11 @@ msgstr "Medlem"
 
 #: infrastructure/activation.php:62
 msgid "Court 1"
-msgstr "Retten 1"
+msgstr "Bane 1"
 
 #: infrastructure/activation.php:63
 msgid "Main court"
-msgstr "Hovedret"
+msgstr "Hovedbane"
 
 #: infrastructure/public/routes.php:38
 msgid "Booking"
@@ -169,7 +169,7 @@ msgstr "Dashboard"
 msgid "Activity Calendar"
 msgstr "Aktivitetskalender"
 
-#: presentation/admin/admin.php:41
+#: presentation/admin/admin.php:41 presentation/admin/pages/dashboard.php:75
 msgid "New Reservation"
 msgstr "Ny reservation"
 
@@ -192,29 +192,32 @@ msgstr "Reservationshistorie"
 
 #: presentation/admin/admin.php:69
 msgid "Court Availability"
-msgstr "Rettens tilgængelighed"
+msgstr "Banens tilgængelighed"
 
 #: presentation/admin/admin.php:70
 msgid "Availability"
 msgstr "Tilgængelighed"
 
-#: presentation/admin/admin.php:79
+#: presentation/admin/admin.php:79 presentation/admin/pages/dashboard.php:27
 msgid "Manage Courts"
-msgstr "Administrer domstole"
+msgstr "Administrer Baner"
 
-#: presentation/admin/admin.php:80 presentation/admin/views/courts.view.php:2
+#: presentation/admin/admin.php:80 presentation/admin/pages/dashboard.php:25
+#: presentation/admin/views/courts.view.php:2
 msgid "Courts"
-msgstr "Domstole"
+msgstr "Baner"
 
-#: presentation/admin/admin.php:89
+#: presentation/admin/admin.php:89 presentation/admin/pages/dashboard.php:47
 msgid "Manage Users"
 msgstr "Administrer brugere"
 
-#: presentation/admin/admin.php:90 presentation/admin/views/users.view.php:2
+#: presentation/admin/admin.php:90 presentation/admin/pages/dashboard.php:45
+#: presentation/admin/views/users.view.php:2
 msgid "Users"
 msgstr "Brugere"
 
 #: presentation/admin/admin.php:98 presentation/admin/admin.php:99
+#: presentation/admin/pages/dashboard.php:35
 #: presentation/admin/views/user-types.view.php:2
 msgid "User Types"
 msgstr "Brugertyper"
@@ -237,13 +240,43 @@ msgstr "Årsag til at blokere denne plads:"
 msgid "Remove this blocked slot?"
 msgstr "Vil du fjerne dette blokerede slot?"
 
+#: presentation/admin/pages/dashboard.php:19
+#, fuzzy
+msgid "Courtly Dashboard"
+msgstr "Dashboard"
+
+#: presentation/admin/pages/dashboard.php:37
+#, fuzzy
+msgid "Manage User Types"
+msgstr "Administrer brugere"
+
+#: presentation/admin/pages/dashboard.php:55
+#, fuzzy
+msgid "Users by Type"
+msgstr "Brugertype"
+
+#: presentation/admin/pages/dashboard.php:72
+#, fuzzy
+msgid "Quick Actions"
+msgstr "Handling"
+
+#: presentation/admin/pages/dashboard.php:78
+#, fuzzy
+msgid "View Calendar"
+msgstr "Kalender"
+
+#: presentation/admin/pages/dashboard.php:81
+#, fuzzy
+msgid "Set Availability"
+msgstr "Tilgængelighed"
+
 #: presentation/admin/views/availability.view.php:2
 msgid "Manage Court Availability"
-msgstr "Administrer rettens tilgængelighed"
+msgstr "Administrer Banens tilgængelighed"
 
 #: presentation/admin/views/availability.view.php:6
 msgid "Select Court:"
-msgstr "Vælg domstol:"
+msgstr "Vælg bane:"
 
 #: presentation/admin/views/availability.view.php:21
 msgid "From:"
@@ -259,11 +292,11 @@ msgstr "Spare"
 
 #: presentation/admin/views/courts.view.php:5
 msgid "Add New Court"
-msgstr "Tilføj ny domstol"
+msgstr "Tilføj ny bane"
 
 #: presentation/admin/views/courts.view.php:8
 msgid "Court Number"
-msgstr "Rettens nummer"
+msgstr "Banens nummer"
 
 #: presentation/admin/views/courts.view.php:12
 #: presentation/admin/views/courts.view.php:33
@@ -277,11 +310,11 @@ msgstr "Beskrivelse"
 
 #: presentation/admin/views/courts.view.php:21
 msgid "Add Court"
-msgstr "Tilføj domstol"
+msgstr "Tilføj bane"
 
 #: presentation/admin/views/courts.view.php:27
 msgid "Existing Courts"
-msgstr "Eksisterende domstole"
+msgstr "Eksisterende Baner"
 
 #: presentation/admin/views/courts.view.php:31
 #: presentation/admin/views/reservation-detail.view.php:5
@@ -315,7 +348,7 @@ msgstr "Bruger"
 #: presentation/admin/views/reservation-list.view.php:42
 #: presentation/public/views/reservation-detail.view.php:10
 msgid "Court"
-msgstr "Ret"
+msgstr "Bane"
 
 #: presentation/admin/views/reservation-detail.view.php:8
 #: presentation/admin/views/reservation-history.view.php:10
@@ -389,8 +422,7 @@ msgstr "Opret brugerreservation"
 #: presentation/admin/views/reservation-new.view.php:3
 msgid "Select a user and then a time slot below to create a reservation."
 msgstr ""
-"Vælg en bruger og derefter et tidsrum nedenfor for at oprette en "
-"reservation."
+"Vælg en bruger og derefter et tidsrum nedenfor for at oprette en reservation."
 
 #: presentation/admin/views/reservation-new.view.php:10
 msgid "Select User:"
@@ -471,7 +503,7 @@ msgstr "Gem ændringer"
 
 #: presentation/public/shortcode.php:47
 msgid "Please %1$slog in%2$s to book a court."
-msgstr "%1$slog ind%2$s for at booke en domstol."
+msgstr "%1$slog ind%2$s for at booke en bane."
 
 #: presentation/public/shortcode.php:99
 msgid "Reservation ID not provided."
@@ -488,6 +520,6 @@ msgid ""
 "with ❤️ by <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
 "Carmona</a> 🌍 Madrid, Spain"
 msgstr ""
-"🥎 <strong>%1$s</strong> — Din padel-banereservationsassistent. 🥎</br> Lavet "
-"med ❤️ af <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
+"🥎 <strong>%1$s</strong> — Din padel-banereservationsassistent. 🥎</br> "
+"Lavet med ❤️ af <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
 "Carmona</a> 🌍 Madrid, Spanien"

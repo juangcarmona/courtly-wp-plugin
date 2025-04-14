@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
-"POT-Creation-Date: 2025-04-13T05:57:04+00:00\n"
+"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
 "PO-Revision-Date: 2025-04-13 08:11+0200\n"
 "Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -49,7 +49,7 @@ msgstr "Disponibilità aggiornata."
 
 #: application/controllers/AdminCourtController.php:25
 msgid "Court added successfully."
-msgstr "Corte aggiunta correttamente."
+msgstr "Campo aggiunta correttamente."
 
 #: application/controllers/AdminReservationDetailController.php:8
 #: application/controllers/AdminReservationDetailController.php:35
@@ -88,7 +88,7 @@ msgstr "Sconosciuto"
 #: application/controllers/AdminReservationHistoryController.php:44
 #: application/controllers/AdminReservationListController.php:51
 msgid "Court #%d"
-msgstr "Tribunale n.%d"
+msgstr "Campo n.%d"
 
 #: application/controllers/AdminUserController.php:19
 msgid "User types updated."
@@ -139,11 +139,11 @@ msgstr "Membro"
 
 #: infrastructure/activation.php:62
 msgid "Court 1"
-msgstr "Corte 1"
+msgstr "Campo 1"
 
 #: infrastructure/activation.php:63
 msgid "Main court"
-msgstr "Tribunale principale"
+msgstr "Campo principale"
 
 #: infrastructure/public/routes.php:38
 msgid "Booking"
@@ -170,7 +170,7 @@ msgstr "Pannello di controllo"
 msgid "Activity Calendar"
 msgstr "Calendario delle attività"
 
-#: presentation/admin/admin.php:41
+#: presentation/admin/admin.php:41 presentation/admin/pages/dashboard.php:75
 msgid "New Reservation"
 msgstr "Nuova prenotazione"
 
@@ -193,29 +193,32 @@ msgstr "Cronologia delle prenotazioni"
 
 #: presentation/admin/admin.php:69
 msgid "Court Availability"
-msgstr "Disponibilità del tribunale"
+msgstr "Disponibilità del campo"
 
 #: presentation/admin/admin.php:70
 msgid "Availability"
 msgstr "Disponibilità"
 
-#: presentation/admin/admin.php:79
+#: presentation/admin/admin.php:79 presentation/admin/pages/dashboard.php:27
 msgid "Manage Courts"
 msgstr "Gestire i campi"
 
-#: presentation/admin/admin.php:80 presentation/admin/views/courts.view.php:2
+#: presentation/admin/admin.php:80 presentation/admin/pages/dashboard.php:25
+#: presentation/admin/views/courts.view.php:2
 msgid "Courts"
 msgstr "Campi"
 
-#: presentation/admin/admin.php:89
+#: presentation/admin/admin.php:89 presentation/admin/pages/dashboard.php:47
 msgid "Manage Users"
 msgstr "Gestisci utenti"
 
-#: presentation/admin/admin.php:90 presentation/admin/views/users.view.php:2
+#: presentation/admin/admin.php:90 presentation/admin/pages/dashboard.php:45
+#: presentation/admin/views/users.view.php:2
 msgid "Users"
 msgstr "Utenti"
 
 #: presentation/admin/admin.php:98 presentation/admin/admin.php:99
+#: presentation/admin/pages/dashboard.php:35
 #: presentation/admin/views/user-types.view.php:2
 msgid "User Types"
 msgstr "Tipi di utente"
@@ -238,13 +241,43 @@ msgstr "Motivo del blocco di questo slot:"
 msgid "Remove this blocked slot?"
 msgstr "Vuoi rimuovere questo slot bloccato?"
 
+#: presentation/admin/pages/dashboard.php:19
+#, fuzzy
+msgid "Courtly Dashboard"
+msgstr "Pannello di controllo"
+
+#: presentation/admin/pages/dashboard.php:37
+#, fuzzy
+msgid "Manage User Types"
+msgstr "Gestisci utenti"
+
+#: presentation/admin/pages/dashboard.php:55
+#, fuzzy
+msgid "Users by Type"
+msgstr "Tipo di utente"
+
+#: presentation/admin/pages/dashboard.php:72
+#, fuzzy
+msgid "Quick Actions"
+msgstr "Azione"
+
+#: presentation/admin/pages/dashboard.php:78
+#, fuzzy
+msgid "View Calendar"
+msgstr "Calendario"
+
+#: presentation/admin/pages/dashboard.php:81
+#, fuzzy
+msgid "Set Availability"
+msgstr "Disponibilità"
+
 #: presentation/admin/views/availability.view.php:2
 msgid "Manage Court Availability"
-msgstr "Gestire la disponibilità del tribunale"
+msgstr "Gestire la disponibilità del campo"
 
 #: presentation/admin/views/availability.view.php:6
 msgid "Select Court:"
-msgstr "Seleziona Corte:"
+msgstr "Seleziona Campo:"
 
 #: presentation/admin/views/availability.view.php:21
 msgid "From:"
@@ -260,11 +293,11 @@ msgstr "Salva"
 
 #: presentation/admin/views/courts.view.php:5
 msgid "Add New Court"
-msgstr "Aggiungi nuovo tribunale"
+msgstr "Aggiungi nuovo campo"
 
 #: presentation/admin/views/courts.view.php:8
 msgid "Court Number"
-msgstr "Numero del tribunale"
+msgstr "Numero del campo"
 
 #: presentation/admin/views/courts.view.php:12
 #: presentation/admin/views/courts.view.php:33
@@ -278,7 +311,7 @@ msgstr "Descrizione"
 
 #: presentation/admin/views/courts.view.php:21
 msgid "Add Court"
-msgstr "Aggiungi tribunale"
+msgstr "Aggiungi campo"
 
 #: presentation/admin/views/courts.view.php:27
 msgid "Existing Courts"
@@ -316,7 +349,7 @@ msgstr "Utente"
 #: presentation/admin/views/reservation-list.view.php:42
 #: presentation/public/views/reservation-detail.view.php:10
 msgid "Court"
-msgstr "Tribunale"
+msgstr "Campo"
 
 #: presentation/admin/views/reservation-detail.view.php:8
 #: presentation/admin/views/reservation-history.view.php:10
@@ -489,6 +522,6 @@ msgid ""
 "with ❤️ by <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
 "Carmona</a> 🌍 Madrid, Spain"
 msgstr ""
-"🥎 <strong>%1$s</strong> — Il tuo assistente per la prenotazione dei campi da"
-" padel. 🥎</br> Realizzato con ❤️ da <a href=\"%2$s\" target=\"_blank\" "
+"🥎 <strong>%1$s</strong> — Il tuo assistente per la prenotazione dei campi "
+"da padel. 🥎</br> Realizzato con ❤️ da <a href=\"%2$s\" target=\"_blank\" "
 "rel=\"noopener\">Juan G Carmona</a> 🌍 Madrid, Spagna"

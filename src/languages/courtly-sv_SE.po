@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
-"POT-Creation-Date: 2025-04-13T05:57:04+00:00\n"
+"POT-Creation-Date: 2025-04-14T06:45:18+00:00\n"
 "PO-Revision-Date: 2025-04-13 08:12+0200\n"
 "Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -48,7 +48,7 @@ msgstr "Tillgänglighet uppdaterad."
 
 #: application/controllers/AdminCourtController.php:25
 msgid "Court added successfully."
-msgstr "Domstol tillagd framgångsrikt."
+msgstr "Bana tillagd framgångsrikt."
 
 #: application/controllers/AdminReservationDetailController.php:8
 #: application/controllers/AdminReservationDetailController.php:35
@@ -87,7 +87,7 @@ msgstr "Okänd"
 #: application/controllers/AdminReservationHistoryController.php:44
 #: application/controllers/AdminReservationListController.php:51
 msgid "Court #%d"
-msgstr "Domstol #%d"
+msgstr "Bana #%d"
 
 #: application/controllers/AdminUserController.php:19
 msgid "User types updated."
@@ -136,11 +136,11 @@ msgstr "Medlem"
 
 #: infrastructure/activation.php:62
 msgid "Court 1"
-msgstr "Domstol 1"
+msgstr "Bana 1"
 
 #: infrastructure/activation.php:63
 msgid "Main court"
-msgstr "Huvudrätt"
+msgstr "Huvudbana"
 
 #: infrastructure/public/routes.php:38
 msgid "Booking"
@@ -167,7 +167,7 @@ msgstr "Instrumentbräda"
 msgid "Activity Calendar"
 msgstr "Aktivitetskalender"
 
-#: presentation/admin/admin.php:41
+#: presentation/admin/admin.php:41 presentation/admin/pages/dashboard.php:75
 msgid "New Reservation"
 msgstr "Ny bokning"
 
@@ -190,29 +190,32 @@ msgstr "Bokningshistorik"
 
 #: presentation/admin/admin.php:69
 msgid "Court Availability"
-msgstr "Domstols tillgänglighet"
+msgstr "Banas tillgänglighet"
 
 #: presentation/admin/admin.php:70
 msgid "Availability"
 msgstr "Tillgänglighet"
 
-#: presentation/admin/admin.php:79
+#: presentation/admin/admin.php:79 presentation/admin/pages/dashboard.php:27
 msgid "Manage Courts"
-msgstr "Hantera domstolar"
+msgstr "Hantera banor"
 
-#: presentation/admin/admin.php:80 presentation/admin/views/courts.view.php:2
+#: presentation/admin/admin.php:80 presentation/admin/pages/dashboard.php:25
+#: presentation/admin/views/courts.view.php:2
 msgid "Courts"
-msgstr "Domstolar"
+msgstr "Banaar"
 
-#: presentation/admin/admin.php:89
+#: presentation/admin/admin.php:89 presentation/admin/pages/dashboard.php:47
 msgid "Manage Users"
 msgstr "Hantera användare"
 
-#: presentation/admin/admin.php:90 presentation/admin/views/users.view.php:2
+#: presentation/admin/admin.php:90 presentation/admin/pages/dashboard.php:45
+#: presentation/admin/views/users.view.php:2
 msgid "Users"
 msgstr "Användare"
 
 #: presentation/admin/admin.php:98 presentation/admin/admin.php:99
+#: presentation/admin/pages/dashboard.php:35
 #: presentation/admin/views/user-types.view.php:2
 msgid "User Types"
 msgstr "Användartyper"
@@ -235,13 +238,44 @@ msgstr "Anledning till att blockera denna plats:"
 msgid "Remove this blocked slot?"
 msgstr "Ta bort denna blockerade plats?"
 
+#: presentation/admin/pages/dashboard.php:19
+#, fuzzy
+msgid "Courtly Dashboard"
+msgstr "Instrumentbräda"
+
+#: presentation/admin/pages/dashboard.php:37
+#, fuzzy
+msgid "Manage User Types"
+msgstr "Hantera användare"
+
+#: presentation/admin/pages/dashboard.php:55
+#, fuzzy
+msgid "Users by Type"
+msgstr "Användartyp"
+
+#: presentation/admin/pages/dashboard.php:72
+#, fuzzy
+msgid "Quick Actions"
+msgstr "Handling"
+
+#: presentation/admin/pages/dashboard.php:78
+#, fuzzy
+msgid "View Calendar"
+msgstr "Kalender"
+
+#: presentation/admin/pages/dashboard.php:81
+#, fuzzy
+msgid "Set Availability"
+msgstr "Tillgänglighet"
+
 #: presentation/admin/views/availability.view.php:2
 msgid "Manage Court Availability"
 msgstr "Hantera domstolstillgänglighet"
 
 #: presentation/admin/views/availability.view.php:6
+#, fuzzy
 msgid "Select Court:"
-msgstr "Välj domstol:"
+msgstr "Välj användare:"
 
 #: presentation/admin/views/availability.view.php:21
 msgid "From:"
@@ -261,7 +295,7 @@ msgstr "Lägg till ny domstol"
 
 #: presentation/admin/views/courts.view.php:8
 msgid "Court Number"
-msgstr "Domstolsnummer"
+msgstr "Banasnummer"
 
 #: presentation/admin/views/courts.view.php:12
 #: presentation/admin/views/courts.view.php:33
@@ -275,7 +309,7 @@ msgstr "Beskrivning"
 
 #: presentation/admin/views/courts.view.php:21
 msgid "Add Court"
-msgstr "Lägg till domstol"
+msgstr "Lägg till bana"
 
 #: presentation/admin/views/courts.view.php:27
 msgid "Existing Courts"
@@ -313,7 +347,7 @@ msgstr "Användare"
 #: presentation/admin/views/reservation-list.view.php:42
 #: presentation/public/views/reservation-detail.view.php:10
 msgid "Court"
-msgstr "Domstol"
+msgstr "Bana"
 
 #: presentation/admin/views/reservation-detail.view.php:8
 #: presentation/admin/views/reservation-history.view.php:10
@@ -486,5 +520,8 @@ msgid ""
 "Carmona</a> 🌍 Madrid, Spain"
 msgstr ""
 "🥎 <strong>%1$s</strong> — Din bokningsassistent på padelbanan. 🥎</br> "
-"Tillverkad med ❤️ av <a href=\"%2$s\" target=\"_blank\" "
-"rel=\"noopener\">Juan G Carmona</a> 🌍 Madrid, Spanien"
+"Tillverkad med ❤️ av <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan "
+"G Carmona</a> 🌍 Madrid, Spanien"
+
+#~ msgid "Välj bana:"
+#~ msgstr "Välj domstol:"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
-"POT-Creation-Date: 2025-04-13T05:57:04+00:00\n"
+"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
 "PO-Revision-Date: 2025-04-13 08:12+0200\n"
 "Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -50,7 +50,7 @@ msgstr "Saatavuus päivitetty."
 
 #: application/controllers/AdminCourtController.php:25
 msgid "Court added successfully."
-msgstr "Tuomioistuin lisätty onnistuneesti."
+msgstr "Kenttä lisätty onnistuneesti."
 
 #: application/controllers/AdminReservationDetailController.php:8
 #: application/controllers/AdminReservationDetailController.php:35
@@ -89,7 +89,7 @@ msgstr "Tuntematon"
 #: application/controllers/AdminReservationHistoryController.php:44
 #: application/controllers/AdminReservationListController.php:51
 msgid "Court #%d"
-msgstr "Tuomioistuin #%d"
+msgstr "Kenttä #%d"
 
 #: application/controllers/AdminUserController.php:19
 msgid "User types updated."
@@ -138,11 +138,11 @@ msgstr "Jäsen"
 
 #: infrastructure/activation.php:62
 msgid "Court 1"
-msgstr "Tuomioistuin 1"
+msgstr "Kenttä 1"
 
 #: infrastructure/activation.php:63
 msgid "Main court"
-msgstr "Päätuomioistuin"
+msgstr "Pääkenttä"
 
 #: infrastructure/public/routes.php:38
 msgid "Booking"
@@ -169,7 +169,7 @@ msgstr "Kojelauta"
 msgid "Activity Calendar"
 msgstr "Toimintakalenteri"
 
-#: presentation/admin/admin.php:41
+#: presentation/admin/admin.php:41 presentation/admin/pages/dashboard.php:75
 msgid "New Reservation"
 msgstr "Uusi varaus"
 
@@ -198,23 +198,26 @@ msgstr "Tuomioistuimen saatavuus"
 msgid "Availability"
 msgstr "Saatavuus"
 
-#: presentation/admin/admin.php:79
+#: presentation/admin/admin.php:79 presentation/admin/pages/dashboard.php:27
 msgid "Manage Courts"
-msgstr "Hallitse tuomioistuimia"
+msgstr "Hallitse kenttiä"
 
-#: presentation/admin/admin.php:80 presentation/admin/views/courts.view.php:2
+#: presentation/admin/admin.php:80 presentation/admin/pages/dashboard.php:25
+#: presentation/admin/views/courts.view.php:2
 msgid "Courts"
-msgstr "Tuomioistuimet"
+msgstr "Kentät"
 
-#: presentation/admin/admin.php:89
+#: presentation/admin/admin.php:89 presentation/admin/pages/dashboard.php:47
 msgid "Manage Users"
 msgstr "Hallinnoi käyttäjiä"
 
-#: presentation/admin/admin.php:90 presentation/admin/views/users.view.php:2
+#: presentation/admin/admin.php:90 presentation/admin/pages/dashboard.php:45
+#: presentation/admin/views/users.view.php:2
 msgid "Users"
 msgstr "Käyttäjät"
 
 #: presentation/admin/admin.php:98 presentation/admin/admin.php:99
+#: presentation/admin/pages/dashboard.php:35
 #: presentation/admin/views/user-types.view.php:2
 msgid "User Types"
 msgstr "Käyttäjätyypit"
@@ -237,13 +240,43 @@ msgstr "Syy tämän paikan estämiseen:"
 msgid "Remove this blocked slot?"
 msgstr "Poistetaanko tämä estetty paikka?"
 
+#: presentation/admin/pages/dashboard.php:19
+#, fuzzy
+msgid "Courtly Dashboard"
+msgstr "Kojelauta"
+
+#: presentation/admin/pages/dashboard.php:37
+#, fuzzy
+msgid "Manage User Types"
+msgstr "Hallinnoi käyttäjiä"
+
+#: presentation/admin/pages/dashboard.php:55
+#, fuzzy
+msgid "Users by Type"
+msgstr "Käyttäjätyyppi"
+
+#: presentation/admin/pages/dashboard.php:72
+#, fuzzy
+msgid "Quick Actions"
+msgstr "Toiminta"
+
+#: presentation/admin/pages/dashboard.php:78
+#, fuzzy
+msgid "View Calendar"
+msgstr "Kalenteri"
+
+#: presentation/admin/pages/dashboard.php:81
+#, fuzzy
+msgid "Set Availability"
+msgstr "Saatavuus"
+
 #: presentation/admin/views/availability.view.php:2
 msgid "Manage Court Availability"
-msgstr "Hallitse tuomioistuinten saatavuutta"
+msgstr "Hallitse kenttien saatavuutta"
 
 #: presentation/admin/views/availability.view.php:6
 msgid "Select Court:"
-msgstr "Valitse tuomioistuin:"
+msgstr "Valitse kenttä:"
 
 #: presentation/admin/views/availability.view.php:21
 msgid "From:"
@@ -259,11 +292,11 @@ msgstr "Tallentaa"
 
 #: presentation/admin/views/courts.view.php:5
 msgid "Add New Court"
-msgstr "Lisää uusi tuomioistuin"
+msgstr "Lisää uusi kenttä"
 
 #: presentation/admin/views/courts.view.php:8
 msgid "Court Number"
-msgstr "Tuomioistuimen numero"
+msgstr "Kentän numero"
 
 #: presentation/admin/views/courts.view.php:12
 #: presentation/admin/views/courts.view.php:33
@@ -277,11 +310,11 @@ msgstr "Kuvaus"
 
 #: presentation/admin/views/courts.view.php:21
 msgid "Add Court"
-msgstr "Lisää tuomioistuin"
+msgstr "Lisää kenttä"
 
 #: presentation/admin/views/courts.view.php:27
 msgid "Existing Courts"
-msgstr "Nykyiset tuomioistuimet"
+msgstr "Nykyiset kentät"
 
 #: presentation/admin/views/courts.view.php:31
 #: presentation/admin/views/reservation-detail.view.php:5
@@ -315,7 +348,7 @@ msgstr "Käyttäjä"
 #: presentation/admin/views/reservation-list.view.php:42
 #: presentation/public/views/reservation-detail.view.php:10
 msgid "Court"
-msgstr "Tuomioistuin"
+msgstr "Kenttä"
 
 #: presentation/admin/views/reservation-detail.view.php:8
 #: presentation/admin/views/reservation-history.view.php:10
@@ -469,7 +502,7 @@ msgstr "Tallenna muutokset"
 
 #: presentation/public/shortcode.php:47
 msgid "Please %1$slog in%2$s to book a court."
-msgstr "%1$skirjaudu sisään%2$s varataksesi oikeuden."
+msgstr "%1$skirjaudu sisään%2$s varataksesi kentän."
 
 #: presentation/public/shortcode.php:99
 msgid "Reservation ID not provided."
@@ -486,6 +519,6 @@ msgid ""
 "with ❤️ by <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
 "Carmona</a> 🌍 Madrid, Spain"
 msgstr ""
-"🥎 <strong>%1$s</strong> – Padel-kenttävarausavustajasi. 🥎</br> Tekijä: ❤️ <a"
-" href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G Carmona</a> 🌍 "
+"🥎 <strong>%1$s</strong> – Padel-kenttävarausavustajasi. 🥎</br> Tekijä: ❤️ "
+"<a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G Carmona</a> 🌍 "
 "Madrid, Espanja"
