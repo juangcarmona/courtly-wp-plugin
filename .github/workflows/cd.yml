@@ -22,7 +22,12 @@ jobs:
         run: |
           version=$(grep -oP 'Version:\s*\K[\d.]+' src/courtly.php)
           echo "::set-output name=version::$version"
-
+          
+      - name: Configure Git identity
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          
       - name: Create tag
         id: create_tag
         run: |
