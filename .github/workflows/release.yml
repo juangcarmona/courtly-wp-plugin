@@ -21,30 +21,61 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Check if tag exists
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install -y gettext
+
+      - name: Compile .po to .mo files
+        working-directory: src/languages
         run: |
-          if git rev-parse "v${{ github.event.inputs.version }}" >/dev/null 2>&1; then
-            echo "Tag v${{ github.event.inputs.version }} already exists"
+          for file in *.po; do
+            msgfmt "$file" -o "${file%.po}.mo"
+          done
+
+      - name: Validate .mo files
+        working-directory: src/languages
+        run: |
+          po_count=$(ls -1 *.po | wc -l)
+          mo_count=$(ls -1 *.mo | wc -l)
+          if [ "$po_count" -ne "$mo_count" ]; then
+            echo "Mismatch between .po and .mo files. Failing."
             exit 1
           fi
 
-      - name: Generate courtly.zip
-        run: zip -r courtly.zip src
+      - name: Find available tag
+        id: find_tag
+        run: |
+          base="v${{ github.event.inputs.version }}"
+          tag="$base"
+          counter=2
 
-      - name: Extract release notes
-        id: changelog
+          while git rev-parse "$tag" >/dev/null 2>&1; do
+            tag="${base}v${counter}"
+            counter=$((counter + 1))
+          done
+
+          echo "Using tag: $tag"
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+
+      - name: Generate courtly.zip with plugin root
+        run: |
+          mkdir -p build/courtly
+          cp -r src/* build/courtly/
+          cd build
+          zip -r courtly.zip courtly
+
+      - name: Prepare release notes
         run: |
           if [ -n "${{ github.event.inputs.notes }}" ]; then
             echo "${{ github.event.inputs.notes }}" > notes.md
           else
-            sed -n "/## \[${{ github.event.inputs.version }}\]/,/^## /p" CHANGELOG.md | sed '$d' > notes.md
+            echo "Manual release for version ${{ github.event.inputs.version }}" > notes.md
           fi
 
       - name: Create GitHub release using gh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create v${{ github.event.inputs.version }} \
-            courtly.zip \
-            --title "Release v${{ github.event.inputs.version }}" \
+          gh release create ${{ steps.find_tag.outputs.tag }} \
+            build/courtly.zip \
+            --title "Release ${{ steps.find_tag.outputs.tag }}" \
             --notes-file notes.md
