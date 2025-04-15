@@ -28,12 +28,21 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           
-      - name: Create tag
+      - name: Create tag (if not exists)
         id: create_tag
         run: |
           short_hash=$(git rev-parse --short HEAD)
-          git tag -a "v${{ steps.get_version.outputs.version }}-$short_hash" -m "Release v${{ steps.get_version.outputs.version }}"
-          git push origin "v${{ steps.get_version.outputs.version }}-$short_hash"
+          version=${{ steps.get_version.outputs.version }}
+          tag="v${version}-${short_hash}"
+      
+          if git rev-parse "$tag" >/dev/null 2>&1; then
+            echo "Tag $tag already exists. Skipping creation."
+          else
+            git tag -a "$tag" -m "Release $tag"
+            git push origin "$tag"
+          fi
+      
+          echo "tag=$tag" >> $GITHUB_OUTPUT
 
       - name: Set up Ruby (for changelog generator)
         uses: ruby/setup-ruby@v1
