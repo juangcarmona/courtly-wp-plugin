@@ -63,7 +63,7 @@ jobs:
           zip -r courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip src
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip
           path: courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip
