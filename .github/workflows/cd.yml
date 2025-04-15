@@ -1,85 +1,59 @@
-name: Manual Release
+name: Continuous Deployment
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version number (e.g., 0.0.1)'
-        required: true
-      notes:
-        description: 'Optional release notes'
-        required: false
 
 permissions:
   contents: write
 
 jobs:
-  release:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fail if GitHub release already exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if gh release view "v${{ github.event.inputs.version }}" >/dev/null 2>&1; then
-            echo "❌ Release v${{ github.event.inputs.version }} already exists. Please delete it manually to re-release."
-            exit 1
-          fi
+      - name: Get short commit hash
+        id: get_hash
+        run: echo "short_hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Install gettext
-        run: sudo apt-get update && sudo apt-get install -y gettext
-
-      - name: Compile .po to .mo files
-        working-directory: src/languages
+      - name: Read version from courtly.php
+        id: get_version
         run: |
-          for file in *.po; do
-            msgfmt "$file" -o "${file%.po}.mo"
-          done
-
-      - name: Validate .mo files
-        working-directory: src/languages
+          version=$(grep -oP 'Version:\s*\K[\d.]+' src/courtly.php)
+          echo "version=$version" >> $GITHUB_OUTPUT
+          
+      - name: Configure Git identity
         run: |
-          po_count=$(ls -1 *.po | wc -l)
-          mo_count=$(ls -1 *.mo | wc -l)
-          if [ "$po_count" -ne "$mo_count" ]; then
-            echo "Mismatch between .po and .mo files. Failing."
-            exit 1
-          fi
-
-      - name: Generate courtly.zip with plugin root
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          
+      - name: Create tag (if not exists)
+        id: create_tag
         run: |
-          mkdir -p build/courtly
-          cp -r src/* build/courtly/
-          cd build
-          zip -r courtly.zip courtly
-
-      - name: Prepare release notes
-        run: |
-          if [ -n "${{ github.event.inputs.notes }}" ]; then
-            echo "${{ github.event.inputs.notes }}" > notes.md
-          else
-            echo "Manual release for version ${{ github.event.inputs.version }}" > notes.md
-          fi
-
-      - name: Create Git tag (only if it doesn't exist)
-        run: |
-          tag="v${{ github.event.inputs.version }}"
+          short_hash=$(git rev-parse --short HEAD)
+          version=${{ steps.get_version.outputs.version }}
+          tag="v${version}-${short_hash}"
+      
           if git rev-parse "$tag" >/dev/null 2>&1; then
-            echo "✅ Tag $tag already exists. Skipping tag creation."
+            echo "Tag $tag already exists. Skipping creation."
           else
-            git tag "$tag"
+            git tag -a "$tag" -m "Release $tag"
             git push origin "$tag"
           fi
 
-      - name: Create GitHub release using gh
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+
+      - name: Generate courtly.zip artifact
         run: |
-          gh release create v${{ github.event.inputs.version }} \
-            build/courtly.zip \
-            --title "Release v${{ github.event.inputs.version }}" \
-            --notes-file notes.md
+          zip -r courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip src
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
+          path: courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
