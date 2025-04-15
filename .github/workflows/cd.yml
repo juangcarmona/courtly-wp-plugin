@@ -1,53 +1,26 @@
-name: Continuous Deployment
+name: Manual Release
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (e.g., 0.0.1)'
+        required: true
+      notes:
+        description: 'Optional release notes'
+        required: false
 
 permissions:
   contents: write
 
 jobs:
-  deploy:
+  release:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get short commit hash
-        id: get_hash
-        run: echo "short_hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Read version from courtly.php
-        id: get_version
-        run: |
-          version=$(grep -oP 'Version:\s*\K[\d.]+' src/courtly.php)
-          echo "version=$version" >> $GITHUB_OUTPUT
-          
-      - name: Configure Git identity
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          
-      - name: Create tag (if not exists)
-        id: create_tag
-        run: |
-          short_hash=$(git rev-parse --short HEAD)
-          version=${{ steps.get_version.outputs.version }}
-          tag="v${version}-${short_hash}"
-      
-          if git rev-parse "$tag" >/dev/null 2>&1; then
-            echo "Tag $tag already exists. Skipping creation."
-          else
-            git tag -a "$tag" -m "Release $tag"
-            git push origin "$tag"
-          fi
-
-          echo "tag=$tag" >> $GITHUB_OUTPUT
-          
       - name: Install gettext
         run: sudo apt-get update && sudo apt-get install -y gettext
 
@@ -68,15 +41,39 @@ jobs:
             exit 1
           fi
 
-      - name: Build courtly plugin zip (WordPress structure)
+      - name: Check if tag exists
+        run: |
+          tag="v${{ github.event.inputs.version }}"
+          if git rev-parse "$tag" >/dev/null 2>&1; then
+            echo "Tag $tag already exists. Please delete it manually to re-release."
+            exit 1
+          fi
+
+      - name: Generate courtly.zip with plugin root
         run: |
           mkdir -p build/courtly
           cp -r src/* build/courtly/
           cd build
-          zip -r courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip courtly
+          zip -r courtly.zip courtly
 
-      - name: Upload ZIP artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
-          path: build/courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
+      - name: Prepare release notes
+        run: |
+          if [ -n "${{ github.event.inputs.notes }}" ]; then
+            echo "${{ github.event.inputs.notes }}" > notes.md
+          else
+            echo "Manual release for version ${{ github.event.inputs.version }}" > notes.md
+          fi
+
+      - name: Create Git tag
+        run: |
+          git tag "v${{ github.event.inputs.version }}"
+          git push origin "v${{ github.event.inputs.version }}"
+
+      - name: Create GitHub release using gh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create v${{ github.event.inputs.version }} \
+            build/courtly.zip \
+            --title "Release v${{ github.event.inputs.version }}" \
+            --notes-file notes.md
