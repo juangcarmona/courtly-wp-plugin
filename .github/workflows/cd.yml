@@ -21,7 +21,7 @@ jobs:
         id: get_version
         run: |
           version=$(grep -oP 'Version:\s*\K[\d.]+' src/courtly.php)
-          echo "::set-output name=version::$version"
+          echo "version=$version" >> $GITHUB_OUTPUT
           
       - name: Configure Git identity
         run: |
