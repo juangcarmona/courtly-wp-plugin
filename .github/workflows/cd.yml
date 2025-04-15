@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -41,16 +38,15 @@ jobs:
             git tag -a "$tag" -m "Release $tag"
             git push origin "$tag"
           fi
-      
+
           echo "tag=$tag" >> $GITHUB_OUTPUT
 
       - name: Generate courtly.zip artifact
         run: |
-          short_hash=$(git rev-parse --short HEAD)
-          zip -r courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip src
+          zip -r courtly-v${{ steps.get_version.outputs.version }}-${{ github.sha::7 }}.zip src
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip
-          path: courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip
+          name: courtly-v${{ steps.get_version.outputs.version }}-${{ github.sha::7 }}.zip
+          path: courtly-v${{ steps.get_version.outputs.version }}-${{ github.sha::7 }}.zip
