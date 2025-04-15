@@ -48,12 +48,35 @@ jobs:
 
           echo "tag=$tag" >> $GITHUB_OUTPUT
           
-      - name: Generate courtly.zip artifact
-        run: |
-          zip -r courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip src
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install -y gettext
 
-      - name: Upload artifact
+      - name: Compile .po to .mo files
+        working-directory: src/languages
+        run: |
+          for file in *.po; do
+            msgfmt "$file" -o "${file%.po}.mo"
+          done
+
+      - name: Validate .mo files
+        working-directory: src/languages
+        run: |
+          po_count=$(ls -1 *.po | wc -l)
+          mo_count=$(ls -1 *.mo | wc -l)
+          if [ "$po_count" -ne "$mo_count" ]; then
+            echo "Mismatch between .po and .mo files. Failing."
+            exit 1
+          fi
+
+      - name: Build courtly plugin zip (WordPress structure)
+        run: |
+          mkdir -p build/courtly
+          cp -r src/* build/courtly/
+          cd build
+          zip -r courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip courtly
+
+      - name: Upload ZIP artifact
         uses: actions/upload-artifact@v4
         with:
           name: courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
-          path: courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
+          path: build/courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
