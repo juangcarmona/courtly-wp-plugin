@@ -65,11 +65,13 @@ jobs:
             echo "Manual release for version ${{ github.event.inputs.version }}" > notes.md
           fi
 
-      - name: Create Git tag (only if it doesn't exist)
+      - name: Create Git tag (only if it doesn't exist in remote)
         run: |
           tag="v${{ github.event.inputs.version }}"
-          if git rev-parse "$tag" >/dev/null 2>&1; then
-            echo "✅ Tag $tag already exists. Skipping tag creation."
+          git fetch --tags
+      
+          if git ls-remote --tags origin | grep -q "refs/tags/$tag$"; then
+            echo "✅ Remote tag $tag already exists. Skipping tag creation."
           else
             git tag "$tag"
             git push origin "$tag"
