@@ -1,12 +1,18 @@
 # Courtly - Padel Court Booking Plugin
 
-[![CI Status](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/build.yml/badge.svg)
+![CI](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/ci.yml/badge.svg)
+![CD](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/cd.yml/badge.svg)
+![Release](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/release.yml/badge.svg)
 
-Courtly is a modular WordPress plugin for managing **padel court reservations** with an interactive calendar, admin panel, and user-specific rules. It supports **cooperative members** and **external users**, handling bookings, billing, and availability with precision.
+[![Latest Release](https://img.shields.io/github/v/release/juangcarmona/courtly-wp-plugin?label=latest)](https://github.com/juangcarmona/courtly-wp-plugin/releases)
+
+
+
+Courtly is a modular WordPress plugin for managing **padel court reservations** with an interactive calendar, admin panel, and user-specific rules. It supports **members** and **guests** as well as custom user types, handling bookings, billing (Work in Progress), and availability with precision.
 
 <figure>
   <img src="assets/courtly_banner_1.png" alt="Courtly Banner" width="100%">
-  <figcaption>Courty Banner</figcaption>
+  <figcaption>🥎 — Your padel court booking assistant. 🥎</br> Made with ❤️ by <a href=\"https://jgcarmona.com\" target=\"_blank\" rel=\"noopener\">Juan G Carmona</a> 🌍 Madrid, Spain</figcaption>
 </figure>
 ---
 
