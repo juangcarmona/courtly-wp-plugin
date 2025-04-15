@@ -14,6 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Get short commit hash
+        id: get_hash
+        run: echo "short_hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
       - name: Read version from courtly.php
         id: get_version
         run: |
@@ -40,13 +44,13 @@ jobs:
           fi
 
           echo "tag=$tag" >> $GITHUB_OUTPUT
-
+          
       - name: Generate courtly.zip artifact
         run: |
-          zip -r courtly-v${{ steps.get_version.outputs.version }}-${{ github.sha::7 }}.zip src
+          zip -r courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip src
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: courtly-v${{ steps.get_version.outputs.version }}-${{ github.sha::7 }}.zip
-          path: courtly-v${{ steps.get_version.outputs.version }}-${{ github.sha::7 }}.zip
+          name: courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
+          path: courtly-v${{ steps.get_version.outputs.version }}-${{ steps.get_hash.outputs.short_hash }}.zip
