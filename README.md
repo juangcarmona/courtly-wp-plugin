@@ -6,7 +6,7 @@ Courtly is a modular WordPress plugin for managing **padel court reservations** 
 
 <figure>
   <img src="assets/courtly_banner_1.png" alt="Courtly Banner" width="100%">
-  <figcaption>Courty Banner</figcaption>
+  <figcaption>Courtly Banner</figcaption>
 </figure>
 ---
 

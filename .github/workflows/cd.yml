@@ -1,0 +1,69 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Read version from courtly.php
+        id: get_version
+        run: |
+          version=$(grep -oP 'Version:\s*\K[\d.]+' src/courtly.php)
+          echo "::set-output name=version::$version"
+
+      - name: Create tag
+        id: create_tag
+        run: |
+          short_hash=$(git rev-parse --short HEAD)
+          git tag -a "v${{ steps.get_version.outputs.version }}-$short_hash" -m "Release v${{ steps.get_version.outputs.version }}"
+          git push origin "v${{ steps.get_version.outputs.version }}-$short_hash"
+
+      - name: Set up Ruby (for changelog generator)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Install github-changelog-generator
+        run: gem install github_changelog_generator
+
+      - name: Generate CHANGELOG.md
+        env:
+          CHANGELOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          github_changelog_generator \
+            --user juangcarmona \
+            --project courtly-wp-plugin \
+            --token $CHANGELOG_GITHUB_TOKEN \
+            --no-issues \
+            --output CHANGELOG.md
+
+      - name: Commit updated CHANGELOG.md
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add CHANGELOG.md
+          git commit -m "Update CHANGELOG.md with github-changelog-generator"
+          git push
+
+      - name: Generate courtly.zip artifact
+        run: |
+          short_hash=$(git rev-parse --short HEAD)
+          zip -r courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip src
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip
+          path: courtly-v${{ steps.get_version.outputs.version }}-$short_hash.zip

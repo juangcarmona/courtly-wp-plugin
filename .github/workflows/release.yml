@@ -1,120 +1,50 @@
-name: Release
+name: Manual Release
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (e.g., 0.0.1)'
+        required: true
+      notes:
+        description: 'Optional release notes'
+        required: false
 
 permissions:
   contents: write
-  
+
 jobs:
-  create-release:
-    name: Create Release
+  release:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Configure Git user
+      - name: Check if tag exists
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-
-      - name: Install gettext
-        run: sudo apt-get update && sudo apt-get install -y gettext
-
-      - name: Compile .po files to .mo
-        working-directory: src/languages
-        run: |
-          set -e
-          for file in *.po; do
-            msgfmt "$file" -o "${file%.po}.mo"
-          done
-
-      - name: Validate translations
-        working-directory: src/languages
-        run: |
-          set -e
-          po_count=$(ls -1 *.po | wc -l)
-          mo_count=$(ls -1 *.mo | wc -l)
-          if [ "$po_count" -ne "$mo_count" ]; then
-            echo "Mismatch between .po and .mo file counts. Failing release."
+          if git rev-parse "v${{ github.event.inputs.version }}" >/dev/null 2>&1; then
+            echo "Tag v${{ github.event.inputs.version }} already exists"
             exit 1
           fi
 
-      - name: Read version from courtly.php
-        id: read_version
-        run: |
-          version=$(grep -oP 'Version:\s*\K[0-9]+\.[0-9]+\.[0-9]+' src/courtly.php)
-          echo "version=$version" >> $GITHUB_ENV
-          echo "Version detected: $version"
+      - name: Generate courtly.zip
+        run: zip -r courtly.zip src
 
-      - name: Check if tag already exists
-        id: check_tag
-        run: |
-          if git rev-parse "v$version" >/dev/null 2>&1; then
-            echo "Tag already exists. Skipping release."
-            echo "skip_release=true" >> $GITHUB_ENV
-          else
-            echo "skip_release=false" >> $GITHUB_ENV
-          fi
-
-      - name: Stop if tag exists
-        if: env.skip_release == 'true'
-        run: exit 0
-
-      - name: Create GitHub Release
-        id: create_release_tag
-        uses: actions/create-release@v1
-        with:
-          tag_name: "v${{ env.version }}"
-          release_name: "Courtly v${{ env.version }}"
-          body: "${{ env.changelog_body }}"
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Stub PHPUnit tests
-        run: |
-          set -e
-          echo "PHPUnit tests are currently stubbed."
-          # Uncomment the following line to enable PHPUnit tests in the future
-          # ./vendor/bin/phpunit
-
-      - name: Generate ZIP of plugin
-        run: |
-          set -e
-          zip -r courtly.zip src
-
-      - name: Read changelog for current version
+      - name: Extract release notes
         id: changelog
         run: |
-          body=$(awk "/^## \\[$version\\]/,/^## \\[/" CHANGELOG.md | head -n -1 | tail -n +2)
-          echo "changelog_body<<EOF" >> $GITHUB_ENV
-          echo "$body" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          if [ -n "${{ github.event.inputs.notes }}" ]; then
+            echo "${{ github.event.inputs.notes }}" > notes.md
+          else
+            sed -n "/## \[${{ github.event.inputs.version }}\]/,/^## /p" CHANGELOG.md | sed '$d' > notes.md
+          fi
 
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: "v${{ env.version }}"
-          release_name: "Courtly v${{ env.version }}"
-          body: "${{ env.changelog_body }}"
-          draft: false
-          prerelease: false
+      - name: Create GitHub release using gh
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload release asset
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./courtly.zip
-          asset_name: courtly.zip
-          asset_content_type: application/zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create v${{ github.event.inputs.version }} \
+            courtly.zip \
+            --title "Release v${{ github.event.inputs.version }}" \
+            --notes-file notes.md
