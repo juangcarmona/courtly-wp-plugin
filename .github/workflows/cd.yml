@@ -21,6 +21,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Fail if GitHub release already exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "v${{ github.event.inputs.version }}" >/dev/null 2>&1; then
+            echo "❌ Release v${{ github.event.inputs.version }} already exists. Please delete it manually to re-release."
+            exit 1
+          fi
+
       - name: Install gettext
         run: sudo apt-get update && sudo apt-get install -y gettext
 
@@ -41,14 +50,6 @@ jobs:
             exit 1
           fi
 
-      - name: Check if tag exists
-        run: |
-          tag="v${{ github.event.inputs.version }}"
-          if git rev-parse "$tag" >/dev/null 2>&1; then
-            echo "Tag $tag already exists. Please delete it manually to re-release."
-            exit 1
-          fi
-
       - name: Generate courtly.zip with plugin root
         run: |
           mkdir -p build/courtly
@@ -64,10 +65,15 @@ jobs:
             echo "Manual release for version ${{ github.event.inputs.version }}" > notes.md
           fi
 
-      - name: Create Git tag
+      - name: Create Git tag (only if it doesn't exist)
         run: |
-          git tag "v${{ github.event.inputs.version }}"
-          git push origin "v${{ github.event.inputs.version }}"
+          tag="v${{ github.event.inputs.version }}"
+          if git rev-parse "$tag" >/dev/null 2>&1; then
+            echo "✅ Tag $tag already exists. Skipping tag creation."
+          else
+            git tag "$tag"
+            git push origin "$tag"
+          fi
 
       - name: Create GitHub release using gh
         env:
