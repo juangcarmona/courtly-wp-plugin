@@ -1,6 +1,10 @@
 <?php
 
-class OpeningHoursRepository
+namespace Juangcarmona\Courtly\Infrastructure\Repositories;
+
+use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
+
+class OpeningHoursRepository implements OpeningHoursRepositoryInterface
 {
     private $wpdb;
     private $table;

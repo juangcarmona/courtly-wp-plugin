@@ -108,23 +108,23 @@ msgid "You are not allowed to view this reservation."
 msgstr "Du har ikke tilladelse til at se denne reservation."
 
 #: application/utils/EventTransformer.php:27
-#: domain/services/CourtBlockService.php:28
+#: Domain/Services/CourtBlockService.php:28
 msgid "Blocked"
 msgstr "Blokeret"
 
-#: domain/services/CourtReservationService.php:71
+#: Domain/Services/CourtReservationService.php:71
 msgid "%s already has a reservation that day."
 msgstr "%s har allerede en reservation den dag."
 
-#: domain/services/CourtReservationService.php:79
+#: Domain/Services/CourtReservationService.php:79
 msgid "Reservations must be %d minutes or less."
 msgstr "Reservationer skal være på %d minutter eller mindre."
 
-#: domain/services/CourtReservationService.php:85
+#: Domain/Services/CourtReservationService.php:85
 msgid "Time slot unavailable."
 msgstr "Tidsrum ikke tilgængelig."
 
-#: domain/services/CourtReservationService.php:102
+#: Domain/Services/CourtReservationService.php:102
 msgid "Failed to create reservation."
 msgstr "Kunne ikke oprette reservation."
 

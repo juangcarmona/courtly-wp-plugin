@@ -1,6 +1,7 @@
 <?php
+use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
 
-class CourtReservationRepository
+class CourtReservationRepository implements CourtReservationRepositoryInterface
 {
     private $wpdb;
     private $table;

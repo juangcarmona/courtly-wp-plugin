@@ -1,8 +1,12 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '/../Constants.php';
+
+namespace Juangcarmona\Courtly\Domain\Services;
+use Juangcarmona\Courtly\Domain\Constants;
+use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
+
 
 class CourtReservationService {
-    private CourtReservationRepository $reservationRepo;
+    private CourtReservationRepositoryInterface $reservationRepo;
     private CourtBlockRepository $blockRepo;
     private OpeningHoursRepository $openingRepo;
 
@@ -66,7 +70,7 @@ class CourtReservationService {
         error_log("[Courtly] Creating reservation for $username on $date ($slot) at Court $courtId");
         // ⛔ Max X reservation(s) per user per day
         $userReservations = $this->reservationRepo->getReservationsForUserOnDate($userId, $date) ?? [];
-        if (count($userReservations) >= COURTLY_MAX_RESERVATIONS_PER_DAY) {
+        if (count($userReservations) >= Constants::MAX_RESERVATIONS_PER_DAY) {
             error_log("[Courtly] ❌ Reservation denied. $username already has a reservation on $date.");
             return sprintf(__('%s already has a reservation that day.', 'courtly'), $username);
         }
@@ -74,9 +78,9 @@ class CourtReservationService {
         // ⛔ Max duration        
         $interval = $start->diff($end);
         $minutes = ($interval->h * 60) + $interval->i;
-        if ($minutes > COURTLY_MAX_RESERVATION_MINUTES) {
-            error_log("[Courtly] ❌ Reservation denied. Duration exceeds limit (" . COURTLY_MAX_RESERVATION_MINUTES . " mins).");
-            return sprintf(__('Reservations must be %d minutes or less.', 'courtly'), COURTLY_MAX_RESERVATION_MINUTES);
+        if ($minutes > Constants::COURTLY_MAX_RESERVATION_MINUTES) {
+            error_log("[Courtly] ❌ Reservation denied. Duration exceeds limit (" . Constants::COURTLY_MAX_RESERVATION_MINUTES . " mins).");
+            return sprintf(__('Reservations must be %d minutes or less.', 'courtly'), Constants::COURTLY_MAX_RESERVATION_MINUTES);
         }
 
         // ⛔ Availability check

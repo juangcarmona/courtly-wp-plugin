@@ -106,23 +106,23 @@ msgid "You are not allowed to view this reservation."
 msgstr "No tienes permiso para ver esta reserva."
 
 #: application/utils/EventTransformer.php:27
-#: domain/services/CourtBlockService.php:28
+#: Domain/Services/CourtBlockService.php:28
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: domain/services/CourtReservationService.php:71
+#: Domain/Services/CourtReservationService.php:71
 msgid "%s already has a reservation that day."
 msgstr "%s ya tiene una reserva ese día."
 
-#: domain/services/CourtReservationService.php:79
+#: Domain/Services/CourtReservationService.php:79
 msgid "Reservations must be %d minutes or less."
 msgstr "Las reservas deben ser de %d minutos o menos."
 
-#: domain/services/CourtReservationService.php:85
+#: Domain/Services/CourtReservationService.php:85
 msgid "Time slot unavailable."
 msgstr "Franja horaria no disponible."
 
-#: domain/services/CourtReservationService.php:102
+#: Domain/Services/CourtReservationService.php:102
 msgid "Failed to create reservation."
 msgstr "No se pudo crear la reserva."
 

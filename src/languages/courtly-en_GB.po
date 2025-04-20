@@ -114,25 +114,25 @@ msgid "You are not allowed to view this reservation."
 msgstr "You are not allowed to view this booking."
 
 #: application/utils/EventTransformer.php:27
-#: domain/services/CourtBlockService.php:28
+#: Domain/Services/CourtBlockService.php:28
 msgid "Blocked"
 msgstr "Blocked"
 
-#: domain/services/CourtReservationService.php:71
+#: Domain/Services/CourtReservationService.php:71
 #, fuzzy
 msgid "%s already has a reservation that day."
 msgstr "%s already has a booking that day."
 
-#: domain/services/CourtReservationService.php:79
+#: Domain/Services/CourtReservationService.php:79
 #, fuzzy
 msgid "Reservations must be %d minutes or less."
 msgstr "Bookings must be %d minutes or less."
 
-#: domain/services/CourtReservationService.php:85
+#: Domain/Services/CourtReservationService.php:85
 msgid "Time slot unavailable."
 msgstr "Time slot unavailable."
 
-#: domain/services/CourtReservationService.php:102
+#: Domain/Services/CourtReservationService.php:102
 #, fuzzy
 msgid "Failed to create reservation."
 msgstr "Failed to create booking."

@@ -1,4 +1,6 @@
 <?php
+namespace Juangcarmona\Courtly\Domain\Entities;
+use Juangcarmona\Courtly\Domain\BaseEntity;
 
 class OpeningHours implements BaseEntity
 {

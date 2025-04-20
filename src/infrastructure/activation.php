@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../domain/entities/UserType.php';
-require_once __DIR__ . '/../domain/entities/Court.php';
-require_once __DIR__ . '/../domain/entities/OpeningHours.php';
-require_once __DIR__ . '/../domain/entities/CourtBlock.php';
-require_once __DIR__ . '/../domain/entities/CourtReservation.php';
+require_once __DIR__ . '/../Domain/Entities/UserType.php';
+require_once __DIR__ . '/../Domain/Entities/Court.php';
+require_once __DIR__ . '/../Domain/Entities/OpeningHours.php';
+require_once __DIR__ . '/../Domain/Entities/CourtBlock.php';
+require_once __DIR__ . '/../Domain/Entities/CourtReservation.php';
 
 
 function courtly_create_tables() {

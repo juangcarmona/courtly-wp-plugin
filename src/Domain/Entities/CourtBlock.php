@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/BaseEntity.php';
+namespace Juangcarmona\Courtly\Domain\Entities;
+use Juangcarmona\Courtly\Domain\BaseEntity;
 
 class CourtBlock implements BaseEntity
 {

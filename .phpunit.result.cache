@@ -1,0 +1,1 @@
+{"version":1,"defects":{"CourtReservationServiceTest::testSlotIsAvailableWhenNoConflicts":8},"times":{"Tests\\ExampleTest::testBasicTest":0.002,"CourtReservationServiceTest::testSlotIsAvailableWhenNoConflicts":0.008}}

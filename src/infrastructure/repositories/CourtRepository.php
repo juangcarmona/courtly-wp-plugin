@@ -1,6 +1,10 @@
 <?php
 
-class CourtRepository
+namespace Juangcarmona\Courtly\Infrastructure\Repositories;
+
+use Juangcarmona\Courtly\Domain\Repositories\CourtRepositoryInterface;
+
+class CourtRepository implements CourtRepositoryInterface
 {
     private $wpdb;
     private $table;

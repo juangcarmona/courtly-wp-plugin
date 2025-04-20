@@ -1,5 +1,7 @@
 <?php
 
+use Juangcarmona\Courtly\Domain\Constants;
+
 class PublicReservationDetailController {
     private CourtReservation $reservation;
     private WP_User $user;
@@ -82,7 +84,7 @@ class PublicReservationDetailController {
     
         error_log("[Courtly] Hours until reservation: $hoursDiff");
     
-        if ($hoursDiff < COURTLY_MIN_HOURS_TO_CANCEL) {
+        if ($hoursDiff < Constants::COURTLY_MIN_HOURS_TO_CANCEL) {
             error_log('[Courtly] Cannot cancel: less than 24h');
             return;
         }

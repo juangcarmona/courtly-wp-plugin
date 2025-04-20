@@ -6,8 +6,8 @@ require_once plugin_dir_path(__FILE__) . '/../infrastructure/repositories/CourtR
 require_once plugin_dir_path(__FILE__) . '/../infrastructure/repositories/UserTypeRepository.php';
 require_once plugin_dir_path(__FILE__) . '/../infrastructure/repositories/CourtReservationRepository.php';
 
-require_once plugin_dir_path(__FILE__) . '/../domain/services/CourtBlockService.php';
-require_once plugin_dir_path(__FILE__) . '/../domain/services/CourtReservationService.php';
+require_once plugin_dir_path(__FILE__) . '/../Domain/Services/CourtBlockService.php';
+require_once plugin_dir_path(__FILE__) . '/../Domain/Services/CourtReservationService.php';
 
 require_once plugin_dir_path(__FILE__) . '/../application/utils/EventTransformer.php';
 
