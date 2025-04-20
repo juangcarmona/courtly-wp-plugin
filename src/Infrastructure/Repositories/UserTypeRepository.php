@@ -1,7 +1,5 @@
 <?php
-
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
-
 use Juangcarmona\Courtly\Domain\Repositories\UserTypeRepositoryInterface;
 
 class UserTypeRepository implements UserTypeRepositoryInterface

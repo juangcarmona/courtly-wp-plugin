@@ -1,7 +1,5 @@
 <?php
-
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
-
 use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
 
 class OpeningHoursRepository implements OpeningHoursRepositoryInterface

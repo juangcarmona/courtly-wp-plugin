@@ -1,12 +1,14 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '/../../Infrastructure/Repositories/CourtRepository.php';
 
-class AdminCourtController {
-    private CourtRepository $repo;
+namespace Juangcarmona\Courtly\Application\Controllers;
 
-    public function __construct() {
-        $this->repo = new CourtRepository();
-    }
+use Juangcarmona\Courtly\Domain\Repositories\CourtRepositoryInterface;
+
+class AdminCourtController
+{
+    public function __construct(
+        private CourtRepositoryInterface $repo
+    ) {}
 
     public function handlePost(): void {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('courtly_add_court')) {

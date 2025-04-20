@@ -1,7 +1,5 @@
 <?php
 namespace Juangcarmona\Courtly\Domain\Entities;
-use Juangcarmona\Courtly\Domain\BaseEntity;
-
 class CourtReservation implements BaseEntity
 {
     private int $id;

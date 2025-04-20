@@ -1,4 +1,5 @@
 <?php
+namespace Juangcarmona\Courtly\Infrastructure\Repositories;
 use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
 
 class CourtReservationRepository implements CourtReservationRepositoryInterface

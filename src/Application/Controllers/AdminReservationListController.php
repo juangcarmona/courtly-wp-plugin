@@ -1,46 +1,56 @@
 <?php
 
-class AdminReservationListController {
-    private $upcoming;
-    private $past;
-    private array $userMap;
-    private array $courtMap;
+namespace Juangcarmona\Courtly\Application\Controllers;
 
-    public function __construct() {
-        $repo = CourtlyContainer::courtReservationRepository();
+use DateTimeImmutable;
+use DateTimeZone;
+use Juangcarmona\Courtly\Domain\Entities\CourtReservation;
+use Juangcarmona\Courtly\Domain\Repositories\CourtRepositoryInterface;
+use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
+
+class AdminReservationListController
+{
+    private array $upcoming;
+    private array $past;
+    private array $userMap = [];
+    private array $courtMap = [];
+
+    public function __construct(
+        private CourtReservationRepositoryInterface $reservationRepo,
+        private CourtRepositoryInterface $courtRepo
+    ) {
         $today = new DateTimeImmutable('today', new DateTimeZone('UTC'));
-    
+
         $this->loadUserAndCourtMaps();
-    
+
         $this->upcoming = $this->enrichReservations(
-            $repo->findFrom($today, 30),
+            $this->reservationRepo->findFrom($today, 30),
             $this->userMap,
             $this->courtMap
         );
-        
+
         $this->past = $this->enrichReservations(
-            $repo->findBefore($today, 90),
+            $this->reservationRepo->findBefore($today, 90),
             $this->userMap,
             $this->courtMap
         );
     }
-    
 
-    private function loadUserAndCourtMaps(): void {
+    private function loadUserAndCourtMaps(): void
+    {
         $users = get_users(['fields' => ['ID', 'display_name']]);
-        $this->userMap = [];
         foreach ($users as $u) {
             $this->userMap[$u->ID] = $u->display_name;
         }
-        
-        $courts = CourtlyContainer::courtRepository()->findAll();
-        $this->courtMap = [];
+
+        $courts = $this->courtRepo->findAll();
         foreach ($courts as $c) {
             $this->courtMap[$c->id] = $c->name ?? 'Court ' . $c->id;
-        }        
+        }
     }
 
-    private function enrichReservations(array $reservations, array $userMap, array $courtMap): array {
+    private function enrichReservations(array $reservations, array $userMap, array $courtMap): array
+    {
         return array_map(function (CourtReservation $r) use ($userMap, $courtMap) {
             return (object)[
                 'id' => $r->getId(),
@@ -52,9 +62,9 @@ class AdminReservationListController {
             ];
         }, $reservations);
     }
-    
 
-    public function getViewData(): array {
+    public function getViewData(): array
+    {
         return [
             'upcoming' => $this->upcoming,
             'past' => $this->past,

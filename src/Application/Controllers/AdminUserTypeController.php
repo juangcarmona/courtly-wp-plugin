@@ -1,14 +1,17 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '/../../Infrastructure/Repositories/UserTypeRepository.php';
 
-class AdminUserTypeController {
-    private UserTypeRepository $repo;
+namespace Juangcarmona\Courtly\Application\Controllers;
 
-    public function __construct() {
-        $this->repo = new UserTypeRepository();
-    }
+use Juangcarmona\Courtly\Domain\Repositories\UserTypeRepositoryInterface;
 
-    public function handlePost(): void {
+class AdminUserTypeController
+{
+    public function __construct(
+        private UserTypeRepositoryInterface $repo
+    ) {}
+
+    public function handlePost(): void
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('courtly_add_user_type')) {
             $name = sanitize_title($_POST['name']);
             $display_name = sanitize_text_field($_POST['display_name']);
@@ -22,13 +25,16 @@ class AdminUserTypeController {
                 ]);
 
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('User type added successfully.', 'courtly') . '</p></div>';
+                    echo '<div class="notice notice-success is-dismissible"><p>' .
+                        esc_html__('User type added successfully.', 'courtly') .
+                        '</p></div>';
                 });
             }
         }
     }
 
-    public function getViewData(): array {
+    public function getViewData(): array
+    {
         return ['user_types' => $this->repo->findAll()];
     }
 }

@@ -1,20 +1,32 @@
 <?php
 
-use Juangcarmona\Courtly\Domain\Constants;
+namespace Juangcarmona\Courtly\Application\Controllers;
 
-class PublicReservationDetailController {
+use Juangcarmona\Courtly\Domain\Constants;
+use Juangcarmona\Courtly\Domain\Entities\CourtReservation;
+use Juangcarmona\Courtly\Domain\Repositories\CourtRepositoryInterface;
+use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
+use WP_User;
+use DateTimeImmutable;
+
+class PublicReservationDetailController
+{
     private CourtReservation $reservation;
     private WP_User $user;
 
-    public function __construct(int $reservationId) {
+    public function __construct(
+        int $reservationId,
+        private CourtReservationRepositoryInterface $reservationRepo,
+        private CourtRepositoryInterface $courtRepo
+    ) {
         if (!is_user_logged_in()) {
             wp_die(__('You must be logged in to view reservation details.', 'courtly'));
         }
 
         $this->user = wp_get_current_user();
+        $reservation = $this->reservationRepo->findById($reservationId);
 
-        $reservation = CourtlyContainer::courtReservationRepository()->findById($reservationId);
-        if (!$reservation) {wp_die(__('Reservation not found.', 'courtly'));
+        if (!$reservation) {
             wp_die(__('Reservation not found.', 'courtly'));
         }
 
@@ -25,89 +37,46 @@ class PublicReservationDetailController {
         $this->reservation = $reservation;
     }
 
-    public function handlePost(): void {
-        error_log('[Courtly] handlePost() called');
-    
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            error_log('[Courtly] Not a POST request');
-            return;
-        }
-    
-        error_log('[Courtly] POST request detected');
-        error_log('[Courtly] $_POST: ' . print_r($_POST, true));
-    
+    public function handlePost(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') return;
+
         if (
             !isset($_POST['courtly_cancel_reservation_id']) ||
-            !is_numeric($_POST['courtly_cancel_reservation_id'])
-        ) {
-            error_log('[Courtly] Missing or invalid reservation ID');
-            return;
-        }
-    
+            !is_numeric($_POST['courtly_cancel_reservation_id']) ||
+            !is_user_logged_in()
+        ) return;
+
         $id = intval($_POST['courtly_cancel_reservation_id']);
-        error_log("[Courtly] Cancel request for reservation ID: $id");
-    
-        if (!is_user_logged_in()) {
-            error_log('[Courtly] User not logged in');
-            return;
-        }
-    
         $userId = get_current_user_id();
-        error_log("[Courtly] Current user ID: $userId");
-    
-        $reservation = CourtlyContainer::courtReservationRepository()->findById($id);
-        if (!$reservation) {
-            error_log("[Courtly] Reservation not found in DB");
-            return;
-        }
-    
-        error_log("[Courtly] Reservation belongs to user ID: " . $reservation->getUserId());
-    
-        if ($reservation->getUserId() !== $userId) {
-            error_log('[Courtly] User not authorized to cancel');
-            return;
-        }
-    
-        if (!wp_verify_nonce($_POST['_wpnonce'], 'courtly_cancel_reservation_' . $id)) {
-            error_log('[Courtly] Invalid nonce');
-            return;
-        }
-    
-        // Check 24h limit
-        $range = explode('-', $reservation->getTimeSlot());
-        $start = $range[0] ?? '00:00';
+
+        $reservation = $this->reservationRepo->findById($id);
+        if (!$reservation || $reservation->getUserId() !== $userId) return;
+
+        if (!wp_verify_nonce($_POST['_wpnonce'], 'courtly_cancel_reservation_' . $id)) return;
+
+        $start = explode('-', $reservation->getTimeSlot())[0] ?? '00:00';
         $reservationTime = new DateTimeImmutable(
             $reservation->getReservationDate()->format('Y-m-d') . ' ' . $start
         );
         $now = new DateTimeImmutable();
         $hoursDiff = ($reservationTime->getTimestamp() - $now->getTimestamp()) / 3600;
-    
-        error_log("[Courtly] Hours until reservation: $hoursDiff");
-    
-        if ($hoursDiff < Constants::COURTLY_MIN_HOURS_TO_CANCEL) {
-            error_log('[Courtly] Cannot cancel: less than 24h');
-            return;
-        }
-    
-        CourtlyContainer::courtReservationRepository()->deleteReservation($id);
-        error_log("[Courtly] Reservation $id cancelled");
-    
+
+        if ($hoursDiff < Constants::COURTLY_MIN_HOURS_TO_CANCEL) return;
+
+        $this->reservationRepo->deleteReservation($id);
+
         $bookingPageId = get_option('courtly_user_booking_page_id');
-        $bookingUrl = $bookingPageId ? get_permalink($bookingPageId) : home_url();
-        error_log("[Courtly] Redirecting to $bookingUrl");
-    
-        wp_redirect($bookingUrl);
+        $redirectUrl = $bookingPageId ? get_permalink($bookingPageId) : home_url();
+        wp_redirect($redirectUrl);
         exit;
     }
-    
-    
 
-    public function getViewData(): array {
-        $court = CourtlyContainer::courtRepository()->findById($this->reservation->getCourtId());
+    public function getViewData(): array
+    {
+        $court = $this->courtRepo->findById($this->reservation->getCourtId());
 
-        $range = explode('-', $this->reservation->getTimeSlot());
-        $start = $range[0] ?? '00:00';
-
+        $start = explode('-', $this->reservation->getTimeSlot())[0] ?? '00:00';
         $reservationTime = new DateTimeImmutable(
             $this->reservation->getReservationDate()->format('Y-m-d') . ' ' . $start
         );
@@ -115,13 +84,13 @@ class PublicReservationDetailController {
         $now = new DateTimeImmutable();
         $hoursUntil = ($reservationTime->getTimestamp() - $now->getTimestamp()) / 3600;
 
-        $cancel_allowed = $hoursUntil > COURTLY_MIN_HOURS_TO_CANCEL;
-        $cancel_blocked_message = null;
+        $cancelAllowed = $hoursUntil > Constants::COURTLY_MIN_HOURS_TO_CANCEL;
+        $cancelBlockedMessage = null;
 
         if ($reservationTime < $now) {
-            $cancel_blocked_message = __('This reservation has already passed.', 'courtly');
-        } elseif (!$cancel_allowed) {
-            $cancel_blocked_message = __('Reservation cannot be cancelled (less than 24h remaining).', 'courtly');
+            $cancelBlockedMessage = __('This reservation has already passed.', 'courtly');
+        } elseif (!$cancelAllowed) {
+            $cancelBlockedMessage = __('Reservation cannot be cancelled (less than 24h remaining).', 'courtly');
         }
 
         return [
@@ -129,8 +98,8 @@ class PublicReservationDetailController {
             'court' => $court ? $court->name : 'Court #' . $this->reservation->getCourtId(),
             'date' => $this->reservation->getReservationDate()->format('Y-m-d'),
             'slot' => $this->reservation->getTimeSlot(),
-            'cancel_allowed' => $cancel_allowed,
-            'cancel_blocked_message' => $cancel_blocked_message,
+            'cancel_allowed' => $cancelAllowed,
+            'cancel_blocked_message' => $cancelBlockedMessage,
         ];
     }
 }

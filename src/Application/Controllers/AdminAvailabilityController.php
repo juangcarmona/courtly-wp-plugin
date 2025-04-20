@@ -8,14 +8,10 @@ use Juangcarmona\Courtly\Infrastructure\CourtlyContainer;
 
 class AdminAvailabilityController
 {
-    private CourtRepositoryInterface $courtRepo;
-    private OpeningHoursRepositoryInterface $openingRepo;
-
-    public function __construct()
-    {
-        $this->courtRepo = CourtlyContainer::courtRepository();
-        $this->openingRepo = CourtlyContainer::openingHoursRepository();
-    }
+    public function __construct(
+        private CourtRepositoryInterface $courtRepo,
+        private OpeningHoursRepositoryInterface $openingRepo
+    ) {}
 
     public function getViewData(): array {
         $courts = $this->courtRepo->findAll();

@@ -1,7 +1,5 @@
 <?php
-
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
-
 use Juangcarmona\Courtly\Domain\Repositories\CourtBlockRepositoryInterface;
 
 class CourtBlockRepository implements CourtBlockRepositoryInterface

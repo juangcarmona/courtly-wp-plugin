@@ -19,6 +19,9 @@ if (!defined('ABSPATH')) {
     exit; // Prevent direct access
 }
 
+
+require_once __DIR__ . '/Infrastructure/require_entities.php';
+
 // -----------------------------------------------------------------------------
 // Load plugin textdomain for internationalization
 // -----------------------------------------------------------------------------
