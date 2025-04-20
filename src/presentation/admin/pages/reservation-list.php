@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../application/controllers/AdminReservationListController.php';
+require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/AdminReservationListController.php';
 
 $controller = new AdminReservationListController();
 $data = $controller->getViewData();

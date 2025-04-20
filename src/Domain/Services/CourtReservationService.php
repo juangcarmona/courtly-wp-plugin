@@ -3,17 +3,18 @@
 namespace Juangcarmona\Courtly\Domain\Services;
 use Juangcarmona\Courtly\Domain\Constants;
 use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
-
+use Juangcarmona\Courtly\Domain\Repositories\CourtBlockRepositoryInterface;
+use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
 
 class CourtReservationService {
     private CourtReservationRepositoryInterface $reservationRepo;
-    private CourtBlockRepository $blockRepo;
-    private OpeningHoursRepository $openingRepo;
+    private CourtBlockRepositoryInterface $blockRepo;
+    private OpeningHoursRepositoryInterface $openingRepo;
 
     public function __construct(
-        CourtReservationRepository $reservationRepo,
-        CourtBlockRepository $blockRepo,
-        OpeningHoursRepository $openingRepo
+        CourtReservationRepositoryInterface $reservationRepo,
+        CourtBlockRepositoryInterface $blockRepo,
+        OpeningHoursRepositoryInterface $openingRepo
     ) {
         $this->reservationRepo = $reservationRepo;
         $this->blockRepo = $blockRepo;

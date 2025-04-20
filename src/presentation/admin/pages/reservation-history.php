@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../application/controllers/AdminReservationHistoryController.php';
+require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/AdminReservationHistoryController.php';
 
 $controller = new AdminReservationHistoryController();
 $data = $controller->getViewData();

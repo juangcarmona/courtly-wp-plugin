@@ -1,15 +1,20 @@
 <?php
 
-require_once plugin_dir_path(__FILE__) . '/../../Infrastructure/Repositories/CourtRepository.php';
-require_once plugin_dir_path(__FILE__) . '/../../Infrastructure/Repositories/OpeningHoursRepository.php';
+namespace Juangcarmona\Courtly\Application\Controllers;
 
-class AdminAvailabilityController {
-    private CourtRepository $courtRepo;
-    private OpeningHoursRepository $openingRepo;
+use Juangcarmona\Courtly\Domain\Repositories\CourtRepositoryInterface;
+use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
+use Juangcarmona\Courtly\Infrastructure\CourtlyContainer;
 
-    public function __construct() {
-        $this->courtRepo = new CourtRepository();
-        $this->openingRepo = new OpeningHoursRepository();
+class AdminAvailabilityController
+{
+    private CourtRepositoryInterface $courtRepo;
+    private OpeningHoursRepositoryInterface $openingRepo;
+
+    public function __construct()
+    {
+        $this->courtRepo = CourtlyContainer::courtRepository();
+        $this->openingRepo = CourtlyContainer::openingHoursRepository();
     }
 
     public function getViewData(): array {

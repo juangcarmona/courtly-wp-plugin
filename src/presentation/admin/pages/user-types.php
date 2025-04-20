@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../application/controllers/AdminUserTypeController.php';
+require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/AdminUserTypeController.php';
 
 $controller = new AdminUserTypeController();
 $controller->handlePost();

@@ -1,17 +1,32 @@
 <?php
 
+namespace Juangcarmona\Courtly\Domain\Services;
+
+use Juangcarmona\Courtly\Domain\Repositories\CourtBlockRepositoryInterface;
+use DatePeriod;
+use DateInterval;
+use DateTime;
+use DateTimeInterface;
+use DateTimeZone;
+
 class CourtBlockService
 {
-    private CourtBlockRepository $blockRepo;
+    private CourtBlockRepositoryInterface $blockRepo;
 
-    public function __construct(CourtBlockRepository $blockRepo)
+    public function __construct(CourtBlockRepositoryInterface $blockRepo)
     {
         $this->blockRepo = $blockRepo;
     }
 
-    public function getBlockedSlotsForRange($courtId, $start, $end)
+    /**
+     * @param int $courtId
+     * @param DateTimeInterface $start
+     * @param DateTimeInterface $end
+     * @return array
+     */
+    public function getBlockedSlotsForRange(int $courtId, DateTimeInterface $start, DateTimeInterface $end): array
     {
-        $weeklyBlocks = $this->blockRepo->getBlockedSlots($courtId);
+        $weeklyBlocks = $this->blockRepo->getBlockedSlots($courtId); // TODO: stdClass → entity
         $period = new DatePeriod($start, new DateInterval('P1D'), $end);
         $events = [];
         $tzUtc = new DateTimeZone('UTC');
@@ -44,7 +59,14 @@ class CourtBlockService
         return $events;
     }
 
-    public function saveBlockedSlot($courtId, $start, $end, $reason = null)
+    /**
+     * @param int $courtId
+     * @param DateTimeInterface $start
+     * @param DateTimeInterface $end
+     * @param string|null $reason
+     * @return bool
+     */
+    public function saveBlockedSlot(int $courtId, DateTimeInterface $start, DateTimeInterface $end, ?string $reason = null): bool
     {
         $dayOfWeek = (int)$start->format('w');
 
@@ -54,11 +76,15 @@ class CourtBlockService
             'start_time' => $start->format('H:i:s'),
             'end_time' => $end->format('H:i:s'),
             'is_blocked' => 1,
-            'reason' => $reason
+            'reason' => $reason,
         ]);
     }
 
-    public function deleteBlockedSlot($eventId)
+    /**
+     * @param int $eventId
+     * @return bool
+     */
+    public function deleteBlockedSlot(int $eventId): bool
     {
         return $this->blockRepo->deleteBlockedSlot($eventId);
     }

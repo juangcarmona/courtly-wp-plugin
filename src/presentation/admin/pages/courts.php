@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../application/controllers/AdminCourtController.php';
+require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/AdminCourtController.php';
 
 $controller = new AdminCourtController();
 $controller->handlePost();

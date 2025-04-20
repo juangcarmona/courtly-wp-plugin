@@ -43,72 +43,72 @@ msgstr "Juan G. Carmona"
 msgid "https://jgcarmona.com"
 msgstr "https://jgcarmona.com"
 
-#: application/controllers/AdminAvailabilityController.php:35
+#: Application/Controllers/AdminAvailabilityController.php:35
 msgid "Availability updated."
 msgstr "Disponibilità aggiornata."
 
-#: application/controllers/AdminCourtController.php:25
+#: Application/Controllers/AdminCourtController.php:25
 msgid "Court added successfully."
 msgstr "Campo aggiunta correttamente."
 
-#: application/controllers/AdminReservationDetailController.php:8
-#: application/controllers/AdminReservationDetailController.php:35
+#: Application/Controllers/AdminReservationDetailController.php:8
+#: Application/Controllers/AdminReservationDetailController.php:35
 msgid "Access denied."
 msgstr "Accesso negato."
 
-#: application/controllers/AdminReservationDetailController.php:12
+#: Application/Controllers/AdminReservationDetailController.php:12
 msgid "Reservation ID missing."
 msgstr "ID prenotazione mancante."
 
-#: application/controllers/AdminReservationDetailController.php:19
-#: application/controllers/PublicReservationDetailController.php:15
-#: application/controllers/PublicReservationDetailController.php:16
+#: Application/Controllers/AdminReservationDetailController.php:19
+#: Application/Controllers/PublicReservationDetailController.php:15
+#: Application/Controllers/PublicReservationDetailController.php:16
 msgid "Reservation not found."
 msgstr "Prenotazione non trovata."
 
-#: application/controllers/AdminReservationDetailController.php:39
+#: Application/Controllers/AdminReservationDetailController.php:39
 msgid "Invalid nonce."
 msgstr "Nonce non valido."
 
-#: application/controllers/AdminReservationDetailController.php:67
-#: application/controllers/PublicReservationDetailController.php:120
+#: Application/Controllers/AdminReservationDetailController.php:67
+#: Application/Controllers/PublicReservationDetailController.php:120
 msgid "This reservation has already passed."
 msgstr "Questa prenotazione è già stata annullata."
 
-#: application/controllers/AdminReservationDetailController.php:69
-#: application/controllers/PublicReservationDetailController.php:122
+#: Application/Controllers/AdminReservationDetailController.php:69
+#: Application/Controllers/PublicReservationDetailController.php:122
 msgid "Reservation cannot be cancelled (less than 24h remaining)."
 msgstr "La prenotazione non può essere annullata (mancano meno di 24 ore)."
 
-#: application/controllers/AdminReservationHistoryController.php:43
-#: application/controllers/AdminReservationListController.php:50
+#: Application/Controllers/AdminReservationHistoryController.php:43
+#: Application/Controllers/AdminReservationListController.php:50
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: application/controllers/AdminReservationHistoryController.php:44
-#: application/controllers/AdminReservationListController.php:51
+#: Application/Controllers/AdminReservationHistoryController.php:44
+#: Application/Controllers/AdminReservationListController.php:51
 msgid "Court #%d"
 msgstr "Campo n.%d"
 
-#: application/controllers/AdminUserController.php:19
+#: Application/Controllers/AdminUserController.php:19
 msgid "User types updated."
 msgstr "Tipi di utente aggiornati."
 
-#: application/controllers/AdminUserTypeController.php:25
+#: Application/Controllers/AdminUserTypeController.php:25
 msgid "User type added successfully."
 msgstr "Tipo di utente aggiunto correttamente."
 
-#: application/controllers/PublicReservationDetailController.php:9
+#: Application/Controllers/PublicReservationDetailController.php:9
 msgid "You must be logged in to view reservation details."
 msgstr ""
 "Devi aver effettuato l'accesso per visualizzare i dettagli della "
 "prenotazione."
 
-#: application/controllers/PublicReservationDetailController.php:20
+#: Application/Controllers/PublicReservationDetailController.php:20
 msgid "You are not allowed to view this reservation."
 msgstr "Non ti è consentito visualizzare questa prenotazione."
 
-#: application/utils/EventTransformer.php:27
+#: Application/Utils/EventTransformer.php:27
 #: Domain/Services/CourtBlockService.php:28
 msgid "Blocked"
 msgstr "Bloccato"

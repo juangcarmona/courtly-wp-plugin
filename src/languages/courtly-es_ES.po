@@ -42,70 +42,70 @@ msgstr "Añadir nueva pista"
 msgid "https://jgcarmona.com"
 msgstr "Añadir nueva pista"
 
-#: application/controllers/AdminAvailabilityController.php:35
+#: Application/Controllers/AdminAvailabilityController.php:35
 msgid "Availability updated."
 msgstr "Disponibilidad actualizada."
 
-#: application/controllers/AdminCourtController.php:25
+#: Application/Controllers/AdminCourtController.php:25
 msgid "Court added successfully."
 msgstr "Pista añadida correctamente."
 
-#: application/controllers/AdminReservationDetailController.php:8
-#: application/controllers/AdminReservationDetailController.php:35
+#: Application/Controllers/AdminReservationDetailController.php:8
+#: Application/Controllers/AdminReservationDetailController.php:35
 msgid "Access denied."
 msgstr "Acceso denegado."
 
-#: application/controllers/AdminReservationDetailController.php:12
+#: Application/Controllers/AdminReservationDetailController.php:12
 msgid "Reservation ID missing."
 msgstr "Falta el ID de la reserva."
 
-#: application/controllers/AdminReservationDetailController.php:19
-#: application/controllers/PublicReservationDetailController.php:15
-#: application/controllers/PublicReservationDetailController.php:16
+#: Application/Controllers/AdminReservationDetailController.php:19
+#: Application/Controllers/PublicReservationDetailController.php:15
+#: Application/Controllers/PublicReservationDetailController.php:16
 msgid "Reservation not found."
 msgstr "Reserva no encontrada."
 
-#: application/controllers/AdminReservationDetailController.php:39
+#: Application/Controllers/AdminReservationDetailController.php:39
 msgid "Invalid nonce."
 msgstr "Nonce inválido."
 
-#: application/controllers/AdminReservationDetailController.php:67
-#: application/controllers/PublicReservationDetailController.php:120
+#: Application/Controllers/AdminReservationDetailController.php:67
+#: Application/Controllers/PublicReservationDetailController.php:120
 msgid "This reservation has already passed."
 msgstr "Esta reserva ya ha pasado."
 
-#: application/controllers/AdminReservationDetailController.php:69
-#: application/controllers/PublicReservationDetailController.php:122
+#: Application/Controllers/AdminReservationDetailController.php:69
+#: Application/Controllers/PublicReservationDetailController.php:122
 msgid "Reservation cannot be cancelled (less than 24h remaining)."
 msgstr "No se puede cancelar la reserva (queda menos de 24h)."
 
-#: application/controllers/AdminReservationHistoryController.php:43
-#: application/controllers/AdminReservationListController.php:50
+#: Application/Controllers/AdminReservationHistoryController.php:43
+#: Application/Controllers/AdminReservationListController.php:50
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: application/controllers/AdminReservationHistoryController.php:44
-#: application/controllers/AdminReservationListController.php:51
+#: Application/Controllers/AdminReservationHistoryController.php:44
+#: Application/Controllers/AdminReservationListController.php:51
 msgid "Court #%d"
 msgstr "Pista nº%d"
 
-#: application/controllers/AdminUserController.php:19
+#: Application/Controllers/AdminUserController.php:19
 msgid "User types updated."
 msgstr "Tipos de usuario actualizados."
 
-#: application/controllers/AdminUserTypeController.php:25
+#: Application/Controllers/AdminUserTypeController.php:25
 msgid "User type added successfully."
 msgstr "Tipo de usuario añadido correctamente."
 
-#: application/controllers/PublicReservationDetailController.php:9
+#: Application/Controllers/PublicReservationDetailController.php:9
 msgid "You must be logged in to view reservation details."
 msgstr "Debes iniciar sesión para ver los detalles de la reserva."
 
-#: application/controllers/PublicReservationDetailController.php:20
+#: Application/Controllers/PublicReservationDetailController.php:20
 msgid "You are not allowed to view this reservation."
 msgstr "No tienes permiso para ver esta reserva."
 
-#: application/utils/EventTransformer.php:27
+#: Application/Utils/EventTransformer.php:27
 #: Domain/Services/CourtBlockService.php:28
 msgid "Blocked"
 msgstr "Bloqueado"

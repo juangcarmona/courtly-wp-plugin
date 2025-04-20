@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../application/controllers/AdminReservationNewController.php';
+require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/AdminReservationNewController.php';
 
 $controller = new AdminReservationNewController ();
 $controller->handlePost();

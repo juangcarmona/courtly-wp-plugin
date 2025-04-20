@@ -50,7 +50,7 @@ add_shortcode('courtly_user_booking', function () {
         ) . '</p></div>';
     }
 
-    require_once plugin_dir_path(__FILE__) . '../../application/controllers/PublicReservationController.php';
+    require_once plugin_dir_path(__FILE__) . '../../Application/Controllers/PublicReservationController.php';
     $controller = new PublicReservationController();
     $controller->handlePost();
     $data = $controller->getViewData();
@@ -99,7 +99,7 @@ add_shortcode('courtly_reservation_detail', function () {
         return '<p class="text-danger">' . esc_html__('Reservation ID not provided.', 'courtly') . '</p>';
     }
 
-    require_once plugin_dir_path(__FILE__) . '../../application/controllers/PublicReservationDetailController.php';
+    require_once plugin_dir_path(__FILE__) . '../../Application/Controllers/PublicReservationDetailController.php';
     $controller = new PublicReservationDetailController((int) $id);
     $controller->handlePost();
     $data = $controller->getViewData();
