@@ -41,19 +41,19 @@ add_action('init', 'courtly_load_textdomain');
 // -----------------------------------------------------------------------------
 // Load core infrastructure (dependency container, etc.)
 // -----------------------------------------------------------------------------
-require_once plugin_dir_path(__FILE__) . 'infrastructure/CourtlyContainer.php';
+require_once plugin_dir_path(__FILE__) . 'Infrastructure/CourtlyContainer.php';
 
 // -----------------------------------------------------------------------------
 // Load public routing BEFORE flush_rewrite_rules
 // -----------------------------------------------------------------------------
-require_once plugin_dir_path(__FILE__) . 'infrastructure/public/routes.php';
+require_once plugin_dir_path(__FILE__) . 'Infrastructure/Public/routes.php';
 add_action('init', 'courtly_register_public_routes');       // Register rewrite rules early
 add_filter('query_vars', 'courtly_add_query_vars');         // Add query var: courtly_reservation_id
 
 // -----------------------------------------------------------------------------
 // Activation logic (runs once on plugin activation)
 // -----------------------------------------------------------------------------
-require_once plugin_dir_path(__FILE__) . 'infrastructure/activation.php';
+require_once plugin_dir_path(__FILE__) . 'Infrastructure/activation.php';
 register_activation_hook(__FILE__, function () {
     courtly_create_tables();
     courtly_seed_data();

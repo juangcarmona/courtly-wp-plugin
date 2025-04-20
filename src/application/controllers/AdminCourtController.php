@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '/../../infrastructure/repositories/CourtRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../../Infrastructure/Repositories/CourtRepository.php';
 
 class AdminCourtController {
     private CourtRepository $repo;

@@ -1,10 +1,10 @@
 <?php
 
-require_once plugin_dir_path(__FILE__) . '/../infrastructure/repositories/CourtBlockRepository.php';
-require_once plugin_dir_path(__FILE__) . '/../infrastructure/repositories/OpeningHoursRepository.php';
-require_once plugin_dir_path(__FILE__) . '/../infrastructure/repositories/CourtRepository.php';
-require_once plugin_dir_path(__FILE__) . '/../infrastructure/repositories/UserTypeRepository.php';
-require_once plugin_dir_path(__FILE__) . '/../infrastructure/repositories/CourtReservationRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../Infrastructure/Repositories/CourtBlockRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../Infrastructure/Repositories/OpeningHoursRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../Infrastructure/Repositories/CourtRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../Infrastructure/Repositories/UserTypeRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../Infrastructure/Repositories/CourtReservationRepository.php';
 
 require_once plugin_dir_path(__FILE__) . '/../Domain/Services/CourtBlockService.php';
 require_once plugin_dir_path(__FILE__) . '/../Domain/Services/CourtReservationService.php';

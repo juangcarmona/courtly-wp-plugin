@@ -1,6 +1,6 @@
 <?php
 
-require_once plugin_dir_path(__FILE__) . '../../../infrastructure/CourtlyContainer.php';
+require_once plugin_dir_path(__FILE__) . '../../../Infrastructure/CourtlyContainer.php';
 
 class ReservationAjaxController {
     public static function registerHooks() {

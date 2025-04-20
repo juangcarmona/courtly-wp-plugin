@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '/../../infrastructure/repositories/UserTypeRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../../Infrastructure/Repositories/UserTypeRepository.php';
 
 class AdminUserTypeController {
     private UserTypeRepository $repo;

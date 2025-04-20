@@ -130,31 +130,31 @@ msgstr "Tijdslot niet beschikbaar."
 msgid "Failed to create reservation."
 msgstr "Het aanmaken van een reservering is mislukt."
 
-#: infrastructure/activation.php:48
+#: Infrastructure/activation.php:48
 msgid "Guest"
 msgstr "Gast"
 
-#: infrastructure/activation.php:53
+#: Infrastructure/activation.php:53
 msgid "Member"
 msgstr "Lid"
 
-#: infrastructure/activation.php:62
+#: Infrastructure/activation.php:62
 msgid "Court 1"
 msgstr "Baan 1"
 
-#: infrastructure/activation.php:63
+#: Infrastructure/activation.php:63
 msgid "Main court"
 msgstr "Hoofdbaan"
 
-#: infrastructure/public/routes.php:38
+#: Infrastructure/Public/routes.php:38
 msgid "Booking"
 msgstr "Reservering"
 
-#: infrastructure/public/routes.php:71
+#: Infrastructure/Public/routes.php:71
 msgid "Calendar"
 msgstr "Kalender"
 
-#: infrastructure/public/routes.php:101
+#: Infrastructure/Public/routes.php:101
 msgid "Reservation"
 msgstr "Reservering"
 

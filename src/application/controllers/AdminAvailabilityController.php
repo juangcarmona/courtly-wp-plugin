@@ -1,7 +1,7 @@
 <?php
 
-require_once plugin_dir_path(__FILE__) . '/../../infrastructure/repositories/CourtRepository.php';
-require_once plugin_dir_path(__FILE__) . '/../../infrastructure/repositories/OpeningHoursRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../../Infrastructure/Repositories/CourtRepository.php';
+require_once plugin_dir_path(__FILE__) . '/../../Infrastructure/Repositories/OpeningHoursRepository.php';
 
 class AdminAvailabilityController {
     private CourtRepository $courtRepo;

@@ -126,31 +126,31 @@ msgstr "Franja horaria no disponible."
 msgid "Failed to create reservation."
 msgstr "No se pudo crear la reserva."
 
-#: infrastructure/activation.php:48
+#: Infrastructure/activation.php:48
 msgid "Guest"
 msgstr "Invitado"
 
-#: infrastructure/activation.php:53
+#: Infrastructure/activation.php:53
 msgid "Member"
 msgstr "Miembro"
 
-#: infrastructure/activation.php:62
+#: Infrastructure/activation.php:62
 msgid "Court 1"
 msgstr "Pista 1"
 
-#: infrastructure/activation.php:63
+#: Infrastructure/activation.php:63
 msgid "Main court"
 msgstr "Pista principal"
 
-#: infrastructure/public/routes.php:38
+#: Infrastructure/Public/routes.php:38
 msgid "Booking"
 msgstr "Reserva"
 
-#: infrastructure/public/routes.php:71
+#: Infrastructure/Public/routes.php:71
 msgid "Calendar"
 msgstr "Calendario"
 
-#: infrastructure/public/routes.php:101
+#: Infrastructure/Public/routes.php:101
 msgid "Reservation"
 msgstr "Reserva"
 

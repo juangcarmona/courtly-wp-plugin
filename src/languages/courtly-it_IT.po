@@ -129,31 +129,31 @@ msgstr "Fascia oraria non disponibile."
 msgid "Failed to create reservation."
 msgstr "Impossibile creare la prenotazione."
 
-#: infrastructure/activation.php:48
+#: Infrastructure/activation.php:48
 msgid "Guest"
 msgstr "Ospite"
 
-#: infrastructure/activation.php:53
+#: Infrastructure/activation.php:53
 msgid "Member"
 msgstr "Membro"
 
-#: infrastructure/activation.php:62
+#: Infrastructure/activation.php:62
 msgid "Court 1"
 msgstr "Campo 1"
 
-#: infrastructure/activation.php:63
+#: Infrastructure/activation.php:63
 msgid "Main court"
 msgstr "Campo principale"
 
-#: infrastructure/public/routes.php:38
+#: Infrastructure/Public/routes.php:38
 msgid "Booking"
 msgstr "Prenotazione"
 
-#: infrastructure/public/routes.php:71
+#: Infrastructure/Public/routes.php:71
 msgid "Calendar"
 msgstr "Calendario"
 
-#: infrastructure/public/routes.php:101
+#: Infrastructure/Public/routes.php:101
 msgid "Reservation"
 msgstr "Prenotazione"
 

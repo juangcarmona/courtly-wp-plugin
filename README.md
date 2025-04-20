@@ -113,7 +113,7 @@ courtly/
 ├── application/            # Application logic (services, commands, queries)
 │   └── controllers/
 ├── domain/                 # Domain entities (Court, CourtBlock, etc.)
-├── infrastructure/         # Database repositories and setup
+├── Infrastructure/         # Database repositories and setup
 ├── presentation/           # UI logic, separated by context
 │   ├── admin/
 │   │   ├── controllers/     # Admin-specific controllers
