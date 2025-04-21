@@ -37,7 +37,7 @@ add_shortcode('courtly_general_calendar', function () {
     }, 10, 3);
 
     ob_start();
-    include __DIR__ . '/views/general-calendar.view.php';
+    include __DIR__ . '/Views/GeneralCalendarView.php';
     return ob_get_clean();
 });
 
@@ -89,7 +89,7 @@ add_shortcode('courtly_user_booking', function () {
     }, 10, 3);
 
     ob_start();
-    include __DIR__ . '/views/booking.view.php';
+    include __DIR__ . '/Views/BookingView.php';
     return ob_get_clean();
 });
 
@@ -107,6 +107,6 @@ add_shortcode('courtly_reservation_detail', function () {
     wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
 
     ob_start();
-    include __DIR__ . '/views/reservation-detail.view.php';
+    include __DIR__ . '/Views/ReservationDetailView.php';
     return ob_get_clean();
 });

@@ -5,4 +5,4 @@ $controller = new AdminCourtController();
 $controller->handlePost();
 $data = $controller->getViewData();
 
-include plugin_dir_path(__FILE__) . '/../views/courts.view.php';
+include plugin_dir_path(__FILE__) . '/../Views/CourtsView.php';

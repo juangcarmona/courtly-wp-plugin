@@ -5,4 +5,4 @@ $controller = new AdminUserTypeController();
 $controller->handlePost();
 $data = $controller->getViewData();
 
-include plugin_dir_path(__FILE__) . '/../views/user-types.view.php';
+include plugin_dir_path(__FILE__) . '/../Views/UserTypesView.php';

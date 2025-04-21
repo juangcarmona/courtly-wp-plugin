@@ -3,4 +3,4 @@
 
 $data = []; // No data is passed to the view
 
-include plugin_dir_path(__FILE__) . '/../views/activity-calendar.view.php';
+include plugin_dir_path(__FILE__) . '/../Views/ActivityCalendarView.php';

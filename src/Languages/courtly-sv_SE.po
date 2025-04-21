@@ -220,13 +220,13 @@ msgstr "Användare"
 msgid "User Types"
 msgstr "Användartyper"
 
-#: Presentation/Admin/AdminAssets.php:29 presentation/public/shortcode.php:27
-#: presentation/public/shortcode.php:79
+#: Presentation/Admin/AdminAssets.php:29 Presentation/Public/ShortcodeHandler.php:27
+#: Presentation/Public/ShortcodeHandler.php:79
 msgid "No reason provided"
 msgstr "Ingen anledning anges"
 
-#: Presentation/Admin/AdminAssets.php:30 presentation/public/shortcode.php:28
-#: presentation/public/shortcode.php:80
+#: Presentation/Admin/AdminAssets.php:30 Presentation/Public/ShortcodeHandler.php:28
+#: Presentation/Public/ShortcodeHandler.php:80
 msgid "Every"
 msgstr "Varje"
 
@@ -321,7 +321,7 @@ msgstr "Befintliga domstolar"
 #: Presentation/Admin/Views/ReservationListView.php:8
 #: Presentation/Admin/Views/ReservationListView.php:40
 #: Presentation/Admin/Views/UserTypesView.php:31
-#: presentation/public/views/reservation-detail.view.php:6
+#: Presentation/Public/Views/ReservationDetailView.php:6
 msgid "ID"
 msgstr "ID"
 
@@ -345,7 +345,7 @@ msgstr "Användare"
 #: Presentation/Admin/Views/ReservationHistoryView.php:9
 #: Presentation/Admin/Views/ReservationListView.php:10
 #: Presentation/Admin/Views/ReservationListView.php:42
-#: presentation/public/views/reservation-detail.view.php:10
+#: Presentation/Public/Views/ReservationDetailView.php:10
 msgid "Court"
 msgstr "Bana"
 
@@ -353,28 +353,28 @@ msgstr "Bana"
 #: Presentation/Admin/Views/ReservationHistoryView.php:10
 #: Presentation/Admin/Views/ReservationListView.php:11
 #: Presentation/Admin/Views/ReservationListView.php:43
-#: presentation/public/views/reservation-detail.view.php:14
+#: Presentation/Public/Views/ReservationDetailView.php:14
 msgid "Date"
 msgstr "Datum"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:9
-#: presentation/public/views/reservation-detail.view.php:18
+#: Presentation/Public/Views/ReservationDetailView.php:18
 msgid "Time Slot"
 msgstr "Tidslucka"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:14
-#: presentation/public/views/reservation-detail.view.php:24
+#: Presentation/Public/Views/ReservationDetailView.php:24
 msgid "Are you sure you want to cancel this reservation?"
 msgstr "Är du säker på att du vill avboka den här reservationen?"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:17
-#: presentation/public/views/reservation-detail.view.php:27
+#: Presentation/Public/Views/ReservationDetailView.php:27
 msgid "Cancel Reservation"
 msgstr "Avbryt bokning"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:25
-#: presentation/public/views/reservation-detail.view.php:28
-#: presentation/public/views/reservation-detail.view.php:33
+#: Presentation/Public/Views/ReservationDetailView.php:28
+#: Presentation/Public/Views/ReservationDetailView.php:33
 msgid "Back"
 msgstr "Tillbaka"
 
@@ -444,7 +444,7 @@ msgid "None"
 msgstr "Ingen"
 
 #: Presentation/Admin/Views/ReservationNewView.php:28
-#: presentation/public/views/booking.view.php:33
+#: Presentation/Public/Views/BookingView.php:33
 msgid "Confirm Reservation"
 msgstr "Bekräfta bokning"
 
@@ -500,15 +500,15 @@ msgstr "-- Välj --"
 msgid "Save Changes"
 msgstr "Spara ändringar"
 
-#: presentation/public/shortcode.php:47
+#: Presentation/Public/ShortcodeHandler.php:47
 msgid "Please %1$slog in%2$s to book a court."
 msgstr "Vänligen %1$logga in%2$s för att boka en domstol."
 
-#: presentation/public/shortcode.php:99
+#: Presentation/Public/ShortcodeHandler.php:99
 msgid "Reservation ID not provided."
 msgstr "Boknings-ID har inte angetts."
 
-#: presentation/public/views/booking.view.php:21
+#: Presentation/Public/Views/BookingView.php:21
 msgid "Your reservation was successfully created."
 msgstr "Din bokning har skapats."
 

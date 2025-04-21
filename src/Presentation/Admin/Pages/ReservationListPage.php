@@ -4,4 +4,4 @@ require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/Admin
 $controller = new AdminReservationListController();
 $data = $controller->getViewData();
 
-include plugin_dir_path(__FILE__) . '/../views/reservation-list.view.php';
+include plugin_dir_path(__FILE__) . '/../Views/ReservationListView.php';

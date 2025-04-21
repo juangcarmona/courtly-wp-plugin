@@ -88,7 +88,7 @@ register_activation_hook(__FILE__, 'courtly_activation_notice_flag');
 // -----------------------------------------------------------------------------
 // Public shortcodes (e.g. booking calendar)
 // -----------------------------------------------------------------------------
-require_once plugin_dir_path(__FILE__) . 'presentation/public/shortcode.php';
+require_once plugin_dir_path(__FILE__) . 'Presentation/Public/ShortcodeHandler.php';
 
 // -----------------------------------------------------------------------------
 // Hide reservation detail page from automatic menus

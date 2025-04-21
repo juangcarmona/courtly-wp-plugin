@@ -224,13 +224,13 @@ msgstr "Benutzer"
 msgid "User Types"
 msgstr "Benutzertypen"
 
-#: Presentation/Admin/AdminAssets.php:29 presentation/public/shortcode.php:27
-#: presentation/public/shortcode.php:79
+#: Presentation/Admin/AdminAssets.php:29 Presentation/Public/ShortcodeHandler.php:27
+#: Presentation/Public/ShortcodeHandler.php:79
 msgid "No reason provided"
 msgstr "Kein Grund angegeben"
 
-#: Presentation/Admin/AdminAssets.php:30 presentation/public/shortcode.php:28
-#: presentation/public/shortcode.php:80
+#: Presentation/Admin/AdminAssets.php:30 Presentation/Public/ShortcodeHandler.php:28
+#: Presentation/Public/ShortcodeHandler.php:80
 msgid "Every"
 msgstr "Jeder"
 
@@ -324,7 +324,7 @@ msgstr "Bestehende Bahnen"
 #: Presentation/Admin/Views/ReservationListView.php:8
 #: Presentation/Admin/Views/ReservationListView.php:40
 #: Presentation/Admin/Views/UserTypesView.php:31
-#: presentation/public/views/reservation-detail.view.php:6
+#: Presentation/Public/Views/ReservationDetailView.php:6
 msgid "ID"
 msgstr "AUSWEIS"
 
@@ -348,7 +348,7 @@ msgstr "Benutzer"
 #: Presentation/Admin/Views/ReservationHistoryView.php:9
 #: Presentation/Admin/Views/ReservationListView.php:10
 #: Presentation/Admin/Views/ReservationListView.php:42
-#: presentation/public/views/reservation-detail.view.php:10
+#: Presentation/Public/Views/ReservationDetailView.php:10
 msgid "Court"
 msgstr "Bahn"
 
@@ -356,28 +356,28 @@ msgstr "Bahn"
 #: Presentation/Admin/Views/ReservationHistoryView.php:10
 #: Presentation/Admin/Views/ReservationListView.php:11
 #: Presentation/Admin/Views/ReservationListView.php:43
-#: presentation/public/views/reservation-detail.view.php:14
+#: Presentation/Public/Views/ReservationDetailView.php:14
 msgid "Date"
 msgstr "Datum"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:9
-#: presentation/public/views/reservation-detail.view.php:18
+#: Presentation/Public/Views/ReservationDetailView.php:18
 msgid "Time Slot"
 msgstr "Zeitfenster"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:14
-#: presentation/public/views/reservation-detail.view.php:24
+#: Presentation/Public/Views/ReservationDetailView.php:24
 msgid "Are you sure you want to cancel this reservation?"
 msgstr "Möchten Sie diese Reservierung wirklich stornieren?"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:17
-#: presentation/public/views/reservation-detail.view.php:27
+#: Presentation/Public/Views/ReservationDetailView.php:27
 msgid "Cancel Reservation"
 msgstr "Reservierung stornieren"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:25
-#: presentation/public/views/reservation-detail.view.php:28
-#: presentation/public/views/reservation-detail.view.php:33
+#: Presentation/Public/Views/ReservationDetailView.php:28
+#: Presentation/Public/Views/ReservationDetailView.php:33
 msgid "Back"
 msgstr "Zurück"
 
@@ -448,7 +448,7 @@ msgid "None"
 msgstr "Keiner"
 
 #: Presentation/Admin/Views/ReservationNewView.php:28
-#: presentation/public/views/booking.view.php:33
+#: Presentation/Public/Views/BookingView.php:33
 msgid "Confirm Reservation"
 msgstr "Reservierung bestätigen"
 
@@ -504,15 +504,15 @@ msgstr "-- Wählen --"
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: presentation/public/shortcode.php:47
+#: Presentation/Public/ShortcodeHandler.php:47
 msgid "Please %1$slog in%2$s to book a court."
 msgstr "Bitte %1$melden Sie sich an%2$s, um einen Platz zu buchen."
 
-#: presentation/public/shortcode.php:99
+#: Presentation/Public/ShortcodeHandler.php:99
 msgid "Reservation ID not provided."
 msgstr "Reservierungs-ID nicht angegeben."
 
-#: presentation/public/views/booking.view.php:21
+#: Presentation/Public/Views/BookingView.php:21
 msgid "Your reservation was successfully created."
 msgstr "Ihre Reservierung wurde erfolgreich erstellt."
 

@@ -5,5 +5,5 @@ $controller = new AdminReservationNewController ();
 $controller->handlePost();
 $data = $controller->getViewData();
 
-include plugin_dir_path(__FILE__) . '/../views/reservation-new.view.php';
+include plugin_dir_path(__FILE__) . '/../Views/ReservationNewView.php';
 

@@ -5,4 +5,4 @@ $controller = new AdminAvailabilityController();
 $controller->handlePost();
 $data = $controller->getViewData();
 
-include plugin_dir_path(__FILE__) . '/../views/availability.view.php';
+include plugin_dir_path(__FILE__) . '/../Views/AvailabilityView.php';
