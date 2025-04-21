@@ -91,12 +91,12 @@ class AvailabilityAjaxController
         $events = [];
 
         foreach ($courts as $court) {
-            $blocks = $this->blockRepo->getBlockedSlots($court->id);
+            $blocks = $this->blockRepo->getBlockedSlots($court->getId());
 
             foreach ($period as $date) {
                 foreach ($blocks as $block) {
                     if ((int)$block->day_of_week === (int)$date->format('w')) {
-                        $events[] = $this->eventTransformer::blockToEvent($date, $block, $court->id, $court->name);
+                        $events[] = $this->eventTransformer::blockToEvent($date, $block, $court->getId(), $court->getName());
                     }
                 }
             }

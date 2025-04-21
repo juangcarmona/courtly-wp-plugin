@@ -6,8 +6,8 @@
         <label for="court_id"><?php esc_html_e('Select Court:', 'courtly'); ?></label>
         <select name="court_id" onchange="this.form.submit()">
             <?php foreach ($data['courts'] as $court): ?>
-                <option value="<?= esc_attr($court->id) ?>" <?= selected($data['selectedCourtId'], $court->id) ?>>
-                    <?= esc_html($court->name) ?>
+                <option value="<?= esc_attr($court->getId()) ?>" <?= selected($data['selectedCourtId'], $court->getId()) ?>>
+                    <?= esc_html($court->getName()) ?>
                 </option>
             <?php endforeach; ?>
         </select>

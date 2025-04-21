@@ -79,9 +79,9 @@ class CourtReservationService {
         // ⛔ Max duration        
         $interval = $start->diff($end);
         $minutes = ($interval->h * 60) + $interval->i;
-        if ($minutes > Constants::COURTLY_MAX_RESERVATION_MINUTES) {
-            error_log("[Courtly] ❌ Reservation denied. Duration exceeds limit (" . Constants::COURTLY_MAX_RESERVATION_MINUTES . " mins).");
-            return sprintf(__('Reservations must be %d minutes or less.', 'courtly'), Constants::COURTLY_MAX_RESERVATION_MINUTES);
+        if ($minutes > Constants::MAX_RESERVATION_MINUTES) {
+            error_log("[Courtly] ❌ Reservation denied. Duration exceeds limit (" . Constants::MAX_RESERVATION_MINUTES . " mins).");
+            return sprintf(__('Reservations must be %d minutes or less.', 'courtly'), Constants::MAX_RESERVATION_MINUTES);
         }
 
         // ⛔ Availability check

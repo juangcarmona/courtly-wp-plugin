@@ -95,7 +95,7 @@ class PublicReservationDetailController
 
         return [
             'id' => $this->reservation->getId(),
-            'court' => $court ? $court->name : 'Court #' . $this->reservation->getCourtId(),
+            'court' => $court ? $court->getName() : 'Court #' . $this->reservation->getCourtId(),
             'date' => $this->reservation->getReservationDate()->format('Y-m-d'),
             'slot' => $this->reservation->getTimeSlot(),
             'cancel_allowed' => $cancelAllowed,

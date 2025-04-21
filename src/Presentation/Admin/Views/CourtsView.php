@@ -37,10 +37,10 @@
         <tbody>
         <?php foreach ($data['courts'] as $court): ?>
             <tr>
-                <td><?= esc_html($court->id) ?></td>
-                <td><?= esc_html($court->number) ?></td>
-                <td><?= esc_html($court->name) ?></td>
-                <td><?= esc_html($court->description) ?></td>
+            <td><?= esc_html($court->getId()) ?></td>
+            <td><?= esc_html($court->getNumber()) ?></td>
+            <td><?= esc_html($court->getName()) ?></td>
+            <td><?= esc_html($court->getDescription()) ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
