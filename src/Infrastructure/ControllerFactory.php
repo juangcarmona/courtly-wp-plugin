@@ -13,8 +13,8 @@ use Juangcarmona\Courtly\Application\Controllers\AdminUserTypeController;
 use Juangcarmona\Courtly\Application\Controllers\PublicReservationController;
 use Juangcarmona\Courtly\Application\Controllers\PublicReservationDetailController;
 use Juangcarmona\Courtly\Presentation\Admin\Controllers\AvailabilityAjaxController;
-use Juangcarmona\Courtly\Presentation\Admin\Controllers\AvailabilityController;
-use Juangcarmona\Courtly\Presentation\Admin\Controllers\CourtController;
+use Juangcarmona\Courtly\Presentation\Admin\Controllers\DashboardAjaxController;
+use Juangcarmona\Courtly\Presentation\Admin\Controllers\ReservationAjaxController;
 
 class ControllerFactory
 {
@@ -66,6 +66,13 @@ class ControllerFactory
                 CourtlyContainer::courtBlockService(),
                 CourtlyContainer::courtReservationService(),
                 CourtlyContainer::eventTransformer()
+            ),
+            DashboardAjaxController::class => new DashboardAjaxController(
+                CourtlyContainer::courtRepository(),
+                CourtlyContainer::userTypeRepository()
+            ),    
+            ReservationAjaxController::class => new ReservationAjaxController(
+                CourtlyContainer::courtReservationRepository()
             ),
             default => throw new \InvalidArgumentException("Unknown controller: $controllerName")
         };

@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../Domain/Entities/UserType.php';
-require_once __DIR__ . '/../Domain/Entities/Court.php';
-require_once __DIR__ . '/../Domain/Entities/OpeningHours.php';
-require_once __DIR__ . '/../Domain/Entities/CourtBlock.php';
-require_once __DIR__ . '/../Domain/Entities/CourtReservation.php';
+use Juangcarmona\Courtly\Domain\Entities\UserType;
+use Juangcarmona\Courtly\Domain\Entities\Court;
+use Juangcarmona\Courtly\Domain\Entities\CourtBlock;
+use Juangcarmona\Courtly\Domain\Entities\CourtReservation;
+use Juangcarmona\Courtly\Domain\Entities\OpeningHours;
 
 
 function courtly_create_tables() {
@@ -12,11 +12,11 @@ function courtly_create_tables() {
     $charset_collate = $wpdb->get_charset_collate();
 
     $entities = [
-        'user_types' => 'UserType',
-        'courts' => 'Court',
-        'court_blocks' => 'CourtBlock',
-        'reservations' => 'CourtReservation',
-        'opening_hours' => 'OpeningHours',
+        'user_types' => UserType::class,
+        'courts' => Court::class,
+        'court_blocks' => CourtBlock::class,
+        'reservations' => CourtReservation::class,
+        'opening_hours' => OpeningHours::class,
     ];
 
     require_once ABSPATH . 'wp-admin/includes/upgrade.php';

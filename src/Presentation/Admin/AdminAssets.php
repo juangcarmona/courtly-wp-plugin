@@ -47,7 +47,7 @@ class AdminAssets {
 
             case 'courtly_reservation_new':
                 wp_enqueue_script('courtly-reservation-new-calendar',
-                    plugin_dir_url(__FILE__) . 'Js/ReservationNewCalendar.js-calendar.js',
+                    plugin_dir_url(__FILE__) . 'Js/ReservationNewCalendar.js',
                     ['jquery', 'fullcalendar-js'], false, true
                 );
                 wp_localize_script('courtly-reservation-new-calendar', 'courtlyAjax', $localize);

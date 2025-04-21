@@ -1,22 +1,34 @@
 <?php
 
-require_once plugin_dir_path(__FILE__) . '../../../Infrastructure/CourtlyContainer.php';
+namespace Juangcarmona\Courtly\Presentation\Admin\Controllers;
 
-class ReservationAjaxController {
-    public static function registerHooks() {
-        add_action('wp_ajax_courtly_cancel_reservation', [self::class, 'cancel']);
+use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
+
+class ReservationAjaxController
+{
+    private CourtReservationRepositoryInterface $reservationRepository;
+
+    public function __construct(CourtReservationRepositoryInterface $reservationRepository)
+    {
+        $this->reservationRepository = $reservationRepository;
     }
 
-    public static function cancel() {
+    public function registerHooks(): void
+    {
+        add_action('wp_ajax_courtly_cancel_reservation', [$this, 'cancel']);
+    }
+
+    public function cancel(): void
+    {
         check_ajax_referer('courtly_cancel_reservation');
 
         $id = isset($_POST['id']) ? intval($_POST['id']) : null;
         if (!$id) {
-            wp_send_json_error(['message' => 'Missing reservation ID']);
+            wp_send_json_error(['message' => __('Missing reservation ID', 'courtly')]);
         }
 
-        CourtlyContainer::courtReservationRepository()->delete($id);
+        $this->reservationRepository->delete($id);
 
-        wp_send_json_success(['message' => 'Reservation cancelled']);
+        wp_send_json_success(['message' => __('Reservation cancelled', 'courtly')]);
     }
 }

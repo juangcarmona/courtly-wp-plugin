@@ -48,8 +48,8 @@ class AvailabilityAjaxController
     {
         $courts = $this->courtRepo->findAll();
         $resources = array_map(fn($c) => [
-            'id'    => $c->id,
-            'title' => $c->name,
+            'id'    => $c["id"],
+            'title' => $c["name"],
         ], $courts);
 
         wp_send_json($resources);
