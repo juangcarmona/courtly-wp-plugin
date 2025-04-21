@@ -60,8 +60,8 @@ class CourtlyContainer
         return new UserTypeRepository();
     }
 
-    public static function eventTransformer(): string
+    public static function eventTransformer(): EventTransformer
     {
-        return EventTransformer::class;
+        return new EventTransformer();
     }
 }

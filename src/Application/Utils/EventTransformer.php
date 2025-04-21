@@ -1,4 +1,5 @@
 <?php
+namespace Juangcarmona\Courtly\Application\Utils;
 
 class EventTransformer {
     public static function reservationToEvent($r): array {

@@ -1,5 +1,7 @@
 <?php
+
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
+
 use Juangcarmona\Courtly\Domain\Repositories\CourtBlockRepositoryInterface;
 
 class CourtBlockRepository implements CourtBlockRepositoryInterface
@@ -29,12 +31,12 @@ class CourtBlockRepository implements CourtBlockRepositoryInterface
         return $results;
     }
 
-    public function insertBlockedSlot($data)
+    public function insertBlockedSlot(array $data): bool
     {
         return $this->wpdb->insert($this->table, $data) !== false;
     }
 
-    public function deleteBlockedSlot($id)
+    public function deleteBlockedSlot(int $id): bool
     {
         return $this->wpdb->delete($this->table, ['id' => $id]) !== false;
     }

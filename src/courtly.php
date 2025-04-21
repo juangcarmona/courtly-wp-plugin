@@ -18,8 +18,14 @@
 if (!defined('ABSPATH')) {
     exit; // Prevent direct access
 }
+require_once __DIR__ . '/vendor/autoload.php';
 
+use Juangcarmona\Courtly\Infrastructure\CourtlyContainer;
+use Juangcarmona\Courtly\Infrastructure\ControllerFactory;
 
+use Juangcarmona\Courtly\Presentation\Admin\Controllers\AvailabilityAjaxController;
+// use Juangcarmona\Courtly\Presentation\Admin\Controllers\DashboardAjaxController;
+// use Juangcarmona\Courtly\Presentation\Admin\Controllers\ReservationAjaxController;
 require_once __DIR__ . '/Infrastructure/require_entities.php';
 
 // -----------------------------------------------------------------------------
@@ -45,6 +51,7 @@ add_action('init', 'courtly_load_textdomain');
 // Load core infrastructure (dependency container, etc.)
 // -----------------------------------------------------------------------------
 require_once plugin_dir_path(__FILE__) . 'Infrastructure/CourtlyContainer.php';
+require_once plugin_dir_path(__FILE__) . 'Infrastructure/ControllerFactory.php';
 
 // -----------------------------------------------------------------------------
 // Load public routing BEFORE flush_rewrite_rules
@@ -103,13 +110,13 @@ add_filter('wp_get_nav_menu_items', function ($items) {
 // Admin dashboard logic and AJAX controllers
 // -----------------------------------------------------------------------------
 if (is_admin()) {
+    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/AvailabilityAjaxController.php';
     require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/AdminBootstrap.php';
 
-    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/AvailabilityAjaxController.php';
     require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/DashboardAjaxController.php';
     require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/ReservationAjaxController.php';
 
-    AvailabilityAjaxController::registerHooks();
+    ControllerFactory::make(AvailabilityAjaxController::class)->registerHooks();
     DashboardAjaxController::registerHooks();
     ReservationAjaxController::registerHooks();
 }

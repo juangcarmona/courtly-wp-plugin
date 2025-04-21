@@ -1,6 +1,11 @@
 <?php
+
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
+
+use Juangcarmona\Courtly\Domain\Entities\CourtReservation;
 use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
+use DateTime;
+use DateTimeInterface;
 
 class CourtReservationRepository implements CourtReservationRepositoryInterface
 {
@@ -14,7 +19,7 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
         $this->table = $wpdb->prefix . 'courtly_reservations';
     }
 
-    public function getReservationsForDate($courtId, $date)
+    public function getReservationsForDate(int $courtId, string $date): array
     {
         return $this->wpdb->get_results(
             $this->wpdb->prepare(
@@ -26,63 +31,65 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
         );
     }
 
-    public function getReservationsForUserOnDate(int $userId, string $date): array {
-        global $wpdb;
-        $table = $wpdb->prefix . 'courtly_reservations';
-    
-        return $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT * FROM $table WHERE user_id = %d AND reservation_date = %s",
+    public function getReservationsForUserOnDate(int $userId, string $date): array
+    {
+        return $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                "SELECT * FROM {$this->table} 
+                 WHERE user_id = %d AND reservation_date = %s",
                 $userId,
                 $date
             )
         );
     }
 
-    public function findById(int $id): ?CourtReservation {
-        global $wpdb;
-        $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table} WHERE id = %d", $id)
+    public function findById(int $id): ?CourtReservation
+    {
+        $row = $this->wpdb->get_row(
+            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE id = %d", $id)
         );
-        
+
         return $row ? $this->mapRowToEntity($row) : null;
     }
 
-    public function findBetweenDates(DateTimeInterface $start, DateTimeInterface $end): array {
-        global $wpdb;
-        $rows = $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT * FROM {$wpdb->prefix}courtly_reservations
+    public function findBetweenDates(DateTimeInterface $start, DateTimeInterface $end): array
+    {
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                "SELECT * FROM {$this->table}
                  WHERE reservation_date BETWEEN %s AND %s",
-                $start->format('Y-m-d'), $end->format('Y-m-d')
+                $start->format('Y-m-d'),
+                $end->format('Y-m-d')
             )
         );
-        return $rows;
+
+        return array_map([$this, 'mapRowToEntity'], $rows);
     }
 
-    public function findFrom(DateTimeInterface $fromDay, int $rangeInDays = 30): array {
+    public function findFrom(DateTimeInterface $fromDay, int $rangeInDays = 30): array
+    {
         $end = (clone $fromDay)->modify("+$rangeInDays days");
-        $rows = $this->findBetweenDates($fromDay, $end);
-        return array_map([$this, 'mapRowToEntity'], $rows);
+        return $this->findBetweenDates($fromDay, $end);
     }
-    
-    public function findBefore(DateTimeInterface $fromDay, int $rangeInDays = 30): array {
-        $start = (clone $fromDay)->modify("-$rangeInDays days");
-        $rows = $this->findBetweenDates($start, $fromDay);
-        return array_map([$this, 'mapRowToEntity'], $rows);
-    }  
 
-    public function insertReservation($data)
+    public function findBefore(DateTimeInterface $fromDay, int $rangeInDays = 30): array
+    {
+        $start = (clone $fromDay)->modify("-$rangeInDays days");
+        return $this->findBetweenDates($start, $fromDay);
+    }
+
+    public function insertReservation(array $data): bool
     {
         return $this->wpdb->insert($this->table, $data) !== false;
     }
 
-    public function deleteReservation($id)
+    public function deleteReservation(int $id): bool
     {
         return $this->wpdb->delete($this->table, ['id' => $id]) !== false;
     }
-    
-    private function mapRowToEntity($row): CourtReservation {
+
+    private function mapRowToEntity(object $row): CourtReservation
+    {
         return new CourtReservation(
             $row->id,
             $row->user_id,

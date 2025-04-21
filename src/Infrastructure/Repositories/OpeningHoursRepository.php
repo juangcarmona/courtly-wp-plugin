@@ -1,5 +1,7 @@
 <?php
+
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
+
 use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
 
 class OpeningHoursRepository implements OpeningHoursRepositoryInterface
@@ -14,19 +16,19 @@ class OpeningHoursRepository implements OpeningHoursRepositoryInterface
         $this->table = $wpdb->prefix . 'courtly_opening_hours';
     }
 
-    public function getAll()
+    public function getAll(): array
     {
         return $this->wpdb->get_results("SELECT * FROM {$this->table} ORDER BY day_of_week ASC");
     }
 
-    public function getByDayOfWeek(int $dayOfWeek)
+    public function getByDayOfWeek(int $dayOfWeek): ?object
     {
         return $this->wpdb->get_row(
             $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE day_of_week = %d", $dayOfWeek)
-        );
+        ) ?: null;
     }
 
-    public function upsert($dayOfWeek, $openTime, $closeTime): bool
+    public function upsert(int $dayOfWeek, string $openTime, string $closeTime): bool
     {
         $existing = $this->getByDayOfWeek($dayOfWeek);
 
