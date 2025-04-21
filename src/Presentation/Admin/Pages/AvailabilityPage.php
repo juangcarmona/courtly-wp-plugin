@@ -1,8 +1,9 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/AdminAvailabilityController.php';
+use Juangcarmona\Courtly\Infrastructure\ControllerFactory;
+use Juangcarmona\Courtly\Application\Controllers\AdminReservationListController;
 
-$controller = new AdminAvailabilityController();
+$controller = ControllerFactory::make(AdminAvailabilityController::class);
 $controller->handlePost();
 $data = $controller->getViewData();
 
-include plugin_dir_path(__FILE__) . '/../Views/AvailabilityView.php';
+include __DIR__ . '/../Views/AvailabilityView.php';

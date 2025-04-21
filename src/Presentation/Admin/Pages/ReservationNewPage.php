@@ -1,7 +1,8 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/AdminReservationNewController.php';
+use Juangcarmona\Courtly\Infrastructure\ControllerFactory;
+use Juangcarmona\Courtly\Application\Controllers\AdminReservationNewController;
 
-$controller = new AdminReservationNewController ();
+$controller = ControllerFactory::make(AdminReservationNewController::class);
 $controller->handlePost();
 $data = $controller->getViewData();
 

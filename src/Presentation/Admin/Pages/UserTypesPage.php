@@ -1,7 +1,8 @@
 <?php
-require_once plugin_dir_path(__FILE__) . '../../../Application/Controllers/AdminUserTypeController.php';
+use Juangcarmona\Courtly\Infrastructure\ControllerFactory;
+use Juangcarmona\Courtly\Application\Controllers\AdminUserTypeController;
 
-$controller = new AdminUserTypeController();
+$controller = ControllerFactory::make(AdminUserTypeController::class);
 $controller->handlePost();
 $data = $controller->getViewData();
 
