@@ -27,7 +27,7 @@ python translate-po.py /absolute/path/to/your.po --lang xx --key YOUR_GOOGLE_API
 ## 📦 Example
 
 ```bash
-python translate-po.py ~/courtly-wp-plugin/src/languages/fr_FR.po --lang fr --key AIzaSyD...
+python translate-po.py ~/courtly-wp-plugin/src/Languages/fr_FR.po --lang fr --key AIzaSyD...
 ```
 
 ---

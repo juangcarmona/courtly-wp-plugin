@@ -21,7 +21,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y gettext
 
     - name: Compile .po files to .mo
-      working-directory: src/languages
+      working-directory: src/Languages
       run: |
         set -e
         for file in *.po; do
@@ -29,7 +29,7 @@ jobs:
         done
 
     - name: Validate translations
-      working-directory: src/languages
+      working-directory: src/Languages
       run: |
         set -e
         po_count=$(ls -1 *.po | wc -l)
