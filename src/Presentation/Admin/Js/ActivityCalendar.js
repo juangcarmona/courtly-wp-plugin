@@ -1,5 +1,5 @@
-import { renderGeneralCalendar } from '../../shared/calendar/calendar-general.js';
-import logger from '../../shared/logger/logger.js';
+import { renderGeneralCalendar } from '../../Shared/Calendar/CalendarGeneral.js';
+import logger from '../../Shared/Logger/Logger.js';
 
 logger.setLevel('debug');
 

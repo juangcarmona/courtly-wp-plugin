@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 add_shortcode('courtly_general_calendar', function () {
     wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
-    wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__DIR__) . '/../shared/calendar/calendar.css');
+    wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__DIR__) . '/../Shared/Calendar/Calendar.css');
     wp_enqueue_script('fullcalendar-js', 'https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js', [], false, true);
     wp_enqueue_script('courtly-general-calendar',
         plugin_dir_url(__FILE__) . 'js/public-availability-calendar.js',
@@ -59,7 +59,7 @@ add_shortcode('courtly_user_booking', function () {
     $base_url = get_permalink($reservation_page_id);
 
     wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
-    wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__DIR__) . '/../shared/calendar/calendar.css');
+    wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__DIR__) . '/../Shared/Calendar/Calendar.css');
     wp_enqueue_script('fullcalendar-js', 'https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js', [], false, true);
     wp_enqueue_script('courtly-user-booking-calendar',
         plugin_dir_url(__FILE__) . 'js/public-user-booking-calendar.js',

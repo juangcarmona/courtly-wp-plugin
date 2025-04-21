@@ -1,5 +1,5 @@
-import { renderEditableCalendar } from '../../shared/calendar/calendar-editable.js';
-import logger from '../../shared/logger/logger.js';
+import { renderEditableCalendar } from '../../Shared/Calendar/CalendarEditable.js';
+import logger from '../../Shared/Logger/Logger.js';
 
 logger.setLevel('debug');
 

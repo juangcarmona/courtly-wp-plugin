@@ -4,7 +4,7 @@ class AdminAssets {
         if (!isset($_GET['page']) || strpos($_GET['page'], 'courtly') === false) return;
 
         wp_enqueue_style('courtly-bootstrap-css', 'https://bootswatch.com/5/minty/bootstrap.min.css');
-        wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__DIR__) . '/../shared/calendar/calendar.css');
+        wp_enqueue_style('courtly-calendar-css', plugin_dir_url(__DIR__) . '/../Shared/Calendar/Calendar.css');
         wp_enqueue_script('fullcalendar-js', 'https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js', [], false, true);
 
         add_filter('script_loader_tag', [self::class, 'markAsModule'], 10, 3);
@@ -22,7 +22,7 @@ class AdminAssets {
         switch ($_GET['page']) {
             case 'courtly_activity_calendar':
                 wp_enqueue_script('courtly-activity-calendar',
-                    plugin_dir_url(__FILE__) . 'js/activity-calendar.js',
+                    plugin_dir_url(__FILE__) . 'Js/ActivityCalendar.js',
                     ['jquery', 'fullcalendar-js'], false, true
                 );
                 $localize['translations'] = [
@@ -34,7 +34,7 @@ class AdminAssets {
 
             case 'courtly_availability':
                 wp_enqueue_script('courtly-availability-calendar',
-                    plugin_dir_url(__FILE__) . 'js/availability-calendar.js',
+                    plugin_dir_url(__FILE__) . 'Js/AvailabilityCalendar.js.js',
                     ['jquery', 'fullcalendar-js'], false, true
                 );
                 $localize['court_id'] = isset($_GET['court_id']) ? intval($_GET['court_id']) : 1;
@@ -47,7 +47,7 @@ class AdminAssets {
 
             case 'courtly_reservation_new':
                 wp_enqueue_script('courtly-reservation-new-calendar',
-                    plugin_dir_url(__FILE__) . 'js/reservation-new-calendar.js',
+                    plugin_dir_url(__FILE__) . 'Js/ReservationNewCalendar.js-calendar.js',
                     ['jquery', 'fullcalendar-js'], false, true
                 );
                 wp_localize_script('courtly-reservation-new-calendar', 'courtlyAjax', $localize);

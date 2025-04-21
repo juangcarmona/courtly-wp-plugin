@@ -1,5 +1,5 @@
 
-import logger from '../logger/logger.js';
+import logger from '../Logger/Logger.js';
 
 export function renderEditableCalendar(containerEl, options) {
     const calendar = new FullCalendar.Calendar(containerEl, {

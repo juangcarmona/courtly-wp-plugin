@@ -1,4 +1,4 @@
-import logger from '../logger/logger.js';
+import logger from '../Logger/Logger.js';
 
 export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) {
   if (!containerEl) return;

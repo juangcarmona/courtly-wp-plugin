@@ -29,7 +29,7 @@ function courtly_load_textdomain() {
     $loaded = load_plugin_textdomain(
         'courtly',
         false,
-        'courtly/languages'
+        'courtly/Languages'
     );
     
 
@@ -103,7 +103,7 @@ add_filter('wp_get_nav_menu_items', function ($items) {
 // Admin dashboard logic and AJAX controllers
 // -----------------------------------------------------------------------------
 if (is_admin()) {
-    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/admin.php';
+    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/AdminBootstrap.php';
 
     require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/AvailabilityAjaxController.php';
     require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/DashboardAjaxController.php';
