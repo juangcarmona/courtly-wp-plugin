@@ -4,7 +4,7 @@ This folder contains application-level controllers.
 
 These controllers orchestrate business logic in response to user actions. They can be called from:
 
-- WordPress admin pages (e.g. `pages/courts.php`)
+- WordPress admin pages (e.g. `Pages/CourtsPage.php`)
 - Shortcodes or public-facing pages
 - REST endpoints or AJAX controllers (as delegates)
 

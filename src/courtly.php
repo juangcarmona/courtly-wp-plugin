@@ -103,11 +103,11 @@ add_filter('wp_get_nav_menu_items', function ($items) {
 // Admin dashboard logic and AJAX controllers
 // -----------------------------------------------------------------------------
 if (is_admin()) {
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/admin.php';
+    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/admin.php';
 
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/AvailabilityAjaxController.php';
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/DashboardAjaxController.php';
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/ReservationAjaxController.php';
+    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/AvailabilityAjaxController.php';
+    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/DashboardAjaxController.php';
+    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/Controllers/ReservationAjaxController.php';
 
     AvailabilityAjaxController::registerHooks();
     DashboardAjaxController::registerHooks();

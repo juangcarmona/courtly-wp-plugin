@@ -115,43 +115,43 @@ function courtly_add_admin_menu() {
 
 // Page routing
 function courtly_admin_dashboard_page() {
-    include plugin_dir_path(__FILE__) . 'pages/dashboard.php';
+    include plugin_dir_path(__FILE__) . 'Pages/DashboardPage.php';
 }
 
 function courtly_admin_activity_calendar_page() {
-    include plugin_dir_path(__FILE__) . '/pages/activity-calendar.php';
+    include plugin_dir_path(__FILE__) . '/Pages/ActivityCalendarPage.php';
 }
 
 function courtly_admin_reservations_page() {
-    include plugin_dir_path(__FILE__) . 'pages/reservation-list.php';
+    include plugin_dir_path(__FILE__) . 'Pages/ReservationListPage.php';
 }
 
 function courtly_admin_reservation_new_page() {
-    include plugin_dir_path(__FILE__) . 'pages/reservation-new.php';
+    include plugin_dir_path(__FILE__) . 'Pages/ReservationNewPage.php';
 }
 
 function courtly_admin_history_page() {
-    include plugin_dir_path(__FILE__) . 'pages/reservation-history.php';
+    include plugin_dir_path(__FILE__) . 'Pages/ReservationHistoryPage.php';
 }
 
 function courtly_admin_reservation_detail_page() {
-    include plugin_dir_path(__FILE__) . 'pages/reservation-detail.php';
+    include plugin_dir_path(__FILE__) . 'Pages/ReservationDetailPage.php';
 }
 
 function courtly_admin_availability_page() {
-    include plugin_dir_path(__FILE__) . 'pages/availability.php';
+    include plugin_dir_path(__FILE__) . 'Pages/AvailabilityPage.php';
 }
 
 function courtly_admin_courts_page() {
-    include plugin_dir_path(__FILE__) . 'pages/courts.php';
+    include plugin_dir_path(__FILE__) . 'Pages/CourtsPage.php';
 }
 
 function courtly_admin_users_page() {
-    include plugin_dir_path(__FILE__) . 'pages/users.php';
+    include plugin_dir_path(__FILE__) . 'Pages/UsersPage.php';
 }
 
 function courtly_admin_user_types_page() {
-    include plugin_dir_path(__FILE__) . 'pages/user-types.php';
+    include plugin_dir_path(__FILE__) . 'Pages/UserTypesPage.php';
 }
 
 // ✅ Asset loader

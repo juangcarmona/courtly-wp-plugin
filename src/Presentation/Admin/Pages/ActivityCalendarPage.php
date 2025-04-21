@@ -1,5 +1,5 @@
 <?php
-// presentation/admin/pages/activity-calendar.php
+// Presentation/Admin/Pages/activity-calendar.php
 
 $data = []; // No data is passed to the view
 

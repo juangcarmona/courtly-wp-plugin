@@ -156,348 +156,348 @@ msgstr "Kalender"
 msgid "Reservation"
 msgstr "Reservation"
 
-#: presentation/admin/admin.php:9 presentation/admin/admin.php:10
+#: Presentation/Admin/admin.php:9 Presentation/Admin/admin.php:10
 msgid "Courtly"
 msgstr "Høvisk"
 
-#: presentation/admin/admin.php:21 presentation/admin/admin.php:22
+#: Presentation/Admin/admin.php:21 Presentation/Admin/admin.php:22
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: presentation/admin/admin.php:31 presentation/admin/admin.php:32
-#: presentation/admin/views/activity-calendar.view.php:2
+#: Presentation/Admin/admin.php:31 Presentation/Admin/admin.php:32
+#: Presentation/Admin/Views/ActivityCalendarView.php:2
 msgid "Activity Calendar"
 msgstr "Aktivitetskalender"
 
-#: presentation/admin/admin.php:41 presentation/admin/pages/dashboard.php:75
+#: Presentation/Admin/admin.php:41 Presentation/Admin/Pages/dashboard.php:75
 msgid "New Reservation"
 msgstr "Ny reservation"
 
-#: presentation/admin/admin.php:42
+#: Presentation/Admin/admin.php:42
 msgid "Reservations New"
 msgstr "Reservationer Nyt"
 
-#: presentation/admin/admin.php:50
-#: presentation/admin/views/reservation-list.view.php:2
+#: Presentation/Admin/admin.php:50
+#: Presentation/Admin/Views/ReservationListView.php:2
 msgid "All Reservations"
 msgstr "Alle reservationer"
 
-#: presentation/admin/admin.php:51
+#: Presentation/Admin/admin.php:51
 msgid "Reservations All"
 msgstr "Reservationer Alle"
 
-#: presentation/admin/admin.php:59 presentation/admin/admin.php:60
+#: Presentation/Admin/admin.php:59 Presentation/Admin/admin.php:60
 msgid "Reservation History"
 msgstr "Reservationshistorie"
 
-#: presentation/admin/admin.php:69
+#: Presentation/Admin/admin.php:69
 msgid "Court Availability"
 msgstr "Banens tilgængelighed"
 
-#: presentation/admin/admin.php:70
+#: Presentation/Admin/admin.php:70
 msgid "Availability"
 msgstr "Tilgængelighed"
 
-#: presentation/admin/admin.php:79 presentation/admin/pages/dashboard.php:27
+#: Presentation/Admin/admin.php:79 Presentation/Admin/Pages/dashboard.php:27
 msgid "Manage Courts"
 msgstr "Administrer Baner"
 
-#: presentation/admin/admin.php:80 presentation/admin/pages/dashboard.php:25
-#: presentation/admin/views/courts.view.php:2
+#: Presentation/Admin/admin.php:80 Presentation/Admin/Pages/dashboard.php:25
+#: Presentation/Admin/Views/CourtsView.php:2
 msgid "Courts"
 msgstr "Baner"
 
-#: presentation/admin/admin.php:89 presentation/admin/pages/dashboard.php:47
+#: Presentation/Admin/admin.php:89 Presentation/Admin/Pages/dashboard.php:47
 msgid "Manage Users"
 msgstr "Administrer brugere"
 
-#: presentation/admin/admin.php:90 presentation/admin/pages/dashboard.php:45
-#: presentation/admin/views/users.view.php:2
+#: Presentation/Admin/admin.php:90 Presentation/Admin/Pages/dashboard.php:45
+#: Presentation/Admin/Views/UsersView.php:2
 msgid "Users"
 msgstr "Brugere"
 
-#: presentation/admin/admin.php:98 presentation/admin/admin.php:99
-#: presentation/admin/pages/dashboard.php:35
-#: presentation/admin/views/user-types.view.php:2
+#: Presentation/Admin/admin.php:98 Presentation/Admin/admin.php:99
+#: Presentation/Admin/Pages/dashboard.php:35
+#: Presentation/Admin/Views/UserTypesView.php:2
 msgid "User Types"
 msgstr "Brugertyper"
 
-#: presentation/admin/AdminAssets.php:29 presentation/public/shortcode.php:27
+#: Presentation/Admin/AdminAssets.php:29 presentation/public/shortcode.php:27
 #: presentation/public/shortcode.php:79
 msgid "No reason provided"
 msgstr "Ingen grund angivet"
 
-#: presentation/admin/AdminAssets.php:30 presentation/public/shortcode.php:28
+#: Presentation/Admin/AdminAssets.php:30 presentation/public/shortcode.php:28
 #: presentation/public/shortcode.php:80
 msgid "Every"
 msgstr "Hver"
 
-#: presentation/admin/AdminAssets.php:42
+#: Presentation/Admin/AdminAssets.php:42
 msgid "Reason for blocking this slot:"
 msgstr "Årsag til at blokere denne plads:"
 
-#: presentation/admin/AdminAssets.php:43
+#: Presentation/Admin/AdminAssets.php:43
 msgid "Remove this blocked slot?"
 msgstr "Vil du fjerne dette blokerede slot?"
 
-#: presentation/admin/pages/dashboard.php:19
+#: Presentation/Admin/Pages/dashboard.php:19
 #, fuzzy
 msgid "Courtly Dashboard"
 msgstr "Dashboard"
 
-#: presentation/admin/pages/dashboard.php:37
+#: Presentation/Admin/Pages/dashboard.php:37
 #, fuzzy
 msgid "Manage User Types"
 msgstr "Administrer brugere"
 
-#: presentation/admin/pages/dashboard.php:55
+#: Presentation/Admin/Pages/dashboard.php:55
 #, fuzzy
 msgid "Users by Type"
 msgstr "Brugertype"
 
-#: presentation/admin/pages/dashboard.php:72
+#: Presentation/Admin/Pages/dashboard.php:72
 #, fuzzy
 msgid "Quick Actions"
 msgstr "Handling"
 
-#: presentation/admin/pages/dashboard.php:78
+#: Presentation/Admin/Pages/dashboard.php:78
 #, fuzzy
 msgid "View Calendar"
 msgstr "Kalender"
 
-#: presentation/admin/pages/dashboard.php:81
+#: Presentation/Admin/Pages/dashboard.php:81
 #, fuzzy
 msgid "Set Availability"
 msgstr "Tilgængelighed"
 
-#: presentation/admin/views/availability.view.php:2
+#: Presentation/Admin/Views/AvailabilityView.php:2
 msgid "Manage Court Availability"
 msgstr "Administrer Banens tilgængelighed"
 
-#: presentation/admin/views/availability.view.php:6
+#: Presentation/Admin/Views/AvailabilityView.php:6
 msgid "Select Court:"
 msgstr "Vælg bane:"
 
-#: presentation/admin/views/availability.view.php:21
+#: Presentation/Admin/Views/AvailabilityView.php:21
 msgid "From:"
 msgstr "Fra:"
 
-#: presentation/admin/views/availability.view.php:23
+#: Presentation/Admin/Views/AvailabilityView.php:23
 msgid "To:"
 msgstr "Til:"
 
-#: presentation/admin/views/availability.view.php:25
+#: Presentation/Admin/Views/AvailabilityView.php:25
 msgid "Save"
 msgstr "Spare"
 
-#: presentation/admin/views/courts.view.php:5
+#: Presentation/Admin/Views/CourtsView.php:5
 msgid "Add New Court"
 msgstr "Tilføj ny bane"
 
-#: presentation/admin/views/courts.view.php:8
+#: Presentation/Admin/Views/CourtsView.php:8
 msgid "Court Number"
 msgstr "Banens nummer"
 
-#: presentation/admin/views/courts.view.php:12
-#: presentation/admin/views/courts.view.php:33
+#: Presentation/Admin/Views/CourtsView.php:12
+#: Presentation/Admin/Views/CourtsView.php:33
 msgid "Name"
 msgstr "Navn"
 
-#: presentation/admin/views/courts.view.php:16
-#: presentation/admin/views/courts.view.php:34
+#: Presentation/Admin/Views/CourtsView.php:16
+#: Presentation/Admin/Views/CourtsView.php:34
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: presentation/admin/views/courts.view.php:21
+#: Presentation/Admin/Views/CourtsView.php:21
 msgid "Add Court"
 msgstr "Tilføj bane"
 
-#: presentation/admin/views/courts.view.php:27
+#: Presentation/Admin/Views/CourtsView.php:27
 msgid "Existing Courts"
 msgstr "Eksisterende Baner"
 
-#: presentation/admin/views/courts.view.php:31
-#: presentation/admin/views/reservation-detail.view.php:5
-#: presentation/admin/views/reservation-history.view.php:7
-#: presentation/admin/views/reservation-list.view.php:8
-#: presentation/admin/views/reservation-list.view.php:40
-#: presentation/admin/views/user-types.view.php:31
+#: Presentation/Admin/Views/CourtsView.php:31
+#: Presentation/Admin/Views/ReservationDetailView.php:5
+#: Presentation/Admin/Views/ReservationHistoryView.php:7
+#: Presentation/Admin/Views/ReservationListView.php:8
+#: Presentation/Admin/Views/ReservationListView.php:40
+#: Presentation/Admin/Views/UserTypesView.php:31
 #: presentation/public/views/reservation-detail.view.php:6
 msgid "ID"
 msgstr "ID"
 
-#: presentation/admin/views/courts.view.php:32
+#: Presentation/Admin/Views/CourtsView.php:32
 msgid "Number"
 msgstr "Antal"
 
-#: presentation/admin/views/reservation-detail.view.php:2
+#: Presentation/Admin/Views/ReservationDetailView.php:2
 msgid "Reservation Detail"
 msgstr "Reservationsdetaljer"
 
-#: presentation/admin/views/reservation-detail.view.php:6
-#: presentation/admin/views/reservation-history.view.php:8
-#: presentation/admin/views/reservation-list.view.php:9
-#: presentation/admin/views/reservation-list.view.php:41
-#: presentation/admin/views/users.view.php:8
+#: Presentation/Admin/Views/ReservationDetailView.php:6
+#: Presentation/Admin/Views/ReservationHistoryView.php:8
+#: Presentation/Admin/Views/ReservationListView.php:9
+#: Presentation/Admin/Views/ReservationListView.php:41
+#: Presentation/Admin/Views/UsersView.php:8
 msgid "User"
 msgstr "Bruger"
 
-#: presentation/admin/views/reservation-detail.view.php:7
-#: presentation/admin/views/reservation-history.view.php:9
-#: presentation/admin/views/reservation-list.view.php:10
-#: presentation/admin/views/reservation-list.view.php:42
+#: Presentation/Admin/Views/ReservationDetailView.php:7
+#: Presentation/Admin/Views/ReservationHistoryView.php:9
+#: Presentation/Admin/Views/ReservationListView.php:10
+#: Presentation/Admin/Views/ReservationListView.php:42
 #: presentation/public/views/reservation-detail.view.php:10
 msgid "Court"
 msgstr "Bane"
 
-#: presentation/admin/views/reservation-detail.view.php:8
-#: presentation/admin/views/reservation-history.view.php:10
-#: presentation/admin/views/reservation-list.view.php:11
-#: presentation/admin/views/reservation-list.view.php:43
+#: Presentation/Admin/Views/ReservationDetailView.php:8
+#: Presentation/Admin/Views/ReservationHistoryView.php:10
+#: Presentation/Admin/Views/ReservationListView.php:11
+#: Presentation/Admin/Views/ReservationListView.php:43
 #: presentation/public/views/reservation-detail.view.php:14
 msgid "Date"
 msgstr "Dato"
 
-#: presentation/admin/views/reservation-detail.view.php:9
+#: Presentation/Admin/Views/ReservationDetailView.php:9
 #: presentation/public/views/reservation-detail.view.php:18
 msgid "Time Slot"
 msgstr "Tidsrum"
 
-#: presentation/admin/views/reservation-detail.view.php:14
+#: Presentation/Admin/Views/ReservationDetailView.php:14
 #: presentation/public/views/reservation-detail.view.php:24
 msgid "Are you sure you want to cancel this reservation?"
 msgstr "Er du sikker på, at du vil annullere denne reservation?"
 
-#: presentation/admin/views/reservation-detail.view.php:17
+#: Presentation/Admin/Views/ReservationDetailView.php:17
 #: presentation/public/views/reservation-detail.view.php:27
 msgid "Cancel Reservation"
 msgstr "Annuller reservation"
 
-#: presentation/admin/views/reservation-detail.view.php:25
+#: Presentation/Admin/Views/ReservationDetailView.php:25
 #: presentation/public/views/reservation-detail.view.php:28
 #: presentation/public/views/reservation-detail.view.php:33
 msgid "Back"
 msgstr "Tilbage"
 
-#: presentation/admin/views/reservation-history.view.php:2
+#: Presentation/Admin/Views/ReservationHistoryView.php:2
 msgid "Reservation History (Last 12 Months)"
 msgstr "Reservationshistorik (sidste 12 måneder)"
 
-#: presentation/admin/views/reservation-history.view.php:11
-#: presentation/admin/views/reservation-list.view.php:12
-#: presentation/admin/views/reservation-list.view.php:44
+#: Presentation/Admin/Views/ReservationHistoryView.php:11
+#: Presentation/Admin/Views/ReservationListView.php:12
+#: Presentation/Admin/Views/ReservationListView.php:44
 msgid "Start"
 msgstr "Starte"
 
-#: presentation/admin/views/reservation-history.view.php:12
-#: presentation/admin/views/reservation-list.view.php:13
-#: presentation/admin/views/reservation-list.view.php:45
+#: Presentation/Admin/Views/ReservationHistoryView.php:12
+#: Presentation/Admin/Views/ReservationListView.php:13
+#: Presentation/Admin/Views/ReservationListView.php:45
 msgid "End"
 msgstr "Ende"
 
-#: presentation/admin/views/reservation-history.view.php:13
-#: presentation/admin/views/reservation-list.view.php:14
-#: presentation/admin/views/reservation-list.view.php:46
+#: Presentation/Admin/Views/ReservationHistoryView.php:13
+#: Presentation/Admin/Views/ReservationListView.php:14
+#: Presentation/Admin/Views/ReservationListView.php:46
 msgid "Action"
 msgstr "Handling"
 
-#: presentation/admin/views/reservation-history.view.php:27
-#: presentation/admin/views/reservation-list.view.php:28
-#: presentation/admin/views/reservation-list.view.php:60
+#: Presentation/Admin/Views/ReservationHistoryView.php:27
+#: Presentation/Admin/Views/ReservationListView.php:28
+#: Presentation/Admin/Views/ReservationListView.php:60
 msgid "View"
 msgstr "Udsigt"
 
-#: presentation/admin/views/reservation-list.view.php:4
+#: Presentation/Admin/Views/ReservationListView.php:4
 msgid "Upcoming"
 msgstr "Kommende"
 
-#: presentation/admin/views/reservation-list.view.php:36
+#: Presentation/Admin/Views/ReservationListView.php:36
 msgid "Past"
 msgstr "Forbi"
 
-#: presentation/admin/views/reservation-new.view.php:2
+#: Presentation/Admin/Views/ReservationNewView.php:2
 msgid "Create User Reservation"
 msgstr "Opret brugerreservation"
 
-#: presentation/admin/views/reservation-new.view.php:3
+#: Presentation/Admin/Views/ReservationNewView.php:3
 msgid "Select a user and then a time slot below to create a reservation."
 msgstr ""
 "Vælg en bruger og derefter et tidsrum nedenfor for at oprette en reservation."
 
-#: presentation/admin/views/reservation-new.view.php:10
+#: Presentation/Admin/Views/ReservationNewView.php:10
 msgid "Select User:"
 msgstr "Vælg bruger:"
 
-#: presentation/admin/views/reservation-new.view.php:12
+#: Presentation/Admin/Views/ReservationNewView.php:12
 msgid "-- Select User --"
 msgstr "-- Vælg bruger --"
 
-#: presentation/admin/views/reservation-new.view.php:18
+#: Presentation/Admin/Views/ReservationNewView.php:18
 msgid "n/a"
 msgstr "n/a"
 
-#: presentation/admin/views/reservation-new.view.php:25
+#: Presentation/Admin/Views/ReservationNewView.php:25
 msgid "Selected:"
 msgstr "Valgt:"
 
-#: presentation/admin/views/reservation-new.view.php:26
+#: Presentation/Admin/Views/ReservationNewView.php:26
 msgid "None"
 msgstr "Ingen"
 
-#: presentation/admin/views/reservation-new.view.php:28
+#: Presentation/Admin/Views/ReservationNewView.php:28
 #: presentation/public/views/booking.view.php:33
 msgid "Confirm Reservation"
 msgstr "Bekræft reservation"
 
-#: presentation/admin/views/user-types.view.php:5
+#: Presentation/Admin/Views/UserTypesView.php:5
 msgid "Add New User Type"
 msgstr "Tilføj ny brugertype"
 
-#: presentation/admin/views/user-types.view.php:8
+#: Presentation/Admin/Views/UserTypesView.php:8
 msgid "Internal Name"
 msgstr "Internt navn"
 
-#: presentation/admin/views/user-types.view.php:12
+#: Presentation/Admin/Views/UserTypesView.php:12
 msgid "Display Name"
 msgstr "Vist navn"
 
-#: presentation/admin/views/user-types.view.php:16
+#: Presentation/Admin/Views/UserTypesView.php:16
 msgid "Booking Days in Advance"
 msgstr "Booking dage i forvejen"
 
-#: presentation/admin/views/user-types.view.php:21
+#: Presentation/Admin/Views/UserTypesView.php:21
 msgid "Add User Type"
 msgstr "Tilføj brugertype"
 
-#: presentation/admin/views/user-types.view.php:27
+#: Presentation/Admin/Views/UserTypesView.php:27
 msgid "Existing User Types"
 msgstr "Eksisterende brugertyper"
 
-#: presentation/admin/views/user-types.view.php:32
+#: Presentation/Admin/Views/UserTypesView.php:32
 msgid "Internal"
 msgstr "Indre"
 
-#: presentation/admin/views/user-types.view.php:33
+#: Presentation/Admin/Views/UserTypesView.php:33
 msgid "Display"
 msgstr "Vise"
 
-#: presentation/admin/views/user-types.view.php:34
+#: Presentation/Admin/Views/UserTypesView.php:34
 msgid "Days in Advance"
 msgstr "Dage i forvejen"
 
-#: presentation/admin/views/users.view.php:9
+#: Presentation/Admin/Views/UsersView.php:9
 msgid "Email"
 msgstr "E-mail"
 
-#: presentation/admin/views/users.view.php:10
+#: Presentation/Admin/Views/UsersView.php:10
 msgid "User Type"
 msgstr "Brugertype"
 
-#: presentation/admin/views/users.view.php:22
+#: Presentation/Admin/Views/UsersView.php:22
 msgid "-- Select --"
 msgstr "-- Vælg --"
 
-#: presentation/admin/views/users.view.php:35
+#: Presentation/Admin/Views/UsersView.php:35
 msgid "Save Changes"
 msgstr "Gem ændringer"
 
