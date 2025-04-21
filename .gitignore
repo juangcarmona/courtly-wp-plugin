@@ -46,3 +46,4 @@ node_modules/
 Thumbs.db
 
 code_summary.txt
+src/.phpunit.result.cache
