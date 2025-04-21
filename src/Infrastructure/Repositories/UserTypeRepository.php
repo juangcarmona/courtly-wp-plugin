@@ -1,7 +1,7 @@
 <?php
 
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
-
+use Juangcarmona\Courtly\Domain\Entities\UserType;
 use Juangcarmona\Courtly\Domain\Repositories\UserTypeRepositoryInterface;
 
 class UserTypeRepository implements UserTypeRepositoryInterface
@@ -18,7 +18,17 @@ class UserTypeRepository implements UserTypeRepositoryInterface
 
     public function findAll(): array
     {
-        return $this->wpdb->get_results("SELECT * FROM {$this->table}");
+        $rows = $this->wpdb->get_results("SELECT * FROM {$this->table}");
+        return array_map([$this, 'mapRowToEntity'], $rows);
+    }
+    
+    public function findByName(string $name): ?UserType
+    {
+        $row = $this->wpdb->get_row(
+            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE name = %s", $name)
+        );
+    
+        return $row ? $this->mapRowToEntity($row) : null;
     }
 
     public function countAll(): int
@@ -40,15 +50,18 @@ class UserTypeRepository implements UserTypeRepositoryInterface
         return $results;
     }
 
-    public function findByName(string $name): ?object
-    {
-        return $this->wpdb->get_row(
-            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE name = %s", $name)
-        ) ?: null;
-    }
-
     public function insert(array $data): bool
     {
         return $this->wpdb->insert($this->table, $data) !== false;
+    }
+
+    private function mapRowToEntity(object $row): UserType
+    {
+        return new UserType(
+            (int)$row->id,
+            $row->name,
+            $row->display_name,
+            (int)$row->booking_days_in_advance
+        );
     }
 }

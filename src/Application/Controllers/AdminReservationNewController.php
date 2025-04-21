@@ -51,7 +51,7 @@ class AdminReservationNewController
     {
         foreach ($this->users as &$user) {
             $typeKey = get_user_meta($user->ID, 'courtly_user_type', true);
-            $typeInfo = array_filter($this->userTypes, fn($t) => $t->name === $typeKey);
+            $typeInfo = array_filter($this->userTypes, fn($t) => $t->getName() === $typeKey);
             $user->courtly_type = $typeKey;
             $user->booking_days_in_advance = reset($typeInfo)->booking_days_in_advance ?? 0;
         }

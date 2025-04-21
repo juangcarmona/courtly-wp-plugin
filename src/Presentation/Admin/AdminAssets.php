@@ -16,7 +16,7 @@ class AdminAssets {
             'current_user_id' => get_current_user_id(),
             'is_logged_in' => is_user_logged_in(),
             'user_type' => get_user_meta(get_current_user_id(), 'courtly_user_type', true),
-            'display_name' => wp_get_current_user()->display_name,
+            'display_name' => wp_get_current_user()->getDisplayName(),
         ];
 
         switch ($_GET['page']) {
@@ -34,7 +34,7 @@ class AdminAssets {
 
             case 'courtly_availability':
                 wp_enqueue_script('courtly-availability-calendar',
-                    plugin_dir_url(__FILE__) . 'Js/AvailabilityCalendar.js.js',
+                    plugin_dir_url(__FILE__) . 'Js/AvailabilityCalendar.js',
                     ['jquery', 'fullcalendar-js'], false, true
                 );
                 $localize['court_id'] = isset($_GET['court_id']) ? intval($_GET['court_id']) : 1;

@@ -37,9 +37,9 @@
         <tbody>
         <?php foreach ($data['user_types'] as $type): ?>
             <tr>
-                <td><?= esc_html($type->id) ?></td>
-                <td><?= esc_html($type->name) ?></td>
-                <td><?= esc_html($type->display_name) ?></td>
+                <td><?= esc_html($type->getId()) ?></td>
+                <td><?= esc_html($type->getName()) ?></td>
+                <td><?= esc_html($type->getDisplayName()) ?></td>
                 <td><?= esc_html($type->booking_days_in_advance) ?></td>
             </tr>
         <?php endforeach; ?>

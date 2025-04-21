@@ -21,7 +21,7 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
 
     public function getReservationsForDate(int $courtId, string $date): array
     {
-        return $this->wpdb->get_results(
+        $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
                 "SELECT * FROM {$this->table} 
                  WHERE court_id = %d AND reservation_date = %s",
@@ -29,11 +29,13 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
                 $date
             )
         );
+    
+        return array_map([$this, 'mapRowToEntity'], $rows);
     }
-
+    
     public function getReservationsForUserOnDate(int $userId, string $date): array
     {
-        return $this->wpdb->get_results(
+        $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
                 "SELECT * FROM {$this->table} 
                  WHERE user_id = %d AND reservation_date = %s",
@@ -41,8 +43,10 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
                 $date
             )
         );
+    
+        return array_map([$this, 'mapRowToEntity'], $rows);
     }
-
+    
     public function findById(int $id): ?CourtReservation
     {
         $row = $this->wpdb->get_row(

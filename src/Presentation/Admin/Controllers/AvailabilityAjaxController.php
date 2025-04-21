@@ -48,8 +48,8 @@ class AvailabilityAjaxController
     {
         $courts = $this->courtRepo->findAll();
         $resources = array_map(fn($c) => [
-            'id'    => $c["id"],
-            'title' => $c["name"],
+            'id'    => $c->getId(),
+            'title' => $c->getName(),
         ], $courts);
 
         wp_send_json($resources);
@@ -73,8 +73,8 @@ class AvailabilityAjaxController
         $result = [];
         foreach ($rows as $row) {
             $result[(int)$row->day_of_week] = [
-                'start' => $row->open_time,
-                'end'   => $row->close_time,
+                'start' => $row->getOpenTime(),
+                'end'   => $row->getCloseTime(),
             ];
         }
 
@@ -95,7 +95,7 @@ class AvailabilityAjaxController
 
             foreach ($period as $date) {
                 foreach ($blocks as $block) {
-                    if ((int)$block->day_of_week === (int)$date->format('w')) {
+                    if ($block->getDayOfWeek() === (int)$date->format('w')) {
                         $events[] = $this->eventTransformer::blockToEvent($date, $block, $court->getId(), $court->getName());
                     }
                 }

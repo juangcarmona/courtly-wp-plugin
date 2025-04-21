@@ -55,9 +55,9 @@ $user_types = $wpdb->get_results("
           <h5 class="card-title text-primary"><?= esc_html__('Users by Type', 'courtly') ?></h5>
           <ul class="list-group list-group-flush mt-2">
             <?php foreach ($user_types as $type): ?>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <?= esc_html($type->display_name) ?>
-                <span class="badge bg-primary rounded-pill"><?= esc_html($type->user_count) ?></span>
+              <li class="list-group-item d-flex justify-content-between align-items-center py-2">
+                <span class="me-2"><?= esc_html($type->display_name) ?></span>
+                <span class="badge bg-primary rounded-pill px-3 py-1"><?= esc_html($type->user_count) ?></span>
               </li>
             <?php endforeach; ?>
           </ul>

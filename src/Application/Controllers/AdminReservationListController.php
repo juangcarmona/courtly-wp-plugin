@@ -45,7 +45,7 @@ class AdminReservationListController
 
         $courts = $this->courtRepo->findAll();
         foreach ($courts as $c) {
-            $this->courtMap[$c->id] = $c->name ?? 'Court ' . $c->id;
+            $this->courtMap[$c->getId()] = $c->getName() ?? 'Court ' . $c->getId();
         }
     }
 

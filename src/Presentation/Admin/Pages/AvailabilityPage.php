@@ -1,6 +1,6 @@
 <?php
 use Juangcarmona\Courtly\Infrastructure\ControllerFactory;
-use Juangcarmona\Courtly\Application\Controllers\AdminReservationListController;
+use Juangcarmona\Courtly\Application\Controllers\AdminAvailabilityController;
 
 $controller = ControllerFactory::make(AdminAvailabilityController::class);
 $controller->handlePost();

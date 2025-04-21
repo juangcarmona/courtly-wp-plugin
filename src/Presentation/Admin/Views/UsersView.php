@@ -21,8 +21,8 @@
                             <select name="user_type[<?= esc_attr($user->ID); ?>]">
                                 <option value=""><?php esc_html_e('-- Select --', 'courtly'); ?></option>
                                 <?php foreach ($data['user_types'] as $type): ?>
-                                    <option value="<?= esc_attr($type->name); ?>" <?php selected($current, $type->name); ?>>
-                                        <?= esc_html($type->display_name); ?>
+                                    <option value="<?= esc_attr($type->getName()); ?>" <?php selected($current, $type->getName()); ?>>
+                                        <?= esc_html($type->getDisplayName()); ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>

@@ -1,7 +1,7 @@
 <?php
 
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
-
+use Juangcarmona\Courtly\Domain\Entities\CourtBlock;
 use Juangcarmona\Courtly\Domain\Repositories\CourtBlockRepositoryInterface;
 
 class CourtBlockRepository implements CourtBlockRepositoryInterface
@@ -20,15 +20,25 @@ class CourtBlockRepository implements CourtBlockRepositoryInterface
     {
         $results = $this->wpdb->get_results(
             $this->wpdb->prepare(
-                "SELECT id, day_of_week, start_time, end_time, reason 
+                "SELECT id, court_id, day_of_week, start_time, end_time, is_blocked, reason 
                  FROM {$this->table} 
                  WHERE court_id = %d AND is_blocked = 1",
                 $courtId
             )
         );
-
-        // TODO: Map stdClass results to CourtBlock entities
-        return $results;
+    
+        // Map each result to a CourtBlock entity
+        return array_map(function ($row) {
+            return new CourtBlock(
+                id: (int)$row->id,
+                courtId: (int)$row->court_id,
+                dayOfWeek: (int)$row->day_of_week,
+                startTime: $row->start_time,
+                endTime: $row->end_time,
+                isBlocked: (bool)$row->is_blocked,
+                reason: $row->reason
+            );
+        }, $results);
     }
 
     public function insertBlockedSlot(array $data): bool

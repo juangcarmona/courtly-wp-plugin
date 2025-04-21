@@ -49,8 +49,8 @@ class CourtReservationService {
             error_log("[Courtly] ❌ No opening hours defined for day $dow.");
             return false;
         }
-        if ($slot < $opening->open_time || $slot >= $opening->close_time) {
-            error_log("[Courtly] ❌ Slot $slot is outside opening hours ({$opening->open_time} → {$opening->close_time}).");
+        if ($slot < $opening->getOpenTime() || $slot >= $opening->getCloseTime()) {
+            error_log("[Courtly] ❌ Slot $slot is outside opening hours ({$opening->getOpenTime()} → {$opening->getCloseTime()}).");
             return false;
         }
 
@@ -66,7 +66,7 @@ class CourtReservationService {
         $slot = $start->format('H:i') . '-' . $end->format('H:i');
 
         $user = get_userdata($userId);
-        $username = $user ? $user->display_name : "User #$userId";
+        $username = $user ? $user->getDisplayName() : "User #$userId";
 
         error_log("[Courtly] Creating reservation for $username on $date ($slot) at Court $courtId");
         // ⛔ Max X reservation(s) per user per day

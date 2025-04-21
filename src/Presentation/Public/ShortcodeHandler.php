@@ -22,7 +22,7 @@ add_shortcode('courtly_general_calendar', function () {
         'current_user_id' => get_current_user_id(),
         'is_logged_in' => is_user_logged_in(),
         'user_type' => get_user_meta(get_current_user_id(), 'courtly_user_type', true),
-        'display_name' => wp_get_current_user()->display_name,
+        'display_name' => wp_get_current_user()->getDisplayName(),
         'translations' => [
             'no_reason_provided' => __('No reason provided', 'courtly'),
             'every' => __('Every', 'courtly'),
@@ -74,7 +74,7 @@ add_shortcode('courtly_user_booking', function () {
         'current_user_id' => get_current_user_id(),
         'is_logged_in' => is_user_logged_in(),
         'user_type' => get_user_meta(get_current_user_id(), 'courtly_user_type', true),
-        'display_name' => wp_get_current_user()->display_name,
+        'display_name' => wp_get_current_user()->getDisplayName(),
         'translations' => [
             'no_reason_provided' => __('No reason provided', 'courtly'),
             'every' => __('Every', 'courtly'),

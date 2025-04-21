@@ -15,7 +15,7 @@ class AdminAvailabilityController
 
     public function getViewData(): array {
         $courts = $this->courtRepo->findAll();
-        $selectedCourtId = isset($_GET['court_id']) ? intval($_GET['court_id']) : ($courts[0]->id ?? null);
+        $selectedCourtId = isset($_GET['court_id']) ? intval($_GET['court_id']) : ($courts[0]->getId() ?? null);
         $opening = $selectedCourtId !== null
             ? $this->openingRepo->getByDayOfWeek(date('w')) // assumes day-of-week = today
             : null;

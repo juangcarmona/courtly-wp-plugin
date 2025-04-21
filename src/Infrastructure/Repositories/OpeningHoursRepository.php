@@ -1,7 +1,7 @@
 <?php
 
 namespace Juangcarmona\Courtly\Infrastructure\Repositories;
-
+use Juangcarmona\Courtly\Domain\Entities\OpeningHours;
 use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
 
 class OpeningHoursRepository implements OpeningHoursRepositoryInterface
@@ -18,14 +18,17 @@ class OpeningHoursRepository implements OpeningHoursRepositoryInterface
 
     public function getAll(): array
     {
-        return $this->wpdb->get_results("SELECT * FROM {$this->table} ORDER BY day_of_week ASC");
+        $rows = $this->wpdb->get_results("SELECT * FROM {$this->table} ORDER BY day_of_week ASC");
+        return array_map([$this, 'mapRowToEntity'], $rows);
     }
-
-    public function getByDayOfWeek(int $dayOfWeek): ?object
+    
+    public function getByDayOfWeek(int $dayOfWeek): ?OpeningHours
     {
-        return $this->wpdb->get_row(
+        $row = $this->wpdb->get_row(
             $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE day_of_week = %d", $dayOfWeek)
-        ) ?: null;
+        );
+    
+        return $row ? $this->mapRowToEntity($row) : null;
     }
 
     public function upsert(int $dayOfWeek, string $openTime, string $closeTime): bool
@@ -45,4 +48,15 @@ class OpeningHoursRepository implements OpeningHoursRepositoryInterface
             ) !== false;
         }
     }
+
+    private function mapRowToEntity(object $row): OpeningHours
+    {
+        return new OpeningHours(
+            (int)$row->day_of_week,
+            $row->open_time,
+            $row->close_time,
+            (int)$row->id
+        );
+    }
+
 }

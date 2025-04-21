@@ -33,21 +33,23 @@ class CourtBlockService
 
         foreach ($period as $date) {
             $weekday = (int)$date->format('w');
+        
+            /** @var CourtBlock $block */
             foreach ($weeklyBlocks as $block) {
-                if ((int)$block->day_of_week === $weekday) {
-                    $startDateTime = new DateTime($date->format('Y-m-d') . ' ' . $block->start_time, $tzUtc);
-                    $endDateTime = new DateTime($date->format('Y-m-d') . ' ' . $block->end_time, $tzUtc);
-
+                if ($block->getDayOfWeek() === $weekday) {
+                    $startDateTime = new DateTime($date->format('Y-m-d') . ' ' . $block->getStartTime(), $tzUtc);
+                    $endDateTime = new DateTime($date->format('Y-m-d') . ' ' . $block->getEndTime(), $tzUtc);
+        
                     $events[] = [
-                        'id' => $block->id,
-                        'title' => $block->reason ?: __('Blocked', 'courtly'),
+                        'id' => $block->getId(),
+                        'title' => $block->getReason() ?: __('Blocked', 'courtly'),
                         'start' => $startDateTime->format(DateTime::ATOM),
                         'end' => $endDateTime->format(DateTime::ATOM),
                         'backgroundColor' => '#dc3545',
                         'borderColor' => '#dc3545',
                         'editable' => false,
                         'extendedProps' => [
-                            'reason' => $block->reason,
+                            'reason' => $block->getReason(),
                             'type' => 'block'
                         ],
                         'type' => 'block'
@@ -55,6 +57,7 @@ class CourtBlockService
                 }
             }
         }
+        
 
         return $events;
     }

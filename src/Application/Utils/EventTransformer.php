@@ -1,31 +1,39 @@
 <?php
 namespace Juangcarmona\Courtly\Application\Utils;
+use Juangcarmona\Courtly\Domain\Entities\CourtReservation;
+use Juangcarmona\Courtly\Domain\Entities\CourtBlock;
+
+use DateTime;
+use DateTimeInterface;
+use DateTimeImmutable;
+use DateTimeZone;
 
 class EventTransformer {
-    public static function reservationToEvent($r): array {
-        [$start, $end] = explode('-', $r->time_slot);
-
+    public static function reservationToEvent(CourtReservation $r): array {
+        [$start, $end] = explode('-', $r->getTimeSlot());
+        $date = $r->getReservationDate()->format('Y-m-d');
+    
         return [
             'title' => 'Reserved',
-            'start' => "{$r->reservation_date}T{$start}",
-            'end' => "{$r->reservation_date}T{$end}",
-            'resourceId' => $r->court_id,
+            'start' => "{$date}T{$start}",
+            'end' => "{$date}T{$end}",
+            'resourceId' => $r->getCourtId(),
             'backgroundColor' => '#0073aa',
             'borderColor' => '#0073aa',
             'type' => 'reservation',
             'extendedProps' => [
-                'id' => $r->id,
+                'id' => $r->getId(),
                 'type' => 'reservation',
             ]
         ];
     }
 
-    public static function blockToEvent(DateTimeInterface $date, $block, $courtId, $courtName): array {
-        $start = new DateTimeImmutable("{$date->format('Y-m-d')} {$block->start_time}", new DateTimeZone('UTC'));
-        $end = new DateTimeImmutable("{$date->format('Y-m-d')} {$block->end_time}", new DateTimeZone('UTC'));
-
+    public static function blockToEvent(DateTimeInterface $date, CourtBlock $block, int $courtId, string $courtName): array {
+        $start = new DateTimeImmutable("{$date->format('Y-m-d')} {$block->getStartTime()}", new DateTimeZone('UTC'));
+        $end = new DateTimeImmutable("{$date->format('Y-m-d')} {$block->getEndTime()}", new DateTimeZone('UTC'));
+    
         return [
-            'title' => $block->reason ?: __('Blocked', 'courtly'),
+            'title' => $block->getReason() ?: __('Blocked', 'courtly'),
             'start' => $start->format(DateTime::ATOM),
             'end' => $end->format(DateTime::ATOM),
             'resourceId' => $courtId,
@@ -33,10 +41,10 @@ class EventTransformer {
             'borderColor' => '#dc3545',
             'type' => 'block',
             'extendedProps' => [
-                'id' => $block->id,
+                'id' => $block->getId(),
                 'type' => 'block',
                 'court' => $courtName,
-                'reason' => $block->reason,
+                'reason' => $block->getReason(),
             ]
         ];
     }
