@@ -51,11 +51,13 @@ jobs:
         path: src/coverage/clover.xml
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
-        files: coverage/clover.xml
+        files: src/coverage/clover.xml
         flags: unittests
-        name: phpunit-coverage        
+        name: phpunit-coverage       
+      env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN }} 
 
     - name: Generate courtly.zip
       run: |
