@@ -4,8 +4,6 @@ namespace Juangcarmona\Courtly\Infrastructure\Repositories;
 
 use Juangcarmona\Courtly\Domain\Entities\CourtReservation;
 use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
-use DateTime;
-use DateTimeInterface;
 
 class CourtReservationRepository implements CourtReservationRepositoryInterface
 {
@@ -16,7 +14,7 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
     {
         global $wpdb;
         $this->wpdb = $wpdb;
-        $this->table = $wpdb->prefix . 'courtly_reservations';
+        $this->table = $wpdb->prefix.'courtly_reservations';
     }
 
     public function getReservationsForDate(int $courtId, string $date): array
@@ -29,10 +27,10 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
                 $date
             )
         );
-    
+
         return array_map([$this, 'mapRowToEntity'], $rows);
     }
-    
+
     public function getReservationsForUserOnDate(int $userId, string $date): array
     {
         $rows = $this->wpdb->get_results(
@@ -43,10 +41,10 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
                 $date
             )
         );
-    
+
         return array_map([$this, 'mapRowToEntity'], $rows);
     }
-    
+
     public function findById(int $id): ?CourtReservation
     {
         $row = $this->wpdb->get_row(
@@ -56,7 +54,7 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
         return $row ? $this->mapRowToEntity($row) : null;
     }
 
-    public function findBetweenDates(DateTimeInterface $start, DateTimeInterface $end): array
+    public function findBetweenDates(\DateTimeInterface $start, \DateTimeInterface $end): array
     {
         $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
@@ -70,15 +68,17 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
         return array_map([$this, 'mapRowToEntity'], $rows);
     }
 
-    public function findFrom(DateTimeInterface $fromDay, int $rangeInDays = 30): array
+    public function findFrom(\DateTimeInterface $fromDay, int $rangeInDays = 30): array
     {
         $end = (clone $fromDay)->modify("+$rangeInDays days");
+
         return $this->findBetweenDates($fromDay, $end);
     }
 
-    public function findBefore(DateTimeInterface $fromDay, int $rangeInDays = 30): array
+    public function findBefore(\DateTimeInterface $fromDay, int $rangeInDays = 30): array
     {
         $start = (clone $fromDay)->modify("-$rangeInDays days");
+
         return $this->findBetweenDates($start, $fromDay);
     }
 
@@ -98,9 +98,9 @@ class CourtReservationRepository implements CourtReservationRepositoryInterface
             $row->id,
             $row->user_id,
             $row->court_id,
-            new DateTime($row->reservation_date),
+            new \DateTime($row->reservation_date),
             $row->time_slot,
-            new DateTime($row->created_at)
+            new \DateTime($row->created_at)
         );
     }
 }

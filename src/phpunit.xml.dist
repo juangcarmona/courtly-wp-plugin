@@ -1,8 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php" colors="true">
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Courtly Test Suite">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">./tests</directory>
+        </exclude>
+        <report>
+            <clover outputFile="coverage/clover.xml"/>
+            <html outputDirectory="coverage/html"/>
+            <cobertura outputFile="coverage/cobertura.xml"/>
+        </report>
+    </coverage>
 </phpunit>

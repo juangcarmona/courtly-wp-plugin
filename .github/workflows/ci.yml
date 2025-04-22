@@ -1,9 +1,10 @@
 name: Continuous Integration
 
 on:
-  push:
-    branches-ignore:
+  pull_request:
+    branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -39,9 +40,21 @@ jobs:
           exit 1
         fi
 
-    - name: Run PHPUnit tests
-      working-directory: src
-      run: vendor/bin/phpunit --no-interaction
+    - name: Run tests with coverage
+      run: XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover=coverage/clover.xml
+      
+    - name: Upload coverage artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: coverage/clover.xml
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        files: coverage/clover.xml
+        flags: unittests
+        name: phpunit-coverage        
 
     - name: Generate courtly.zip
       run: |

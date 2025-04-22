@@ -2,10 +2,9 @@
 
 namespace Juangcarmona\Courtly\Application\Controllers;
 
-use DateTimeImmutable;
 use Juangcarmona\Courtly\Domain\Entities\CourtReservation;
-use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
 use Juangcarmona\Courtly\Domain\Repositories\CourtRepositoryInterface;
+use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface;
 
 class AdminReservationDetailController
 {
@@ -33,13 +32,15 @@ class AdminReservationDetailController
 
     public function handlePost(): void
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') return;
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            return;
+        }
 
         if (
-            !isset($_POST['courtly_cancel_reservation_id']) ||
-            !is_numeric($_POST['courtly_cancel_reservation_id']) ||
-            !current_user_can('manage_options') ||
-            !wp_verify_nonce($_POST['_wpnonce'], 'courtly_cancel_reservation_' . $_POST['courtly_cancel_reservation_id'])
+            !isset($_POST['courtly_cancel_reservation_id'])
+            || !is_numeric($_POST['courtly_cancel_reservation_id'])
+            || !current_user_can('manage_options')
+            || !wp_verify_nonce($_POST['_wpnonce'], 'courtly_cancel_reservation_'.$_POST['courtly_cancel_reservation_id'])
         ) {
             return;
         }
@@ -59,11 +60,11 @@ class AdminReservationDetailController
         $range = explode('-', $this->reservation->getTimeSlot());
         $start = $range[0] ?? '00:00';
 
-        $reservationTime = new DateTimeImmutable(
-            $this->reservation->getReservationDate()->format('Y-m-d') . ' ' . $start
+        $reservationTime = new \DateTimeImmutable(
+            $this->reservation->getReservationDate()->format('Y-m-d').' '.$start
         );
 
-        $now = new DateTimeImmutable();
+        $now = new \DateTimeImmutable();
         $hoursUntil = $reservationTime->getTimestamp() - $now->getTimestamp();
 
         $cancel_allowed = $hoursUntil > (24 * 3600);
@@ -78,7 +79,7 @@ class AdminReservationDetailController
         return [
             'id' => $this->reservation->getId(),
             'user' => $user ? $user->getDisplayName() : 'Unknown',
-            'court' => $court ? $court->getName() : 'Court #' . $this->reservation->getCourtId(),
+            'court' => $court ? $court->getName() : 'Court #'.$this->reservation->getCourtId(),
             'date' => $this->reservation->getReservationDate()->format('Y-m-d'),
             'slot' => $this->reservation->getTimeSlot(),
             'cancel_allowed' => $cancel_allowed,
