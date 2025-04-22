@@ -58,7 +58,7 @@ jobs:
         name: phpunit-coverage     
         slug: juangcarmona/courtly-wp-plugin  
       env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN }} 
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} 
 
     - name: Generate courtly.zip
       run: |
