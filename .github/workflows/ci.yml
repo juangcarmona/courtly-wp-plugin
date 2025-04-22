@@ -55,7 +55,8 @@ jobs:
       with:
         files: src/coverage/clover.xml
         flags: unittests
-        name: phpunit-coverage       
+        name: phpunit-coverage     
+        slug: juangcarmona/courtly-wp-plugin  
       env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN }} 
 
