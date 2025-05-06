@@ -17,6 +17,46 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install dependencies
+        working-directory: src
+        run: composer install --no-interaction --optimize-autoloader
+
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install -y gettext
+
+      - name: Compile .po files to .mo
+        working-directory: src/Languages
+        run: |
+          set -e
+          for file in *.po; do
+            msgfmt "$file" -o "${file%.po}.mo"
+          done
+
+      - name: Validate translations
+        working-directory: src/Languages
+        run: |
+          set -e
+          po_count=$(ls -1 *.po | wc -l)
+          mo_count=$(ls -1 *.mo | wc -l)
+          if [ "$po_count" -ne "$mo_count" ]; then
+            echo "Mismatch between .po and .mo file counts. Failing build."
+            exit 1
+          fi
+
+      - name: Run tests with coverage
+        working-directory: src
+        run: XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover=coverage/clover.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: src/coverage/clover.xml
+          flags: unittests
+          name: phpunit-coverage
+          slug: juangcarmona/courtly-wp-plugin
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
       - name: Get short commit hash
         id: get_hash
         run: echo "short_hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
@@ -26,15 +66,15 @@ jobs:
         run: |
           version=$(grep -oP 'Version:\s*\K[\d.]+' src/courtly.php)
           echo "version=$version" >> $GITHUB_OUTPUT
-          
+
       - name: Configure Git identity
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          
+
       - name: Fetch all tags
         run: git fetch --tags
-  
+
       - name: Create tag (if not exists)
         id: create_tag
         run: |
@@ -50,7 +90,6 @@ jobs:
           fi
 
           echo "tag=$tag" >> $GITHUB_OUTPUT
-  
 
       - name: Generate courtly.zip artifact
         run: |
