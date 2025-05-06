@@ -1,15 +1,17 @@
 <?php
+
 namespace Juangcarmona\Courtly\Domain\Entities;
+
 class CourtReservation implements BaseEntity
 {
     private int $id;
     private int $userId;
     private int $courtId;
-    private DateTime $reservationDate;
+    private \DateTime $reservationDate;
     private string $timeSlot; // e.g., "17:00-18:00"
-    private DateTime $createdAt;
+    private \DateTime $createdAt;
 
-    public function __construct(int $id, int $userId, int $courtId, DateTime $reservationDate, string $timeSlot, DateTime $createdAt)
+    public function __construct(int $id, int $userId, int $courtId, \DateTime $reservationDate, string $timeSlot, \DateTime $createdAt)
     {
         $this->id = $id;
         $this->userId = $userId;
@@ -19,13 +21,36 @@ class CourtReservation implements BaseEntity
         $this->createdAt = $createdAt;
     }
 
-    public function getId(): int { return $this->id; }
-    public function getUserId(): int { return $this->userId; }
-    public function getCourtId(): int { return $this->courtId; }
-    public function getTimeSlot(): string { return $this->timeSlot; }
-    public function getReservationDate(): DateTime { return $this->reservationDate; }
-    public function getCreatedAt(): DateTime { return $this->createdAt; }
-    
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    public function getCourtId(): int
+    {
+        return $this->courtId;
+    }
+
+    public function getTimeSlot(): string
+    {
+        return $this->timeSlot;
+    }
+
+    public function getReservationDate(): \DateTime
+    {
+        return $this->reservationDate;
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
     public static function schema(string $table): string
     {
         return "CREATE TABLE IF NOT EXISTS $table (

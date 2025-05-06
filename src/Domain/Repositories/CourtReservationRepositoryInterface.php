@@ -2,7 +2,6 @@
 
 namespace Juangcarmona\Courtly\Domain\Repositories;
 
-use DateTimeInterface;
 use Juangcarmona\Courtly\Domain\Entities\CourtReservation;
 
 interface CourtReservationRepositoryInterface
@@ -25,17 +24,17 @@ interface CourtReservationRepositoryInterface
     /**
      * Find all reservations between two dates.
      */
-    public function findBetweenDates(DateTimeInterface $start, DateTimeInterface $end): array;
+    public function findBetweenDates(\DateTimeInterface $start, \DateTimeInterface $end): array;
 
     /**
      * Find reservations starting from a given day (forward range).
      */
-    public function findFrom(DateTimeInterface $fromDay, int $rangeInDays = 30): array;
+    public function findFrom(\DateTimeInterface $fromDay, int $rangeInDays = 30): array;
 
     /**
      * Find reservations before a given day (backward range).
      */
-    public function findBefore(DateTimeInterface $fromDay, int $rangeInDays = 30): array;
+    public function findBefore(\DateTimeInterface $fromDay, int $rangeInDays = 30): array;
 
     /**
      * Insert a new reservation.

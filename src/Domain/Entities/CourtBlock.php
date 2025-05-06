@@ -1,4 +1,5 @@
 <?php
+
 namespace Juangcarmona\Courtly\Domain\Entities;
 
 class CourtBlock implements BaseEntity
@@ -22,15 +23,27 @@ class CourtBlock implements BaseEntity
         $this->reason = $reason;
     }
 
-    public function getId(): int { return $this->id; }
-    
-    public function getCourtId(): int { return $this->courtId; }
-    
-    public function getDayOfWeek(): int { return $this->dayOfWeek; }
-    
-    public function isBlocked(): bool { return $this->isBlocked; }
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-    public function appliesToDate(DateTime $date): bool
+    public function getCourtId(): int
+    {
+        return $this->courtId;
+    }
+
+    public function getDayOfWeek(): int
+    {
+        return $this->dayOfWeek;
+    }
+
+    public function isBlocked(): bool
+    {
+        return $this->isBlocked;
+    }
+
+    public function appliesToDate(\DateTime $date): bool
     {
         return (int) $date->format('w') === $this->dayOfWeek;
     }
@@ -63,5 +76,4 @@ class CourtBlock implements BaseEntity
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
     }
-
 }
