@@ -4,7 +4,7 @@
 ![CD](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/cd.yml/badge.svg)
 ![Release](https://github.com/juangcarmona/courtly-wp-plugin/actions/workflows/release.yml/badge.svg)
 
-![Coverage](https://codecov.io/gh/juangcarmona/courtly-wp-plugin/branch/main/graph/badge.svg)
+[![codecov](https://codecov.io/gh/juangcarmona/courtly-wp-plugin/graph/badge.svg?token=S178ZK7OIH)](https://codecov.io/gh/juangcarmona/courtly-wp-plugin)
 
 [![Latest Release](https://img.shields.io/github/v/release/juangcarmona/courtly-wp-plugin?label=latest)](https://github.com/juangcarmona/courtly-wp-plugin/releases)
 
