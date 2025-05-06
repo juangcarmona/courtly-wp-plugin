@@ -36,12 +36,12 @@ export async function renderGeneralCalendar(containerEl, ajaxUrl, options = {}) 
         });
       }
 
-      if (open.end !== '24:00:00' && open.end !== '23:59:59') {
+      if (open.end !== '23:59:59') {
         closedSlots.push({
           resourceId: court.id,
           daysOfWeek: [dow],
           startTime: open.end,
-          endTime: '24:00',
+          endTime: '23:59',
           display: 'background',
           backgroundColor: '#030303'
         });

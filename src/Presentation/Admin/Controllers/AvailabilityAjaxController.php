@@ -66,10 +66,15 @@ class AvailabilityAjaxController
     public function getOpeningHours(): void
     {
         $rows = $this->openingHoursRepo->getAll();
-
         $result = [];
+
+        // Prellena todos los días con null
+        for ($i = 0; $i <= 6; ++$i) {
+            $result[$i] = null;
+        }
+
         foreach ($rows as $row) {
-            $result[(int) $row->day_of_week] = [
+            $result[(int) $row->getDayOfWeek()] = [
                 'start' => $row->getOpenTime(),
                 'end' => $row->getCloseTime(),
             ];
