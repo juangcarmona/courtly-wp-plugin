@@ -1,0 +1,22 @@
+codecov:
+  require_ci_to_pass: yes
+
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 2% 
+    patch:
+      default:
+        threshold: 10%
+
+ignore:
+  - "src/**/Pages/*"
+  - "src/**/Views/*"
+  - "src/Languages/*.php"
+  - "src/Presentation/*"
+  - "src/tests/*"
+  - "src/bootstrap.php"
+  - "src/courtly.php"
+  - "src/plugin.php"

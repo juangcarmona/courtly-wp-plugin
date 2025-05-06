@@ -33,6 +33,7 @@ class AvailabilityAjaxController
             'courtly_get_blocked_slots' => 'getBlockedSlots',
             'courtly_save_blocked_slot' => 'saveBlockedSlot',
             'courtly_remove_blocked_slot' => 'removeBlockedSlot',
+            'courtly_save_opening_hours' => 'saveOpeningHours',
         ];
 
         foreach ($hooks as $action => $method) {
@@ -132,5 +133,35 @@ class AvailabilityAjaxController
         $event_id = intval($_POST['event_id']);
         $success = $this->blockService->deleteBlockedSlot($event_id);
         wp_send_json(['status' => $success ? 'success' : 'error']);
+    }
+
+    public function saveOpeningHours(): void
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if (!is_array($data)) {
+            wp_send_json_error(['message' => 'Invalid data format.'], 400);
+            return;
+        }
+
+        foreach ($data as $dayOfWeek => $hours) {
+            if (!isset($hours['start'], $hours['end'])) {
+                wp_send_json_error(['message' => 'Missing start or end time for day ' . $dayOfWeek], 400);
+                return;
+            }
+
+            $success = $this->openingHoursRepo->upsert(
+                (int) $dayOfWeek,
+                sanitize_text_field($hours['start']),
+                sanitize_text_field($hours['end'])
+            );
+
+            if (!$success) {
+                wp_send_json_error(['message' => 'Failed to save hours for day ' . $dayOfWeek], 500);
+                return;
+            }
+        }
+
+        wp_send_json_success(['message' => 'Opening hours saved successfully.']);
     }
 }
