@@ -12,9 +12,11 @@ coverage:
         threshold: 10%
 
 ignore:
-  - "src/Presentation/**/Views/*.php"
-  - "src/Presentation/**/Pages/*.php"
+  - "src/**/Pages/*"
+  - "src/**/Views/*"
   - "src/Languages/*.php"
+  - "src/Presentation/*"
+  - "src/tests/*"
   - "src/bootstrap.php"
-  - "src/plugin.php"
   - "src/courtly.php"
+  - "src/plugin.php"
