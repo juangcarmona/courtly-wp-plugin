@@ -12,8 +12,9 @@
         <exclude>
             <directory suffix=".php">./tests</directory>
         </exclude>
-        <report>
-            <clover outputFile="coverage/clover.xml"/>
+        <report>            
+            <clover outputFile="coverage/clover.xml" />
+            <cobertura outputFile="coverage/cobertura.xml"/>
         </report>
     </coverage>
 </phpunit>
