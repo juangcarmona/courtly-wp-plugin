@@ -4,16 +4,10 @@
 if (!function_exists('get_userdata')) {
     function get_userdata($userId)
     {
-        return new class($userId) {
-            public function __construct(private int $id)
-            {
-            }
-
-            public function getDisplayName(): string
-            {
-                return "TestUser{$this->id}";
-            }
-        };
+        return (object) [
+            'ID' => $userId,
+            'display_name' => "TestUser{$userId}",
+        ];
     }
 }
 

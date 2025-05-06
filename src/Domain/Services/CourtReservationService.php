@@ -75,7 +75,7 @@ class CourtReservationService
         $slot = $start->format('H:i').'-'.$end->format('H:i');
 
         $user = get_userdata($userId);
-        $username = $user ? $user->getDisplayName() : "User #$userId";
+        $username = $user ? $user->display_name : "User #$userId";
 
         error_log("[Courtly] Creating reservation for $username on $date ($slot) at Court $courtId");
         // ⛔ Max X reservation(s) per user per day

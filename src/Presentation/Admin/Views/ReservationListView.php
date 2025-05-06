@@ -15,21 +15,21 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($data['upcoming'] as $r): ?>
+      <?php foreach ($data['upcoming'] as $r) { ?>
         <tr>
-          <td><?= esc_html($r->id) ?></td>
-          <td><?= esc_html($r->user_name ?? '-') ?></td>
-          <td><?= esc_html($r->court_name ?? '-') ?></td>
-          <td><?= esc_html($r->date) ?></td>
-          <td><?= esc_html($r->start_time) ?></td>
-          <td><?= esc_html($r->end_time) ?></td>
+          <td><?php echo esc_html($r->id); ?></td>
+          <td><?php echo esc_html($r->user_name ?? '-'); ?></td>
+          <td><?php echo esc_html($r->court_name ?? '-'); ?></td>
+          <td><?php echo esc_html($r->date); ?></td>
+          <td><?php echo esc_html($r->start_time); ?></td>
+          <td><?php echo esc_html($r->end_time); ?></td>
           <td>
-            <a href="admin.php?page=courtly_reservation_detail&id=<?= esc_attr($r->id) ?>" class="btn btn-sm btn-primary">
+            <a href="admin.php?page=courtly_reservation_detail&reservationId=<?php echo esc_attr($r->id); ?>" class="btn btn-sm btn-primary">
               <?php esc_html_e('View', 'courtly'); ?>
             </a>
           </td>
         </tr>
-      <?php endforeach; ?>
+      <?php } ?>
     </tbody>
   </table>
 
@@ -47,21 +47,21 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($data['past'] as $r): ?>
+      <?php foreach ($data['past'] as $r) { ?>
         <tr>
-          <td><?= esc_html($r->id) ?></td>
-          <td><?= esc_html($r->user_name ?? '-') ?></td>
-          <td><?= esc_html($r->court_name ?? '-') ?></td>
-          <td><?= esc_html($r->date) ?></td>
-          <td><?= esc_html($r->start_time) ?></td>
-          <td><?= esc_html($r->end_time) ?></td>
+          <td><?php echo esc_html($r->id); ?></td>
+          <td><?php echo esc_html($r->user_name ?? '-'); ?></td>
+          <td><?php echo esc_html($r->court_name ?? '-'); ?></td>
+          <td><?php echo esc_html($r->date); ?></td>
+          <td><?php echo esc_html($r->start_time); ?></td>
+          <td><?php echo esc_html($r->end_time); ?></td>
           <td>
-            <a href="admin.php?page=courtly_reservation_detail&id=<?= esc_attr($r->id) ?>" class="btn btn-sm btn-primary">
+            <a href="admin.php?page=courtly_reservation_detail&reservationId=<?php echo esc_attr($r->id); ?>" class="btn btn-sm btn-primary">
               <?php esc_html_e('View', 'courtly'); ?>
             </a>
           </td>
         </tr>
-      <?php endforeach; ?>
+      <?php } ?>
     </tbody>
   </table>
 </div>

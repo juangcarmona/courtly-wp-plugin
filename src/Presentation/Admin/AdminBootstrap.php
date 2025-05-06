@@ -1,9 +1,13 @@
 <?php
-if (!defined('ABSPATH')) exit;
+
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 add_action('admin_menu', 'courtly_add_admin_menu');
 
-function courtly_add_admin_menu() {
+function courtly_add_admin_menu()
+{
     // Top-level menu
     add_menu_page(
         __('Courtly', 'courtly'),
@@ -114,46 +118,56 @@ function courtly_add_admin_menu() {
 }
 
 // Page routing
-function courtly_admin_dashboard_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/DashboardPage.php';
+function courtly_admin_dashboard_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/DashboardPage.php';
 }
 
-function courtly_admin_activity_calendar_page() {
-    include plugin_dir_path(__FILE__) . '/Pages/ActivityCalendarPage.php';
+function courtly_admin_activity_calendar_page()
+{
+    include plugin_dir_path(__FILE__).'/Pages/ActivityCalendarPage.php';
 }
 
-function courtly_admin_reservations_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/ReservationListPage.php';
+function courtly_admin_reservations_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/ReservationListPage.php';
 }
 
-function courtly_admin_reservation_new_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/ReservationNewPage.php';
+function courtly_admin_reservation_new_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/ReservationNewPage.php';
 }
 
-function courtly_admin_history_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/ReservationHistoryPage.php';
+function courtly_admin_history_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/ReservationHistoryPage.php';
 }
 
-function courtly_admin_reservation_detail_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/ReservationDetailPage.php';
+function courtly_admin_reservation_detail_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/ReservationDetailPage.php';
 }
 
-function courtly_admin_availability_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/AvailabilityPage.php';
+function courtly_admin_availability_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/AvailabilityPage.php';
 }
 
-function courtly_admin_courts_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/CourtsPage.php';
+function courtly_admin_courts_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/CourtsPage.php';
 }
 
-function courtly_admin_users_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/UsersPage.php';
+function courtly_admin_users_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/UsersPage.php';
 }
 
-function courtly_admin_user_types_page() {
-    include plugin_dir_path(__FILE__) . 'Pages/UserTypesPage.php';
+function courtly_admin_user_types_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/UserTypesPage.php';
 }
 
 // ✅ Asset loader
-require_once __DIR__ . '/AdminAssets.php';
+require_once __DIR__.'/AdminAssets.php';
 add_action('admin_enqueue_scripts', ['AdminAssets', 'enqueue']);

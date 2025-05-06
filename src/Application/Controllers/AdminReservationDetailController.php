@@ -78,7 +78,7 @@ class AdminReservationDetailController
 
         return [
             'id' => $this->reservation->getId(),
-            'user' => $user ? $user->getDisplayName() : 'Unknown',
+            'user' => $user ? $user->display_name : __('Unknown', 'courtly'),
             'court' => $court ? $court->getName() : 'Court #'.$this->reservation->getCourtId(),
             'date' => $this->reservation->getReservationDate()->format('Y-m-d'),
             'slot' => $this->reservation->getTimeSlot(),

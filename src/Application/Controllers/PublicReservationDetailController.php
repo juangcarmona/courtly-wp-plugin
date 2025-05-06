@@ -68,7 +68,7 @@ class PublicReservationDetailController
         $now = new \DateTimeImmutable();
         $hoursDiff = ($reservationTime->getTimestamp() - $now->getTimestamp()) / 3600;
 
-        if ($hoursDiff < Constants::COURTLY_MIN_HOURS_TO_CANCEL) {
+        if ($hoursDiff < Constants::MIN_HOURS_TO_CANCEL) {
             return;
         }
 
@@ -92,7 +92,7 @@ class PublicReservationDetailController
         $now = new \DateTimeImmutable();
         $hoursUntil = ($reservationTime->getTimestamp() - $now->getTimestamp()) / 3600;
 
-        $cancelAllowed = $hoursUntil > Constants::COURTLY_MIN_HOURS_TO_CANCEL;
+        $cancelAllowed = $hoursUntil > Constants::MIN_HOURS_TO_CANCEL;
         $cancelBlockedMessage = null;
 
         if ($reservationTime < $now) {

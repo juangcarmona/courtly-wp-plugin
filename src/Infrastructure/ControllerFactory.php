@@ -30,8 +30,9 @@ class ControllerFactory
             ),
             AdminReservationDetailController::class => new AdminReservationDetailController(
                 CourtlyContainer::courtReservationRepository(),
-                CourtlyContainer::courtRepository()
-            ),            
+                CourtlyContainer::courtRepository(),
+                $args['reservationId'] ?? 0
+            ),
             AdminReservationHistoryController::class => new AdminReservationHistoryController(
                 CourtlyContainer::courtReservationRepository(),
                 CourtlyContainer::courtRepository()
@@ -70,7 +71,7 @@ class ControllerFactory
             DashboardAjaxController::class => new DashboardAjaxController(
                 CourtlyContainer::courtRepository(),
                 CourtlyContainer::userTypeRepository()
-            ),    
+            ),
             ReservationAjaxController::class => new ReservationAjaxController(
                 CourtlyContainer::courtReservationRepository()
             ),

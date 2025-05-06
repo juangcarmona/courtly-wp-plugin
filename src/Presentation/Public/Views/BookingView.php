@@ -10,17 +10,17 @@ $user_type = get_user_meta($current_user->ID, 'courtly_user_type', true);
   <input type="hidden" name="start_time" id="courtly-start-time">
   <input type="hidden" name="end_time" id="courtly-end-time">
 
-    <?php if (!empty($data['errors'])): ?>
+    <?php if (!empty($data['errors'])) { ?>
       <div class="courtly-alert courtly-error" style="margin-bottom: 15px; color: #842029; background-color: #f8d7da; border: 1px solid #f5c2c7; padding: 10px; border-radius: 4px;">
-        <?php foreach ($data['errors'] as $error): ?>
-          <p style="margin: 0;"><?= esc_html__($error, 'courtly') ?></p>
-        <?php endforeach; ?>
+        <?php foreach ($data['errors'] as $error) { ?>
+          <p style="margin: 0;"><?php echo esc_html__($error, 'courtly'); ?></p>
+        <?php } ?>
       </div>
-    <?php elseif (!empty($data['success'])): ?>
+    <?php } elseif (!empty($data['success'])) { ?>
       <div class="courtly-alert courtly-success" style="margin-bottom: 15px; color: #0f5132; background-color: #d1e7dd; border: 1px solid #badbcc; padding: 10px; border-radius: 4px;">
-        🎉 <?= esc_html__('Your reservation was successfully created.', 'courtly') ?>
+        🎉 <?php echo esc_html__('Your reservation was successfully created.', 'courtly'); ?>
       </div>
-    <?php endif; ?>
+    <?php } ?>
 
     <div class="courtly-selection-info">
       <div id="courtly-slot-details">
@@ -30,7 +30,7 @@ $user_type = get_user_meta($current_user->ID, 'courtly_user_type', true);
       </div>
 
       <button type="submit" class="courtly-book-btn btn btn-primary" style="display: none;">
-        <?= esc_html__('Confirm Reservation', 'courtly') ?>
+        <?php echo esc_html__('Confirm Reservation', 'courtly'); ?>
       </button>
     </div>
 
@@ -39,8 +39,8 @@ $user_type = get_user_meta($current_user->ID, 'courtly_user_type', true);
 
 <?php
   if (!function_exists('courtly_render_footer')) {
-    require_once plugin_dir_path(__FILE__) . '/../../shared/footer.php';
+      require_once plugin_dir_path(__FILE__).'../../Shared/FooterRenderer.php';
   }
-  courtly_render_footer();
+courtly_render_footer();
 ?>
 </div>

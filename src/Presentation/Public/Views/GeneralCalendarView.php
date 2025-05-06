@@ -3,7 +3,7 @@
 
     <?php
     if (!function_exists('courtly_render_footer')) {
-        require_once plugin_dir_path(__FILE__) . '/../../shared/footer.php';
+        require_once plugin_dir_path(__FILE__).'../../Shared/FooterRenderer.php';
     }
     courtly_render_footer();
     ?>

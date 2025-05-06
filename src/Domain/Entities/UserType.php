@@ -1,4 +1,5 @@
 <?php
+
 namespace Juangcarmona\Courtly\Domain\Entities;
 
 class UserType implements BaseEntity
