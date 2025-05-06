@@ -1,0 +1,528 @@
+# Copyright (C) 2025 Juan G. Carmona
+# This file is distributed under the Apache License 2.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
+"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
+"PO-Revision-Date: 2025-04-13 08:12+0200\n"
+"Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
+"Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: courtly\n"
+"X-Generator: WP-CLI 2.11.0\n"
+
+#. Plugin Name of the plugin
+#: courtly.php
+msgid "Courtly – Padel Court Booking"
+msgstr "Courtly – Padelplatzbuchung"
+
+#. Plugin URI of the plugin
+#: courtly.php
+msgid "https://github.com/juangcarmona/courtly-wp-plugin"
+msgstr "https://github.com/juangcarmona/courtly-wp-plugin"
+
+#. Description of the plugin
+#: courtly.php
+msgid ""
+"A modular plugin for managing padel court reservations using DDD principles."
+msgstr ""
+"Ein modulares Plugin zur Verwaltung von Padel-Platzreservierungen nach DDD-"
+"Prinzipien."
+
+#. Author of the plugin
+#: courtly.php
+msgid "Juan G. Carmona"
+msgstr "Juan G. Carmona"
+
+#. Author URI of the plugin
+#: courtly.php
+msgid "https://jgcarmona.com"
+msgstr "https://jgcarmona.com"
+
+#: Application/Controllers/AdminAvailabilityController.php:35
+msgid "Availability updated."
+msgstr "Verfügbarkeit aktualisiert."
+
+#: Application/Controllers/AdminCourtController.php:25
+msgid "Court added successfully."
+msgstr "Bahn erfolgreich hinzugefügt."
+
+#: Application/Controllers/AdminReservationDetailController.php:8
+#: Application/Controllers/AdminReservationDetailController.php:35
+msgid "Access denied."
+msgstr "Zugriff verweigert."
+
+#: Application/Controllers/AdminReservationDetailController.php:12
+msgid "Reservation ID missing."
+msgstr "Reservierungs-ID fehlt."
+
+#: Application/Controllers/AdminReservationDetailController.php:19
+#: Application/Controllers/PublicReservationDetailController.php:15
+#: Application/Controllers/PublicReservationDetailController.php:16
+msgid "Reservation not found."
+msgstr "Reservierung nicht gefunden."
+
+#: Application/Controllers/AdminReservationDetailController.php:39
+msgid "Invalid nonce."
+msgstr "Ungültiger Nonce."
+
+#: Application/Controllers/AdminReservationDetailController.php:67
+#: Application/Controllers/PublicReservationDetailController.php:120
+msgid "This reservation has already passed."
+msgstr "Diese Reservierung ist bereits verstrichen."
+
+#: Application/Controllers/AdminReservationDetailController.php:69
+#: Application/Controllers/PublicReservationDetailController.php:122
+msgid "Reservation cannot be cancelled (less than 24h remaining)."
+msgstr ""
+"Reservierung kann nicht storniert werden (weniger als 24 Stunden "
+"verbleibend)."
+
+#: Application/Controllers/AdminReservationHistoryController.php:43
+#: Application/Controllers/AdminReservationListController.php:50
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: Application/Controllers/AdminReservationHistoryController.php:44
+#: Application/Controllers/AdminReservationListController.php:51
+msgid "Court #%d"
+msgstr "Bahn #%d"
+
+#: Application/Controllers/AdminUserController.php:19
+msgid "User types updated."
+msgstr "Benutzertypen aktualisiert."
+
+#: Application/Controllers/AdminUserTypeController.php:25
+msgid "User type added successfully."
+msgstr "Benutzertyp erfolgreich hinzugefügt."
+
+#: Application/Controllers/PublicReservationDetailController.php:9
+msgid "You must be logged in to view reservation details."
+msgstr "Sie müssen angemeldet sein, um die Reservierungsdetails anzuzeigen."
+
+#: Application/Controllers/PublicReservationDetailController.php:20
+msgid "You are not allowed to view this reservation."
+msgstr "Sie sind nicht berechtigt, diese Reservierung anzuzeigen."
+
+#: Application/Utils/EventTransformer.php:27
+#: Domain/Services/CourtBlockService.php:28
+msgid "Blocked"
+msgstr "Blockiert"
+
+#: Domain/Services/CourtReservationService.php:71
+msgid "%s already has a reservation that day."
+msgstr "%s hat an diesem Tag bereits eine Reservierung."
+
+#: Domain/Services/CourtReservationService.php:79
+msgid "Reservations must be %d minutes or less."
+msgstr "Reservierungen dürfen höchstens %d Minuten dauern."
+
+#: Domain/Services/CourtReservationService.php:85
+msgid "Time slot unavailable."
+msgstr "Zeitfenster nicht verfügbar."
+
+#: Domain/Services/CourtReservationService.php:102
+msgid "Failed to create reservation."
+msgstr "Reservierung konnte nicht erstellt werden."
+
+#: Infrastructure/activation.php:48
+msgid "Guest"
+msgstr "Gast"
+
+#: Infrastructure/activation.php:53
+msgid "Member"
+msgstr "Mitglied"
+
+#: Infrastructure/activation.php:62
+msgid "Court 1"
+msgstr "Bahn 1"
+
+#: Infrastructure/activation.php:63
+msgid "Main court"
+msgstr "Hauptplatz"
+
+#: Infrastructure/Public/routes.php:38
+msgid "Booking"
+msgstr "Buchung"
+
+#: Infrastructure/Public/routes.php:71
+msgid "Calendar"
+msgstr "Kalender"
+
+#: Infrastructure/Public/routes.php:101
+msgid "Reservation"
+msgstr "Reservierung"
+
+#: Presentation/Admin/admin.php:9 Presentation/Admin/admin.php:10
+msgid "Courtly"
+msgstr "Höfisch"
+
+#: Presentation/Admin/admin.php:21 Presentation/Admin/admin.php:22
+msgid "Dashboard"
+msgstr "Armaturenbrett"
+
+#: Presentation/Admin/admin.php:31 Presentation/Admin/admin.php:32
+#: Presentation/Admin/Views/ActivityCalendarView.php:2
+msgid "Activity Calendar"
+msgstr "Aktivitätskalender"
+
+#: Presentation/Admin/admin.php:41 Presentation/Admin/Pages/dashboard.php:75
+msgid "New Reservation"
+msgstr "Neue Reservierung"
+
+#: Presentation/Admin/admin.php:42
+msgid "Reservations New"
+msgstr "Reservierungen Neu"
+
+#: Presentation/Admin/admin.php:50
+#: Presentation/Admin/Views/ReservationListView.php:2
+msgid "All Reservations"
+msgstr "Alle Reservierungen"
+
+#: Presentation/Admin/admin.php:51
+msgid "Reservations All"
+msgstr "Reservierungen Alle"
+
+#: Presentation/Admin/admin.php:59 Presentation/Admin/admin.php:60
+msgid "Reservation History"
+msgstr "Reservierungsverlauf"
+
+#: Presentation/Admin/admin.php:69
+msgid "Court Availability"
+msgstr "Platzverfügbarkeit"
+
+#: Presentation/Admin/admin.php:70
+msgid "Availability"
+msgstr "Verfügbarkeit"
+
+#: Presentation/Admin/admin.php:79 Presentation/Admin/Pages/dashboard.php:27
+msgid "Manage Courts"
+msgstr "Bahnen verwalten"
+
+#: Presentation/Admin/admin.php:80 Presentation/Admin/Pages/dashboard.php:25
+#: Presentation/Admin/Views/CourtsView.php:2
+msgid "Courts"
+msgstr "Bahnen"
+
+#: Presentation/Admin/admin.php:89 Presentation/Admin/Pages/dashboard.php:47
+msgid "Manage Users"
+msgstr "Benutzer verwalten"
+
+#: Presentation/Admin/admin.php:90 Presentation/Admin/Pages/dashboard.php:45
+#: Presentation/Admin/Views/UsersView.php:2
+msgid "Users"
+msgstr "Benutzer"
+
+#: Presentation/Admin/admin.php:98 Presentation/Admin/admin.php:99
+#: Presentation/Admin/Pages/dashboard.php:35
+#: Presentation/Admin/Views/UserTypesView.php:2
+msgid "User Types"
+msgstr "Benutzertypen"
+
+#: Presentation/Admin/AdminAssets.php:29 Presentation/Public/ShortcodeHandler.php:27
+#: Presentation/Public/ShortcodeHandler.php:79
+msgid "No reason provided"
+msgstr "Kein Grund angegeben"
+
+#: Presentation/Admin/AdminAssets.php:30 Presentation/Public/ShortcodeHandler.php:28
+#: Presentation/Public/ShortcodeHandler.php:80
+msgid "Every"
+msgstr "Jeder"
+
+#: Presentation/Admin/AdminAssets.php:42
+msgid "Reason for blocking this slot:"
+msgstr "Grund für die Sperrung dieses Slots:"
+
+#: Presentation/Admin/AdminAssets.php:43
+msgid "Remove this blocked slot?"
+msgstr "Diesen blockierten Steckplatz entfernen?"
+
+#: Presentation/Admin/Pages/dashboard.php:19
+#, fuzzy
+msgid "Courtly Dashboard"
+msgstr "Armaturenbrett"
+
+#: Presentation/Admin/Pages/dashboard.php:37
+#, fuzzy
+msgid "Manage User Types"
+msgstr "Benutzer verwalten"
+
+#: Presentation/Admin/Pages/dashboard.php:55
+#, fuzzy
+msgid "Users by Type"
+msgstr "Benutzertyp"
+
+#: Presentation/Admin/Pages/dashboard.php:72
+#, fuzzy
+msgid "Quick Actions"
+msgstr "Aktion"
+
+#: Presentation/Admin/Pages/dashboard.php:78
+#, fuzzy
+msgid "View Calendar"
+msgstr "Kalender"
+
+#: Presentation/Admin/Pages/dashboard.php:81
+#, fuzzy
+msgid "Set Availability"
+msgstr "Verfügbarkeit"
+
+#: Presentation/Admin/Views/AvailabilityView.php:2
+msgid "Manage Court Availability"
+msgstr "Platzverfügbarkeit verwalten"
+
+#: Presentation/Admin/Views/AvailabilityView.php:6
+msgid "Select Court:"
+msgstr "Bahn auswählen:"
+
+#: Presentation/Admin/Views/AvailabilityView.php:21
+msgid "From:"
+msgstr "Aus:"
+
+#: Presentation/Admin/Views/AvailabilityView.php:23
+msgid "To:"
+msgstr "Zu:"
+
+#: Presentation/Admin/Views/AvailabilityView.php:25
+msgid "Save"
+msgstr "Speichern"
+
+#: Presentation/Admin/Views/CourtsView.php:5
+msgid "Add New Court"
+msgstr "Neues Bahn hinzufügen"
+
+#: Presentation/Admin/Views/CourtsView.php:8
+msgid "Court Number"
+msgstr "Platznummer"
+
+#: Presentation/Admin/Views/CourtsView.php:12
+#: Presentation/Admin/Views/CourtsView.php:33
+msgid "Name"
+msgstr "Name"
+
+#: Presentation/Admin/Views/CourtsView.php:16
+#: Presentation/Admin/Views/CourtsView.php:34
+msgid "Description"
+msgstr "Beschreibung"
+
+#: Presentation/Admin/Views/CourtsView.php:21
+msgid "Add Court"
+msgstr "Bahn hinzufügen"
+
+#: Presentation/Admin/Views/CourtsView.php:27
+msgid "Existing Courts"
+msgstr "Bestehende Bahnen"
+
+#: Presentation/Admin/Views/CourtsView.php:31
+#: Presentation/Admin/Views/ReservationDetailView.php:5
+#: Presentation/Admin/Views/ReservationHistoryView.php:7
+#: Presentation/Admin/Views/ReservationListView.php:8
+#: Presentation/Admin/Views/ReservationListView.php:40
+#: Presentation/Admin/Views/UserTypesView.php:31
+#: Presentation/Public/Views/ReservationDetailView.php:6
+msgid "ID"
+msgstr "AUSWEIS"
+
+#: Presentation/Admin/Views/CourtsView.php:32
+msgid "Number"
+msgstr "Nummer"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:2
+msgid "Reservation Detail"
+msgstr "Reservierungsdetails"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:6
+#: Presentation/Admin/Views/ReservationHistoryView.php:8
+#: Presentation/Admin/Views/ReservationListView.php:9
+#: Presentation/Admin/Views/ReservationListView.php:41
+#: Presentation/Admin/Views/UsersView.php:8
+msgid "User"
+msgstr "Benutzer"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:7
+#: Presentation/Admin/Views/ReservationHistoryView.php:9
+#: Presentation/Admin/Views/ReservationListView.php:10
+#: Presentation/Admin/Views/ReservationListView.php:42
+#: Presentation/Public/Views/ReservationDetailView.php:10
+msgid "Court"
+msgstr "Bahn"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:8
+#: Presentation/Admin/Views/ReservationHistoryView.php:10
+#: Presentation/Admin/Views/ReservationListView.php:11
+#: Presentation/Admin/Views/ReservationListView.php:43
+#: Presentation/Public/Views/ReservationDetailView.php:14
+msgid "Date"
+msgstr "Datum"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:9
+#: Presentation/Public/Views/ReservationDetailView.php:18
+msgid "Time Slot"
+msgstr "Zeitfenster"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:14
+#: Presentation/Public/Views/ReservationDetailView.php:24
+msgid "Are you sure you want to cancel this reservation?"
+msgstr "Möchten Sie diese Reservierung wirklich stornieren?"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:17
+#: Presentation/Public/Views/ReservationDetailView.php:27
+msgid "Cancel Reservation"
+msgstr "Reservierung stornieren"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:25
+#: Presentation/Public/Views/ReservationDetailView.php:28
+#: Presentation/Public/Views/ReservationDetailView.php:33
+msgid "Back"
+msgstr "Zurück"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:2
+msgid "Reservation History (Last 12 Months)"
+msgstr "Reservierungsverlauf (letzte 12 Monate)"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:11
+#: Presentation/Admin/Views/ReservationListView.php:12
+#: Presentation/Admin/Views/ReservationListView.php:44
+msgid "Start"
+msgstr "Start"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:12
+#: Presentation/Admin/Views/ReservationListView.php:13
+#: Presentation/Admin/Views/ReservationListView.php:45
+msgid "End"
+msgstr "Ende"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:13
+#: Presentation/Admin/Views/ReservationListView.php:14
+#: Presentation/Admin/Views/ReservationListView.php:46
+msgid "Action"
+msgstr "Aktion"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:27
+#: Presentation/Admin/Views/ReservationListView.php:28
+#: Presentation/Admin/Views/ReservationListView.php:60
+msgid "View"
+msgstr "Sicht"
+
+#: Presentation/Admin/Views/ReservationListView.php:4
+msgid "Upcoming"
+msgstr "Demnächst"
+
+#: Presentation/Admin/Views/ReservationListView.php:36
+msgid "Past"
+msgstr "Vergangenheit"
+
+#: Presentation/Admin/Views/ReservationNewView.php:2
+msgid "Create User Reservation"
+msgstr "Benutzerreservierung erstellen"
+
+#: Presentation/Admin/Views/ReservationNewView.php:3
+msgid "Select a user and then a time slot below to create a reservation."
+msgstr ""
+"Wählen Sie unten einen Benutzer und dann ein Zeitfenster aus, um eine "
+"Reservierung zu erstellen."
+
+#: Presentation/Admin/Views/ReservationNewView.php:10
+msgid "Select User:"
+msgstr "Benutzer auswählen:"
+
+#: Presentation/Admin/Views/ReservationNewView.php:12
+msgid "-- Select User --"
+msgstr "-- Benutzer auswählen --"
+
+#: Presentation/Admin/Views/ReservationNewView.php:18
+msgid "n/a"
+msgstr "n / A"
+
+#: Presentation/Admin/Views/ReservationNewView.php:25
+msgid "Selected:"
+msgstr "Ausgewählt:"
+
+#: Presentation/Admin/Views/ReservationNewView.php:26
+msgid "None"
+msgstr "Keiner"
+
+#: Presentation/Admin/Views/ReservationNewView.php:28
+#: Presentation/Public/Views/BookingView.php:33
+msgid "Confirm Reservation"
+msgstr "Reservierung bestätigen"
+
+#: Presentation/Admin/Views/UserTypesView.php:5
+msgid "Add New User Type"
+msgstr "Neuen Benutzertyp hinzufügen"
+
+#: Presentation/Admin/Views/UserTypesView.php:8
+msgid "Internal Name"
+msgstr "Interner Name"
+
+#: Presentation/Admin/Views/UserTypesView.php:12
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#: Presentation/Admin/Views/UserTypesView.php:16
+msgid "Booking Days in Advance"
+msgstr "Buchen Sie Tage im Voraus"
+
+#: Presentation/Admin/Views/UserTypesView.php:21
+msgid "Add User Type"
+msgstr "Benutzertyp hinzufügen"
+
+#: Presentation/Admin/Views/UserTypesView.php:27
+msgid "Existing User Types"
+msgstr "Vorhandene Benutzertypen"
+
+#: Presentation/Admin/Views/UserTypesView.php:32
+msgid "Internal"
+msgstr "Intern"
+
+#: Presentation/Admin/Views/UserTypesView.php:33
+msgid "Display"
+msgstr "Anzeige"
+
+#: Presentation/Admin/Views/UserTypesView.php:34
+msgid "Days in Advance"
+msgstr "Tage im Voraus"
+
+#: Presentation/Admin/Views/UsersView.php:9
+msgid "Email"
+msgstr "E-Mail"
+
+#: Presentation/Admin/Views/UsersView.php:10
+msgid "User Type"
+msgstr "Benutzertyp"
+
+#: Presentation/Admin/Views/UsersView.php:22
+msgid "-- Select --"
+msgstr "-- Wählen --"
+
+#: Presentation/Admin/Views/UsersView.php:35
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#: Presentation/Public/ShortcodeHandler.php:47
+msgid "Please %1$slog in%2$s to book a court."
+msgstr "Bitte %1$melden Sie sich an%2$s, um einen Platz zu buchen."
+
+#: Presentation/Public/ShortcodeHandler.php:99
+msgid "Reservation ID not provided."
+msgstr "Reservierungs-ID nicht angegeben."
+
+#: Presentation/Public/Views/BookingView.php:21
+msgid "Your reservation was successfully created."
+msgstr "Ihre Reservierung wurde erfolgreich erstellt."
+
+#. translators: Footer text with brand and author.
+#: presentation/shared/footer.php:8
+msgid ""
+"🥎 <strong>%1$s</strong> — Your padel court booking assistant. 🥎</br> Made "
+"with ❤️ by <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
+"Carmona</a> 🌍 Madrid, Spain"
+msgstr ""
+"🥎 <strong>%1$s</strong> – Ihr Padel-Court-Buchungsassistent. 🥎</br> Mit ❤️ "
+"erstellt von <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
+"Carmona</a> 🌍 Madrid, Spanien"

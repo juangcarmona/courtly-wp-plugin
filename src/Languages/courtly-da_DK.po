@@ -1,0 +1,525 @@
+# Copyright (C) 2025 Juan G. Carmona
+# This file is distributed under the Apache License 2.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
+"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
+"PO-Revision-Date: 2025-04-13 08:12+0200\n"
+"Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: courtly\n"
+"X-Generator: WP-CLI 2.11.0\n"
+
+#. Plugin Name of the plugin
+#: courtly.php
+msgid "Courtly – Padel Court Booking"
+msgstr "Courtly – Padel Court Booking"
+
+#. Plugin URI of the plugin
+#: courtly.php
+msgid "https://github.com/juangcarmona/courtly-wp-plugin"
+msgstr "https://github.com/juangcarmona/courtly-wp-plugin"
+
+#. Description of the plugin
+#: courtly.php
+msgid ""
+"A modular plugin for managing padel court reservations using DDD principles."
+msgstr ""
+"Et modulært plugin til håndtering af padelbanereservationer ved hjælp af DDD-"
+"principper."
+
+#. Author of the plugin
+#: courtly.php
+msgid "Juan G. Carmona"
+msgstr "Juan G. Carmona"
+
+#. Author URI of the plugin
+#: courtly.php
+msgid "https://jgcarmona.com"
+msgstr "https://jgcarmona.com"
+
+#: Application/Controllers/AdminAvailabilityController.php:35
+msgid "Availability updated."
+msgstr "Tilgængelighed opdateret."
+
+#: Application/Controllers/AdminCourtController.php:25
+msgid "Court added successfully."
+msgstr "Bane tilføjet med succes."
+
+#: Application/Controllers/AdminReservationDetailController.php:8
+#: Application/Controllers/AdminReservationDetailController.php:35
+msgid "Access denied."
+msgstr "Adgang nægtet."
+
+#: Application/Controllers/AdminReservationDetailController.php:12
+msgid "Reservation ID missing."
+msgstr "Reservations-id mangler."
+
+#: Application/Controllers/AdminReservationDetailController.php:19
+#: Application/Controllers/PublicReservationDetailController.php:15
+#: Application/Controllers/PublicReservationDetailController.php:16
+msgid "Reservation not found."
+msgstr "Reservationen blev ikke fundet."
+
+#: Application/Controllers/AdminReservationDetailController.php:39
+msgid "Invalid nonce."
+msgstr "Ugyldig nonce."
+
+#: Application/Controllers/AdminReservationDetailController.php:67
+#: Application/Controllers/PublicReservationDetailController.php:120
+msgid "This reservation has already passed."
+msgstr "Denne reservation er allerede bestået."
+
+#: Application/Controllers/AdminReservationDetailController.php:69
+#: Application/Controllers/PublicReservationDetailController.php:122
+msgid "Reservation cannot be cancelled (less than 24h remaining)."
+msgstr "Reservationen kan ikke annulleres (mindre end 24 timer tilbage)."
+
+#: Application/Controllers/AdminReservationHistoryController.php:43
+#: Application/Controllers/AdminReservationListController.php:50
+msgid "Unknown"
+msgstr "Ukendt"
+
+#: Application/Controllers/AdminReservationHistoryController.php:44
+#: Application/Controllers/AdminReservationListController.php:51
+msgid "Court #%d"
+msgstr "Bane #%d"
+
+#: Application/Controllers/AdminUserController.php:19
+msgid "User types updated."
+msgstr "Brugertyper opdateret."
+
+#: Application/Controllers/AdminUserTypeController.php:25
+msgid "User type added successfully."
+msgstr "Brugertype blev tilføjet."
+
+#: Application/Controllers/PublicReservationDetailController.php:9
+msgid "You must be logged in to view reservation details."
+msgstr "Du skal være logget ind for at se reservationsdetaljer."
+
+#: Application/Controllers/PublicReservationDetailController.php:20
+msgid "You are not allowed to view this reservation."
+msgstr "Du har ikke tilladelse til at se denne reservation."
+
+#: Application/Utils/EventTransformer.php:27
+#: Domain/Services/CourtBlockService.php:28
+msgid "Blocked"
+msgstr "Blokeret"
+
+#: Domain/Services/CourtReservationService.php:71
+msgid "%s already has a reservation that day."
+msgstr "%s har allerede en reservation den dag."
+
+#: Domain/Services/CourtReservationService.php:79
+msgid "Reservations must be %d minutes or less."
+msgstr "Reservationer skal være på %d minutter eller mindre."
+
+#: Domain/Services/CourtReservationService.php:85
+msgid "Time slot unavailable."
+msgstr "Tidsrum ikke tilgængelig."
+
+#: Domain/Services/CourtReservationService.php:102
+msgid "Failed to create reservation."
+msgstr "Kunne ikke oprette reservation."
+
+#: Infrastructure/activation.php:48
+msgid "Guest"
+msgstr "Gæst"
+
+#: Infrastructure/activation.php:53
+msgid "Member"
+msgstr "Medlem"
+
+#: Infrastructure/activation.php:62
+msgid "Court 1"
+msgstr "Bane 1"
+
+#: Infrastructure/activation.php:63
+msgid "Main court"
+msgstr "Hovedbane"
+
+#: Infrastructure/Public/routes.php:38
+msgid "Booking"
+msgstr "Booking"
+
+#: Infrastructure/Public/routes.php:71
+msgid "Calendar"
+msgstr "Kalender"
+
+#: Infrastructure/Public/routes.php:101
+msgid "Reservation"
+msgstr "Reservation"
+
+#: Presentation/Admin/admin.php:9 Presentation/Admin/admin.php:10
+msgid "Courtly"
+msgstr "Høvisk"
+
+#: Presentation/Admin/admin.php:21 Presentation/Admin/admin.php:22
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: Presentation/Admin/admin.php:31 Presentation/Admin/admin.php:32
+#: Presentation/Admin/Views/ActivityCalendarView.php:2
+msgid "Activity Calendar"
+msgstr "Aktivitetskalender"
+
+#: Presentation/Admin/admin.php:41 Presentation/Admin/Pages/dashboard.php:75
+msgid "New Reservation"
+msgstr "Ny reservation"
+
+#: Presentation/Admin/admin.php:42
+msgid "Reservations New"
+msgstr "Reservationer Nyt"
+
+#: Presentation/Admin/admin.php:50
+#: Presentation/Admin/Views/ReservationListView.php:2
+msgid "All Reservations"
+msgstr "Alle reservationer"
+
+#: Presentation/Admin/admin.php:51
+msgid "Reservations All"
+msgstr "Reservationer Alle"
+
+#: Presentation/Admin/admin.php:59 Presentation/Admin/admin.php:60
+msgid "Reservation History"
+msgstr "Reservationshistorie"
+
+#: Presentation/Admin/admin.php:69
+msgid "Court Availability"
+msgstr "Banens tilgængelighed"
+
+#: Presentation/Admin/admin.php:70
+msgid "Availability"
+msgstr "Tilgængelighed"
+
+#: Presentation/Admin/admin.php:79 Presentation/Admin/Pages/dashboard.php:27
+msgid "Manage Courts"
+msgstr "Administrer Baner"
+
+#: Presentation/Admin/admin.php:80 Presentation/Admin/Pages/dashboard.php:25
+#: Presentation/Admin/Views/CourtsView.php:2
+msgid "Courts"
+msgstr "Baner"
+
+#: Presentation/Admin/admin.php:89 Presentation/Admin/Pages/dashboard.php:47
+msgid "Manage Users"
+msgstr "Administrer brugere"
+
+#: Presentation/Admin/admin.php:90 Presentation/Admin/Pages/dashboard.php:45
+#: Presentation/Admin/Views/UsersView.php:2
+msgid "Users"
+msgstr "Brugere"
+
+#: Presentation/Admin/admin.php:98 Presentation/Admin/admin.php:99
+#: Presentation/Admin/Pages/dashboard.php:35
+#: Presentation/Admin/Views/UserTypesView.php:2
+msgid "User Types"
+msgstr "Brugertyper"
+
+#: Presentation/Admin/AdminAssets.php:29 Presentation/Public/ShortcodeHandler.php:27
+#: Presentation/Public/ShortcodeHandler.php:79
+msgid "No reason provided"
+msgstr "Ingen grund angivet"
+
+#: Presentation/Admin/AdminAssets.php:30 Presentation/Public/ShortcodeHandler.php:28
+#: Presentation/Public/ShortcodeHandler.php:80
+msgid "Every"
+msgstr "Hver"
+
+#: Presentation/Admin/AdminAssets.php:42
+msgid "Reason for blocking this slot:"
+msgstr "Årsag til at blokere denne plads:"
+
+#: Presentation/Admin/AdminAssets.php:43
+msgid "Remove this blocked slot?"
+msgstr "Vil du fjerne dette blokerede slot?"
+
+#: Presentation/Admin/Pages/dashboard.php:19
+#, fuzzy
+msgid "Courtly Dashboard"
+msgstr "Dashboard"
+
+#: Presentation/Admin/Pages/dashboard.php:37
+#, fuzzy
+msgid "Manage User Types"
+msgstr "Administrer brugere"
+
+#: Presentation/Admin/Pages/dashboard.php:55
+#, fuzzy
+msgid "Users by Type"
+msgstr "Brugertype"
+
+#: Presentation/Admin/Pages/dashboard.php:72
+#, fuzzy
+msgid "Quick Actions"
+msgstr "Handling"
+
+#: Presentation/Admin/Pages/dashboard.php:78
+#, fuzzy
+msgid "View Calendar"
+msgstr "Kalender"
+
+#: Presentation/Admin/Pages/dashboard.php:81
+#, fuzzy
+msgid "Set Availability"
+msgstr "Tilgængelighed"
+
+#: Presentation/Admin/Views/AvailabilityView.php:2
+msgid "Manage Court Availability"
+msgstr "Administrer Banens tilgængelighed"
+
+#: Presentation/Admin/Views/AvailabilityView.php:6
+msgid "Select Court:"
+msgstr "Vælg bane:"
+
+#: Presentation/Admin/Views/AvailabilityView.php:21
+msgid "From:"
+msgstr "Fra:"
+
+#: Presentation/Admin/Views/AvailabilityView.php:23
+msgid "To:"
+msgstr "Til:"
+
+#: Presentation/Admin/Views/AvailabilityView.php:25
+msgid "Save"
+msgstr "Spare"
+
+#: Presentation/Admin/Views/CourtsView.php:5
+msgid "Add New Court"
+msgstr "Tilføj ny bane"
+
+#: Presentation/Admin/Views/CourtsView.php:8
+msgid "Court Number"
+msgstr "Banens nummer"
+
+#: Presentation/Admin/Views/CourtsView.php:12
+#: Presentation/Admin/Views/CourtsView.php:33
+msgid "Name"
+msgstr "Navn"
+
+#: Presentation/Admin/Views/CourtsView.php:16
+#: Presentation/Admin/Views/CourtsView.php:34
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: Presentation/Admin/Views/CourtsView.php:21
+msgid "Add Court"
+msgstr "Tilføj bane"
+
+#: Presentation/Admin/Views/CourtsView.php:27
+msgid "Existing Courts"
+msgstr "Eksisterende Baner"
+
+#: Presentation/Admin/Views/CourtsView.php:31
+#: Presentation/Admin/Views/ReservationDetailView.php:5
+#: Presentation/Admin/Views/ReservationHistoryView.php:7
+#: Presentation/Admin/Views/ReservationListView.php:8
+#: Presentation/Admin/Views/ReservationListView.php:40
+#: Presentation/Admin/Views/UserTypesView.php:31
+#: Presentation/Public/Views/ReservationDetailView.php:6
+msgid "ID"
+msgstr "ID"
+
+#: Presentation/Admin/Views/CourtsView.php:32
+msgid "Number"
+msgstr "Antal"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:2
+msgid "Reservation Detail"
+msgstr "Reservationsdetaljer"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:6
+#: Presentation/Admin/Views/ReservationHistoryView.php:8
+#: Presentation/Admin/Views/ReservationListView.php:9
+#: Presentation/Admin/Views/ReservationListView.php:41
+#: Presentation/Admin/Views/UsersView.php:8
+msgid "User"
+msgstr "Bruger"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:7
+#: Presentation/Admin/Views/ReservationHistoryView.php:9
+#: Presentation/Admin/Views/ReservationListView.php:10
+#: Presentation/Admin/Views/ReservationListView.php:42
+#: Presentation/Public/Views/ReservationDetailView.php:10
+msgid "Court"
+msgstr "Bane"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:8
+#: Presentation/Admin/Views/ReservationHistoryView.php:10
+#: Presentation/Admin/Views/ReservationListView.php:11
+#: Presentation/Admin/Views/ReservationListView.php:43
+#: Presentation/Public/Views/ReservationDetailView.php:14
+msgid "Date"
+msgstr "Dato"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:9
+#: Presentation/Public/Views/ReservationDetailView.php:18
+msgid "Time Slot"
+msgstr "Tidsrum"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:14
+#: Presentation/Public/Views/ReservationDetailView.php:24
+msgid "Are you sure you want to cancel this reservation?"
+msgstr "Er du sikker på, at du vil annullere denne reservation?"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:17
+#: Presentation/Public/Views/ReservationDetailView.php:27
+msgid "Cancel Reservation"
+msgstr "Annuller reservation"
+
+#: Presentation/Admin/Views/ReservationDetailView.php:25
+#: Presentation/Public/Views/ReservationDetailView.php:28
+#: Presentation/Public/Views/ReservationDetailView.php:33
+msgid "Back"
+msgstr "Tilbage"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:2
+msgid "Reservation History (Last 12 Months)"
+msgstr "Reservationshistorik (sidste 12 måneder)"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:11
+#: Presentation/Admin/Views/ReservationListView.php:12
+#: Presentation/Admin/Views/ReservationListView.php:44
+msgid "Start"
+msgstr "Starte"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:12
+#: Presentation/Admin/Views/ReservationListView.php:13
+#: Presentation/Admin/Views/ReservationListView.php:45
+msgid "End"
+msgstr "Ende"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:13
+#: Presentation/Admin/Views/ReservationListView.php:14
+#: Presentation/Admin/Views/ReservationListView.php:46
+msgid "Action"
+msgstr "Handling"
+
+#: Presentation/Admin/Views/ReservationHistoryView.php:27
+#: Presentation/Admin/Views/ReservationListView.php:28
+#: Presentation/Admin/Views/ReservationListView.php:60
+msgid "View"
+msgstr "Udsigt"
+
+#: Presentation/Admin/Views/ReservationListView.php:4
+msgid "Upcoming"
+msgstr "Kommende"
+
+#: Presentation/Admin/Views/ReservationListView.php:36
+msgid "Past"
+msgstr "Forbi"
+
+#: Presentation/Admin/Views/ReservationNewView.php:2
+msgid "Create User Reservation"
+msgstr "Opret brugerreservation"
+
+#: Presentation/Admin/Views/ReservationNewView.php:3
+msgid "Select a user and then a time slot below to create a reservation."
+msgstr ""
+"Vælg en bruger og derefter et tidsrum nedenfor for at oprette en reservation."
+
+#: Presentation/Admin/Views/ReservationNewView.php:10
+msgid "Select User:"
+msgstr "Vælg bruger:"
+
+#: Presentation/Admin/Views/ReservationNewView.php:12
+msgid "-- Select User --"
+msgstr "-- Vælg bruger --"
+
+#: Presentation/Admin/Views/ReservationNewView.php:18
+msgid "n/a"
+msgstr "n/a"
+
+#: Presentation/Admin/Views/ReservationNewView.php:25
+msgid "Selected:"
+msgstr "Valgt:"
+
+#: Presentation/Admin/Views/ReservationNewView.php:26
+msgid "None"
+msgstr "Ingen"
+
+#: Presentation/Admin/Views/ReservationNewView.php:28
+#: Presentation/Public/Views/BookingView.php:33
+msgid "Confirm Reservation"
+msgstr "Bekræft reservation"
+
+#: Presentation/Admin/Views/UserTypesView.php:5
+msgid "Add New User Type"
+msgstr "Tilføj ny brugertype"
+
+#: Presentation/Admin/Views/UserTypesView.php:8
+msgid "Internal Name"
+msgstr "Internt navn"
+
+#: Presentation/Admin/Views/UserTypesView.php:12
+msgid "Display Name"
+msgstr "Vist navn"
+
+#: Presentation/Admin/Views/UserTypesView.php:16
+msgid "Booking Days in Advance"
+msgstr "Booking dage i forvejen"
+
+#: Presentation/Admin/Views/UserTypesView.php:21
+msgid "Add User Type"
+msgstr "Tilføj brugertype"
+
+#: Presentation/Admin/Views/UserTypesView.php:27
+msgid "Existing User Types"
+msgstr "Eksisterende brugertyper"
+
+#: Presentation/Admin/Views/UserTypesView.php:32
+msgid "Internal"
+msgstr "Indre"
+
+#: Presentation/Admin/Views/UserTypesView.php:33
+msgid "Display"
+msgstr "Vise"
+
+#: Presentation/Admin/Views/UserTypesView.php:34
+msgid "Days in Advance"
+msgstr "Dage i forvejen"
+
+#: Presentation/Admin/Views/UsersView.php:9
+msgid "Email"
+msgstr "E-mail"
+
+#: Presentation/Admin/Views/UsersView.php:10
+msgid "User Type"
+msgstr "Brugertype"
+
+#: Presentation/Admin/Views/UsersView.php:22
+msgid "-- Select --"
+msgstr "-- Vælg --"
+
+#: Presentation/Admin/Views/UsersView.php:35
+msgid "Save Changes"
+msgstr "Gem ændringer"
+
+#: Presentation/Public/ShortcodeHandler.php:47
+msgid "Please %1$slog in%2$s to book a court."
+msgstr "%1$slog ind%2$s for at booke en bane."
+
+#: Presentation/Public/ShortcodeHandler.php:99
+msgid "Reservation ID not provided."
+msgstr "Reservations-id ikke angivet."
+
+#: Presentation/Public/Views/BookingView.php:21
+msgid "Your reservation was successfully created."
+msgstr "Din reservation blev oprettet."
+
+#. translators: Footer text with brand and author.
+#: presentation/shared/footer.php:8
+msgid ""
+"🥎 <strong>%1$s</strong> — Your padel court booking assistant. 🥎</br> Made "
+"with ❤️ by <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
+"Carmona</a> 🌍 Madrid, Spain"
+msgstr ""
+"🥎 <strong>%1$s</strong> — Din padel-banereservationsassistent. 🥎</br> "
+"Lavet med ❤️ af <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
+"Carmona</a> 🌍 Madrid, Spanien"

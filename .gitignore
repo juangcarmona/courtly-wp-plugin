@@ -26,6 +26,9 @@ wp-content/debug.log
 # Ignore compiled language files
 /languages/*.mo
 
+# Ignore coverage reports
+coverage/
+
 # Ignore Everything in Docker Except Necessary Config
 docker/*
 !docker/docker-compose.yml  # Keep docker-compose file
@@ -46,3 +49,4 @@ node_modules/
 Thumbs.db
 
 code_summary.txt
+src/.phpunit.result.cache

@@ -34,14 +34,14 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y gettext
 
       - name: Compile .po to .mo files
-        working-directory: src/languages
+        working-directory: src/Languages
         run: |
           for file in *.po; do
             msgfmt "$file" -o "${file%.po}.mo"
           done
 
       - name: Validate .mo files
-        working-directory: src/languages
+        working-directory: src/Languages
         run: |
           po_count=$(ls -1 *.po | wc -l)
           mo_count=$(ls -1 *.mo | wc -l)

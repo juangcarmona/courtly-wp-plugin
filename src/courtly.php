@@ -16,8 +16,18 @@
  */
 
 if (!defined('ABSPATH')) {
-    exit; // Prevent direct access
+    exit;
 }
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Juangcarmona\Courtly\Infrastructure\CourtlyContainer;
+use Juangcarmona\Courtly\Infrastructure\ControllerFactory;
+
+use Juangcarmona\Courtly\Presentation\Admin\Controllers\AvailabilityAjaxController;
+use Juangcarmona\Courtly\Presentation\Admin\Controllers\DashboardAjaxController;
+use Juangcarmona\Courtly\Presentation\Admin\Controllers\ReservationAjaxController;
+
+require_once __DIR__ . '/Infrastructure/require_entities.php';
 
 // -----------------------------------------------------------------------------
 // Load plugin textdomain for internationalization
@@ -26,7 +36,7 @@ function courtly_load_textdomain() {
     $loaded = load_plugin_textdomain(
         'courtly',
         false,
-        'courtly/languages'
+        'courtly/Languages'
     );
     
 
@@ -41,19 +51,20 @@ add_action('init', 'courtly_load_textdomain');
 // -----------------------------------------------------------------------------
 // Load core infrastructure (dependency container, etc.)
 // -----------------------------------------------------------------------------
-require_once plugin_dir_path(__FILE__) . 'infrastructure/CourtlyContainer.php';
+require_once plugin_dir_path(__FILE__) . 'Infrastructure/CourtlyContainer.php';
+require_once plugin_dir_path(__FILE__) . 'Infrastructure/ControllerFactory.php';
 
 // -----------------------------------------------------------------------------
 // Load public routing BEFORE flush_rewrite_rules
 // -----------------------------------------------------------------------------
-require_once plugin_dir_path(__FILE__) . 'infrastructure/public/routes.php';
+require_once plugin_dir_path(__FILE__) . 'Infrastructure/Public/routes.php';
 add_action('init', 'courtly_register_public_routes');       // Register rewrite rules early
 add_filter('query_vars', 'courtly_add_query_vars');         // Add query var: courtly_reservation_id
 
 // -----------------------------------------------------------------------------
 // Activation logic (runs once on plugin activation)
 // -----------------------------------------------------------------------------
-require_once plugin_dir_path(__FILE__) . 'infrastructure/activation.php';
+require_once plugin_dir_path(__FILE__) . 'Infrastructure/activation.php';
 register_activation_hook(__FILE__, function () {
     courtly_create_tables();
     courtly_seed_data();
@@ -85,7 +96,7 @@ register_activation_hook(__FILE__, 'courtly_activation_notice_flag');
 // -----------------------------------------------------------------------------
 // Public shortcodes (e.g. booking calendar)
 // -----------------------------------------------------------------------------
-require_once plugin_dir_path(__FILE__) . 'presentation/public/shortcode.php';
+require_once plugin_dir_path(__FILE__) . 'Presentation/Public/ShortcodeHandler.php';
 
 // -----------------------------------------------------------------------------
 // Hide reservation detail page from automatic menus
@@ -100,13 +111,9 @@ add_filter('wp_get_nav_menu_items', function ($items) {
 // Admin dashboard logic and AJAX controllers
 // -----------------------------------------------------------------------------
 if (is_admin()) {
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/admin.php';
+    require_once plugin_dir_path(__FILE__) . 'Presentation/Admin/AdminBootstrap.php';
 
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/AvailabilityAjaxController.php';
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/DashboardAjaxController.php';
-    require_once plugin_dir_path(__FILE__) . 'presentation/admin/controllers/ReservationAjaxController.php';
-
-    AvailabilityAjaxController::registerHooks();
-    DashboardAjaxController::registerHooks();
-    ReservationAjaxController::registerHooks();
+    ControllerFactory::make(AvailabilityAjaxController::class)->registerHooks();
+     ControllerFactory::make(DashboardAjaxController::class)->registerHooks();
+     ControllerFactory::make(ReservationAjaxController::class)->registerHooks();
 }

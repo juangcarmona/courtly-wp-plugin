@@ -32,13 +32,16 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           
+      - name: Fetch all tags
+        run: git fetch --tags
+  
       - name: Create tag (if not exists)
         id: create_tag
         run: |
           short_hash=$(git rev-parse --short HEAD)
           version=${{ steps.get_version.outputs.version }}
           tag="v${version}-${short_hash}"
-      
+
           if git rev-parse "$tag" >/dev/null 2>&1; then
             echo "Tag $tag already exists. Skipping creation."
           else
@@ -47,6 +50,7 @@ jobs:
           fi
 
           echo "tag=$tag" >> $GITHUB_OUTPUT
+  
 
       - name: Generate courtly.zip artifact
         run: |

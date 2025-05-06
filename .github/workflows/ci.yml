@@ -1,53 +1,72 @@
 name: Continuous Integration
 
 on:
-  push:
-    branches-ignore:
+  pull_request:
+    branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Install gettext
-        run: sudo apt-get update && sudo apt-get install -y gettext
+    - name: Install dependencies
+      working-directory: src
+      run: composer install --no-interaction --optimize-autoloader
 
-      - name: Compile .po files to .mo
-        working-directory: src/languages
-        run: |
-          set -e
-          for file in *.po; do
-            msgfmt "$file" -o "${file%.po}.mo"
-          done
+    - name: Install gettext
+      run: sudo apt-get update && sudo apt-get install -y gettext
 
-      - name: Validate translations
-        working-directory: src/languages
-        run: |
-          set -e
-          po_count=$(ls -1 *.po | wc -l)
-          mo_count=$(ls -1 *.mo | wc -l)
-          if [ "$po_count" -ne "$mo_count" ]; then
-            echo "Mismatch between .po and .mo file counts. Failing build."
-            exit 1
-          fi
+    - name: Compile .po files to .mo
+      working-directory: src/Languages
+      run: |
+        set -e
+        for file in *.po; do
+          msgfmt "$file" -o "${file%.po}.mo"
+        done
 
-      - name: Stub PHPUnit tests
-        run: |
-          set -e
-          echo "PHPUnit tests are currently stubbed."
-          # ./vendor/bin/phpunit
+    - name: Validate translations
+      working-directory: src/Languages
+      run: |
+        set -e
+        po_count=$(ls -1 *.po | wc -l)
+        mo_count=$(ls -1 *.mo | wc -l)
+        if [ "$po_count" -ne "$mo_count" ]; then
+          echo "Mismatch between .po and .mo file counts. Failing build."
+          exit 1
+        fi
 
-      - name: Generate courtly.zip
-        run: |
-          set -e
-          zip -r courtly.zip src
+    - name: Run tests with coverage
+      working-directory: src
+      run: XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover=coverage/clover.xml
+      
+    - name: Upload coverage artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: src/coverage/clover.xml
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: courtly-build-${{ github.run_number }}
-          path: courtly.zip
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        files: src/coverage/clover.xml
+        flags: unittests
+        name: phpunit-coverage     
+        slug: juangcarmona/courtly-wp-plugin  
+      env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} 
+
+    - name: Generate courtly.zip
+      run: |
+        set -e
+        zip -r courtly.zip src
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: courtly-build-${{ github.run_number }}
+        path: courtly.zip

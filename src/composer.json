@@ -1,0 +1,23 @@
+{
+    "name": "juangcarmona/courtly",
+    "description": "Professional-grade WordPress plugin for padel court bookings, with admin panel, user roles, and club-ready features.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Juangcarmona\\Courtly\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juan G Carmona",
+            "email": "juan@jgcarmona.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "friendsofphp/php-cs-fixer": "^3.75",
+        "mockery/mockery": "^1.6"
+    }
+}
