@@ -1,7 +1,7 @@
 <?php
 namespace Juangcarmona\Courtly\Application\Controllers;
 
-use Juangcarmona\Courtly\Application\Services\OpeningHoursService;
+use Juangcarmona\Courtly\Domain\Services\OpeningHoursService;
 
 class AdminOpeningHoursController {
     private $openingHoursService;
