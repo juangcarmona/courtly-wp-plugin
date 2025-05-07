@@ -2,8 +2,9 @@
 
 namespace Juangcarmona\Courtly\Infrastructure;
 
-use Juangcarmona\Courtly\Application\Controllers\AdminAvailabilityController;
+use Juangcarmona\Courtly\Application\Controllers\AdminCourtAvailabilityController;
 use Juangcarmona\Courtly\Application\Controllers\AdminCourtController;
+use Juangcarmona\Courtly\Application\Controllers\AdminOpeningHoursController;
 use Juangcarmona\Courtly\Application\Controllers\AdminReservationDetailController;
 use Juangcarmona\Courtly\Application\Controllers\AdminReservationHistoryController;
 use Juangcarmona\Courtly\Application\Controllers\AdminReservationListController;
@@ -21,12 +22,14 @@ class ControllerFactory
     public static function make(string $controllerName, array $args = []): object
     {
         return match ($controllerName) {
-            AdminAvailabilityController::class => new AdminAvailabilityController(
-                CourtlyContainer::courtRepository(),
-                CourtlyContainer::openingHoursRepository()
+            AdminCourtAvailabilityController::class => new AdminCourtAvailabilityController(
+                CourtlyContainer::courtRepository()
             ),
             AdminCourtController::class => new AdminCourtController(
                 CourtlyContainer::courtRepository()
+            ),
+            AdminOpeningHoursController::class => new AdminOpeningHoursController(
+                CourtlyContainer::openingHoursRepository()
             ),
             AdminReservationDetailController::class => new AdminReservationDetailController(
                 CourtlyContainer::courtReservationRepository(),
@@ -63,7 +66,6 @@ class ControllerFactory
                 CourtlyContainer::courtRepository(),
                 CourtlyContainer::courtReservationRepository(),
                 CourtlyContainer::courtBlockRepository(),
-                CourtlyContainer::openingHoursRepository(),
                 CourtlyContainer::courtBlockService(),
                 CourtlyContainer::courtReservationService(),
                 CourtlyContainer::eventTransformer()

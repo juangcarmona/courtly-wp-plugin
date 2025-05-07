@@ -11,10 +11,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Añadir nueva pistaProject-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
-"X-Generator: WP-CLI 2.11.0\n"
-"X-Domain: courtly\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Añadir nueva pistaProject-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
+"X-Domain: courtly\n"
+"X-Generator: WP-CLI 2.11.0\n"
 
 #. Plugin Name of the plugin
 #: courtly.php
@@ -24,25 +24,27 @@ msgstr "Courtly – Reserva de Pistas de Pádel"
 #. Plugin URI of the plugin
 #: courtly.php
 msgid "https://github.com/juangcarmona/courtly-wp-plugin"
-msgstr "Añadir nueva pista"
+msgstr "https://github.com/juangcarmona/courtly-wp-plugin"
 
 #. Description of the plugin
 #: courtly.php
 msgid ""
 "A modular plugin for managing padel court reservations using DDD principles."
-msgstr "Añadir nueva pista"
+msgstr ""
+"Un complemento modular para gestionar reservas de pistas de pádel utilizando"
+" principios DDD."
 
 #. Author of the plugin
 #: courtly.php
 msgid "Juan G. Carmona"
-msgstr "Añadir nueva pista"
+msgstr "Juan G. Carmona"
 
 #. Author URI of the plugin
 #: courtly.php
 msgid "https://jgcarmona.com"
-msgstr "Añadir nueva pista"
+msgstr "https://jgcarmona.com"
 
-#: Application/Controllers/AdminAvailabilityController.php:35
+#: Application/Controllers/AdminCourtAvailabilityController.php:35
 msgid "Availability updated."
 msgstr "Disponibilidad actualizada."
 
@@ -173,7 +175,7 @@ msgstr "Nueva reserva"
 
 #: Presentation/Admin/admin.php:42
 msgid "Reservations New"
-msgstr "Añadir nueva pista"
+msgstr "Reservas Nuevas"
 
 #: Presentation/Admin/admin.php:50
 #: Presentation/Admin/Views/ReservationListView.php:2
@@ -182,7 +184,7 @@ msgstr "Todas las reservas"
 
 #: Presentation/Admin/admin.php:51
 msgid "Reservations All"
-msgstr "Añadir nueva pista"
+msgstr "Reservas Todas"
 
 #: Presentation/Admin/admin.php:59 Presentation/Admin/admin.php:60
 msgid "Reservation History"
@@ -220,12 +222,14 @@ msgstr "Usuarios"
 msgid "User Types"
 msgstr "Tipos de usuario"
 
-#: Presentation/Admin/AdminAssets.php:29 Presentation/Public/ShortcodeHandler.php:27
+#: Presentation/Admin/AdminAssets.php:29
+#: Presentation/Public/ShortcodeHandler.php:27
 #: Presentation/Public/ShortcodeHandler.php:79
 msgid "No reason provided"
 msgstr "Sin motivo especificado"
 
-#: Presentation/Admin/AdminAssets.php:30 Presentation/Public/ShortcodeHandler.php:28
+#: Presentation/Admin/AdminAssets.php:30
+#: Presentation/Public/ShortcodeHandler.php:28
 #: Presentation/Public/ShortcodeHandler.php:80
 msgid "Every"
 msgstr "Cada"
@@ -255,7 +259,7 @@ msgstr "Tipos de usuario"
 
 #: Presentation/Admin/Pages/dashboard.php:72
 msgid "Quick Actions"
-msgstr "Añadir nueva pista"
+msgstr "Acciones rápidas"
 
 #: Presentation/Admin/Pages/dashboard.php:78
 #, fuzzy
@@ -267,51 +271,51 @@ msgstr "Calendario"
 msgid "Set Availability"
 msgstr "Disponibilidad"
 
-#: Presentation/Admin/Views/AvailabilityView.php:2
-msgid "Manage Court Availability"
-msgstr "Añadir nueva pista"
+#: Presentation/Admin/Views/CourtAvailabilityView.php:2
+msgid "Court Availability"
+msgstr "Disponibilidad de la cancha"
 
-#: Presentation/Admin/Views/AvailabilityView.php:6
+#: Presentation/Admin/Views/CourtAvailabilityView.php:6
 msgid "Select Court:"
-msgstr "Añadir nueva pista"
+msgstr "Seleccionar cancha:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:21
+#: Presentation/Admin/Views/CourtAvailabilityView.php:21
 msgid "From:"
-msgstr "Añadir nueva pista"
+msgstr "De:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:23
+#: Presentation/Admin/Views/CourtAvailabilityView.php:23
 msgid "To:"
-msgstr "Añadir nueva pista"
+msgstr "A:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:25
+#: Presentation/Admin/Views/CourtAvailabilityView.php:25
 msgid "Save"
-msgstr "Añadir nueva pista"
+msgstr "Ahorrar"
 
 #: Presentation/Admin/Views/CourtsView.php:5
 msgid "Add New Court"
-msgstr "Añadir nueva pista"
+msgstr "Añadir nueva cancha"
 
 #: Presentation/Admin/Views/CourtsView.php:8
 msgid "Court Number"
-msgstr "Añadir nueva pista"
+msgstr "Número de tribunal"
 
 #: Presentation/Admin/Views/CourtsView.php:12
 #: Presentation/Admin/Views/CourtsView.php:33
 msgid "Name"
-msgstr "Añadir nueva pista"
+msgstr "Nombre"
 
 #: Presentation/Admin/Views/CourtsView.php:16
 #: Presentation/Admin/Views/CourtsView.php:34
 msgid "Description"
-msgstr "Añadir nueva pista"
+msgstr "Descripción"
 
 #: Presentation/Admin/Views/CourtsView.php:21
 msgid "Add Court"
-msgstr "Añadir nueva pista"
+msgstr "Añadir cancha"
 
 #: Presentation/Admin/Views/CourtsView.php:27
 msgid "Existing Courts"
-msgstr "Añadir nueva pista"
+msgstr "Tribunales existentes"
 
 #: Presentation/Admin/Views/CourtsView.php:31
 #: Presentation/Admin/Views/ReservationDetailView.php:5
@@ -321,15 +325,15 @@ msgstr "Añadir nueva pista"
 #: Presentation/Admin/Views/UserTypesView.php:31
 #: Presentation/Public/Views/ReservationDetailView.php:6
 msgid "ID"
-msgstr "Añadir nueva pista"
+msgstr "IDENTIFICACIÓN"
 
 #: Presentation/Admin/Views/CourtsView.php:32
 msgid "Number"
-msgstr "Añadir nueva pista"
+msgstr "Número"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:2
 msgid "Reservation Detail"
-msgstr "Añadir nueva pista"
+msgstr "Detalle de la reserva"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:6
 #: Presentation/Admin/Views/ReservationHistoryView.php:8
@@ -337,7 +341,7 @@ msgstr "Añadir nueva pista"
 #: Presentation/Admin/Views/ReservationListView.php:41
 #: Presentation/Admin/Views/UsersView.php:8
 msgid "User"
-msgstr "Añadir nueva pista"
+msgstr "Usuario"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:7
 #: Presentation/Admin/Views/ReservationHistoryView.php:9
@@ -345,7 +349,7 @@ msgstr "Añadir nueva pista"
 #: Presentation/Admin/Views/ReservationListView.php:42
 #: Presentation/Public/Views/ReservationDetailView.php:10
 msgid "Court"
-msgstr "Añadir nueva pista"
+msgstr "Corte"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:8
 #: Presentation/Admin/Views/ReservationHistoryView.php:10
@@ -353,161 +357,163 @@ msgstr "Añadir nueva pista"
 #: Presentation/Admin/Views/ReservationListView.php:43
 #: Presentation/Public/Views/ReservationDetailView.php:14
 msgid "Date"
-msgstr "Añadir nueva pista"
+msgstr "Fecha"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:9
 #: Presentation/Public/Views/ReservationDetailView.php:18
 msgid "Time Slot"
-msgstr "Añadir nueva pista"
+msgstr "Franja horaria"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:14
 #: Presentation/Public/Views/ReservationDetailView.php:24
 msgid "Are you sure you want to cancel this reservation?"
-msgstr "Añadir nueva pista"
+msgstr "¿Está seguro de que desea cancelar esta reserva?"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:17
 #: Presentation/Public/Views/ReservationDetailView.php:27
 msgid "Cancel Reservation"
-msgstr "Añadir nueva pista"
+msgstr "Cancelar reserva"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:25
 #: Presentation/Public/Views/ReservationDetailView.php:28
 #: Presentation/Public/Views/ReservationDetailView.php:33
 msgid "Back"
-msgstr "Añadir nueva pista"
+msgstr "Atrás"
 
 #: Presentation/Admin/Views/ReservationHistoryView.php:2
 msgid "Reservation History (Last 12 Months)"
-msgstr "Añadir nueva pista"
+msgstr "Historial de reservas (últimos 12 meses)"
 
 #: Presentation/Admin/Views/ReservationHistoryView.php:11
 #: Presentation/Admin/Views/ReservationListView.php:12
 #: Presentation/Admin/Views/ReservationListView.php:44
 msgid "Start"
-msgstr "Añadir nueva pista"
+msgstr "Comenzar"
 
 #: Presentation/Admin/Views/ReservationHistoryView.php:12
 #: Presentation/Admin/Views/ReservationListView.php:13
 #: Presentation/Admin/Views/ReservationListView.php:45
 msgid "End"
-msgstr "Añadir nueva pista"
+msgstr "Fin"
 
 #: Presentation/Admin/Views/ReservationHistoryView.php:13
 #: Presentation/Admin/Views/ReservationListView.php:14
 #: Presentation/Admin/Views/ReservationListView.php:46
 msgid "Action"
-msgstr "Añadir nueva pista"
+msgstr "Acción"
 
 #: Presentation/Admin/Views/ReservationHistoryView.php:27
 #: Presentation/Admin/Views/ReservationListView.php:28
 #: Presentation/Admin/Views/ReservationListView.php:60
 msgid "View"
-msgstr "Añadir nueva pista"
+msgstr "Vista"
 
 #: Presentation/Admin/Views/ReservationListView.php:4
 msgid "Upcoming"
-msgstr "Añadir nueva pista"
+msgstr "Próximamente"
 
 #: Presentation/Admin/Views/ReservationListView.php:36
 msgid "Past"
-msgstr "Añadir nueva pista"
+msgstr "Pasado"
 
 #: Presentation/Admin/Views/ReservationNewView.php:2
 msgid "Create User Reservation"
-msgstr "Añadir nueva pista"
+msgstr "Crear reserva de usuario"
 
 #: Presentation/Admin/Views/ReservationNewView.php:3
 msgid "Select a user and then a time slot below to create a reservation."
-msgstr "Añadir nueva pista"
+msgstr ""
+"Seleccione un usuario y luego un intervalo de tiempo a continuación para "
+"crear una reserva."
 
 #: Presentation/Admin/Views/ReservationNewView.php:10
 msgid "Select User:"
-msgstr "Añadir nueva pista"
+msgstr "Seleccionar usuario:"
 
 #: Presentation/Admin/Views/ReservationNewView.php:12
 msgid "-- Select User --"
-msgstr "Añadir nueva pista"
+msgstr "-- Seleccionar usuario --"
 
 #: Presentation/Admin/Views/ReservationNewView.php:18
 msgid "n/a"
-msgstr "Añadir nueva pista"
+msgstr "n / A"
 
 #: Presentation/Admin/Views/ReservationNewView.php:25
 msgid "Selected:"
-msgstr "Añadir nueva pista"
+msgstr "Seleccionado:"
 
 #: Presentation/Admin/Views/ReservationNewView.php:26
 msgid "None"
-msgstr "Añadir nueva pista"
+msgstr "Ninguno"
 
 #: Presentation/Admin/Views/ReservationNewView.php:28
 #: Presentation/Public/Views/BookingView.php:33
 msgid "Confirm Reservation"
-msgstr "Añadir nueva pista"
+msgstr "Confirmar reservación"
 
 #: Presentation/Admin/Views/UserTypesView.php:5
 msgid "Add New User Type"
-msgstr "Añadir nueva pista"
+msgstr "Agregar nuevo tipo de usuario"
 
 #: Presentation/Admin/Views/UserTypesView.php:8
 msgid "Internal Name"
-msgstr "Añadir nueva pista"
+msgstr "Nombre interno"
 
 #: Presentation/Admin/Views/UserTypesView.php:12
 msgid "Display Name"
-msgstr "Añadir nueva pista"
+msgstr "Nombre para mostrar"
 
 #: Presentation/Admin/Views/UserTypesView.php:16
 msgid "Booking Days in Advance"
-msgstr "Añadir nueva pista"
+msgstr "Reserva con días de antelación"
 
 #: Presentation/Admin/Views/UserTypesView.php:21
 msgid "Add User Type"
-msgstr "Añadir nueva pista"
+msgstr "Agregar tipo de usuario"
 
 #: Presentation/Admin/Views/UserTypesView.php:27
 msgid "Existing User Types"
-msgstr "Añadir nueva pista"
+msgstr "Tipos de usuarios existentes"
 
 #: Presentation/Admin/Views/UserTypesView.php:32
 msgid "Internal"
-msgstr "Añadir nueva pista"
+msgstr "Interno"
 
 #: Presentation/Admin/Views/UserTypesView.php:33
 msgid "Display"
-msgstr "Añadir nueva pista"
+msgstr "Mostrar"
 
 #: Presentation/Admin/Views/UserTypesView.php:34
 msgid "Days in Advance"
-msgstr "Añadir nueva pista"
+msgstr "Días de antelación"
 
 #: Presentation/Admin/Views/UsersView.php:9
 msgid "Email"
-msgstr "Añadir nueva pista"
+msgstr "Correo electrónico"
 
 #: Presentation/Admin/Views/UsersView.php:10
 msgid "User Type"
-msgstr "Añadir nueva pista"
+msgstr "Tipo de usuario"
 
 #: Presentation/Admin/Views/UsersView.php:22
 msgid "-- Select --"
-msgstr "Añadir nueva pista"
+msgstr "-- Seleccionar --"
 
 #: Presentation/Admin/Views/UsersView.php:35
 msgid "Save Changes"
-msgstr "Añadir nueva pista"
+msgstr "Guardar cambios"
 
 #: Presentation/Public/ShortcodeHandler.php:47
 msgid "Please %1$slog in%2$s to book a court."
-msgstr "Añadir nueva pista"
+msgstr "Por favor, %1$slog in%2$s para reservar una cancha."
 
 #: Presentation/Public/ShortcodeHandler.php:99
 msgid "Reservation ID not provided."
-msgstr "Añadir nueva pista"
+msgstr "ID de reserva no proporcionado"
 
 #: Presentation/Public/Views/BookingView.php:21
 msgid "Your reservation was successfully created."
-msgstr "Añadir nueva pista"
+msgstr "Su reserva fue creada exitosamente"
 
 #. translators: Footer text with brand and author.
 #: presentation/shared/footer.php:8
@@ -515,4 +521,7 @@ msgid ""
 "🥎 <strong>%1$s</strong> — Your padel court booking assistant. 🥎</br> Made "
 "with ❤️ by <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
 "Carmona</a> 🌍 Madrid, Spain"
-msgstr "Añadir nueva pista"
+msgstr ""
+"🥎 <strong>%1$s</strong> — Tu asistente para reservar pistas de pádel. 🥎</br>"
+" Hecho con ❤️ por <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G"
+" Carmona</a> 🌍 Madrid, España"

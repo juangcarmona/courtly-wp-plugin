@@ -44,7 +44,7 @@ msgstr "Juan G. Carmona"
 msgid "https://jgcarmona.com"
 msgstr "https://jgcarmona.com"
 
-#: Application/Controllers/AdminAvailabilityController.php:35
+#: Application/Controllers/AdminCourtAvailabilityController.php:35
 msgid "Availability updated."
 msgstr "Availability updated."
 
@@ -203,7 +203,7 @@ msgstr ""
 #: Presentation/Admin/admin.php:69
 #, fuzzy
 msgid "Court Availability"
-msgstr "Availability"
+msgstr "Court Availability"
 
 #: Presentation/Admin/admin.php:70
 msgid "Availability"
@@ -280,24 +280,24 @@ msgstr "Calendar"
 msgid "Set Availability"
 msgstr "Availability"
 
-#: Presentation/Admin/Views/AvailabilityView.php:2
+#: Presentation/Admin/Views/CourtAvailabilityView.php:2
 #, fuzzy
-msgid "Manage Court Availability"
-msgstr "Availability"
+msgid "Court Availability"
+msgstr "Court Availability"
 
-#: Presentation/Admin/Views/AvailabilityView.php:6
+#: Presentation/Admin/Views/CourtAvailabilityView.php:6
 msgid "Select Court:"
 msgstr "Select Court:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:21
+#: Presentation/Admin/Views/CourtAvailabilityView.php:21
 msgid "From:"
 msgstr "From:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:23
+#: Presentation/Admin/Views/CourtAvailabilityView.php:23
 msgid "To:"
 msgstr "To:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:25
+#: Presentation/Admin/Views/CourtAvailabilityView.php:25
 msgid "Save"
 msgstr "Save"
 

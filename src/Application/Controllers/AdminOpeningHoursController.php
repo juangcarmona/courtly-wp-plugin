@@ -2,20 +2,17 @@
 
 namespace Juangcarmona\Courtly\Application\Controllers;
 
-use Juangcarmona\Courtly\Domain\Repositories\CourtRepositoryInterface;
 use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
-use Juangcarmona\Courtly\Infrastructure\CourtlyContainer;
 
-class AdminAvailabilityController
+class AdminOpeningHoursController
 {
     public function __construct(
-        private CourtRepositoryInterface $courtRepo,
         private OpeningHoursRepositoryInterface $openingRepo
-    ) {}
+    ) {
+    }
 
-    public function getViewData(): array {
-        $courts = $this->courtRepo->findAll();
-        $selectedCourtId = isset($_GET['court_id']) ? intval($_GET['court_id']) : ($courts[0]->getId() ?? null);
+    public function getViewData(): array
+    {
         $openingHours = $this->openingRepo->getAll();
 
         $formattedHours = [];
@@ -26,11 +23,12 @@ class AdminAvailabilityController
             ];
         }
 
-        return compact('courts', 'selectedCourtId', 'formattedHours');
+        return compact('formattedHours');
     }
 
-    public function handlePost(): void {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('courtly_update_availability')) {
+    public function handlePost(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('courtly_update_opening_hours')) {
             $openingHours = $_POST['opening_hours'] ?? [];
 
             foreach ($openingHours as $dayOfWeek => $hours) {
@@ -42,7 +40,7 @@ class AdminAvailabilityController
             }
 
             add_action('admin_notices', function () {
-                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Availability updated.', 'courtly') . '</p></div>';
+                echo '<div class="notice notice-success is-dismissible"><p>'.esc_html__('Opening hours updated.', 'courtly').'</p></div>';
             });
         }
     }

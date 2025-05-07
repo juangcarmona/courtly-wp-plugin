@@ -2,12 +2,12 @@
 
 namespace Juangcarmona\Courtly\Tests\Unit\Application\Controllers;
 
-use Juangcarmona\Courtly\Application\Controllers\AdminAvailabilityController;
+use Juangcarmona\Courtly\Application\Controllers\AdminCourtAvailabilityController;
 use Juangcarmona\Courtly\Domain\Repositories\CourtRepositoryInterface;
 use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
 use PHPUnit\Framework\TestCase;
 
-class AdminAvailabilityControllerTest extends TestCase
+class AdminCourtAvailabilityControllerTest extends TestCase
 {
     protected function tearDown(): void
     {
@@ -37,7 +37,7 @@ class AdminAvailabilityControllerTest extends TestCase
 
         $_GET['court_id'] = null;
 
-        $controller = new AdminAvailabilityController($courtRepo, $openingRepo);
+        $controller = new AdminCourtAvailabilityController($courtRepo, $openingRepo);
         $data = $controller->getViewData();
 
         $this->assertArrayHasKey('courts', $data);
@@ -77,7 +77,7 @@ class AdminAvailabilityControllerTest extends TestCase
         $openingRepo->shouldReceive('upsert')->once()->with(1, '08:00', '18:00');
         $openingRepo->shouldReceive('upsert')->once()->with(2, '09:00', '17:00');
 
-        $controller = new AdminAvailabilityController($courtRepo, $openingRepo);
+        $controller = new AdminCourtAvailabilityController($courtRepo, $openingRepo);
         $controller->handlePost();
 
         $this->assertTrue(true); // Para que no marque como risky test

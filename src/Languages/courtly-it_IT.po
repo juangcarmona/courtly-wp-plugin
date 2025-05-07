@@ -43,7 +43,7 @@ msgstr "Juan G. Carmona"
 msgid "https://jgcarmona.com"
 msgstr "https://jgcarmona.com"
 
-#: Application/Controllers/AdminAvailabilityController.php:35
+#: Application/Controllers/AdminCourtAvailabilityController.php:35
 msgid "Availability updated."
 msgstr "Disponibilità aggiornata."
 
@@ -271,23 +271,23 @@ msgstr "Calendario"
 msgid "Set Availability"
 msgstr "Disponibilità"
 
-#: Presentation/Admin/Views/AvailabilityView.php:2
-msgid "Manage Court Availability"
+#: Presentation/Admin/Views/CourtAvailabilityView.php:2
+msgid "Court Availability"
 msgstr "Gestire la disponibilità del campo"
 
-#: Presentation/Admin/Views/AvailabilityView.php:6
+#: Presentation/Admin/Views/CourtAvailabilityView.php:6
 msgid "Select Court:"
 msgstr "Seleziona Campo:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:21
+#: Presentation/Admin/Views/CourtAvailabilityView.php:21
 msgid "From:"
 msgstr "Da:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:23
+#: Presentation/Admin/Views/CourtAvailabilityView.php:23
 msgid "To:"
 msgstr "A:"
 
-#: Presentation/Admin/Views/AvailabilityView.php:25
+#: Presentation/Admin/Views/CourtAvailabilityView.php:25
 msgid "Save"
 msgstr "Salva"
 
