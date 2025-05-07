@@ -70,8 +70,10 @@ function courtly_seed_data() {
         for ($day = 0; $day <= 6; $day++) {
             $wpdb->insert($hours_table, [
                 'day_of_week' => $day,
-                'open_time' => '10:00:00',
-                'close_time' => '22:00:00'
+                'time_ranges' => json_encode([
+                    ['start' => '10:00:00', 'end' => '22:00:00']
+                ]),
+                'closed' => false
             ]);
         }
     }
