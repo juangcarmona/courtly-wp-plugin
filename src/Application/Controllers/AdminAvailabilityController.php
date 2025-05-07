@@ -20,9 +20,14 @@ class AdminAvailabilityController
 
         $formattedHours = [];
         foreach ($openingHours as $hour) {
+            $timeRanges = $hour->getTimeRanges();
+            $openTime = $timeRanges[0]['start'] ?? null; // Assuming the first range represents the opening time
+            $closeTime = $timeRanges[count($timeRanges) - 1]['end'] ?? null; // Assuming the last range represents the closing time
+
             $formattedHours[$hour->getDayOfWeek()] = [
-                'open' => $hour->getOpenTime(),
-                'close' => $hour->getCloseTime(),
+                'open' => $openTime,
+                'close' => $closeTime,
+                'closed' => $hour->isClosed(),
             ];
         }
 

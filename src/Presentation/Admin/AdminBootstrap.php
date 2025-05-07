@@ -33,8 +33,8 @@ function courtly_add_admin_menu()
         'options-general.php',
         __('Opening Hours', 'courtly'),
         __('Opening Hours', 'courtly'),
-        'manage_options', 
-        'courtly-opening-hours', 
+        'manage_options',
+        'courtly-opening-hours',
         'courtly_admin_opening_hours_page'
     );
 
@@ -185,9 +185,3 @@ function courtly_admin_user_types_page()
 // ✅ Asset loader
 require_once __DIR__.'/AdminAssets.php';
 add_action('admin_enqueue_scripts', ['AdminAssets', 'enqueue']);
-
-// Register settings for Opening Hours
-add_action('admin_init', function() {
-    $controller = \Juangcarmona\Courtly\Infrastructure\ControllerFactory::make(\Juangcarmona\Courtly\Application\Controllers\AdminOpeningHoursController::class);
-    $controller->registerSettings();
-});
