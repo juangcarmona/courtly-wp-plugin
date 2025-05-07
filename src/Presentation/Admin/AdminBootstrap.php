@@ -188,5 +188,6 @@ add_action('admin_enqueue_scripts', ['AdminAssets', 'enqueue']);
 
 // Register settings for Opening Hours
 add_action('admin_init', function() {
-    (new \Courtly\Application\Controllers\AdminOpeningHoursController())->registerSettings();
+    $controller = \Juangcarmona\Courtly\Infrastructure\ControllerFactory::make(\Juangcarmona\Courtly\Application\Controllers\AdminOpeningHoursController::class);
+    $controller->registerSettings();
 });

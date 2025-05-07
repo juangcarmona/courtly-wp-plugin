@@ -12,6 +12,7 @@ use Juangcarmona\Courtly\Application\Controllers\AdminUserController;
 use Juangcarmona\Courtly\Application\Controllers\AdminUserTypeController;
 use Juangcarmona\Courtly\Application\Controllers\PublicReservationController;
 use Juangcarmona\Courtly\Application\Controllers\PublicReservationDetailController;
+use Juangcarmona\Courtly\Application\Controllers\AdminOpeningHoursController;
 use Juangcarmona\Courtly\Presentation\Admin\Controllers\AvailabilityAjaxController;
 use Juangcarmona\Courtly\Presentation\Admin\Controllers\DashboardAjaxController;
 use Juangcarmona\Courtly\Presentation\Admin\Controllers\ReservationAjaxController;
@@ -58,6 +59,9 @@ class ControllerFactory
                 $args['reservationId'] ?? 0,
                 CourtlyContainer::courtReservationRepository(),
                 CourtlyContainer::courtRepository()
+            ),
+            AdminOpeningHoursController::class => new AdminOpeningHoursController(
+                CourtlyContainer::openingHoursService()
             ),
             AvailabilityAjaxController::class => new AvailabilityAjaxController(
                 CourtlyContainer::courtRepository(),

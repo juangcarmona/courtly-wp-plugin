@@ -1,9 +1,16 @@
 <?php
 namespace Juangcarmona\Courtly\Application\Controllers;
 
-use Courtly\Infrastructure\CourtlyContainer;
+use Juangcarmona\Courtly\Application\Services\OpeningHoursService;
 
 class AdminOpeningHoursController {
+    private $openingHoursService;
+
+    public function __construct(OpeningHoursService $openingHoursService)
+    {
+        $this->openingHoursService = $openingHoursService;
+    }
+
     public function renderPage() {
         // Check user permissions
         if (!current_user_can('manage_options')) {
