@@ -32,7 +32,7 @@
             </tbody>
         </table>
         <p>
-            <input type="submit" class="btn btn-sm btn-primary" value="<?php esc_attr_e('Save Changes', 'courtly'); ?>">
+            <input type="submit" class="btn btn-sm btn-success" value="<?php esc_attr_e('Save Changes', 'courtly'); ?>">
         </p>
     </form>
 </div>

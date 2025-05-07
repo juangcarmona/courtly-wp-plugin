@@ -66,6 +66,7 @@ class ControllerFactory
                 CourtlyContainer::courtRepository(),
                 CourtlyContainer::courtReservationRepository(),
                 CourtlyContainer::courtBlockRepository(),
+                CourtlyContainer::openingHoursRepository(),
                 CourtlyContainer::courtBlockService(),
                 CourtlyContainer::courtReservationService(),
                 CourtlyContainer::eventTransformer()

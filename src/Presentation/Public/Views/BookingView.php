@@ -29,7 +29,7 @@ $user_type = get_user_meta($current_user->ID, 'courtly_user_type', true);
         🕒 <span id="courtly-time">—</span>
       </div>
 
-      <button type="submit" class="courtly-book-btn btn btn-primary" style="display: none;">
+      <button type="submit" class="courtly-book-btn btn btn-success" style="display: none;">
         <?php echo esc_html__('Confirm Reservation', 'courtly'); ?>
       </button>
     </div>

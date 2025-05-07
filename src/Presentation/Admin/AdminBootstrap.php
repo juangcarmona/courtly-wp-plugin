@@ -35,7 +35,7 @@ function courtly_add_admin_menu()
         __('Opening Hours', 'courtly'),
         __('Opening Hours', 'courtly'),
         'manage_options',
-        'courtly-opening-hours',
+        'courtly_opening_hours',
         'courtly_admin_opening_hours_page'
     );
 

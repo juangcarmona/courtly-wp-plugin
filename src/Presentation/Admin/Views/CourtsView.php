@@ -18,7 +18,7 @@
             </tr>
         </table>
         <p>
-            <input type="submit" class="btn btn-sm btn-primary" value="<?php esc_attr_e('Add Court', 'courtly'); ?>">
+            <input type="submit" class="btn btn-sm btn-success" value="<?php esc_attr_e('Add Court', 'courtly'); ?>">
         </p>
     </form>
 
