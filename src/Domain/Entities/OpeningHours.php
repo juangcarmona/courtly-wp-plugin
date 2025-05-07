@@ -21,8 +21,8 @@ class OpeningHours implements BaseEntity
         return "CREATE TABLE IF NOT EXISTS $table (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             day_of_week TINYINT NOT NULL,
-            open_time TIME NOT NULL,
-            close_time TIME NOT NULL,
+            time_ranges JSON NOT NULL,
+            closed BOOLEAN NOT NULL DEFAULT 0,
             UNIQUE KEY unique_day (day_of_week)
         )";
     }
