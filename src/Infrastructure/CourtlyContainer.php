@@ -18,6 +18,7 @@ use Juangcarmona\Courtly\Infrastructure\Repositories\UserTypeRepository;
 use Juangcarmona\Courtly\Infrastructure\Repositories\CourtReservationRepository;
 
 use Juangcarmona\Courtly\Application\Utils\EventTransformer;
+use Juangcarmona\Courtly\Application\Services\OpeningHoursService;
 
 class CourtlyContainer
 {
@@ -63,5 +64,12 @@ class CourtlyContainer
     public static function eventTransformer(): EventTransformer
     {
         return new EventTransformer();
+    }
+
+    public static function openingHoursService(): OpeningHoursService
+    {
+        return new OpeningHoursService(
+            self::openingHoursRepository()
+        );
     }
 }
