@@ -10,6 +10,7 @@ use Juangcarmona\Courtly\Domain\Repositories\CourtReservationRepositoryInterface
 
 use Juangcarmona\Courtly\Domain\Services\CourtBlockService;
 use Juangcarmona\Courtly\Domain\Services\CourtReservationService;
+use Juangcarmona\Courtly\Domain\Services\OpeningHoursService;
 
 use Juangcarmona\Courtly\Infrastructure\Repositories\CourtRepository;
 use Juangcarmona\Courtly\Infrastructure\Repositories\OpeningHoursRepository;
@@ -18,7 +19,6 @@ use Juangcarmona\Courtly\Infrastructure\Repositories\UserTypeRepository;
 use Juangcarmona\Courtly\Infrastructure\Repositories\CourtReservationRepository;
 
 use Juangcarmona\Courtly\Application\Utils\EventTransformer;
-use Juangcarmona\Courtly\Application\Services\OpeningHoursService;
 
 class CourtlyContainer
 {
