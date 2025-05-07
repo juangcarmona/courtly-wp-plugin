@@ -1,9 +1,10 @@
 <?php
 
+use Juangcarmona\Courtly\Application\Controllers\AdminOpeningHoursController;
 use Juangcarmona\Courtly\Infrastructure\ControllerFactory;
-use Juangcarmona\Courtly\Application\Controllers\AdminAvailabilityController;
 
-$controller =  ControllerFactory::make(AdminOpeningHoursController::class);
-$viewData = $controller->getViewData();
+$controller = ControllerFactory::make(AdminOpeningHoursController::class);
+$controller->handlePost();
+$data = $controller->getViewData();
 
-include __DIR__ . '/../Views/OpeningHoursView.php';
+include __DIR__.'/../Views/OpeningHoursView.php';

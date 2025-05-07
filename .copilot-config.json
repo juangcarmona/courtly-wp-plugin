@@ -4,16 +4,32 @@
       "Domain": "Core business logic and entities",
       "Application": "Orchestration and services",
       "Infrastructure": "Repositories and external dependencies",
-      "Presentation": "UI and user interaction"
+      "Presentation": "UI rendering, page routing, and user interaction"
     },
-    "patterns": ["Repository", "Dependency Injection", "Service-Oriented"]
+    "patterns": [
+      "Repository",
+      "Dependency Injection",
+      "Service-Oriented",
+      "Page–Controller–View"
+    ]
   },
   "folderStructure": {
-    "Application": "Application logic (services, commands, queries)",
+    "Application": "Application logic (services, commands, queries, controllers)",
     "Domain": "Core business logic and entities",
-    "Infrastructure": "Database repositories and setup",
-    "Presentation": "UI logic, separated by context",
+    "Infrastructure": "Database repositories, DI container, and external integrations",
+    "Presentation": {
+      "Admin": "Admin UI logic (Pages, Views)",
+      "Public": "Public-facing UI logic (Pages, Views)",
+      "Shared": "Reusable components (e.g. Calendar, Modal)"
+    },
     "tests": "Unit and integration tests"
+  },
+  "presentationLayer": {
+    "pageFlow": {
+      "pages": "Located in Presentation/Admin/Pages or Presentation/Public/Pages. They load controllers and views.",
+      "controllers": "Located in Application/Controllers. Handle POST requests and provide view data.",
+      "views": "Located in Presentation/.../Views. Render HTML using only the data provided."
+    }
   },
   "testing": {
     "unitTests": "tests/Unit",
@@ -26,9 +42,11 @@
       "interfaces": "Domain/Repositories",
       "implementations": "Infrastructure/Repositories"
     },
-    "views": "Placed in Presentation/Admin/Views or Presentation/Public/Views"
+    "views": "Placed in Presentation/Admin/Views or Presentation/Public/Views",
+    "pages": "Entry points that connect routes (admin/public) to controllers and views"
   },
   "coreComponents": {
-    "ControllerFactory": "Centralized factory for creating controllers with dependency injection. Ensures all dependencies are properly injected."
+    "ControllerFactory": "Centralized factory for creating controllers with dependency injection. Ensures all dependencies are properly injected.",
+    "CourtlyContainer": "Dependency resolver and service locator. Provides access to reusable components like services and transformers."
   }
 }
