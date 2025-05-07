@@ -22,6 +22,8 @@ wp-content/debug.log
 
 # Ignore Language (PO) backup files
 *.po~
+# Ignore compiled language files
+*.mo
 
 # Ig noer .venv
 .venv/

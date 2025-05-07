@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
-"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
+"POT-Creation-Date: 2025-05-07T14:29:16+00:00\n"
 "PO-Revision-Date: 2025-04-13 08:12+0200\n"
 "Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
 "Language-Team: Portuguese <translation-team-pt@lists.sourceforge.net>\n"
@@ -44,87 +44,82 @@ msgstr "Juan G. Carmona"
 msgid "https://jgcarmona.com"
 msgstr "https://jgcarmona.com"
 
-#: Application/Controllers/AdminCourtAvailabilityController.php:35
-msgid "Availability updated."
-msgstr "Disponibilidade atualizada."
-
-#: Application/Controllers/AdminCourtController.php:25
+#: Application/Controllers/AdminCourtController.php:27
 msgid "Court added successfully."
 msgstr "Quadra adicionado com sucesso."
 
-#: Application/Controllers/AdminReservationDetailController.php:8
-#: Application/Controllers/AdminReservationDetailController.php:35
+#: Application/Controllers/AdminOpeningHoursController.php:43
+msgid "Opening hours updated."
+msgstr "Horário de funcionamento atualizado."
+
+#: Application/Controllers/AdminReservationDetailController.php:19
 msgid "Access denied."
 msgstr "Acesso negado."
 
-#: Application/Controllers/AdminReservationDetailController.php:12
+#: Application/Controllers/AdminReservationDetailController.php:24
 msgid "Reservation ID missing."
 msgstr "ID da reserva ausente."
 
-#: Application/Controllers/AdminReservationDetailController.php:19
-#: Application/Controllers/PublicReservationDetailController.php:15
-#: Application/Controllers/PublicReservationDetailController.php:16
+#: Application/Controllers/AdminReservationDetailController.php:29
+#: Application/Controllers/PublicReservationDetailController.php:28
 msgid "Reservation not found."
 msgstr "Reserva não encontrada."
 
-#: Application/Controllers/AdminReservationDetailController.php:39
-msgid "Invalid nonce."
-msgstr "Nonce inválido."
-
-#: Application/Controllers/AdminReservationDetailController.php:67
-#: Application/Controllers/PublicReservationDetailController.php:120
+#: Application/Controllers/AdminReservationDetailController.php:74
+#: Application/Controllers/PublicReservationDetailController.php:99
 msgid "This reservation has already passed."
 msgstr "Esta reserva já foi aprovada."
 
-#: Application/Controllers/AdminReservationDetailController.php:69
-#: Application/Controllers/PublicReservationDetailController.php:122
+#: Application/Controllers/AdminReservationDetailController.php:76
+#: Application/Controllers/PublicReservationDetailController.php:101
 msgid "Reservation cannot be cancelled (less than 24h remaining)."
 msgstr "A reserva não pode ser cancelada (faltando menos de 24h)."
 
-#: Application/Controllers/AdminReservationHistoryController.php:43
-#: Application/Controllers/AdminReservationListController.php:50
+#: Application/Controllers/AdminReservationDetailController.php:81
+#: Application/Controllers/AdminReservationHistoryController.php:51
+#: Application/Controllers/AdminReservationListController.php:58
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: Application/Controllers/AdminReservationHistoryController.php:44
-#: Application/Controllers/AdminReservationListController.php:51
+#: Application/Controllers/AdminReservationHistoryController.php:52
+#: Application/Controllers/AdminReservationListController.php:59
 msgid "Court #%d"
 msgstr "Quadra #%d"
 
-#: Application/Controllers/AdminUserController.php:19
+#: Application/Controllers/AdminUserController.php:22
 msgid "User types updated."
 msgstr "Tipos de usuários atualizados."
 
-#: Application/Controllers/AdminUserTypeController.php:25
+#: Application/Controllers/AdminUserTypeController.php:29
 msgid "User type added successfully."
 msgstr "Tipo de usuário adicionado com sucesso."
 
-#: Application/Controllers/PublicReservationDetailController.php:9
+#: Application/Controllers/PublicReservationDetailController.php:21
 msgid "You must be logged in to view reservation details."
 msgstr "Você precisa estar logado para ver os detalhes da reserva."
 
-#: Application/Controllers/PublicReservationDetailController.php:20
+#: Application/Controllers/PublicReservationDetailController.php:32
 msgid "You are not allowed to view this reservation."
 msgstr "Você não tem permissão para visualizar esta reserva."
 
-#: Application/Utils/EventTransformer.php:27
-#: Domain/Services/CourtBlockService.php:28
+#: Application/Utils/EventTransformer.php:36
+#: Domain/Services/CourtBlockService.php:34
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: Domain/Services/CourtReservationService.php:71
+#: Domain/Services/CourtReservationService.php:86
 msgid "%s already has a reservation that day."
 msgstr "%s já tem uma reserva para aquele dia."
 
-#: Domain/Services/CourtReservationService.php:79
+#: Domain/Services/CourtReservationService.php:95
 msgid "Reservations must be %d minutes or less."
 msgstr "As reservas devem ter %d minutos ou menos."
 
-#: Domain/Services/CourtReservationService.php:85
+#: Domain/Services/CourtReservationService.php:102
 msgid "Time slot unavailable."
 msgstr "Horário indisponível."
 
-#: Domain/Services/CourtReservationService.php:102
+#: Domain/Services/CourtReservationService.php:121
 msgid "Failed to create reservation."
 msgstr "Falha ao criar reserva."
 
@@ -156,139 +151,149 @@ msgstr "Calendário"
 msgid "Reservation"
 msgstr "Reserva"
 
-#: Presentation/Admin/admin.php:9 Presentation/Admin/admin.php:10
+#: Presentation/Admin/AdminAssets.php:34
+#: Presentation/Public/ShortcodeHandler.php:31
+#: Presentation/Public/ShortcodeHandler.php:84
+msgid "No reason provided"
+msgstr "Nenhuma razão fornecida"
+
+#: Presentation/Admin/AdminAssets.php:35
+#: Presentation/Public/ShortcodeHandler.php:32
+#: Presentation/Public/ShortcodeHandler.php:85
+msgid "Every"
+msgstr "Todo"
+
+#: Presentation/Admin/AdminAssets.php:47
+msgid "Reason for blocking this slot:"
+msgstr "Motivo do bloqueio deste slot:"
+
+#: Presentation/Admin/AdminAssets.php:48
+msgid "Remove this blocked slot?"
+msgstr "Remover este slot bloqueado?"
+
+#: Presentation/Admin/AdminBootstrap.php:13
+#: Presentation/Admin/AdminBootstrap.php:14
 msgid "Courtly"
 msgstr "Cortês"
 
-#: Presentation/Admin/admin.php:21 Presentation/Admin/admin.php:22
+#: Presentation/Admin/AdminBootstrap.php:25
+#: Presentation/Admin/AdminBootstrap.php:26
 msgid "Dashboard"
 msgstr "Painel"
 
-#: Presentation/Admin/admin.php:31 Presentation/Admin/admin.php:32
+#: Presentation/Admin/AdminBootstrap.php:35
+#: Presentation/Admin/AdminBootstrap.php:36
+#: Presentation/Admin/Pages/DashboardPage.php:84
+msgid "Opening Hours"
+msgstr "Horário de funcionamento"
+
+#: Presentation/Admin/AdminBootstrap.php:45
+#: Presentation/Admin/AdminBootstrap.php:46
 #: Presentation/Admin/Views/ActivityCalendarView.php:2
 msgid "Activity Calendar"
 msgstr "Calendário de Atividades"
 
-#: Presentation/Admin/admin.php:41 Presentation/Admin/Pages/dashboard.php:75
+#: Presentation/Admin/AdminBootstrap.php:55
+#: Presentation/Admin/Pages/DashboardPage.php:75
 msgid "New Reservation"
 msgstr "Nova Reserva"
 
-#: Presentation/Admin/admin.php:42
+#: Presentation/Admin/AdminBootstrap.php:56
 msgid "Reservations New"
 msgstr "Reservas Novas"
 
-#: Presentation/Admin/admin.php:50
+#: Presentation/Admin/AdminBootstrap.php:65
 #: Presentation/Admin/Views/ReservationListView.php:2
 msgid "All Reservations"
 msgstr "Todas as reservas"
 
-#: Presentation/Admin/admin.php:51
+#: Presentation/Admin/AdminBootstrap.php:66
 msgid "Reservations All"
 msgstr "Reservas Todas"
 
-#: Presentation/Admin/admin.php:59 Presentation/Admin/admin.php:60
+#: Presentation/Admin/AdminBootstrap.php:75
+#: Presentation/Admin/AdminBootstrap.php:76
 msgid "Reservation History"
 msgstr "Histórico de reservas"
 
-#: Presentation/Admin/admin.php:69
+#: Presentation/Admin/AdminBootstrap.php:85
+#: Presentation/Admin/AdminBootstrap.php:86
+#: Presentation/Admin/Views/CourtAvailabilityView.php:2
 msgid "Court Availability"
 msgstr "Disponibilidade do Quadra"
 
-#: Presentation/Admin/admin.php:70
-msgid "Availability"
-msgstr "Disponibilidade"
-
-#: Presentation/Admin/admin.php:79 Presentation/Admin/Pages/dashboard.php:27
+#: Presentation/Admin/AdminBootstrap.php:95
+#: Presentation/Admin/Pages/DashboardPage.php:27
 msgid "Manage Courts"
 msgstr "Gerir Quadras"
 
-#: Presentation/Admin/admin.php:80 Presentation/Admin/Pages/dashboard.php:25
+#: Presentation/Admin/AdminBootstrap.php:96
+#: Presentation/Admin/Pages/DashboardPage.php:25
 #: Presentation/Admin/Views/CourtsView.php:2
 msgid "Courts"
 msgstr "Quadras"
 
-#: Presentation/Admin/admin.php:89 Presentation/Admin/Pages/dashboard.php:47
+#: Presentation/Admin/AdminBootstrap.php:105
+#: Presentation/Admin/Pages/DashboardPage.php:47
 msgid "Manage Users"
 msgstr "Gerenciar usuários"
 
-#: Presentation/Admin/admin.php:90 Presentation/Admin/Pages/dashboard.php:45
+#: Presentation/Admin/AdminBootstrap.php:106
+#: Presentation/Admin/Pages/DashboardPage.php:45
 #: Presentation/Admin/Views/UsersView.php:2
 msgid "Users"
 msgstr "Usuários"
 
-#: Presentation/Admin/admin.php:98 Presentation/Admin/admin.php:99
-#: Presentation/Admin/Pages/dashboard.php:35
+#: Presentation/Admin/AdminBootstrap.php:114
+#: Presentation/Admin/AdminBootstrap.php:115
+#: Presentation/Admin/Pages/DashboardPage.php:35
 #: Presentation/Admin/Views/UserTypesView.php:2
 msgid "User Types"
 msgstr "Tipos de Usuário"
 
-#: Presentation/Admin/AdminAssets.php:29 Presentation/Public/ShortcodeHandler.php:27
-#: Presentation/Public/ShortcodeHandler.php:79
-msgid "No reason provided"
-msgstr "Nenhuma razão fornecida"
+#: Presentation/Admin/Controllers/ReservationAjaxController.php:27
+#, fuzzy
+msgid "Missing reservation ID"
+msgstr "Reserva"
 
-#: Presentation/Admin/AdminAssets.php:30 Presentation/Public/ShortcodeHandler.php:28
-#: Presentation/Public/ShortcodeHandler.php:80
-msgid "Every"
-msgstr "Todo"
+#: Presentation/Admin/Controllers/ReservationAjaxController.php:32
+#, fuzzy
+msgid "Reservation cancelled"
+msgstr "Reservas Todas"
 
-#: Presentation/Admin/AdminAssets.php:42
-msgid "Reason for blocking this slot:"
-msgstr "Motivo do bloqueio deste slot:"
-
-#: Presentation/Admin/AdminAssets.php:43
-msgid "Remove this blocked slot?"
-msgstr "Remover este slot bloqueado?"
-
-#: Presentation/Admin/Pages/dashboard.php:19
+#: Presentation/Admin/Pages/DashboardPage.php:19
 #, fuzzy
 msgid "Courtly Dashboard"
 msgstr "Painel"
 
-#: Presentation/Admin/Pages/dashboard.php:37
+#: Presentation/Admin/Pages/DashboardPage.php:37
 #, fuzzy
 msgid "Manage User Types"
 msgstr "Gerenciar usuários"
 
-#: Presentation/Admin/Pages/dashboard.php:55
+#: Presentation/Admin/Pages/DashboardPage.php:55
 #, fuzzy
 msgid "Users by Type"
 msgstr "Tipo de usuário"
 
-#: Presentation/Admin/Pages/dashboard.php:72
+#: Presentation/Admin/Pages/DashboardPage.php:72
 #, fuzzy
 msgid "Quick Actions"
 msgstr "Ação"
 
-#: Presentation/Admin/Pages/dashboard.php:78
+#: Presentation/Admin/Pages/DashboardPage.php:78
 #, fuzzy
 msgid "View Calendar"
 msgstr "Calendário"
 
-#: Presentation/Admin/Pages/dashboard.php:81
+#: Presentation/Admin/Pages/DashboardPage.php:81
 #, fuzzy
 msgid "Set Availability"
 msgstr "Disponibilidade"
 
-#: Presentation/Admin/Views/CourtAvailabilityView.php:2
-msgid "Court Availability"
-msgstr "Gerenciar a disponibilidade do quadra"
-
 #: Presentation/Admin/Views/CourtAvailabilityView.php:6
 msgid "Select Court:"
 msgstr "Selecione o Quadra:"
-
-#: Presentation/Admin/Views/CourtAvailabilityView.php:21
-msgid "From:"
-msgstr "De:"
-
-#: Presentation/Admin/Views/CourtAvailabilityView.php:23
-msgid "To:"
-msgstr "Para:"
-
-#: Presentation/Admin/Views/CourtAvailabilityView.php:25
-msgid "Save"
-msgstr "Salvar"
 
 #: Presentation/Admin/Views/CourtsView.php:5
 msgid "Add New Court"
@@ -322,13 +327,63 @@ msgstr "Quadras existentes"
 #: Presentation/Admin/Views/ReservationListView.php:8
 #: Presentation/Admin/Views/ReservationListView.php:40
 #: Presentation/Admin/Views/UserTypesView.php:31
-#: Presentation/Public/Views/ReservationDetailView.php:6
+#: Presentation/Public/Views/ReservationDetailView.php:8
 msgid "ID"
 msgstr "EU IA"
 
 #: Presentation/Admin/Views/CourtsView.php:32
 msgid "Number"
 msgstr "Número"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:2
+#, fuzzy
+msgid "Manage Opening Hours"
+msgstr "Gerir Quadras"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:11
+#, fuzzy
+msgid "Day"
+msgstr "Mostrar"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:12
+msgid "Open"
+msgstr "Abrir"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:13
+msgid "Close"
+msgstr "Fechar"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:19
+msgid "Sunday"
+msgstr "Domingo"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:20
+msgid "Monday"
+msgstr "Segunda-feira"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:21
+msgid "Tuesday"
+msgstr "Terça-feira"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:22
+msgid "Wednesday"
+msgstr "Quarta-feira"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:23
+msgid "Thursday"
+msgstr "Quinta-feira"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:24
+msgid "Friday"
+msgstr "Sexta-feira"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:25
+msgid "Saturday"
+msgstr "Sábado"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:48
+msgid "Save Opening Hours"
+msgstr "Economize no horário de funcionamento"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:2
 msgid "Reservation Detail"
@@ -346,7 +401,7 @@ msgstr "Usuário"
 #: Presentation/Admin/Views/ReservationHistoryView.php:9
 #: Presentation/Admin/Views/ReservationListView.php:10
 #: Presentation/Admin/Views/ReservationListView.php:42
-#: Presentation/Public/Views/ReservationDetailView.php:10
+#: Presentation/Public/Views/ReservationDetailView.php:12
 msgid "Court"
 msgstr "Quadra"
 
@@ -354,28 +409,28 @@ msgstr "Quadra"
 #: Presentation/Admin/Views/ReservationHistoryView.php:10
 #: Presentation/Admin/Views/ReservationListView.php:11
 #: Presentation/Admin/Views/ReservationListView.php:43
-#: Presentation/Public/Views/ReservationDetailView.php:14
+#: Presentation/Public/Views/ReservationDetailView.php:16
 msgid "Date"
 msgstr "Data"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:9
-#: Presentation/Public/Views/ReservationDetailView.php:18
+#: Presentation/Public/Views/ReservationDetailView.php:20
 msgid "Time Slot"
 msgstr "Intervalo de tempo"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:14
-#: Presentation/Public/Views/ReservationDetailView.php:24
+#: Presentation/Public/Views/ReservationDetailView.php:26
 msgid "Are you sure you want to cancel this reservation?"
 msgstr "Tem certeza de que deseja cancelar esta reserva?"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:17
-#: Presentation/Public/Views/ReservationDetailView.php:27
+#: Presentation/Public/Views/ReservationDetailView.php:29
 msgid "Cancel Reservation"
 msgstr "Cancelar reserva"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:25
-#: Presentation/Public/Views/ReservationDetailView.php:28
-#: Presentation/Public/Views/ReservationDetailView.php:33
+#: Presentation/Public/Views/ReservationDetailView.php:30
+#: Presentation/Public/Views/ReservationDetailView.php:35
 msgid "Back"
 msgstr "Voltar"
 
@@ -450,6 +505,22 @@ msgstr "Nenhum"
 msgid "Confirm Reservation"
 msgstr "Confirmar reserva"
 
+#: Presentation/Admin/Views/UsersView.php:9
+msgid "Email"
+msgstr "E-mail"
+
+#: Presentation/Admin/Views/UsersView.php:10
+msgid "User Type"
+msgstr "Tipo de usuário"
+
+#: Presentation/Admin/Views/UsersView.php:22
+msgid "-- Select --"
+msgstr "-- Selecione --"
+
+#: Presentation/Admin/Views/UsersView.php:35
+msgid "Save Changes"
+msgstr "Salvar alterações"
+
 #: Presentation/Admin/Views/UserTypesView.php:5
 msgid "Add New User Type"
 msgstr "Adicionar novo tipo de usuário"
@@ -486,27 +557,11 @@ msgstr "Mostrar"
 msgid "Days in Advance"
 msgstr "Dias de antecedência"
 
-#: Presentation/Admin/Views/UsersView.php:9
-msgid "Email"
-msgstr "E-mail"
-
-#: Presentation/Admin/Views/UsersView.php:10
-msgid "User Type"
-msgstr "Tipo de usuário"
-
-#: Presentation/Admin/Views/UsersView.php:22
-msgid "-- Select --"
-msgstr "-- Selecione --"
-
-#: Presentation/Admin/Views/UsersView.php:35
-msgid "Save Changes"
-msgstr "Salvar alterações"
-
-#: Presentation/Public/ShortcodeHandler.php:47
+#: Presentation/Public/ShortcodeHandler.php:53
 msgid "Please %1$slog in%2$s to book a court."
 msgstr "Por favor, %1$faça login%2$s para reservar uma quadra."
 
-#: Presentation/Public/ShortcodeHandler.php:99
+#: Presentation/Public/ShortcodeHandler.php:106
 msgid "Reservation ID not provided."
 msgstr "ID de reserva não fornecido."
 
@@ -515,12 +570,30 @@ msgid "Your reservation was successfully created."
 msgstr "Sua reserva foi criada com sucesso."
 
 #. translators: Footer text with brand and author.
-#: presentation/shared/footer.php:8
+#: Presentation/Shared/FooterRenderer.php:8
 msgid ""
 "🥎 <strong>%1$s</strong> — Your padel court booking assistant. 🥎</br> Made "
 "with ❤️ by <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
 "Carmona</a> 🌍 Madrid, Spain"
 msgstr ""
-"🥎 <strong>%1$s</strong> — Seu assistente de reservas de quadras de padel. 🥎"
-"</br> Feito com ❤️ por <a href=\"%2$s\" target=\"_blank\" "
+"🥎 <strong>%1$s</strong> — Seu assistente de reservas de quadras de padel. "
+"🥎</br> Feito com ❤️ por <a href=\"%2$s\" target=\"_blank\" "
 "rel=\"noopener\">Juan G Carmona</a> 🌍 Madri, Espanha"
+
+#~ msgid "Availability updated."
+#~ msgstr "Disponibilidade atualizada."
+
+#~ msgid "Invalid nonce."
+#~ msgstr "Nonce inválido."
+
+#~ msgid "Availability"
+#~ msgstr "Disponibilidade"
+
+#~ msgid "From:"
+#~ msgstr "De:"
+
+#~ msgid "To:"
+#~ msgstr "Para:"
+
+#~ msgid "Save"
+#~ msgstr "Salvar"

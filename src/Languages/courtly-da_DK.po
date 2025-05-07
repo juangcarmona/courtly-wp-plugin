@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Courtly – Padel Court Booking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/courtly\n"
-"POT-Creation-Date: 2025-04-13T08:21:34+00:00\n"
+"POT-Creation-Date: 2025-05-07T14:29:16+00:00\n"
 "PO-Revision-Date: 2025-04-13 08:12+0200\n"
 "Last-Translator: Juan G. Carmona <juan@jgcarmona.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -31,8 +31,8 @@ msgstr "https://github.com/juangcarmona/courtly-wp-plugin"
 msgid ""
 "A modular plugin for managing padel court reservations using DDD principles."
 msgstr ""
-"Et modulært plugin til håndtering af padelbanereservationer ved hjælp af DDD-"
-"principper."
+"Et modulært plugin til håndtering af padelbanereservationer ved hjælp af "
+"DDD-principper."
 
 #. Author of the plugin
 #: courtly.php
@@ -44,87 +44,82 @@ msgstr "Juan G. Carmona"
 msgid "https://jgcarmona.com"
 msgstr "https://jgcarmona.com"
 
-#: Application/Controllers/AdminCourtAvailabilityController.php:35
-msgid "Availability updated."
-msgstr "Tilgængelighed opdateret."
-
-#: Application/Controllers/AdminCourtController.php:25
+#: Application/Controllers/AdminCourtController.php:27
 msgid "Court added successfully."
 msgstr "Bane tilføjet med succes."
 
-#: Application/Controllers/AdminReservationDetailController.php:8
-#: Application/Controllers/AdminReservationDetailController.php:35
+#: Application/Controllers/AdminOpeningHoursController.php:43
+msgid "Opening hours updated."
+msgstr "Åbningstiderne er opdateret."
+
+#: Application/Controllers/AdminReservationDetailController.php:19
 msgid "Access denied."
 msgstr "Adgang nægtet."
 
-#: Application/Controllers/AdminReservationDetailController.php:12
+#: Application/Controllers/AdminReservationDetailController.php:24
 msgid "Reservation ID missing."
 msgstr "Reservations-id mangler."
 
-#: Application/Controllers/AdminReservationDetailController.php:19
-#: Application/Controllers/PublicReservationDetailController.php:15
-#: Application/Controllers/PublicReservationDetailController.php:16
+#: Application/Controllers/AdminReservationDetailController.php:29
+#: Application/Controllers/PublicReservationDetailController.php:28
 msgid "Reservation not found."
 msgstr "Reservationen blev ikke fundet."
 
-#: Application/Controllers/AdminReservationDetailController.php:39
-msgid "Invalid nonce."
-msgstr "Ugyldig nonce."
-
-#: Application/Controllers/AdminReservationDetailController.php:67
-#: Application/Controllers/PublicReservationDetailController.php:120
+#: Application/Controllers/AdminReservationDetailController.php:74
+#: Application/Controllers/PublicReservationDetailController.php:99
 msgid "This reservation has already passed."
 msgstr "Denne reservation er allerede bestået."
 
-#: Application/Controllers/AdminReservationDetailController.php:69
-#: Application/Controllers/PublicReservationDetailController.php:122
+#: Application/Controllers/AdminReservationDetailController.php:76
+#: Application/Controllers/PublicReservationDetailController.php:101
 msgid "Reservation cannot be cancelled (less than 24h remaining)."
 msgstr "Reservationen kan ikke annulleres (mindre end 24 timer tilbage)."
 
-#: Application/Controllers/AdminReservationHistoryController.php:43
-#: Application/Controllers/AdminReservationListController.php:50
+#: Application/Controllers/AdminReservationDetailController.php:81
+#: Application/Controllers/AdminReservationHistoryController.php:51
+#: Application/Controllers/AdminReservationListController.php:58
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: Application/Controllers/AdminReservationHistoryController.php:44
-#: Application/Controllers/AdminReservationListController.php:51
+#: Application/Controllers/AdminReservationHistoryController.php:52
+#: Application/Controllers/AdminReservationListController.php:59
 msgid "Court #%d"
 msgstr "Bane #%d"
 
-#: Application/Controllers/AdminUserController.php:19
+#: Application/Controllers/AdminUserController.php:22
 msgid "User types updated."
 msgstr "Brugertyper opdateret."
 
-#: Application/Controllers/AdminUserTypeController.php:25
+#: Application/Controllers/AdminUserTypeController.php:29
 msgid "User type added successfully."
 msgstr "Brugertype blev tilføjet."
 
-#: Application/Controllers/PublicReservationDetailController.php:9
+#: Application/Controllers/PublicReservationDetailController.php:21
 msgid "You must be logged in to view reservation details."
 msgstr "Du skal være logget ind for at se reservationsdetaljer."
 
-#: Application/Controllers/PublicReservationDetailController.php:20
+#: Application/Controllers/PublicReservationDetailController.php:32
 msgid "You are not allowed to view this reservation."
 msgstr "Du har ikke tilladelse til at se denne reservation."
 
-#: Application/Utils/EventTransformer.php:27
-#: Domain/Services/CourtBlockService.php:28
+#: Application/Utils/EventTransformer.php:36
+#: Domain/Services/CourtBlockService.php:34
 msgid "Blocked"
 msgstr "Blokeret"
 
-#: Domain/Services/CourtReservationService.php:71
+#: Domain/Services/CourtReservationService.php:86
 msgid "%s already has a reservation that day."
 msgstr "%s har allerede en reservation den dag."
 
-#: Domain/Services/CourtReservationService.php:79
+#: Domain/Services/CourtReservationService.php:95
 msgid "Reservations must be %d minutes or less."
 msgstr "Reservationer skal være på %d minutter eller mindre."
 
-#: Domain/Services/CourtReservationService.php:85
+#: Domain/Services/CourtReservationService.php:102
 msgid "Time slot unavailable."
 msgstr "Tidsrum ikke tilgængelig."
 
-#: Domain/Services/CourtReservationService.php:102
+#: Domain/Services/CourtReservationService.php:121
 msgid "Failed to create reservation."
 msgstr "Kunne ikke oprette reservation."
 
@@ -156,139 +151,149 @@ msgstr "Kalender"
 msgid "Reservation"
 msgstr "Reservation"
 
-#: Presentation/Admin/admin.php:9 Presentation/Admin/admin.php:10
+#: Presentation/Admin/AdminAssets.php:34
+#: Presentation/Public/ShortcodeHandler.php:31
+#: Presentation/Public/ShortcodeHandler.php:84
+msgid "No reason provided"
+msgstr "Ingen grund angivet"
+
+#: Presentation/Admin/AdminAssets.php:35
+#: Presentation/Public/ShortcodeHandler.php:32
+#: Presentation/Public/ShortcodeHandler.php:85
+msgid "Every"
+msgstr "Hver"
+
+#: Presentation/Admin/AdminAssets.php:47
+msgid "Reason for blocking this slot:"
+msgstr "Årsag til at blokere denne plads:"
+
+#: Presentation/Admin/AdminAssets.php:48
+msgid "Remove this blocked slot?"
+msgstr "Vil du fjerne dette blokerede slot?"
+
+#: Presentation/Admin/AdminBootstrap.php:13
+#: Presentation/Admin/AdminBootstrap.php:14
 msgid "Courtly"
 msgstr "Høvisk"
 
-#: Presentation/Admin/admin.php:21 Presentation/Admin/admin.php:22
+#: Presentation/Admin/AdminBootstrap.php:25
+#: Presentation/Admin/AdminBootstrap.php:26
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: Presentation/Admin/admin.php:31 Presentation/Admin/admin.php:32
+#: Presentation/Admin/AdminBootstrap.php:35
+#: Presentation/Admin/AdminBootstrap.php:36
+#: Presentation/Admin/Pages/DashboardPage.php:84
+msgid "Opening Hours"
+msgstr "Åbningstider"
+
+#: Presentation/Admin/AdminBootstrap.php:45
+#: Presentation/Admin/AdminBootstrap.php:46
 #: Presentation/Admin/Views/ActivityCalendarView.php:2
 msgid "Activity Calendar"
 msgstr "Aktivitetskalender"
 
-#: Presentation/Admin/admin.php:41 Presentation/Admin/Pages/dashboard.php:75
+#: Presentation/Admin/AdminBootstrap.php:55
+#: Presentation/Admin/Pages/DashboardPage.php:75
 msgid "New Reservation"
 msgstr "Ny reservation"
 
-#: Presentation/Admin/admin.php:42
+#: Presentation/Admin/AdminBootstrap.php:56
 msgid "Reservations New"
 msgstr "Reservationer Nyt"
 
-#: Presentation/Admin/admin.php:50
+#: Presentation/Admin/AdminBootstrap.php:65
 #: Presentation/Admin/Views/ReservationListView.php:2
 msgid "All Reservations"
 msgstr "Alle reservationer"
 
-#: Presentation/Admin/admin.php:51
+#: Presentation/Admin/AdminBootstrap.php:66
 msgid "Reservations All"
 msgstr "Reservationer Alle"
 
-#: Presentation/Admin/admin.php:59 Presentation/Admin/admin.php:60
+#: Presentation/Admin/AdminBootstrap.php:75
+#: Presentation/Admin/AdminBootstrap.php:76
 msgid "Reservation History"
 msgstr "Reservationshistorie"
 
-#: Presentation/Admin/admin.php:69
+#: Presentation/Admin/AdminBootstrap.php:85
+#: Presentation/Admin/AdminBootstrap.php:86
+#: Presentation/Admin/Views/CourtAvailabilityView.php:2
 msgid "Court Availability"
 msgstr "Banens tilgængelighed"
 
-#: Presentation/Admin/admin.php:70
-msgid "Availability"
-msgstr "Tilgængelighed"
-
-#: Presentation/Admin/admin.php:79 Presentation/Admin/Pages/dashboard.php:27
+#: Presentation/Admin/AdminBootstrap.php:95
+#: Presentation/Admin/Pages/DashboardPage.php:27
 msgid "Manage Courts"
 msgstr "Administrer Baner"
 
-#: Presentation/Admin/admin.php:80 Presentation/Admin/Pages/dashboard.php:25
+#: Presentation/Admin/AdminBootstrap.php:96
+#: Presentation/Admin/Pages/DashboardPage.php:25
 #: Presentation/Admin/Views/CourtsView.php:2
 msgid "Courts"
 msgstr "Baner"
 
-#: Presentation/Admin/admin.php:89 Presentation/Admin/Pages/dashboard.php:47
+#: Presentation/Admin/AdminBootstrap.php:105
+#: Presentation/Admin/Pages/DashboardPage.php:47
 msgid "Manage Users"
 msgstr "Administrer brugere"
 
-#: Presentation/Admin/admin.php:90 Presentation/Admin/Pages/dashboard.php:45
+#: Presentation/Admin/AdminBootstrap.php:106
+#: Presentation/Admin/Pages/DashboardPage.php:45
 #: Presentation/Admin/Views/UsersView.php:2
 msgid "Users"
 msgstr "Brugere"
 
-#: Presentation/Admin/admin.php:98 Presentation/Admin/admin.php:99
-#: Presentation/Admin/Pages/dashboard.php:35
+#: Presentation/Admin/AdminBootstrap.php:114
+#: Presentation/Admin/AdminBootstrap.php:115
+#: Presentation/Admin/Pages/DashboardPage.php:35
 #: Presentation/Admin/Views/UserTypesView.php:2
 msgid "User Types"
 msgstr "Brugertyper"
 
-#: Presentation/Admin/AdminAssets.php:29 Presentation/Public/ShortcodeHandler.php:27
-#: Presentation/Public/ShortcodeHandler.php:79
-msgid "No reason provided"
-msgstr "Ingen grund angivet"
+#: Presentation/Admin/Controllers/ReservationAjaxController.php:27
+#, fuzzy
+msgid "Missing reservation ID"
+msgstr "Reservation"
 
-#: Presentation/Admin/AdminAssets.php:30 Presentation/Public/ShortcodeHandler.php:28
-#: Presentation/Public/ShortcodeHandler.php:80
-msgid "Every"
-msgstr "Hver"
+#: Presentation/Admin/Controllers/ReservationAjaxController.php:32
+#, fuzzy
+msgid "Reservation cancelled"
+msgstr "Reservationer Alle"
 
-#: Presentation/Admin/AdminAssets.php:42
-msgid "Reason for blocking this slot:"
-msgstr "Årsag til at blokere denne plads:"
-
-#: Presentation/Admin/AdminAssets.php:43
-msgid "Remove this blocked slot?"
-msgstr "Vil du fjerne dette blokerede slot?"
-
-#: Presentation/Admin/Pages/dashboard.php:19
+#: Presentation/Admin/Pages/DashboardPage.php:19
 #, fuzzy
 msgid "Courtly Dashboard"
 msgstr "Dashboard"
 
-#: Presentation/Admin/Pages/dashboard.php:37
+#: Presentation/Admin/Pages/DashboardPage.php:37
 #, fuzzy
 msgid "Manage User Types"
 msgstr "Administrer brugere"
 
-#: Presentation/Admin/Pages/dashboard.php:55
+#: Presentation/Admin/Pages/DashboardPage.php:55
 #, fuzzy
 msgid "Users by Type"
 msgstr "Brugertype"
 
-#: Presentation/Admin/Pages/dashboard.php:72
+#: Presentation/Admin/Pages/DashboardPage.php:72
 #, fuzzy
 msgid "Quick Actions"
 msgstr "Handling"
 
-#: Presentation/Admin/Pages/dashboard.php:78
+#: Presentation/Admin/Pages/DashboardPage.php:78
 #, fuzzy
 msgid "View Calendar"
 msgstr "Kalender"
 
-#: Presentation/Admin/Pages/dashboard.php:81
+#: Presentation/Admin/Pages/DashboardPage.php:81
 #, fuzzy
 msgid "Set Availability"
 msgstr "Tilgængelighed"
 
-#: Presentation/Admin/Views/CourtAvailabilityView.php:2
-msgid "Court Availability"
-msgstr "Administrer Banens tilgængelighed"
-
 #: Presentation/Admin/Views/CourtAvailabilityView.php:6
 msgid "Select Court:"
 msgstr "Vælg bane:"
-
-#: Presentation/Admin/Views/CourtAvailabilityView.php:21
-msgid "From:"
-msgstr "Fra:"
-
-#: Presentation/Admin/Views/CourtAvailabilityView.php:23
-msgid "To:"
-msgstr "Til:"
-
-#: Presentation/Admin/Views/CourtAvailabilityView.php:25
-msgid "Save"
-msgstr "Spare"
 
 #: Presentation/Admin/Views/CourtsView.php:5
 msgid "Add New Court"
@@ -322,13 +327,63 @@ msgstr "Eksisterende Baner"
 #: Presentation/Admin/Views/ReservationListView.php:8
 #: Presentation/Admin/Views/ReservationListView.php:40
 #: Presentation/Admin/Views/UserTypesView.php:31
-#: Presentation/Public/Views/ReservationDetailView.php:6
+#: Presentation/Public/Views/ReservationDetailView.php:8
 msgid "ID"
 msgstr "ID"
 
 #: Presentation/Admin/Views/CourtsView.php:32
 msgid "Number"
 msgstr "Antal"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:2
+#, fuzzy
+msgid "Manage Opening Hours"
+msgstr "Administrer Baner"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:11
+#, fuzzy
+msgid "Day"
+msgstr "Vise"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:12
+msgid "Open"
+msgstr "Åben"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:13
+msgid "Close"
+msgstr "Tæt"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:19
+msgid "Sunday"
+msgstr "søndag"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:20
+msgid "Monday"
+msgstr "mandag"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:21
+msgid "Tuesday"
+msgstr "tirsdag"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:22
+msgid "Wednesday"
+msgstr "onsdag"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:23
+msgid "Thursday"
+msgstr "torsdag"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:24
+msgid "Friday"
+msgstr "fredag"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:25
+msgid "Saturday"
+msgstr "lørdag"
+
+#: Presentation/Admin/Views/OpeningHoursView.php:48
+msgid "Save Opening Hours"
+msgstr "Gem åbningstider"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:2
 msgid "Reservation Detail"
@@ -346,7 +401,7 @@ msgstr "Bruger"
 #: Presentation/Admin/Views/ReservationHistoryView.php:9
 #: Presentation/Admin/Views/ReservationListView.php:10
 #: Presentation/Admin/Views/ReservationListView.php:42
-#: Presentation/Public/Views/ReservationDetailView.php:10
+#: Presentation/Public/Views/ReservationDetailView.php:12
 msgid "Court"
 msgstr "Bane"
 
@@ -354,28 +409,28 @@ msgstr "Bane"
 #: Presentation/Admin/Views/ReservationHistoryView.php:10
 #: Presentation/Admin/Views/ReservationListView.php:11
 #: Presentation/Admin/Views/ReservationListView.php:43
-#: Presentation/Public/Views/ReservationDetailView.php:14
+#: Presentation/Public/Views/ReservationDetailView.php:16
 msgid "Date"
 msgstr "Dato"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:9
-#: Presentation/Public/Views/ReservationDetailView.php:18
+#: Presentation/Public/Views/ReservationDetailView.php:20
 msgid "Time Slot"
 msgstr "Tidsrum"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:14
-#: Presentation/Public/Views/ReservationDetailView.php:24
+#: Presentation/Public/Views/ReservationDetailView.php:26
 msgid "Are you sure you want to cancel this reservation?"
 msgstr "Er du sikker på, at du vil annullere denne reservation?"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:17
-#: Presentation/Public/Views/ReservationDetailView.php:27
+#: Presentation/Public/Views/ReservationDetailView.php:29
 msgid "Cancel Reservation"
 msgstr "Annuller reservation"
 
 #: Presentation/Admin/Views/ReservationDetailView.php:25
-#: Presentation/Public/Views/ReservationDetailView.php:28
-#: Presentation/Public/Views/ReservationDetailView.php:33
+#: Presentation/Public/Views/ReservationDetailView.php:30
+#: Presentation/Public/Views/ReservationDetailView.php:35
 msgid "Back"
 msgstr "Tilbage"
 
@@ -422,7 +477,8 @@ msgstr "Opret brugerreservation"
 #: Presentation/Admin/Views/ReservationNewView.php:3
 msgid "Select a user and then a time slot below to create a reservation."
 msgstr ""
-"Vælg en bruger og derefter et tidsrum nedenfor for at oprette en reservation."
+"Vælg en bruger og derefter et tidsrum nedenfor for at oprette en "
+"reservation."
 
 #: Presentation/Admin/Views/ReservationNewView.php:10
 msgid "Select User:"
@@ -448,6 +504,22 @@ msgstr "Ingen"
 #: Presentation/Public/Views/BookingView.php:33
 msgid "Confirm Reservation"
 msgstr "Bekræft reservation"
+
+#: Presentation/Admin/Views/UsersView.php:9
+msgid "Email"
+msgstr "E-mail"
+
+#: Presentation/Admin/Views/UsersView.php:10
+msgid "User Type"
+msgstr "Brugertype"
+
+#: Presentation/Admin/Views/UsersView.php:22
+msgid "-- Select --"
+msgstr "-- Vælg --"
+
+#: Presentation/Admin/Views/UsersView.php:35
+msgid "Save Changes"
+msgstr "Gem ændringer"
 
 #: Presentation/Admin/Views/UserTypesView.php:5
 msgid "Add New User Type"
@@ -485,27 +557,11 @@ msgstr "Vise"
 msgid "Days in Advance"
 msgstr "Dage i forvejen"
 
-#: Presentation/Admin/Views/UsersView.php:9
-msgid "Email"
-msgstr "E-mail"
-
-#: Presentation/Admin/Views/UsersView.php:10
-msgid "User Type"
-msgstr "Brugertype"
-
-#: Presentation/Admin/Views/UsersView.php:22
-msgid "-- Select --"
-msgstr "-- Vælg --"
-
-#: Presentation/Admin/Views/UsersView.php:35
-msgid "Save Changes"
-msgstr "Gem ændringer"
-
-#: Presentation/Public/ShortcodeHandler.php:47
+#: Presentation/Public/ShortcodeHandler.php:53
 msgid "Please %1$slog in%2$s to book a court."
 msgstr "%1$slog ind%2$s for at booke en bane."
 
-#: Presentation/Public/ShortcodeHandler.php:99
+#: Presentation/Public/ShortcodeHandler.php:106
 msgid "Reservation ID not provided."
 msgstr "Reservations-id ikke angivet."
 
@@ -514,12 +570,30 @@ msgid "Your reservation was successfully created."
 msgstr "Din reservation blev oprettet."
 
 #. translators: Footer text with brand and author.
-#: presentation/shared/footer.php:8
+#: Presentation/Shared/FooterRenderer.php:8
 msgid ""
 "🥎 <strong>%1$s</strong> — Your padel court booking assistant. 🥎</br> Made "
 "with ❤️ by <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
 "Carmona</a> 🌍 Madrid, Spain"
 msgstr ""
-"🥎 <strong>%1$s</strong> — Din padel-banereservationsassistent. 🥎</br> "
-"Lavet med ❤️ af <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
+"🥎 <strong>%1$s</strong> — Din padel-banereservationsassistent. 🥎</br> Lavet "
+"med ❤️ af <a href=\"%2$s\" target=\"_blank\" rel=\"noopener\">Juan G "
 "Carmona</a> 🌍 Madrid, Spanien"
+
+#~ msgid "Availability updated."
+#~ msgstr "Tilgængelighed opdateret."
+
+#~ msgid "Invalid nonce."
+#~ msgstr "Ugyldig nonce."
+
+#~ msgid "Availability"
+#~ msgstr "Tilgængelighed"
+
+#~ msgid "From:"
+#~ msgstr "Fra:"
+
+#~ msgid "To:"
+#~ msgstr "Til:"
+
+#~ msgid "Save"
+#~ msgstr "Spare"
