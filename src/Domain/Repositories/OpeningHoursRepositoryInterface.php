@@ -8,5 +8,5 @@ interface OpeningHoursRepositoryInterface
 
     public function getByDayOfWeek(int $dayOfWeek): ?object; // TODO: Replace `object` with OpeningHours entity
 
-    public function upsert(int $dayOfWeek, string $openTime, string $closeTime): bool;
+    public function upsert(int $dayOfWeek, array $timeRanges, bool $closed): bool;
 }

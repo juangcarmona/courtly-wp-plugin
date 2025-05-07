@@ -1,5 +1,5 @@
 <?php
-namespace Courtly\Application\Controllers;
+namespace Juangcarmona\Courtly\Application\Controllers;
 
 use Courtly\Infrastructure\CourtlyContainer;
 
