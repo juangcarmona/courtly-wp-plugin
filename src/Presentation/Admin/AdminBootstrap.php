@@ -30,7 +30,7 @@ function courtly_add_admin_menu()
     );
 
     add_submenu_page(
-        'options-general.php',
+        'courtly_dashboard.php',
         __('Opening Hours', 'courtly'),
         __('Opening Hours', 'courtly'),
         'manage_options',
