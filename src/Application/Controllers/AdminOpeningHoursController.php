@@ -71,4 +71,22 @@ class AdminOpeningHoursController {
         $value = isset($option[$day]) ? $option[$day] : '';
         echo '<input type="text" name="courtly_opening_hours_data[' . $day . ']" value="' . esc_attr($value) . '" placeholder="e.g., 09:00-17:00, 18:00-21:00">';
     }
+
+    public function getViewData(): array
+    {
+        $openingHours = $this->openingHoursService->getAllOpeningHours();
+
+        $formattedHours = [];
+        foreach ($openingHours as $hour) {
+            $formattedHours[] = [
+                'day_of_week' => $hour->getDayOfWeek(),
+                'time_ranges' => $hour->getTimeRanges(),
+                'closed' => $hour->isClosed(),
+            ];
+        }
+
+        return [
+            'opening_hours' => $formattedHours,
+        ];
+    }
 }
