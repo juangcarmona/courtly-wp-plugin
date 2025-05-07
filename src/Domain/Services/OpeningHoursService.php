@@ -1,3 +1,5 @@
+<?php
+
 namespace Juangcarmona\Courtly\Domain\Services;
 
 use Juangcarmona\Courtly\Domain\Repositories\OpeningHoursRepositoryInterface;
