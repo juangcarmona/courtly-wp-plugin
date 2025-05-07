@@ -29,6 +29,15 @@ function courtly_add_admin_menu()
         'courtly_admin_dashboard_page'
     );
 
+    add_submenu_page(
+        'options-general.php',
+        __('Opening Hours', 'courtly'),
+        __('Opening Hours', 'courtly'),
+        'manage_options', 
+        'courtly-opening-hours', 
+        'courtly_admin_opening_hours_page'
+    );
+
     // --- Activity Calendar ---
     add_submenu_page(
         'courtly_dashboard',
@@ -67,11 +76,11 @@ function courtly_add_admin_menu()
         'courtly_admin_history_page'
     );
 
-    // --- Availability ---
+    // --- Court Availability ---
     add_submenu_page(
         'courtly_dashboard',
         __('Court Availability', 'courtly'),
-        __('Availability', 'courtly'),
+        __('Court Availability', 'courtly'),
         'manage_options',
         'courtly_availability',
         'courtly_admin_availability_page'
@@ -123,6 +132,11 @@ function courtly_admin_dashboard_page()
     include plugin_dir_path(__FILE__).'Pages/DashboardPage.php';
 }
 
+function courtly_admin_opening_hours_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/OpeningHoursPage.php';
+}
+
 function courtly_admin_activity_calendar_page()
 {
     include plugin_dir_path(__FILE__).'/Pages/ActivityCalendarPage.php';
@@ -171,3 +185,8 @@ function courtly_admin_user_types_page()
 // ✅ Asset loader
 require_once __DIR__.'/AdminAssets.php';
 add_action('admin_enqueue_scripts', ['AdminAssets', 'enqueue']);
+
+// Register settings for Opening Hours
+add_action('admin_init', function() {
+    (new \Courtly\Application\Controllers\AdminOpeningHoursController())->registerSettings();
+});

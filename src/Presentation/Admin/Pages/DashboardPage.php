@@ -78,7 +78,7 @@ $user_types = $wpdb->get_results("
         <a href="?page=courtly_activity_calendar" class="btn btn-primary w-100">📅 <?= esc_html__('View Calendar', 'courtly') ?></a>
       </div>
       <div class="col-md-4">
-        <a href="?page=courtly_availability" class="btn btn-primary w-100">🕒 <?= esc_html__('Set Availability', 'courtly') ?></a>
+        <a href="?page=courtly_availability" class="btn btn-primary w-100">🕒 <?= esc_html__('Set Court Availability', 'courtly') ?></a>
       </div>
     </div>
   </div>

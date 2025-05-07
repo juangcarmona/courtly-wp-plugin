@@ -55,8 +55,23 @@ class CourtReservationService
 
             return false;
         }
-        if ($slot < $opening->getOpenTime() || $slot >= $opening->getCloseTime()) {
-            error_log("[Courtly] ❌ Slot $slot is outside opening hours ({$opening->getOpenTime()} → {$opening->getCloseTime()}).");
+
+        if ($opening->isClosed()) {
+            error_log("[Courtly] ❌ Day $dow is marked as closed.");
+
+            return false;
+        }
+
+        $isWithinTimeRange = false;
+        foreach ($opening->getTimeRanges() as $range) {
+            if ($slot >= $range['start'] && $slot < $range['end']) {
+                $isWithinTimeRange = true;
+                break;
+            }
+        }
+
+        if (!$isWithinTimeRange) {
+            error_log("[Courtly] ❌ Slot $slot is outside all defined time ranges.");
 
             return false;
         }

@@ -1,5 +1,5 @@
 <div class="wrap">
-    <h1><?php esc_html_e('Manage Court Availability', 'courtly'); ?></h1>
+    <h1><?php esc_html_e('Court Availability', 'courtly'); ?></h1>
 
     <form method="GET">
         <input type="hidden" name="page" value="courtly_availability">

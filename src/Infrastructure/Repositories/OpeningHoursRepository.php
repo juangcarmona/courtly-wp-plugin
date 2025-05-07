@@ -31,20 +31,26 @@ class OpeningHoursRepository implements OpeningHoursRepositoryInterface
         return $row ? $this->mapRowToEntity($row) : null;
     }
 
-    public function upsert(int $dayOfWeek, string $openTime, string $closeTime): bool
+    public function upsert(int $dayOfWeek, array $timeRanges, bool $closed): bool
     {
         $existing = $this->getByDayOfWeek($dayOfWeek);
+
+        $data = [
+            'time_ranges' => json_encode($timeRanges),
+            'closed' => $closed ? 1 : 0
+        ];
 
         if ($existing) {
             return $this->wpdb->update(
                 $this->table,
-                ['open_time' => $openTime, 'close_time' => $closeTime],
+                $data,
                 ['day_of_week' => $dayOfWeek]
             ) !== false;
         } else {
+            $data['day_of_week'] = $dayOfWeek;
             return $this->wpdb->insert(
                 $this->table,
-                ['day_of_week' => $dayOfWeek, 'open_time' => $openTime, 'close_time' => $closeTime]
+                $data
             ) !== false;
         }
     }
@@ -53,8 +59,8 @@ class OpeningHoursRepository implements OpeningHoursRepositoryInterface
     {
         return new OpeningHours(
             (int)$row->day_of_week,
-            $row->open_time,
-            $row->close_time,
+            json_decode($row->time_ranges, true) ?? [],
+            (bool)$row->closed,
             (int)$row->id
         );
     }

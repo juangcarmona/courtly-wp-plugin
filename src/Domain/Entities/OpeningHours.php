@@ -5,15 +5,15 @@ class OpeningHours implements BaseEntity
 {
     private int $id;
     private int $dayOfWeek;    // 0 = Sunday, 6 = Saturday
-    private string $openTime;  // HH:MM:SS
-    private string $closeTime;
+    private bool $closed;
+    private array $timeRanges; // Array of ['start' => 'HH:MM:SS', 'end' => 'HH:MM:SS']
 
-    public function __construct(int $dayOfWeek, string $openTime, string $closeTime, int $id = 0)
+    public function __construct(int $dayOfWeek, array $timeRanges = [], bool $closed = false, int $id = 0)
     {
         $this->id = $id;
         $this->dayOfWeek = $dayOfWeek;
-        $this->openTime = $openTime;
-        $this->closeTime = $closeTime;
+        $this->timeRanges = $timeRanges;
+        $this->closed = $closed;
     }
 
     public static function schema(string $table): string
@@ -37,23 +37,23 @@ class OpeningHours implements BaseEntity
         return $this->dayOfWeek;
     }
 
-    public function getOpenTime(): string
+    public function isClosed(): bool
     {
-        return $this->openTime;
+        return $this->closed;
     }
 
-    public function getCloseTime(): string
+    public function getTimeRanges(): array
     {
-        return $this->closeTime;
+        return $this->timeRanges;
     }
 
-    public function setOpenTime(string $time): void
+    public function setClosed(bool $closed): void
     {
-        $this->openTime = $time;
+        $this->closed = $closed;
     }
 
-    public function setCloseTime(string $time): void
+    public function setTimeRanges(array $timeRanges): void
     {
-        $this->closeTime = $time;
+        $this->timeRanges = $timeRanges;
     }
 }
