@@ -141,12 +141,14 @@ class AvailabilityAjaxController
 
         if (!is_array($data)) {
             wp_send_json_error(['message' => 'Invalid data format.'], 400);
+
             return;
         }
 
         foreach ($data as $dayOfWeek => $hours) {
             if (!isset($hours['start'], $hours['end'])) {
-                wp_send_json_error(['message' => 'Missing start or end time for day ' . $dayOfWeek], 400);
+                wp_send_json_error(['message' => 'Missing start or end time for day '.$dayOfWeek], 400);
+
                 return;
             }
 
@@ -157,7 +159,8 @@ class AvailabilityAjaxController
             );
 
             if (!$success) {
-                wp_send_json_error(['message' => 'Failed to save hours for day ' . $dayOfWeek], 500);
+                wp_send_json_error(['message' => 'Failed to save hours for day '.$dayOfWeek], 500);
+
                 return;
             }
         }

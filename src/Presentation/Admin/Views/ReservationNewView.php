@@ -24,7 +24,7 @@
             <div>
                 <strong><?php esc_html_e('Selected:', 'courtly'); ?></strong>
                 <span id="courtly-summary"><?php esc_html_e('None', 'courtly'); ?></span><br>
-                <button type="submit" class="btn btn-sm btn-primary" disabled id="courtly-submit-btn">
+                <button type="submit" class="btn btn-sm btn-success" disabled id="courtly-submit-btn">
                     <?php esc_html_e('Confirm Reservation', 'courtly'); ?>
                 </button>
             </div>

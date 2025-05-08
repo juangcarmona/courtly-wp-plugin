@@ -1,0 +1,34 @@
+{
+  "architecture": {
+    "layers": {
+      "Domain": "Core business logic and entities",
+      "Application": "Orchestration and services",
+      "Infrastructure": "Repositories and external dependencies",
+      "Presentation": "UI and user interaction"
+    },
+    "patterns": ["Repository", "Dependency Injection", "Service-Oriented"]
+  },
+  "folderStructure": {
+    "Application": "Application logic (services, commands, queries)",
+    "Domain": "Core business logic and entities",
+    "Infrastructure": "Database repositories and setup",
+    "Presentation": "UI logic, separated by context",
+    "tests": "Unit and integration tests"
+  },
+  "testing": {
+    "unitTests": "tests/Unit",
+    "integrationTests": "tests/Integration"
+  },
+  "conventions": {
+    "services": "Placed in Domain/Services",
+    "controllers": "Placed in Application/Controllers",
+    "repositories": {
+      "interfaces": "Domain/Repositories",
+      "implementations": "Infrastructure/Repositories"
+    },
+    "views": "Placed in Presentation/Admin/Views or Presentation/Public/Views"
+  },
+  "coreComponents": {
+    "ControllerFactory": "Centralized factory for creating controllers with dependency injection. Ensures all dependencies are properly injected."
+  }
+}

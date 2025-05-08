@@ -23,7 +23,7 @@
           <td><?php echo esc_html($r->start_time); ?></td>
           <td><?php echo esc_html($r->end_time); ?></td>
           <td>
-            <a href="admin.php?page=courtly_reservation_detail&reservationId=<?php echo esc_attr($r->id); ?>" class="btn btn-sm btn-primary">
+            <a href="admin.php?page=courtly_reservation_detail&reservationId=<?php echo esc_attr($r->id); ?>" class="btn btn-sm btn-success">
               <?php esc_html_e('View', 'courtly'); ?>
             </a>
           </td>

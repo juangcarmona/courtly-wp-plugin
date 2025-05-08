@@ -19,7 +19,7 @@ function courtly_add_admin_menu()
         25
     );
 
-    // --- Dashboard & Calendar ---
+    // --- Dashboard ---
     add_submenu_page(
         'courtly_dashboard',
         __('Dashboard', 'courtly'),
@@ -27,6 +27,16 @@ function courtly_add_admin_menu()
         'manage_options',
         'courtly_dashboard',
         'courtly_admin_dashboard_page'
+    );
+
+    // -- Opening Hours ---
+    add_submenu_page(
+        'courtly_dashboard',
+        __('Opening Hours', 'courtly'),
+        __('Opening Hours', 'courtly'),
+        'manage_options',
+        'courtly_opening_hours',
+        'courtly_admin_opening_hours_page'
     );
 
     // --- Activity Calendar ---
@@ -39,7 +49,7 @@ function courtly_add_admin_menu()
         'courtly_admin_activity_calendar_page'
     );
 
-    // --- Reservations ---
+    // --- New Reservation ---
     add_submenu_page(
         'courtly_dashboard',
         __('New Reservation', 'courtly'),
@@ -49,6 +59,7 @@ function courtly_add_admin_menu()
         'courtly_admin_reservation_new_page'
     );
 
+    // --- All Reservations ---
     add_submenu_page(
         'courtly_dashboard',
         __('All Reservations', 'courtly'),
@@ -58,6 +69,7 @@ function courtly_add_admin_menu()
         'courtly_admin_reservations_page'
     );
 
+    // --- Reservation History ---
     add_submenu_page(
         'courtly_dashboard',
         __('Reservation History', 'courtly'),
@@ -71,7 +83,7 @@ function courtly_add_admin_menu()
     add_submenu_page(
         'courtly_dashboard',
         __('Court Availability', 'courtly'),
-        __('Availability', 'courtly'),
+        __('Court Availability', 'courtly'),
         'manage_options',
         'courtly_availability',
         'courtly_admin_availability_page'
@@ -123,6 +135,11 @@ function courtly_admin_dashboard_page()
     include plugin_dir_path(__FILE__).'Pages/DashboardPage.php';
 }
 
+function courtly_admin_opening_hours_page()
+{
+    include plugin_dir_path(__FILE__).'Pages/OpeningHoursPage.php';
+}
+
 function courtly_admin_activity_calendar_page()
 {
     include plugin_dir_path(__FILE__).'/Pages/ActivityCalendarPage.php';
@@ -150,7 +167,7 @@ function courtly_admin_reservation_detail_page()
 
 function courtly_admin_availability_page()
 {
-    include plugin_dir_path(__FILE__).'Pages/AvailabilityPage.php';
+    include plugin_dir_path(__FILE__).'Pages/CourtAvailabilityPage.php';
 }
 
 function courtly_admin_courts_page()

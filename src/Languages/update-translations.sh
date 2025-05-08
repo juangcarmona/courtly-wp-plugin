@@ -11,6 +11,9 @@ for lang in $LANGUAGES; do
   MO="courtly-${lang}.mo"
 
   if [ -f "$PO" ]; then
+    echo "🧹 Cleaning duplicates in $PO..."
+    msguniq --use-first -o "$PO" "$PO"
+
     echo "📝 Merging $PO with $POT_FILE..."
     msgmerge --update "$PO" "$POT_FILE"
 
@@ -21,6 +24,4 @@ for lang in $LANGUAGES; do
   fi
 done
 
-wp i18n make-mo .
-
-echo "✅ Done. All translations updated and compiled."
+echo "✅ Done. All translations cleaned, updated, and compiled."
